@@ -35,7 +35,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v2.4 â¢ planning + work detail upgrade â¢ Quick View â Walkthrough â Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v3.1 â¢ Health detail overhaul â¢ Quick View â Walkthrough â Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate">Today</h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -115,6 +115,12 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div></section>
 
 <section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð¼ Work Command Center</h2>
+<div class="quickgrid"><div class="card"><h3>ð§­ Run Board</h3><div class="formgrid">
+<div class="field"><label>Shift</label><select id="workShiftFilter"><option>All</option><option>AM</option><option>PM</option><option>Team</option></select></div>
+<div class="field"><label>Status</label><select id="workStatusFilter"><option>All</option><option>Scheduled</option><option>Driver Confirmed</option><option>Ready</option><option>Dispatched</option><option>Delayed</option><option>Held</option><option>Completed</option><option>Cancelled</option></select></div>
+</div><div id="workRunBoard"></div></div><div class="card"><h3>â ï¸ Needs Attention</h3><div id="workAttention"></div></div></div>
+<details><summary>ð Regular Run Schedule</summary><div id="workRunTemplates"></div><button class="smallbtn" data-add-record="workRunTemplate">â Add Regular Run</button></details>
+
 <details open><summary>ð Workday + Weekly Planning</summary>
 <div class="formgrid">
 <div class="field"><label>Week of</label><input type="date" data-key="work.week.start"></div>
@@ -124,14 +130,14 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="hint"><strong>Start Workday:</strong> declines â Linehaul Central â driver/run status â tractor issues â reports/tasks due â payroll/settlement if applicable â invoices/ordering â follow-ups.<br><strong>End Workday:</strong> waiting items â tomorrow â after-hours time â driver/tractor follow-up.</div>
 </details>
 
-<details><summary>ð£ Runs / Dispatch</summary><div id="workRuns"></div><button class="smallbtn" data-add-record="workRun">â Add Run / Dispatch</button></details>
+<details open><summary>ð£ Runs / Dispatch â Detailed</summary><div id="workRuns"></div><button class="smallbtn" data-add-record="workRun">â Add Run / Dispatch</button></details>
 <details><summary>ð§ Maintenance / Repairs</summary><div id="workMaintenance"></div><button class="smallbtn" data-add-record="workMaintenance">â Add Maintenance / Repair</button></details>
 <details><summary>ð Inspections / Compliance</summary><div id="workCompliance"></div><button class="smallbtn" data-add-record="workCompliance">â Add Inspection / Compliance Item</button></details>
 
 <details open><summary>â¡ Todayâs Work</summary><div class="walkstep"><div class="num">1</div><div>Check declines and Linehaul Central.</div></div><div class="walkstep"><div class="num">2</div><div>Review shipment/camera/run tracking.</div></div><div class="walkstep"><div class="num">3</div><div>Handle todayâs scheduled payroll/fuel/report tasks.</div></div><div class="walkstep"><div class="num">4</div><div>Check drivers, tractors, maintenance, invoices, ordering and follow-ups.</div></div><div class="field"><label>Work Notes Today</label><textarea data-key="work.todayNotes"></textarea></div></details>
 <details><summary>ð Recurring Work Tasks</summary><div id="workRecurring"></div><button class="smallbtn" data-add-record="workTask">â Add Recurring Task</button></details>
-<details><summary>ð Drivers / Runs / Status</summary><div id="workDrivers"></div><button class="smallbtn" data-add-record="driver">â Add Driver / Run Note</button></details>
-<details><summary>ð Tractors / Maintenance</summary><div id="workTractors"></div><button class="smallbtn" data-add-record="tractor">â Add Tractor / Maintenance Item</button></details>
+<details><summary>ð¤ Drivers / Coverage</summary><div id="workDrivers"></div><button class="smallbtn" data-add-record="driver">â Add Driver / Run Note</button></details>
+<details><summary>ð Tractors / Unit Details</summary><div id="workTractors"></div><button class="smallbtn" data-add-record="tractor">â Add Tractor / Maintenance Item</button></details>
 <details><summary>ðµ Payroll / Settlement / After-Hours</summary><div id="workPay"></div><button class="smallbtn" data-add-record="workPay">â Add Pay / Hours Item</button></details>
 <details><summary>ð Daily / Weekly Work Walkthroughs</summary>
 <div class="walkstep"><div class="num">1</div><div><strong>Start:</strong> declines â Linehaul Central â urgent messages/follow-ups.</div></div>
@@ -193,17 +199,29 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div id="roomCleaning"></div>
 </details>
 
-<details><summary>ð§´ Cleaning Products + Tools Reference</summary>
-<div class="formgrid">
-<div class="field"><label>Kitchen products</label><textarea data-key="clean.products.kitchen" placeholder="Dawn Powerwash â¢ Clean Freak/Mr Clean â¢ microfiber cloths â¢ scrubberâ¦"></textarea></div>
-<div class="field"><label>Bathroom products</label><textarea data-key="clean.products.bathroom" placeholder="Scrubbing Bubbles â¢ toilet cleaner â¢ Windex â¢ disinfecting clothsâ¦"></textarea></div>
-<div class="field"><label>Floors</label><textarea data-key="clean.products.floors" placeholder="Vacuum â¢ broom â¢ mop â¢ Mr Clean all-purposeâ¦"></textarea></div>
-<div class="field"><label>Laundry</label><textarea data-key="clean.products.laundry" placeholder="Detergent â¢ stain remover â¢ dryer items â¢ basketsâ¦"></textarea></div>
-<div class="field full"><label>Cleaning Tote / Supplies</label><textarea data-key="clean.products.tote" placeholder="Gloves â¢ microfiber cloths â¢ sponges â¢ scrub brushes â¢ trash bags â¢ paper towelsâ¦"></textarea></div>
-</div>
+<details><summary>ð§´ Cleaning Products + Tools Inventory</summary>
+<div class="hint"><strong>Use this as your cleaning-supply inventory.</strong> Check what you have, mark status, and send Running Low / Out / Replace items straight to Master Shopping.</div>
+<div id="cleaningSupplyList"></div>
+<button class="smallbtn" data-add-record="cleaningSupply">â Add Cleaning Product / Tool</button>
+<details><summary>â Cleaning Tote / Ready-to-Clean Checklist</summary>
+<label class="task"><input type="checkbox" data-clean-kit="cloths"> Microfiber cloths ready</label>
+<label class="task"><input type="checkbox" data-clean-kit="glass"> Glass cloth ready</label>
+<label class="task"><input type="checkbox" data-clean-kit="sponges"> Sponges / scrubbers ready</label>
+<label class="task"><input type="checkbox" data-clean-kit="gloves"> Gloves ready</label>
+<label class="task"><input type="checkbox" data-clean-kit="bags"> Trash bags ready</label>
+<label class="task"><input type="checkbox" data-clean-kit="bathroom"> Bathroom cleaner stocked</label>
+<label class="task"><input type="checkbox" data-clean-kit="kitchen"> Kitchen / all-purpose cleaner stocked</label>
+<label class="task"><input type="checkbox" data-clean-kit="floors"> Floor cleaner / mop supplies stocked</label>
+<label class="task"><input type="checkbox" data-clean-kit="laundry"> Laundry products stocked</label>
+</details>
 </details>
 
-<details><summary>ðï¸ Monthly Cleaning</summary><div id="cleanMonthly"></div></details>
+<details open><summary>ðï¸ Monthly Cleaning â Check Off Tasks</summary>
+<div class="hint"><strong>Check each task off as you finish it.</strong> Your checks stay saved for the current month and reset naturally when a new month begins.</div>
+<div id="cleanMonthlyProgress"></div>
+<div id="cleanMonthly"></div>
+<button class="smallbtn" id="resetCleanMonth">âº Reset This Monthâs Checkmarks</button>
+</details>
 <details><summary>ð Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
 <details><summary>ð Annual Cleaning</summary><div id="cleanAnnual"></div></details>
 
@@ -217,6 +235,91 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 </details>
 
+
+<details><summary>ð Daily House Reset â Every Day</summary>
+<div class="hint">These are the small things that keep the house from snowballing. Do the red items first if time is tight.</div>
+<label class="task"><input type="checkbox" data-clean-daily="dishes"> ð´ Dishes loaded/washed and sink cleared</label>
+<label class="task"><input type="checkbox" data-clean-daily="counters"> ð´ Kitchen counters cleared and wiped</label>
+<label class="task"><input type="checkbox" data-clean-daily="trash"> ð´ Obvious trash picked up / full trash emptied</label>
+<label class="task"><input type="checkbox" data-clean-daily="laundry"> ð¡ Laundry moved along / one load finished if needed</label>
+<label class="task"><input type="checkbox" data-clean-daily="living"> ð¡ Living room pickup / blankets / pillows reset</label>
+<label class="task"><input type="checkbox" data-clean-daily="bathroom"> ð¡ Bathroom sink/toilet quick check</label>
+<label class="task"><input type="checkbox" data-clean-daily="floors"> ð¢ Spot sweep/vacuum only where needed</label>
+<label class="task"><input type="checkbox" data-clean-daily="school"> ð¡ School bags / shoes / activity gear reset</label>
+</details>
+
+<details><summary>ð§º Laundry System â Detailed</summary>
+<div class="walkstep"><div class="num">1</div><div>Collect laundry from bedrooms/bathrooms.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Sort by your normal system: clothes / towels / bedding / delicates as needed.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Pre-treat stains before washing.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Wash â move promptly to dryer/hang dry.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Fold/hang immediately when possible.</div></div>
+<div class="walkstep"><div class="num">6</div><div>Put away completely so baskets do not become storage.</div></div>
+<div class="walkstep"><div class="num">7</div><div>Clean lint trap and wipe laundry area.</div></div>
+<div class="formgrid">
+<div class="field"><label>Clothes laundry days</label><input data-key="clean.laundry.clothesDays"></div>
+<div class="field"><label>Towels day</label><input data-key="clean.laundry.towelDay"></div>
+<div class="field"><label>Bedding day</label><input data-key="clean.laundry.beddingDay"></div>
+<div class="field"><label>Cleaning cloths / mop heads</label><input data-key="clean.laundry.cleaningCloths"></div>
+<div class="field"><label>Kids bedding rotation</label><textarea data-key="clean.laundry.kidsBedding"></textarea></div>
+<div class="field"><label>Special / bulky items</label><textarea data-key="clean.laundry.bulky"></textarea></div>
+</div>
+</details>
+
+<details><summary>ð Bedding + Towels Schedule</summary>
+<div class="formgrid">
+<div class="field"><label>Primary bed</label><input data-key="clean.bedding.primary" placeholder="Example: every Sunday / every 2 weeks"></div>
+<div class="field"><label>Kids beds</label><input data-key="clean.bedding.kids"></div>
+<div class="field"><label>Pillowcases</label><input data-key="clean.bedding.pillowcases"></div>
+<div class="field"><label>Bath towels</label><input data-key="clean.bedding.towels"></div>
+<div class="field"><label>Hand towels / washcloths</label><input data-key="clean.bedding.hand"></div>
+<div class="field"><label>Bath mats</label><input data-key="clean.bedding.mats"></div>
+<div class="field"><label>Blankets / throws</label><input data-key="clean.bedding.blankets"></div>
+<div class="field"><label>Pet bedding</label><input data-key="clean.bedding.pet"></div>
+</div></details>
+
+<details><summary>ð¡ Weekly Room Checklist â Full Detail</summary>
+<div id="weeklyRoomCleaning"></div>
+</details>
+
+<details><summary>ð§½ Deep-Clean Tasks by Room</summary>
+<div id="deepRoomCleaning"></div>
+</details>
+
+<details><summary>â±ï¸ Cleaning by Time Available</summary>
+<div class="card"><h3>5-Minute Rescue</h3>
+<div class="small">Trash â dishes â clear one surface â put obvious items away.</div></div>
+<div class="card"><h3>15-Minute Reset</h3>
+<div class="small">Kitchen sink/counters â living-room pickup â bathroom quick check â one laundry move.</div></div>
+<div class="card"><h3>30-Minute Reset</h3>
+<div class="small">15-minute reset + floors in main areas + one room focus.</div></div>
+<div class="card"><h3>60-Minute Catch-Up</h3>
+<div class="small">Kitchen â bathroom â laundry â living room â floors â stop. Do not turn it into an all-day deep clean.</div></div>
+</details>
+
+<details><summary>ð¨ Catch-Up / House Is Behind Mode</summary>
+<div class="hint"><strong>Use this instead of trying to do everything.</strong></div>
+<label class="task"><input type="checkbox" data-catchup="trash"> 1. Trash / food / dishes first</label>
+<label class="task"><input type="checkbox" data-catchup="laundry"> 2. Start one priority laundry load</label>
+<label class="task"><input type="checkbox" data-catchup="bathroom"> 3. Make one bathroom usable</label>
+<label class="task"><input type="checkbox" data-catchup="kitchen"> 4. Clear kitchen counters + sink</label>
+<label class="task"><input type="checkbox" data-catchup="living"> 5. Clear main living area floor/surfaces</label>
+<label class="task"><input type="checkbox" data-catchup="floors"> 6. Vacuum/sweep main walkways only</label>
+<label class="task"><input type="checkbox" data-catchup="stop"> 7. Stop and reassess before adding extras</label>
+</details>
+
+<details><summary>ð Weekly Cleaning Review + Plan Next Week</summary>
+<label class="task"><input type="checkbox" data-clean-weekreview="missed"> Check anything missed this week</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="monthly"> Pick monthly task(s) due</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="seasonal"> Check seasonal task if due</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="supplies"> Check cleaning supplies / tools</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="laundry"> Review bedding/towels/laundry needs</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="busy"> Adjust next week if busy/traveling</label>
+<div class="formgrid">
+<div class="field"><label>Must do next week</label><textarea data-key="clean.week.nextMust"></textarea></div>
+<div class="field"><label>Can wait</label><textarea data-key="clean.week.canWait"></textarea></div>
+<div class="field full"><label>Notes</label><textarea data-key="clean.week.notes"></textarea></div>
+</div></details>
 <details><summary>â Walk Me Through Cleaning</summary>
 <div class="walkstep"><div class="num">1</div><div>Look at Todayâs Focus.</div></div>
 <div class="walkstep"><div class="num">2</div><div>If the house feels behind, use ð´/ð¡/ð¢ instead of trying to do everything.</div></div>
@@ -267,11 +370,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details open><summary>ð Weekly Self-Care Planner</summary>
 <div class="formgrid">
 <div class="field"><label>Week of</label><input type="date" data-key="selfcare.week.start"></div>
-<div class="field"><label>Week type</label><select data-key="selfcare.week.type"><option>Normal</option><option>Busy</option><option>Very Busy</option><option>Traveling</option><option>Period Week</option><option>Low Energy</option><option>Simple Maintenance</option><option>Other</option></select></div>
-<div class="field"><label>Main focus</label><select data-key="selfcare.week.focus"><option>Acne / Skin</option><option>Hydration</option><option>Hair Repair</option><option>Scalp Care</option><option>Body Care</option><option>Period Care</option><option>Simple Maintenance</option><option>Other</option></select></div>
-<div class="field"><label>Energy / capacity</label><select data-key="selfcare.week.capacity"><option>Great</option><option>Good</option><option>Okay</option><option>Tired</option><option>Busy</option><option>Overwhelmed</option><option>Not Feeling Well</option></select></div>
+<div class="field"><label>Week type</label><select data-key="selfcare.week.type"><option>Normal</option><option>Busy</option><option>Very Busy</option><option>Traveling</option><option>Period Week</option><option>Low Energy</option><option>Not Feeling Well</option><option>Simple Maintenance</option><option>Other</option></select></div>
+<div class="field"><label>Main focus</label><select data-key="selfcare.week.focus"><option>Acne / Skin</option><option>Hydration</option><option>Hair Repair</option><option>Scalp Care</option><option>Body Care</option><option>Period Care</option><option>Simple Maintenance</option><option>Travel Prep</option><option>Other</option></select></div>
+<div class="field"><label>Routine intensity</label><select data-key="selfcare.week.intensity"><option>Full Routine</option><option>Normal Routine</option><option>Simplified</option><option>Bare Minimum</option></select></div>
+<div class="field"><label>AM skincare frequency</label><select data-key="selfcare.week.amFreq"><option>Daily</option><option>Weekdays</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>PM skincare frequency</label><select data-key="selfcare.week.pmFreq"><option>Daily</option><option>Weekdays</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>Shower frequency</label><select data-key="selfcare.week.showerFreq"><option>Daily</option><option>5â6x/week</option><option>4â5x/week</option><option>3â4x/week</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>Hair wash frequency</label><select data-key="selfcare.week.hairFreq"><option>Daily</option><option>5x/week</option><option>4x/week</option><option>3x/week</option><option>2x/week</option><option>Specific Days</option><option>As Needed</option></select></div>
 </div>
-<div class="hint"><strong>Set Up My Week:</strong> choose skincare treatments â shower days â shave/exfoliation days â hair wash/refresh/treatment days â period care â weekly extras â review the seven days so one day is not overloaded.</div>
+<div class="hint"><strong>Set Up My Week:</strong> choose the day type below for each day. Then select treatments, shower/body, hair/scalp, and extras with dropdowns. Today will use that day's plan.</div>
 <div id="selfcareWeek"></div>
 </details>
 
@@ -301,32 +408,129 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>What was skipped / why?</label><textarea data-key="selfcare.week.reviewSkipped"></textarea></div>
 <div class="field full"><label>Changes for next week</label><textarea data-key="selfcare.week.reviewNext"></textarea></div>
 </div></details>
-<details><summary>ð AM Skincare â Step by Step</summary><div class="hint"><strong>Order:</strong> Cleanse â scheduled treatment â moisturizer â SPF. Use only treatments scheduled for that day.</div><div class="formgrid"><div class="field"><label>Cleanser</label><input data-key="selfcare.am.cleanser"></div><div class="field"><label>Amount / instructions</label><input data-key="selfcare.am.cleanserHow"></div><div class="field"><label>Treatment</label><input data-key="selfcare.am.treatment"></div><div class="field"><label>Treatment days</label><input data-key="selfcare.am.days"></div><div class="field"><label>Moisturizer</label><input data-key="selfcare.am.moisturizer"></div><div class="field"><label>SPF</label><input data-key="selfcare.am.spf"></div><div class="field full"><label>Skip rules / notes</label><textarea data-key="selfcare.am.notes"></textarea></div></div></details>
-<details><summary>ð PM Skincare â Step by Step</summary><div class="hint"><strong>Order:</strong> Remove makeup/SPF if needed â cleanse â scheduled treatment â moisturizer â eye/lip/spot care if used.</div><div class="formgrid"><div class="field"><label>Removal product</label><input data-key="selfcare.pm.remove"></div><div class="field"><label>Cleanser</label><input data-key="selfcare.pm.cleanser"></div><div class="field"><label>Treatment</label><input data-key="selfcare.pm.treatment"></div><div class="field"><label>Treatment days</label><input data-key="selfcare.pm.days"></div><div class="field"><label>Moisturizer</label><input data-key="selfcare.pm.moisturizer"></div><div class="field"><label>Eye / dark-circle care</label><input data-key="selfcare.pm.eye"></div><div class="field"><label>Lip care</label><input data-key="selfcare.pm.lip"></div><div class="field"><label>Spot care</label><input data-key="selfcare.pm.spot"></div></div></details>
+<details><summary>ð AM Skincare â Detailed Setup</summary>
+<div class="formgrid">
+<div class="field"><label>Routine status</label><select data-key="selfcare.am.status"><option>Active</option><option>Simplified</option><option>Paused</option></select></div>
+<div class="field"><label>Cleanser</label><input data-key="selfcare.am.cleanser"></div>
+<div class="field"><label>Cleanser amount</label><select data-key="selfcare.am.cleanserAmount"><option>Small amount</option><option>Pea size</option><option>Dime size</option><option>Custom / label directions</option></select></div>
+<div class="field"><label>Toner</label><select data-key="selfcare.am.toner"><option>None</option><option>Use Daily</option><option>Use Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>AM treatment type</label><select data-key="selfcare.am.treatmentType"><option>None</option><option>Acne Treatment</option><option>Hydrating Serum</option><option>Vitamin C</option><option>Eye Care</option><option>Spot Treatment</option><option>Other</option></select></div>
+<div class="field"><label>Treatment frequency</label><select data-key="selfcare.am.treatmentFreq"><option>Daily</option><option>2x/week</option><option>3x/week</option><option>Every Other Day</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>Moisturizer</label><input data-key="selfcare.am.moisturizer"></div>
+<div class="field"><label>SPF</label><input data-key="selfcare.am.spf"></div>
+<div class="field"><label>Eye care</label><select data-key="selfcare.am.eye"><option>None</option><option>Daily</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>Lip care</label><select data-key="selfcare.am.lip"><option>None</option><option>Daily</option><option>As Needed</option></select></div>
+<div class="field full"><label>AM order / special instructions</label><textarea data-key="selfcare.am.notes" placeholder="Example: Cleanse â treatment â moisturizer â SPF"></textarea></div>
+</div>
+</details>
+<details><summary>ð PM Skincare â Detailed Setup</summary>
+<div class="formgrid">
+<div class="field"><label>Routine status</label><select data-key="selfcare.pm.status"><option>Active</option><option>Simplified</option><option>Paused</option></select></div>
+<div class="field"><label>Remove makeup/SPF?</label><select data-key="selfcare.pm.remove"><option>As Needed</option><option>Every Night</option><option>No</option></select></div>
+<div class="field"><label>Cleanser</label><input data-key="selfcare.pm.cleanser"></div>
+<div class="field"><label>PM treatment type</label><select data-key="selfcare.pm.treatmentType"><option>None</option><option>Acne Treatment</option><option>Exfoliant</option><option>Hydrating Serum</option><option>Retinoid / Prescription</option><option>Spot Treatment</option><option>Other</option></select></div>
+<div class="field"><label>Treatment frequency</label><select data-key="selfcare.pm.treatmentFreq"><option>Daily</option><option>2x/week</option><option>3x/week</option><option>Every Other Night</option><option>Specific Nights</option><option>As Needed</option></select></div>
+<div class="field"><label>Moisturizer</label><input data-key="selfcare.pm.moisturizer"></div>
+<div class="field"><label>Eye care</label><select data-key="selfcare.pm.eye"><option>None</option><option>Daily</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>Spot treatment</label><select data-key="selfcare.pm.spot"><option>None</option><option>As Needed</option><option>Specific Nights</option></select></div>
+<div class="field"><label>Lip care</label><select data-key="selfcare.pm.lip"><option>None</option><option>Daily</option><option>As Needed</option></select></div>
+<div class="field full"><label>PM order / special instructions</label><textarea data-key="selfcare.pm.notes" placeholder="Example: Remove SPF â cleanse â treatment â moisturizer"></textarea></div>
+</div>
+</details>
 <details><summary>ð§´ Skincare Products + Details</summary><div id="skinProducts"></div><button class="smallbtn" data-add-record="skin">â Add Skincare Product</button></details>
-<details><summary>ð¿ Shower + Body â Detailed</summary><div class="formgrid"><div class="field"><label>Shower days</label><input data-key="selfcare.shower.days"></div><div class="field"><label>Body wash</label><input data-key="selfcare.shower.bodywash"></div><div class="field"><label>Bar soap / where used</label><input data-key="selfcare.shower.bar"></div><div class="field"><label>Washcloth areas</label><textarea data-key="selfcare.shower.washcloth"></textarea></div><div class="field"><label>Silicone scrubber areas</label><textarea data-key="selfcare.shower.scrubber"></textarea></div><div class="field"><label>Shave days / areas</label><textarea data-key="selfcare.shower.shave"></textarea></div><div class="field"><label>Exfoliation days</label><input data-key="selfcare.shower.exfoliate"></div><div class="field"><label>After-shower care</label><input data-key="selfcare.shower.after"></div></div><div class="hint"><strong>Walkthrough:</strong> Gather items â hair first if wash day â wash body â shave/exfoliate only if scheduled â rinse â dry â deodorant â lotion/body care â clean clothes.</div><div id="bodyProducts"></div><button class="smallbtn" data-add-record="body">â Add Shower / Body Product</button></details>
-<details><summary>ð Hair + Scalp â Detailed</summary><div class="formgrid"><div class="field"><label>Wash days</label><input data-key="selfcare.hair.washDays"></div><div class="field"><label>Refresh days</label><input data-key="selfcare.hair.refreshDays"></div><div class="field"><label>Shampoo</label><input data-key="selfcare.hair.shampoo"></div><div class="field"><label>Conditioner</label><input data-key="selfcare.hair.conditioner"></div><div class="field"><label>Scalp brush use</label><input data-key="selfcare.hair.brush"></div><div class="field"><label>Scalp serum</label><input data-key="selfcare.hair.serum"></div><div class="field"><label>Hair mask / repair days</label><input data-key="selfcare.hair.mask"></div><div class="field"><label>Clarifying schedule</label><input data-key="selfcare.hair.clarify"></div><div class="field"><label>Leave-in / frizz care</label><input data-key="selfcare.hair.leavein"></div><div class="field"><label>Heat protectant</label><input data-key="selfcare.hair.heat"></div><div class="field full"><label>Styling / refresh instructions</label><textarea data-key="selfcare.hair.style"></textarea></div></div><div class="hint"><strong>Wash-day order:</strong> Wet/scalp â shampoo scalp â rinse â conditioner mids/ends â mask when scheduled â rinse â gently dry â leave-in â heat protectant if needed â style.</div><div id="hairProducts"></div><button class="smallbtn" data-add-record="hair">â Add Hair / Scalp Product</button></details>
-<details><summary>ð©¸ Period Care â Detailed</summary><div class="formgrid"><div class="field"><label>Preferred brand</label><input data-key="selfcare.period.brand"></div><div class="field"><label>Light target</label><input type="number" data-key="selfcare.period.light"></div><div class="field"><label>Regular target</label><input type="number" data-key="selfcare.period.regular"></div><div class="field"><label>Super target</label><input type="number" data-key="selfcare.period.super"></div><div class="field"><label>Wipes target</label><input type="number" data-key="selfcare.period.wipes"></div><div class="field"><label>Home storage</label><input data-key="selfcare.period.home"></div><div class="field"><label>Period pouch</label><input data-key="selfcare.period.pouch"></div><div class="field full"><label>Comfort items / notes</label><textarea data-key="selfcare.period.comfort"></textarea></div></div><div class="hint"><strong>Bag reset:</strong> Light + Regular + Super â wipes â spare underwear/pouch if desired â comfort items â replace anything used.</div><div id="periodCare"></div><button class="smallbtn" data-add-record="periodSupply">â Add Period Supply</button></details>
+<details><summary>ð¿ Shower + Body â Detailed Setup</summary>
+<div class="formgrid">
+<div class="field"><label>Default shower type</label><select data-key="selfcare.shower.defaultType"><option>Full Shower</option><option>Quick Shower</option><option>Alternate Based on Day</option></select></div>
+<div class="field"><label>Body wash</label><input data-key="selfcare.shower.bodywash"></div>
+<div class="field"><label>Bar soap use</label><select data-key="selfcare.shower.barUse"><option>Do Not Use</option><option>Specific Areas</option><option>Alternate with Body Wash</option><option>Use Daily</option></select></div>
+<div class="field"><label>Primary body tool</label><select data-key="selfcare.shower.tool"><option>Washcloth</option><option>Silicone Scrubber</option><option>Both by Area</option><option>Hands Only</option></select></div>
+<div class="field"><label>Shave frequency</label><select data-key="selfcare.shower.shaveFreq"><option>Never / Not Needed</option><option>1x/week</option><option>2x/week</option><option>3x/week</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>Shave areas</label><select data-key="selfcare.shower.shaveAreas"><option>Legs</option><option>Underarms</option><option>Legs + Underarms</option><option>Custom / Multiple Areas</option></select></div>
+<div class="field"><label>Body exfoliation</label><select data-key="selfcare.shower.exfoliate"><option>None</option><option>1x/week</option><option>2x/week</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>After-shower body care</label><select data-key="selfcare.shower.after"><option>Lotion</option><option>Body Cream</option><option>Body Oil</option><option>None</option><option>As Needed</option></select></div>
+<div class="field"><label>Deodorant</label><select data-key="selfcare.shower.deodorant"><option>Daily</option><option>After Shower</option><option>AM + After Shower</option></select></div>
+<div class="field full"><label>Area/tool notes</label><textarea data-key="selfcare.shower.notes" placeholder="Example: washcloth for underarms/intimate external areas; silicone scrubber for arms/legs/torso"></textarea></div>
+</div>
+<div class="hint"><strong>Walkthrough:</strong> gather items â hair first if wash day â body cleanse â shave/exfoliate only if scheduled â rinse â dry â deodorant â lotion/body care â clean clothes.</div>
+<div id="bodyProducts"></div><button class="smallbtn" data-add-record="body">â Add Shower / Body Product</button>
+</details>
+<details><summary>ð Hair + Scalp â Detailed Setup</summary>
+<div class="formgrid">
+<div class="field"><label>Hair type / goal</label><select data-key="selfcare.hair.goal"><option>Wavy / Frizz Control</option><option>Repair / Less Breakage</option><option>Scalp Care</option><option>Moisture</option><option>Simple Maintenance</option><option>Other</option></select></div>
+<div class="field"><label>Wash frequency</label><select data-key="selfcare.hair.washFreq"><option>Daily</option><option>5x/week</option><option>4x/week</option><option>3x/week</option><option>2x/week</option><option>Specific Days</option></select></div>
+<div class="field"><label>Non-wash day</label><select data-key="selfcare.hair.nonwash"><option>Refresh</option><option>Rest / Leave Alone</option><option>Style Only</option><option>Scalp Care Only</option></select></div>
+<div class="field"><label>Shampoo</label><input data-key="selfcare.hair.shampoo"></div>
+<div class="field"><label>Conditioner</label><input data-key="selfcare.hair.conditioner"></div>
+<div class="field"><label>Scalp brush</label><select data-key="selfcare.hair.brush"><option>Every Wash</option><option>1â2x/week</option><option>Specific Wash Days</option><option>Do Not Use</option></select></div>
+<div class="field"><label>Scalp serum</label><select data-key="selfcare.hair.serum"><option>None</option><option>Daily</option><option>After Wash</option><option>Specific Days</option><option>As Needed</option></select></div>
+<div class="field"><label>Hair mask / repair</label><select data-key="selfcare.hair.mask"><option>None</option><option>1x/week</option><option>2x/week</option><option>Every 2 Weeks</option><option>As Needed</option></select></div>
+<div class="field"><label>Clarifying</label><select data-key="selfcare.hair.clarify"><option>Never / Not Needed</option><option>Weekly</option><option>Every 2 Weeks</option><option>Monthly</option><option>As Needed</option></select></div>
+<div class="field"><label>Leave-in</label><select data-key="selfcare.hair.leavein"><option>Every Wash</option><option>Most Washes</option><option>As Needed</option><option>None</option></select></div>
+<div class="field"><label>Heat protectant</label><select data-key="selfcare.hair.heat"><option>Whenever Heat Styling</option><option>Daily</option><option>As Needed</option><option>Not Used</option></select></div>
+<div class="field"><label>Styling goal</label><select data-key="selfcare.hair.styleGoal"><option>Natural / Air Dry</option><option>Frizz Control</option><option>Defined Waves</option><option>Heat Styled</option><option>Simple / Pulled Back</option><option>Other</option></select></div>
+<div class="field full"><label>Hair notes / exact routine</label><textarea data-key="selfcare.hair.notes"></textarea></div>
+</div>
+<div class="hint"><strong>Wash-day order:</strong> wet hair/scalp â shampoo scalp â rinse â conditioner mids/ends â mask if scheduled â rinse â gently dry â leave-in â heat protectant if needed â style.</div>
+<div id="hairProducts"></div><button class="smallbtn" data-add-record="hair">â Add Hair / Scalp Product</button>
+</details>
+<details><summary>ð©¸ Period Care â Detailed Setup</summary>
+<div class="formgrid">
+<div class="field"><label>Preferred tampon brand</label><select data-key="selfcare.period.brand"><option>Tampax</option><option>Other</option></select></div>
+<div class="field"><label>Absorbencies kept</label><select data-key="selfcare.period.absorbencies"><option>Light + Regular + Super</option><option>Regular + Super</option><option>Light + Regular</option><option>Custom</option></select></div>
+<div class="field"><label>Home restock level</label><select data-key="selfcare.period.homeLevel"><option>Keep 1 backup box each</option><option>Keep 2 backup boxes each</option><option>Buy as needed</option><option>Custom</option></select></div>
+<div class="field"><label>Period pouch</label><select data-key="selfcare.period.pouchType"><option>Keep Ready All Month</option><option>Pack When Period Starts</option><option>Travel Only</option></select></div>
+<div class="field"><label>Wipes</label><select data-key="selfcare.period.wipes"><option>Keep at Home + Pouch</option><option>Home Only</option><option>Pouch Only</option><option>Do Not Use</option></select></div>
+<div class="field"><label>Spare underwear</label><select data-key="selfcare.period.underwear"><option>Keep in Pouch</option><option>Home Only</option><option>Travel Only</option><option>Do Not Pack</option></select></div>
+<div class="field"><label>Comfort care</label><select data-key="selfcare.period.comfortType"><option>Heat</option><option>Rest</option><option>Hydration</option><option>Multiple / Custom</option><option>None</option></select></div>
+<div class="field"><label>Pouch reset frequency</label><select data-key="selfcare.period.reset"><option>After Every Period</option><option>Monthly</option><option>Before Travel</option><option>As Needed</option></select></div>
+</div>
+<div class="hint"><strong>Pouch reset:</strong> Light â Regular â Super â wipes â spare underwear if desired â comfort items â replace anything used â send low items to Shopping.</div>
+<div id="periodCare"></div><button class="smallbtn" data-add-record="periodSupply">â Add Period Supply</button>
+</details>
 <details><summary>ð§³ Travel Self-Care â Detailed</summary><div id="travelCare"></div><button class="smallbtn" data-add-record="travelCare">â Start Travel Self-Care Plan</button><div class="hint"><strong>Pack:</strong> AM skincare â PM skincare â shower/body â hair/scalp â dental â period supplies â tools/accessories â check quantity â add missing items to Shopping â mark packed.</div></details>
 <details><summary>â ï¸ Running Low / Restock</summary><div id="selfcareLow"></div></details>
 <details><summary>ð§­ Walk Me Through Today</summary><div class="walkstep"><div class="num">1</div><div>Check todayâs schedule.</div></div><div class="walkstep"><div class="num">2</div><div>Complete AM skincare in order.</div></div><div class="walkstep"><div class="num">3</div><div>Do shower/body and hair/scalp only if scheduled.</div></div><div class="walkstep"><div class="num">4</div><div>Complete PM skincare.</div></div><div class="walkstep"><div class="num">5</div><div>Update low product status while using items.</div></div><div class="walkstep"><div class="num">6</div><div>Once weekly, send Running Low/Out items to Shopping.</div></div></details>
 </div></section>
-<section id="health" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>â¤ï¸ Health + Wellness</h2>
+<section id="health" class="page"><div class="topbar"><button class="back">â Home</button></div>
+<div class="card"><h2>â¤ï¸ Health + Wellness</h2>
+<div class="hint"><strong>Start with Who is this for?</strong> Then use dropdowns/multi-selects so you are not forced to type everything into notes.</div>
+
+<div class="quickgrid">
+<div class="card"><h3>â¡ Health Dashboard</h3><div id="healthDashboard"></div></div>
+<div class="card"><h3>ð Needs Attention</h3><div id="healthAttention"></div></div>
+</div>
+
 <details open><summary>ð§­ Health Walkthroughs</summary>
-<div class="walkstep"><div class="num">1</div><div><strong>Quick check-in:</strong> who â mood(s) â sleep/energy/stress â symptoms/pain â save.</div></div>
-<div class="walkstep"><div class="num">2</div><div><strong>Symptom:</strong> who â choose multiple symptoms â severity â location/side â onset â better/worse â what helped â follow-up.</div></div>
-<div class="walkstep"><div class="num">3</div><div><strong>Migraine:</strong> start â pain/location/aura â symptoms/triggers â treatment â updates â end.</div></div>
-<div class="walkstep"><div class="num">4</div><div><strong>Period:</strong> start â daily flow/pain/symptoms/mood â end â cycle summary.</div></div>
-<div class="walkstep"><div class="num">5</div><div><strong>Appointment:</strong> prepare â attend â record notes â follow-up.</div></div>
+<div class="walkstep"><div class="num">1</div><div><strong>Quick check-in:</strong> person â mood(s) â sleep â energy â stress â pain â symptoms â save.</div></div>
+<div class="walkstep"><div class="num">2</div><div><strong>Symptom:</strong> person â multiple symptoms â onset â severity â body area/side â pattern â better/same/worse â what helped â follow-up.</div></div>
+<div class="walkstep"><div class="num">3</div><div><strong>Migraine:</strong> warning signs â start â pain location/type â aura â associated symptoms â triggers â treatment â updates â end.</div></div>
+<div class="walkstep"><div class="num">4</div><div><strong>Period:</strong> start â cycle day â flow â pain â symptoms â mood/energy â care used â end â review.</div></div>
+<div class="walkstep"><div class="num">5</div><div><strong>Appointment:</strong> schedule â prep â questions â attend â notes â follow-up â next due.</div></div>
+<div class="walkstep"><div class="num">6</div><div><strong>Medication/Supplement:</strong> person â item â purpose â dose/form â schedule â stock/refill â notes.</div></div>
 </details>
-<details open><summary>ð Mood Tracker</summary><div id="moodTracker"></div><button class="smallbtn" data-add-record="mood">â New Mood Check-In</button></details>
-<details><summary>ð©º Symptoms</summary><div id="symptomList"></div><button class="smallbtn" data-add-record="symptom">â Add Symptom</button></details>
-<details><summary>ð§  Migraine Tracker</summary><div id="migraineList"></div><button class="smallbtn" data-add-record="migraine">â Start Migraine</button></details>
-<details><summary>ð©¸ Period Tracker</summary><div id="periodList"></div><button class="smallbtn" data-add-record="period">â¶ Period Started</button></details>
+
+<details open><summary>ð Daily Health Check-In / Mood</summary><div id="moodTracker"></div><button class="smallbtn" data-add-record="mood">â New Health Check-In</button></details>
+<details><summary>ð©º Symptoms â Multiple at Once</summary><div id="symptomList"></div><button class="smallbtn" data-add-record="symptom">â Add Symptom Entry</button></details>
+<details><summary>ð§  Migraine Tracker â Detailed</summary><div id="migraineList"></div><button class="smallbtn" data-add-record="migraine">â Start Migraine</button></details>
+<details><summary>ð©¸ Period Tracker â Detailed</summary><div id="periodList"></div><button class="smallbtn" data-add-record="period">â¶ Period Started / Daily Entry</button></details>
 <details><summary>ð Appointments â Everyone</summary><div id="appointmentList"></div><button class="smallbtn" data-add-record="appointment">â Add Appointment</button><button class="smallbtn" data-add-record="needsAppointment">â Need to Schedule</button></details>
 <details><summary>ð Medications + Supplements â Everyone</summary><div id="medList"></div><button class="smallbtn" data-add-record="med">â Add Medication / Supplement</button></details>
 <details><summary>ð¦· Dental + ð Vision â Everyone</summary><div id="dentalVision"></div><button class="smallbtn" data-add-record="dental">â Add Dental / Vision Record</button></details>
-<details><summary>ð Journal</summary><div id="journalList"></div><button class="smallbtn" data-add-record="journal">â New Journal Entry</button></details>
+<details><summary>ð Journal / Health Notes</summary><div id="journalList"></div><button class="smallbtn" data-add-record="journal">â New Journal Entry</button></details>
+
+<details><summary>ð Weekly Health Review</summary>
+<label class="task"><input type="checkbox" data-health-review="symptoms"> Review active/recent symptoms</label>
+<label class="task"><input type="checkbox" data-health-review="migraines"> Review migraines / patterns</label>
+<label class="task"><input type="checkbox" data-health-review="period"> Update period/cycle if active</label>
+<label class="task"><input type="checkbox" data-health-review="appointments"> Check appointments / prep</label>
+<label class="task"><input type="checkbox" data-health-review="meds"> Check meds/supplements / stock</label>
+<label class="task"><input type="checkbox" data-health-review="dental"> Check dental / vision due</label>
+<div class="formgrid">
+<div class="field"><label>What changed this week?</label><textarea data-key="health.week.changed"></textarea></div>
+<div class="field"><label>Anything to follow up?</label><textarea data-key="health.week.followup"></textarea></div>
+<div class="field full"><label>Questions / notes for next week</label><textarea data-key="health.week.notes"></textarea></div>
+</div>
+</details>
 </div></section>
 
 <section id="shopping" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð Master Shopping List</h2>
@@ -527,8 +731,26 @@ outing:r=>`<div class="formgrid">${field('Place / activity','name',r.name||'')}$
 trip:r=>`<div class="formgrid">${field('Trip name','name',r.name||'')}${field('Type','kind',r.kind||'Road Trip','select',false,selectOpts(['Road Trip','Vacation','Weekend Trip','Visiting Family','Camping','Other'],r.kind||'Road Trip'))}${field('Status','status',r.status||'Planning','select',false,selectOpts(['Idea','Planning','Booked','Ready','Traveling','Completed'],r.status||'Planning'))}${field('Destination','destination',r.destination||'')}${field('Departure','depart',r.depart||'','date')}${field('Return','returnDate',r.returnDate||'','date')}${field('Who is going','who',r.who||'','textarea',true)}${field('Estimated budget','budget',r.budget||'','number')}${field('Route / overnight stops','route',r.route||'','textarea',true)}${field('Lodging / reservations','lodging',r.lodging||'','textarea',true)}${field('Activities','activities',r.activities||'','textarea',true)}${field('Packing notes','packing',r.packing||'','textarea',true)}${field('Food / snacks','food',r.food||'','textarea',true)}${field('Kids / pet / vehicle prep','prep',r.prep||'','textarea',true)}${field('Shopping before leaving','shopping',r.shopping||'','textarea',true)}${field('Departure checklist / notes','notes',r.notes||'','textarea',true)}</div>`,
 contact:r=>`<div class="formgrid">${field('Name','name',r.name||'')}${field('Relationship / role','relation',r.relation||'')}${field('Phone','phone',r.phone||'')}${field('Email','email',r.email||'')}${field('Address','address',r.address||'','textarea',true)}${field('Connected to / can help with','connected',r.connected||'','textarea',true)}${field('Emergency / pickup notes','notes',r.notes||'','textarea',true)}</div>`,
 workTask:r=>`<div class="formgrid">${field('Task','title',r.title||'')}${field('Frequency','freq',r.freq||'','select',false,selectOpts(['Daily','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Weekly','Monthly','As Needed'],r.freq))}${field('Time / deadline','time',r.time||'')}${field('System / area','area',r.area||'')}${field('Walkthrough / notes','notes',r.notes||'','textarea',true)}</div>`,
-driver:r=>`<div class="formgrid">${field('Driver','name',r.name||'')}${field('Run / schedule','run',r.run||'')}${field('Start time','startTime',r.startTime||'','time')}${field('Tractor','tractor',r.tractor||'')}${field('Trailer','trailer',r.trailer||'')}${field('Coverage needed?','coverageNeeded',r.coverageNeeded||'No','select',false,selectOpts(['No','Yes','Covered'],r.coverageNeeded||'No'))}${field('Replacement / backup','backup',r.backup||'')}${field('Status','status',r.status||'','select',false,selectOpts(['Available','Running','Off','PTO','Call Off','Declined','On Call','Training','Other'],r.status))}${field('Date','date',r.date||'','date')}${field('Notes / follow-up','notes',r.notes||'','textarea',true)}</div>`,
-tractor:r=>`<div class="formgrid">${field('Tractor / unit','unit',r.unit||'')}${field('Status','status',r.status||'','select',false,selectOpts(['Available','Running','Maintenance Due','Repair Needed','Out of Service','Inspection Due','Waiting on Parts','Other'],r.status))}${field('Issue / maintenance','issue',r.issue||'','textarea',true)}${field('Due / scheduled date','due',r.due||'','date')}${field('MMR / IVMR / inspection / repair notes','notes',r.notes||'','textarea',true)}</div>`,
+driver:r=>`<div class="formgrid">${field('Driver','name',r.name||'')}${field('Primary shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Flexible / Coverage'],r.shift||'AM'))}${field('Normal run / route','run',r.run||'')}
+${field('Status','status',r.status||'Available','select',false,selectOpts(['Available','Running','Off','PTO','Call Off','Declined','On Call','Training','Unavailable','Other'],r.status||'Available'))}
+${field('Date','date',r.date||'','date')}${field('Start time','startTime',r.startTime||'','time')}${field('Assigned tractor','tractor',r.tractor||'')}${field('Assigned trailer','trailer',r.trailer||'')}
+${field('Coverage needed?','coverageNeeded',r.coverageNeeded||'No','select',false,selectOpts(['No','Yes','Covered'],r.coverageNeeded||'No'))}${field('Replacement / backup','backup',r.backup||'')}
+${field('Reason / detail','reason',r.reason||'','select',false,selectOpts(['','PTO','Call Off','Decline','Schedule Change','Training','Personal','Other'],r.reason))}${field('Decline / call-off time','eventTime',r.eventTime||'','time')}
+${field('Confirmed?','confirmed',r.confirmed||'','select',false,selectOpts(['','Yes','No','Waiting'],r.confirmed))}${field('Follow-up needed','followup',r.followup||'No','select',false,selectOpts(['No','Yes'],r.followup||'No'))}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
+tractor:r=>`<div class="formgrid">
+${field('Tractor / unit number','unit',r.unit||'')}${field('Primary shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Spare / Float'],r.shift||'AM'))}${field('Primary run / route','run',r.run||'')}${field('Assigned driver','driver',r.driver||'')}
+${field('Status','status',r.status||'Available','select',false,selectOpts(['Available','Running','Maintenance Due','Repair Needed','Out of Service','Inspection Due','Waiting on Parts','At Vendor','Spare','Other'],r.status||'Available'))}
+${field('Current mileage / odometer','mileage',r.mileage||'','number')}${field('Last service mileage','lastServiceMileage',r.lastServiceMileage||'','number')}${field('Next service mileage','nextServiceMileage',r.nextServiceMileage||'','number')}
+${field('Last service date','lastServiceDate',r.lastServiceDate||'','date')}${field('Next service date','nextServiceDate',r.nextServiceDate||'','date')}${field('Fuel status / fuel-card notes','fuel',r.fuel||'')}
+${field('Issue category','issueCategory',r.issueCategory||'','select',false,selectOpts(['','Engine','Electrical','Brakes','Tires','Lights','Body / Door','HVAC','Fluids','Warning Light','Inspection Finding','Other'],r.issueCategory))}
+${field('Current issue / symptoms','issue',r.issue||'','textarea',true)}${field('Safe to run?','safeToRun',r.safeToRun||'Yes','select',false,selectOpts(['Yes','No','Needs Review'],r.safeToRun||'Yes'))}
+${field('Out-of-service date','oosDate',r.oosDate||'','date')}${field('Vendor / shop','vendor',r.vendor||'')}${field('Appointment date','appointment',r.appointment||'','date')}${field('Parts needed','parts',r.parts||'','textarea',true)}
+${field('Estimate','estimate',r.estimate||'','number')}${field('Actual cost','actualCost',r.actualCost||'','number')}
+${field('IVMR status','ivmr',r.ivmr||'','select',false,selectOpts(['Current','Due Soon','Due','Missing / Follow-Up'],r.ivmr))}${field('MMR status','mmr',r.mmr||'','select',false,selectOpts(['Current','Due Soon','Due','Missing / Follow-Up'],r.mmr))}
+${field('QVI status','qvi',r.qvi||'','select',false,selectOpts(['Pass / Current','Needs Follow-Up','Failed','Due','Missing'],r.qvi))}${field('BCSA status','bcsa',r.bcsa||'','select',false,selectOpts(['Current','Due Soon','Due','Needs Follow-Up'],r.bcsa))}
+${field('Last inspection','lastInspection',r.lastInspection||'','date')}${field('Next inspection / due','due',r.due||'','date')}${field('Return-to-service date','returnDate',r.returnDate||'','date')}
+${field('Follow-up status','followup',r.followup||'None','select',false,selectOpts(['None','Today','Tomorrow','Waiting on Vendor','Waiting on Parts','Needs Documentation'],r.followup||'None'))}${field('Notes / repair history','notes',r.notes||'','textarea',true)}
+</div>`,
 workPay:r=>`<div class="formgrid">${field('Date','date',r.date||'','date')}${field('Type','kind',r.kind||'After-Hours','select',false,selectOpts(['Regular Hours','After-Hours','Overtime','Payroll','Settlement','Other'],r.kind||'After-Hours'))}${field('Hours','hours',r.hours||'','number')}${field('Rate','rate',r.rate||'','number')}${field('Expected amount','expected',r.expected||'','number')}${field('Actual amount','actual',r.actual||'','number')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
 recipe:r=>`<div class="formgrid">${field('Meal / recipe name','name',r.name||'')}${field('Category','category',r.category||'Dinner','select',false,selectOpts(['Breakfast','Lunch','Dinner','Snack'],r.category||'Dinner'))}${field('Favorite / Most Used','favorite',r.favorite||'No','select',false,selectOpts(['No','â­ Favorite'],r.favorite||'No'))}${field('Cooking method','method',r.method||'','select',false,selectOpts(['Stovetop','Oven','Crockpot','Air Fryer','Grill','No-Cook','Other'],r.method))}${field('Prep time','prep',r.prep||'')}${field('Cook time','cook',r.cook||'')}${field('Servings','servings',r.servings||'')}${field('Who likes it','likes',r.likes||'','textarea',true)}${field('Ingredients','ingredients',r.ingredients||'','textarea',true)}${field('Sides / kid alternative','sides',r.sides||'','textarea',true)}${field('Instructions','instructions',r.instructions||'','textarea',true)}${field('Prep ahead / freezer / leftovers','storage',r.storage||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
 breakfast:r=>foodLibraryForm(r,'Breakfast',['Quick','Hot','Cold','Grab & Go','Make Ahead','Weekend','High Protein','School Morning','Toddler Friendly']),
@@ -553,18 +775,159 @@ body:r=>productForm(r,'Shower / Body',['Body Wash','Bar Soap','Exfoliant','Shave
 hair:r=>productForm(r,'Hair / Scalp',['Shampoo','Conditioner','Scalp Treatment','Leave-In','Styling Product','Heat Protectant','Mask / Repair','Clarifying','Tool / Accessory','Other']),
 periodSupply:r=>`<div class="formgrid">${field('Product','name',r.name||'')}${field('Type / absorbency','type',r.type||'','select',false,selectOpts(['Tampax Light','Tampax Regular','Tampax Super','Wipes','Spare Underwear','Washable Pouch','Other'],r.type))}${field('Home target quantity','homeTarget',r.homeTarget||'')}${field('Home on hand','homeOnhand',r.homeOnhand||'')}${field('Purse / car target','carryTarget',r.carryTarget||'')}${field('Travel target','travelTarget',r.travelTarget||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}${field('Preferred store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
 travelCare:r=>`<div class="formgrid">${field('Trip','name',r.name||'')}${field('Departure','depart',r.depart||'','date')}${field('Return','returnDate',r.returnDate||'','date')}${field('Travel type','kind',r.kind||'Road Trip','select',false,selectOpts(['Road Trip','Flying','Hotel','Visiting Family','Camping','Other'],r.kind||'Road Trip'))}${field('Routine level','routine',r.routine||'Normal','select',false,selectOpts(['Normal','Simplified','Bare Minimum'],r.routine||'Normal'))}${field('Period expected?','period',r.period||'Unknown','select',false,selectOpts(['Yes','No','Unknown'],r.period||'Unknown'))}${field('Skincare packing','skin',r.skin||'','textarea',true)}${field('Shower / body packing','body',r.body||'','textarea',true)}${field('Hair / scalp packing','hair',r.hair||'','textarea',true)}${field('Oral / other personal care','oral',r.oral||'','textarea',true)}${field('Period care','periodItems',r.periodItems||'','textarea',true)}${field('Keep accessible in car / overnight','accessible',r.accessible||'','textarea',true)}${field('Need to buy','buy',r.buy||'','textarea',true)}${field('Need to refill / decant','decant',r.decant||'','textarea',true)}${field('Home-from-trip reset','reset',r.reset||'','textarea',true)}</div>`,
-mood:r=>`<div class="formgrid">${field('Date','date',r.date||todayKey(),'date')}${field('Time','time',r.time||'','time')}${field('Intensity 1â10','intensity',r.intensity||'','number')}${field('Energy 1â5','energy',r.energy||'','number')}${field('Stress 1â5','stress',r.stress||'','number')}${field('Sleep quality','sleep',r.sleep||'','select',false,selectOpts(['Great','Good','Fair','Poor'],r.sleep))}<div class="field full"><label>Moods â choose more than one</label><div style="max-height:240px;overflow:auto">${checks('moods',moodOptions,r.moods||[])}</div></div>${field('What may have affected my mood?','trigger',r.trigger||'','textarea',true)}${field('What happened / what helped / what do I need?','notes',r.notes||'','textarea',true)}</div>`,
-symptom:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Date','date',r.date||todayKey(),'date')}${field('Start time','time',r.time||'','time')}${field('Severity 1â10','severity',r.severity||'','number')}${field('Onset','onset',r.onset||'Gradual','select',false,selectOpts(['Sudden','Gradual','Unknown'],r.onset||'Gradual'))}${field('Frequency','frequency',r.frequency||'','select',false,selectOpts(['Constant','Comes & Goes','Only with movement','Only at certain times','One-time','Other'],r.frequency))}${field('Change','change',r.change||'','select',false,selectOpts(['Improving','Same','Worsening','Gone','Came back'],r.change))}${field('Still happening?','active',r.active||'Yes','select',false,selectOpts(['Yes','No'],r.active||'Yes'))}<div class="field full"><label>Symptoms â choose more than one</label><div style="max-height:220px;overflow:auto">${checks('symptoms',symptomOptions,r.symptoms||[])}</div></div>${field('Body location','location',r.location||'','select',false,selectOpts(['Head','Face','Neck','Chest','Upper Back','Lower Back','Abdomen','Side / Flank','Arm','Hand','Hip','Leg','Foot','Other'],r.location))}${field('Side','side',r.side||'','select',false,selectOpts(['Left','Right','Both','Center','N/A'],r.side))}${field('What it feels like','feel',r.feel||'','textarea',true)}${field('Possible trigger','trigger',r.trigger||'','textarea',true)}${field('What made it worse / helped','help',r.help||'','textarea',true)}${field('What I tried','tried',r.tried||'','textarea',true)}${field('Follow-up needed?','followupNeeded',r.followupNeeded||'No','select',false,selectOpts(['No','Watch','Call / message provider','Appointment','Urgent evaluation'],r.followupNeeded||'No'))}${field('Follow-up / duration / notes','notes',r.notes||'','textarea',true)}</div>`,
-migraine:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Date','date',r.date||todayKey(),'date')}${field('Start time','start',r.start||'','time')}${field('End time','end',r.end||'','time')}${field('Onset','onset',r.onset||'Gradual','select',false,selectOpts(['Sudden','Gradual','Woke up with it'],r.onset||'Gradual'))}${field('Current severity','severity',r.severity||'','number')}${field('Worst severity','worst',r.worst||'','number')}${field('Pain pattern','pattern',r.pattern||'','select',false,selectOpts(['Constant','Comes & Goes','Increasing','Decreasing'],r.pattern))}${field('Side','side',r.side||'','select',false,selectOpts(['Left','Right','Both','Center'],r.side))}${field('Pain locations','locations',r.locations||'','textarea',true)}${field('Pain type','painType',r.painType||'','textarea',true)}${field('Symptoms','symptoms',r.symptoms||'','textarea',true)}${field('Aura','aura',r.aura||'None','select',false,selectOpts(['None','Visual','Sensory','Speech / Language','Other'],r.aura||'None'))}${field('Aura details / duration','auraDetails',r.auraDetails||'','textarea',true)}${field('Possible triggers','triggers',r.triggers||'','textarea',true)}${field('Sleep last night','sleep',r.sleep||'','select',false,selectOpts(['Great','Good','Fair','Poor','Very Poor'],r.sleep))}${field('Hydration','hydration',r.hydration||'','select',false,selectOpts(['Good','Probably low','Very low','Unknown'],r.hydration))}${field('Impact on day','impact',r.impact||'','select',false,selectOpts(['Minimal','Slowed me down','Had to rest','Could not do normal tasks','Other'],r.impact))}${field('What I tried / time / result','treatments',r.treatments||'','textarea',true)}${field('Progress updates / notes','updates',r.updates||'','textarea',true)}</div>`,
-period:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Start date','start',r.start||todayKey(),'date')}${field('End date','end',r.end||'','date')}${field('Cycle day','cycleDay',r.cycleDay||'')}${field('Flow','flow',r.flow||'Medium','select',false,selectOpts(['Spotting','Very Light','Light','Medium','Heavy','Very Heavy'],r.flow||'Medium'))}${field('Day status','dayStatus',r.dayStatus||'','select',false,selectOpts(['Starting','Ongoing','Ending','Ended'],r.dayStatus))}${field('Pain / cramps 0â10','pain',r.pain||'','number')}${field('Symptoms','symptoms',r.symptoms||'','textarea',true)}${field('Mood / energy','mood',r.mood||'','textarea',true)}${field('Pain location/type','painDetails',r.painDetails||'','textarea',true)}${field('What helped','help',r.help||'','textarea',true)}${field('Daily notes','notes',r.notes||'','textarea',true)}</div>`,
-appointment:r=>`<div class="formgrid">${field('Person(s)','person',r.person||'Me','select',false,selectOpts([...people,'Family / Multiple People'],r.person||'Me'))}${field('Appointment type','kind',r.kind||'','select',false,selectOpts(['Primary Care','Dental','Vision','Specialist','Therapy / Counseling','School','Activity / Sports','Hair / Beauty','Veterinary','Vehicle / Home Service','Other'],r.kind))}${field('Provider / place','provider',r.provider||'')}${field('Date','date',r.date||'','date')}${field('Start time','time',r.time||'','time')}${field('Expected duration','duration',r.duration||'')}${field('Address','address',r.address||'','textarea',true)}${field('Phone','phone',r.phone||'')}${field('Reason','reason',r.reason||'','textarea',true)}${field('Visit type','visitType',r.visitType||'','select',false,selectOpts(['New','Follow-Up','Annual / Routine','Other'],r.visitType))}${field('Confirmation / referral / forms','prep',r.prep||'','textarea',true)}${field('Questions / symptoms to discuss','questions',r.questions||'','textarea',true)}${field('What to bring / prep','bring',r.bring||'','textarea',true)}${field('Transportation / driver / leave time','transport',r.transport||'','textarea',true)}${field('Estimated cost / copay','cost',r.cost||'','number')}${field('Follow-up / instructions / next appointment','followup',r.followup||'','textarea',true)}</div>`,
-needsAppointment:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Appointment needed','kind',r.kind||'')}${field('Provider / type','provider',r.provider||'')}${field('Due by','due',r.due||'','date')}${field('Priority','priority',r.priority||'Normal','select',false,selectOpts(['Urgent','High','Normal','Low'],r.priority||'Normal'))}${field('Phone / contact','phone',r.phone||'')}${field('Reason / notes','notes',r.notes||'','textarea',true)}</div>`,
-med:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Type','kind',r.kind||'Medication','select',false,selectOpts(['Medication','Vitamin','Supplement','As-needed item','Other'],r.kind||'Medication'))}${field('Name','name',r.name||'')}${field('Brand / generic','brand',r.brand||'')}${field('Strength / concentration','strength',r.strength||'')}${field('Form','form',r.form||'','select',false,selectOpts(['Tablet','Capsule','Gummy','Liquid','Powder','Cream','Spray','Other'],r.form))}${field('Status','status',r.status||'Active','select',false,selectOpts(['Active','As Needed','Temporarily Taking','Paused','Stopped'],r.status||'Active'))}${field('Instructions from label / provider','instructions',r.instructions||'','textarea',true)}${field('Frequency','freq',r.freq||'Daily','select',false,selectOpts(['Daily','Twice Daily','Three Times Daily','Weekly','Certain Days','As Needed','Temporary Course','Custom'],r.freq||'Daily'))}${field('Days / times','schedule',r.schedule||'','textarea',true)}${field('Start date','start',r.start||'','date')}${field('End date','end',r.end||'','date')}${field('Purpose','purpose',r.purpose||'','textarea',true)}${field('Prescriber / pharmacy','provider',r.provider||'')}${field('Quantity / refills / next refill','refill',r.refill||'','textarea',true)}${field('Status on hand','stock',r.stock||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.stock||'Good'))}${field('Travel / emergency notes','travel',r.travel||'','textarea',true)}${field('Important warnings / storage / notes','notes',r.notes||'','textarea',true)}</div>`,
-dental:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Type','kind',r.kind||'Dental','select',false,selectOpts(['Dental','Vision'],r.kind||'Dental'))}${field('Provider / office','provider',r.provider||'')}${field('Phone / location','contact',r.contact||'')}${field('Last exam / cleaning','last',r.last||'','date')}${field('Next due','next',r.next||'','date')}${field('Normal frequency','freq',r.freq||'')}${field('Current concerns','concerns',r.concerns||'','textarea',true)}${field('Treatment / glasses / contacts / orthodontics','treatment',r.treatment||'','textarea',true)}${field('Estimated cost / follow-up','cost',r.cost||'','textarea',true)}${field('Home care / supplies reference','homecare',r.homecare||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
-journal:r=>`<div class="formgrid">${field('Date','date',r.date||todayKey(),'date')}${field('Time','time',r.time||'','time')}${field('Title','title',r.title||'')}${field('Entry type','kind',r.kind||'Daily Journal','select',false,selectOpts(['Daily Journal','Check-In','Brain Dump','Gratitude','Vent','Memory','Health','Family','Work','Personal','Other'],r.kind||'Daily Journal'))}${field('Who / what this is about','about',r.about||'')}${field('Overall day 1â5','dayRating',r.dayRating||'','number')}${field('Energy 1â5','energy',r.energy||'','number')}${field('Stress 1â5','stress',r.stress||'','number')}${field('Moods','moods',r.moods||'','textarea',true)}${field('What happened?','happened',r.happened||'','textarea',true)}${field('What went well?','well',r.well||'','textarea',true)}${field('What was difficult?','hard',r.hard||'','textarea',true)}${field('What am I grateful for?','grateful',r.grateful||'','textarea',true)}${field('What do I need right now?','need',r.need||'','textarea',true)}${field('Tomorrow / follow-up','tomorrow',r.tomorrow||'','textarea',true)}${field('Free write','free',r.free||'','textarea',true)}</div>`
+mood:r=>`<div class="formgrid">
+${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}
+${field('Date','date',r.date||todayKey(),'date')}${field('Time','time',r.time||'','time')}
+${field('Overall day','overall',r.overall||'Okay','select',false,selectOpts(['Great','Good','Okay','Hard','Very Hard'],r.overall||'Okay'))}
+${field('Mood intensity 1â10','intensity',r.intensity||'','number')}
+${field('Energy','energy',r.energy||'3','select',false,selectOpts(['1 - Very Low','2 - Low','3 - Okay','4 - Good','5 - High'],r.energy||'3'))}
+${field('Stress','stress',r.stress||'3','select',false,selectOpts(['1 - Very Low','2 - Low','3 - Moderate','4 - High','5 - Very High'],r.stress||'3'))}
+${field('Sleep quality','sleep',r.sleep||'Fair','select',false,selectOpts(['Great','Good','Fair','Poor','Very Poor'],r.sleep||'Fair'))}
+${field('Sleep hours','sleepHours',r.sleepHours||'','number')}
+${field('Appetite','appetite',r.appetite||'Normal','select',false,selectOpts(['Low','Normal','High','Varied'],r.appetite||'Normal'))}
+${field('Hydration','hydration',r.hydration||'Okay','select',false,selectOpts(['Good','Okay','Probably Low','Very Low','Unknown'],r.hydration||'Okay'))}
+${field('Pain level 0â10','pain',r.pain||'','number')}
+<div class="field full"><label>Moods â select more than one</label><div style="max-height:250px;overflow:auto">${checks('moods',moodOptions,r.moods||[])}</div></div>
+${field('Possible reasons / triggers','trigger',r.trigger||'','textarea',true)}
+${field('What helped / what do I need?','notes',r.notes||'','textarea',true)}
+</div>`,symptom:r=>`<div class="formgrid">
+${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}
+${field('Date','date',r.date||todayKey(),'date')}${field('Start time','time',r.time||'','time')}
+${field('Severity','severity',r.severity||'Moderate','select',false,selectOpts(['Mild','Moderate','Severe','Very Severe'],r.severity||'Moderate'))}
+${field('Pain / discomfort 0â10','painScore',r.painScore||'','number')}
+${field('Onset','onset',r.onset||'Gradual','select',false,selectOpts(['Sudden','Gradual','Woke Up With It','Unknown'],r.onset||'Gradual'))}
+${field('Pattern','frequency',r.frequency||'Constant','select',false,selectOpts(['Constant','Comes & Goes','Only with Movement','Only at Certain Times','One-time','Other'],r.frequency||'Constant'))}
+${field('Change','change',r.change||'Same','select',false,selectOpts(['Improving','Same','Worsening','Gone','Returned'],r.change||'Same'))}
+${field('Still happening?','active',r.active||'Yes','select',false,selectOpts(['Yes','No'],r.active||'Yes'))}
+<div class="field full"><label>Symptoms â choose more than one</label><div style="max-height:250px;overflow:auto">${checks('symptoms',symptomOptions,r.symptoms||[])}</div></div>
+${field('Body location','location',r.location||'Other','select',false,selectOpts(['Head','Face','Neck','Chest','Upper Back','Lower Back','Abdomen','Side / Flank','Pelvis','Arm','Hand','Hip','Leg','Foot','Whole Body','Other'],r.location||'Other'))}
+${field('Side','side',r.side||'N/A','select',false,selectOpts(['Left','Right','Both','Center','N/A'],r.side||'N/A'))}
+${field('What it feels like','feel',r.feel||'','select',false,selectOpts(['Sharp','Dull','Aching','Burning','Pressure','Throbbing','Cramping','Tingling','Numb','Tight','Other'],r.feel))}
+${field('Possible trigger','triggerType',r.triggerType||'Unknown','select',false,selectOpts(['Unknown','Movement','Food','Stress','Sleep','Period','Illness','Weather','Exercise','Medication / Supplement','Injury','Other'],r.triggerType||'Unknown'))}
+${field('What makes it worse?','worse',r.worse||'','textarea',true)}
+${field('What helps?','help',r.help||'','textarea',true)}
+${field('What I tried','tried',r.tried||'','textarea',true)}
+${field('Follow-up needed?','followupNeeded',r.followupNeeded||'Watch','select',false,selectOpts(['No','Watch','Call / Message Provider','Appointment','Urgent Evaluation'],r.followupNeeded||'Watch'))}
+${field('Duration / follow-up / notes','notes',r.notes||'','textarea',true)}
+</div>`,migraine:r=>`<div class="formgrid">
+${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}
+${field('Date','date',r.date||todayKey(),'date')}${field('Start time','start',r.start||'','time')}${field('End time','end',r.end||'','time')}
+${field('Onset','onset',r.onset||'Gradual','select',false,selectOpts(['Sudden','Gradual','Woke Up With It','Started as Headache'],r.onset||'Gradual'))}
+${field('Current severity 0â10','severity',r.severity||'','number')}${field('Worst severity 0â10','worst',r.worst||'','number')}
+${field('Pain side','side',r.side||'Both','select',false,selectOpts(['Left','Right','Both','Center / Whole Head'],r.side||'Both'))}
+${field('Pain type','painType',r.painType||'Throbbing','select',false,selectOpts(['Throbbing','Pressure','Sharp','Aching','Pulsing','Burning','Other'],r.painType||'Throbbing'))}
+${field('Pain pattern','pattern',r.pattern||'Constant','select',false,selectOpts(['Constant','Comes & Goes','Increasing','Decreasing','Waves'],r.pattern||'Constant'))}
+${field('Aura','aura',r.aura||'None','select',false,selectOpts(['None','Visual','Sensory','Speech / Language','Other'],r.aura||'None'))}
+${field('Light sensitivity','light',r.light||'No','select',false,selectOpts(['No','Mild','Moderate','Severe'],r.light||'No'))}
+${field('Sound sensitivity','sound',r.sound||'No','select',false,selectOpts(['No','Mild','Moderate','Severe'],r.sound||'No'))}
+${field('Smell sensitivity','smell',r.smell||'No','select',false,selectOpts(['No','Mild','Moderate','Severe'],r.smell||'No'))}
+${field('Nausea','nausea',r.nausea||'No','select',false,selectOpts(['No','Mild','Moderate','Severe'],r.nausea||'No'))}
+${field('Sleep last night','sleep',r.sleep||'Fair','select',false,selectOpts(['Great','Good','Fair','Poor','Very Poor'],r.sleep||'Fair'))}
+${field('Hydration','hydration',r.hydration||'Unknown','select',false,selectOpts(['Good','Okay','Probably Low','Very Low','Unknown'],r.hydration||'Unknown'))}
+${field('Period connection','periodLink',r.periodLink||'Unknown','select',false,selectOpts(['No','Possible','Yes','Unknown'],r.periodLink||'Unknown'))}
+${field('Impact on day','impact',r.impact||'Slowed Me Down','select',false,selectOpts(['Minimal','Slowed Me Down','Had to Rest','Could Not Do Normal Tasks','Other'],r.impact||'Slowed Me Down'))}
+${field('Possible triggers','triggers',r.triggers||'','textarea',true)}
+${field('Other symptoms','symptoms',r.symptoms||'','textarea',true)}
+${field('What I tried / time / result','treatments',r.treatments||'','textarea',true)}
+${field('Progress updates','updates',r.updates||'','textarea',true)}
+</div>`,period:r=>`<div class="formgrid">
+${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}
+${field('Entry type','entryType',r.entryType||'Daily Entry','select',false,selectOpts(['Period Started','Daily Entry','Period Ended','Cycle Review'],r.entryType||'Daily Entry'))}
+${field('Start date','start',r.start||todayKey(),'date')}${field('End date','end',r.end||'','date')}
+${field('Cycle day','cycleDay',r.cycleDay||'')}${field('Flow','flow',r.flow||'Medium','select',false,selectOpts(['Spotting','Very Light','Light','Medium','Heavy','Very Heavy'],r.flow||'Medium'))}
+${field('Tampon absorbency used','tampon',r.tampon||'Regular','select',false,selectOpts(['None','Light','Regular','Super','Mixed / Changed During Day'],r.tampon||'Regular'))}
+${field('Cramps / pain 0â10','pain',r.pain||'','number')}
+${field('Energy','energy',r.energy||'Okay','select',false,selectOpts(['High','Good','Okay','Low','Very Low'],r.energy||'Okay'))}
+${field('Mood','mood',r.mood||'Okay','select',false,selectOpts(['Good','Okay','Emotional','Irritable','Anxious','Sad','Other'],r.mood||'Okay'))}
+${field('Bloating','bloating',r.bloating||'No','select',false,selectOpts(['No','Mild','Moderate','Severe'],r.bloating||'No'))}
+${field('Headache / migraine','headache',r.headache||'No','select',false,selectOpts(['No','Headache','Migraine','Both / Changed'],r.headache||'No'))}
+${field('Digestive symptoms','digestive',r.digestive||'None','select',false,selectOpts(['None','Diarrhea','Constipation','Nausea','Bloating','Multiple'],r.digestive||'None'))}
+${field('Appetite / cravings','appetite',r.appetite||'Normal','select',false,selectOpts(['Low','Normal','High','Cravings','Varied'],r.appetite||'Normal'))}
+${field('Sleep','sleep',r.sleep||'Fair','select',false,selectOpts(['Great','Good','Fair','Poor','Very Poor'],r.sleep||'Fair'))}
+${field('Comfort measures / what helped','help',r.help||'','textarea',true)}
+${field('Unusual symptoms / notes','notes',r.notes||'','textarea',true)}
+</div>`,appointment:r=>`<div class="formgrid">
+${field('Person(s)','person',r.person||'Me','select',false,selectOpts([...people,'Family / Multiple People'],r.person||'Me'))}
+${field('Appointment type','kind',r.kind||'Primary Care','select',false,selectOpts(['Primary Care','Dental','Vision','Specialist','Therapy / Counseling','Urgent Care','Lab / Imaging','School','Activity / Sports','Hair / Beauty','Veterinary','Vehicle / Home Service','Other'],r.kind||'Primary Care'))}
+${field('Status','status',r.status||'Scheduled','select',false,selectOpts(['Need to Schedule','Scheduled','Confirmed','Completed','Cancelled','Reschedule','Follow-Up Needed'],r.status||'Scheduled'))}
+${field('Provider / place','provider',r.provider||'')}${field('Date','date',r.date||'','date')}${field('Start time','time',r.time||'','time')}
+${field('Expected duration','duration',r.duration||'')}${field('Location type','locationType',r.locationType||'In Person','select',false,selectOpts(['In Person','Telehealth','School / Facility','Other'],r.locationType||'In Person'))}
+${field('Address / link','address',r.address||'','textarea',true)}${field('Phone','phone',r.phone||'')}
+${field('Reason','reason',r.reason||'','textarea',true)}${field('Visit type','visitType',r.visitType||'Follow-Up','select',false,selectOpts(['New','Follow-Up','Annual / Routine','Procedure','Test / Imaging','Other'],r.visitType||'Follow-Up'))}
+${field('Prep needed','prepNeeded',r.prepNeeded||'No','select',false,selectOpts(['No','Yes','Unsure'],r.prepNeeded||'No'))}
+${field('Prep / fasting / forms','prep',r.prep||'','textarea',true)}${field('Questions / symptoms to discuss','questions',r.questions||'','textarea',true)}
+${field('What to bring','bring',r.bring||'','textarea',true)}${field('Transportation / driver / leave time','transport',r.transport||'','textarea',true)}
+${field('Estimated cost / copay','cost',r.cost||'','number')}${field('Follow-up needed?','followupNeeded',r.followupNeeded||'Unknown','select',false,selectOpts(['No','Yes','Unknown'],r.followupNeeded||'Unknown'))}
+${field('Follow-up / next appointment','followup',r.followup||'','textarea',true)}
+</div>`,needsAppointment:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Appointment needed','kind',r.kind||'')}${field('Provider / type','provider',r.provider||'')}${field('Due by','due',r.due||'','date')}${field('Priority','priority',r.priority||'Normal','select',false,selectOpts(['Urgent','High','Normal','Low'],r.priority||'Normal'))}${field('Phone / contact','phone',r.phone||'')}${field('Reason / notes','notes',r.notes||'','textarea',true)}</div>`,
+med:r=>`<div class="formgrid">
+${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}
+${field('Type','kind',r.kind||'Medication','select',false,selectOpts(['Medication','Vitamin','Supplement','As-Needed Item','Temporary Course','Other'],r.kind||'Medication'))}
+${field('Name','name',r.name||'')}${field('Brand / generic','brand',r.brand||'')}
+${field('Strength / concentration','strength',r.strength||'')}${field('Form','form',r.form||'Tablet','select',false,selectOpts(['Tablet','Capsule','Gummy','Liquid','Powder','Cream','Spray','Patch','Other'],r.form||'Tablet'))}
+${field('Status','status',r.status||'Active','select',false,selectOpts(['Active','As Needed','Temporary','Paused','Stopped'],r.status||'Active'))}
+${field('Frequency','freq',r.freq||'Daily','select',false,selectOpts(['Daily','Twice Daily','Three Times Daily','Weekly','Specific Days','As Needed','Temporary Course','Custom'],r.freq||'Daily'))}
+${field('Time(s)','schedule',r.schedule||'')}${field('With food?','food',r.food||'Does Not Matter','select',false,selectOpts(['With Food','Without Food','Does Not Matter','Follow Label / Provider'],r.food||'Does Not Matter'))}
+${field('Purpose','purpose',r.purpose||'','textarea',true)}${field('Start date','start',r.start||'','date')}${field('End date','end',r.end||'','date')}
+${field('Prescriber / provider','provider',r.provider||'')}${field('Pharmacy / store','pharmacy',r.pharmacy||'')}
+${field('Quantity on hand','qty',r.qty||'')}${field('Refill status','refillStatus',r.refillStatus||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Refill Requested','Ready for Pickup'],r.refillStatus||'Good'))}
+${field('Next refill / purchase date','refillDate',r.refillDate||'','date')}
+${field('Side effects / reactions','sideEffects',r.sideEffects||'','textarea',true)}
+${field('Storage / travel / important notes','notes',r.notes||'','textarea',true)}
+</div>`,dental:r=>`<div class="formgrid">
+${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}
+${field('Type','kind',r.kind||'Dental','select',false,selectOpts(['Dental','Vision'],r.kind||'Dental'))}
+${field('Record type','recordType',r.recordType||'Routine','select',false,selectOpts(['Routine','Problem / Concern','Treatment','Prescription / Glasses / Contacts','Follow-Up','Other'],r.recordType||'Routine'))}
+${field('Provider / office','provider',r.provider||'')}${field('Phone / location','contact',r.contact||'')}
+${field('Last visit','last',r.last||'','date')}${field('Next due','next',r.next||'','date')}
+${field('Normal frequency','freq',r.freq||'','select',false,selectOpts(['6 Months','12 Months','Every 1â2 Years','As Directed','Other'],r.freq))}
+${field('Status','status',r.status||'Current','select',false,selectOpts(['Current','Due Soon','Due','Scheduled','Follow-Up Needed'],r.status||'Current'))}
+${field('Current concerns','concerns',r.concerns||'','textarea',true)}
+${field('Treatment / glasses / contacts / orthodontics','treatment',r.treatment||'','textarea',true)}
+${field('Prescription / measurements','prescription',r.prescription||'','textarea',true)}
+${field('Home care / supplies','homecare',r.homecare||'','textarea',true)}
+${field('Cost / insurance / follow-up','cost',r.cost||'','textarea',true)}
+${field('Notes','notes',r.notes||'','textarea',true)}
+</div>`,journal:r=>`<div class="formgrid">
+${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}
+${field('Date','date',r.date||todayKey(),'date')}${field('Time','time',r.time||'','time')}
+${field('Entry type','kind',r.kind||'Daily Journal','select',false,selectOpts(['Daily Journal','Health Check-In','Brain Dump','Gratitude','Vent','Memory','Symptom / Migraine','Period','Appointment Notes','Family','Work','Personal','Other'],r.kind||'Daily Journal'))}
+${field('Title','title',r.title||'')}${field('Overall day','dayRating',r.dayRating||'Okay','select',false,selectOpts(['Great','Good','Okay','Hard','Very Hard'],r.dayRating||'Okay'))}
+${field('Energy','energy',r.energy||'Okay','select',false,selectOpts(['High','Good','Okay','Low','Very Low'],r.energy||'Okay'))}
+${field('Stress','stress',r.stress||'Moderate','select',false,selectOpts(['Very Low','Low','Moderate','High','Very High'],r.stress||'Moderate'))}
+${field('Moods','moods',r.moods||'','textarea',true)}
+${field('What happened?','happened',r.happened||'','textarea',true)}${field('What went well?','well',r.well||'','textarea',true)}
+${field('What was difficult?','hard',r.hard||'','textarea',true)}${field('What am I grateful for?','grateful',r.grateful||'','textarea',true)}
+${field('What do I need right now?','need',r.need||'','textarea',true)}${field('Tomorrow / follow-up','tomorrow',r.tomorrow||'','textarea',true)}
+${field('Free write','free',r.free||'','textarea',true)}
+</div>`
 };
 function foodLibraryForm(r,label,tags){return `<div class="formgrid">${field(label+' name','name',r.name||'')}${field('Tag / type','tag',r.tag||'','select',false,selectOpts(tags,r.tag))}${field('Who likes it','likes',r.likes||'','textarea',true)}${field('Prep time','prep',r.prep||'')}${field('Ingredients / items','ingredients',r.ingredients||'','textarea',true)}${field('Serving / portion notes','portion',r.portion||'','textarea',true)}${field('Prep ahead / storage','storage',r.storage||'','textarea',true)}${field('School / travel friendly?','travel',r.travel||'')}${field('Estimated cost','cost',r.cost||'','number')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`}
-function productForm(r,label,types){return `<div class="formgrid">${field('Product','name',r.name||'')}${field('Product type','type',r.type||'','select',false,selectOpts(types,r.type))}${field('Purpose','purpose',r.purpose||'')}${field('AM / PM / Shower','when',r.when||'')}${field('Days used','days',r.days||'')}${field('Frequency','freq',r.freq||'')}${field('Order / step','order',r.order||'')}${field('Amount','amount',r.amount||'')}${field('Where to apply','area',r.area||'')}${field('Wet / damp / dry','condition',r.condition||'')}${field('Rinse / leave-on / wait time','directions',r.directions||'','textarea',true)}${field('How to use / caution / do not combine','how',r.how||'','textarea',true)}${field('Opened date','opened',r.opened||'','date')}${field('Backups on hand','backup',r.backup||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}${field('Usual store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Budget alternative','budgetAlt',r.budgetAlt||'')}${field('Preferred upgrade','upgrade',r.upgrade||'')}${field('Travel version','travel',r.travel||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`}
+function productForm(r,label,types){return `<div class="formgrid">
+${field('Product / brand','name',r.name||'')}
+${field('Product type','type',r.type||'','select',false,selectOpts(types,r.type))}
+${field('Purpose','purpose',r.purpose||'')}
+${field('When used','when',r.when||'','select',false,selectOpts(['AM','PM','AM + PM','Shower','After Shower','Wash Day','Non-Wash Day','Weekly Treatment','As Needed'],r.when))}
+${field('Frequency','freq',r.freq||'','select',false,selectOpts(['Daily','2x/day','Every Other Day','2x/week','3x/week','Weekly','Every 2 Weeks','Monthly','Specific Days','As Needed'],r.freq))}
+${field('Days used','days',r.days||'')}
+${field('Routine order','order',r.order||'')}
+${field('Amount','amount',r.amount||'','select',false,selectOpts(['Label Directions','Small Amount','Pea Size','Dime Size','1 Pump','2 Pumps','Few Drops','Custom'],r.amount))}
+${field('Where to apply','area',r.area||'')}
+${field('Skin/hair condition','condition',r.condition||'','select',false,selectOpts(['Wet','Damp','Dry','Either / Product Specific'],r.condition))}
+${field('Rinse or leave on','rinse',r.rinse||'','select',false,selectOpts(['Rinse','Leave On','Depends / Product Specific'],r.rinse))}
+${field('Wait time','wait',r.wait||'')}
+${field('Do not combine / caution','caution',r.caution||'','textarea',true)}
+${field('Opened date','opened',r.opened||'','date')}
+${field('Replace / expiration','replace',r.replace||'','date')}
+${field('Backups on hand','backup',r.backup||'')}
+${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}
+${field('Usual store','store',r.store||'')}
+${field('Usual price','price',r.price||'','number')}
+${field('Budget alternative','budgetAlt',r.budgetAlt||'')}
+${field('Preferred upgrade','upgrade',r.upgrade||'')}
+${field('Travel version','travel',r.travel||'')}
+${field('Notes / reactions / results','notes',r.notes||'','textarea',true)}
+</div>`}
 
 let modalType='',modalId=null;
 function showForm(type,obj={}){modalType=type;modalId=obj.id||null;document.getElementById('modalTitle').textContent=(modalId?'Edit ':'Add ')+type.replace(/([A-Z])/g,' $1');document.getElementById('modalBody').innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}</form>`;document.getElementById('modal').style.display='block'}
@@ -603,7 +966,44 @@ formBuilders.kidToiletry=r=>`<div class="formgrid">${field('Child','person',r.pe
 
 formBuilders.emergencyContact=r=>`<div class="formgrid">${field('Name','name',r.name||'')}${field('Relationship / role','role',r.role||'')}${field('Primary phone','phone',r.phone||'')}${field('Backup phone','backupPhone',r.backupPhone||'')}${field('Can pick up kids?','kids',r.kids||'No','select',false,selectOpts(['No','Yes','Only certain children'],r.kids||'No'))}${field('Can help with pet?','pet',r.pet||'No','select',false,selectOpts(['No','Yes'],r.pet||'No'))}${field('Priority','priority',r.priority||'First','select',false,selectOpts(['First','Second','Third','Other'],r.priority||'First'))}${field('Availability / distance','availability',r.availability||'')}${field('Who / what they can help with','help',r.help||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
 
-formBuilders.workRun=r=>`<div class="formgrid">${field('Run type','runType',r.runType||'AM','select',false,selectOpts(['AM','PM','Team','Mainline','Hub','Other'],r.runType||'AM'))}${field('Route','route',r.route||'')}${field('Days','days',r.days||'')}${field('Driver','driver',r.driver||'')}${field('Tractor','tractor',r.tractor||'')}${field('Trailer','trailer',r.trailer||'')}${field('Planned departure','planned',r.planned||'','time')}${field('Actual departure','actual',r.actual||'','time')}${field('Arrival','arrival',r.arrival||'','time')}${field('Status','status',r.status||'Scheduled','select',false,selectOpts(['Scheduled','Ready','Dispatched','Delayed','Cancelled','Completed'],r.status||'Scheduled'))}${field('Delay / decline reason','reason',r.reason||'','select',false,selectOpts(['','Driver Declined','Call Off','Tractor Issue','Trailer Issue','Weather','Late Freight','Coverage','Other'],r.reason))}${field('Backup / coverage','coverage',r.coverage||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
+formBuilders.cleaningSupply=r=>`<div class="formgrid">
+${field('Item / product','name',r.name||'')}
+${field('Type','kind',r.kind||'Cleaner','select',false,selectOpts(['Cleaner','Tool','Cloth / Towel','Brush / Scrubber','Gloves','Trash / Storage','Laundry Supply','Floor Supply','Paper Product','Other'],r.kind||'Cleaner'))}
+${field('Area used','area',r.area||'','select',false,selectOpts(['Kitchen','Bathroom','Floors','Laundry','Living Areas','Bedrooms','Whole House','Other'],r.area))}
+${field('Brand / preferred item','brand',r.brand||'')}
+${field('Size / scent / style','size',r.size||'')}
+${field('Quantity to keep','target',r.target||'')}
+${field('Quantity on hand','onhand',r.onhand||'')}
+${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Replace','Ordered','Restocked'],r.status||'Good'))}
+${field('Usual store','store',r.store||'')}
+${field('Estimated price','price',r.price||'','number')}
+${field('Where stored','location',r.location||'')}
+${field('Use / purpose','purpose',r.purpose||'','textarea',true)}
+${field('Notes','notes',r.notes||'','textarea',true)}
+</div>`;
+formBuilders.workRunTemplate=r=>`<div class="formgrid">
+${field('Shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team'],r.shift||'AM'))}
+${field('Run name / number','name',r.name||'')}${field('Run type','runType',r.runType||'Regular','select',false,selectOpts(['Regular','Mainline','Hub','Other'],r.runType||'Regular'))}
+${field('Route','route',r.route||'')}${field('Origin','origin',r.origin||'')}${field('Destination','destination',r.destination||'')}${field('Days','days',r.days||'')}
+${field('Normal driver','driver',r.driver||'')}${field('Normal tractor','tractor',r.tractor||'')}${field('Departure','departure',r.departure||'','time')}${field('Arrival','arrival',r.arrival||'','time')}
+${field('Backup / on-call notes','backup',r.backup||'','textarea',true)}${field('Active?','active',r.active||'Yes','select',false,selectOpts(['Yes','No','Seasonal'],r.active||'Yes'))}${field('Notes','notes',r.notes||'','textarea',true)}
+</div>`;
+formBuilders.workRun=r=>`<div class="formgrid">
+${field('Shift / run group','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team'],r.shift||'AM'))}
+${field('Run type','runType',r.runType||'Regular','select',false,selectOpts(['Regular','Mainline','Hub','Extra / Rescue','Coverage','On Call','Other'],r.runType||'Regular'))}
+${field('Run name / number','name',r.name||'')}${field('Route','route',r.route||'')}${field('Origin','origin',r.origin||'')}${field('Destination','destination',r.destination||'')}
+${field('Scheduled days','days',r.days||'')}${field('Date','date',r.date||'','date')}${field('Scheduled departure','planned',r.planned||'','time')}${field('Scheduled arrival','plannedArrival',r.plannedArrival||'','time')}
+${field('Actual departure','actual',r.actual||'','time')}${field('Actual arrival','arrival',r.arrival||'','time')}${field('Primary driver','driver',r.driver||'')}${field('Backup / coverage driver','backupDriver',r.backupDriver||'')}
+${field('Tractor','tractor',r.tractor||'')}${field('Trailer','trailer',r.trailer||'')}${field('Load / shipment reference','loadRef',r.loadRef||'')}
+${field('Status','status',r.status||'Scheduled','select',false,selectOpts(['Scheduled','Driver Confirmed','Ready','Dispatched','Delayed','Held','Cancelled','Completed'],r.status||'Scheduled'))}
+${field('Driver response','driverResponse',r.driverResponse||'','select',false,selectOpts(['','Accepted','Declined','Call Off','PTO','No Response','Coverage Assigned'],r.driverResponse))}
+${field('Issue / delay category','reason',r.reason||'','select',false,selectOpts(['','Driver Issue','Driver Declined','Call Off','Coverage','Tractor Issue','Trailer Issue','Maintenance','Late Freight','Weather','Traffic','Dispatch Hold','Other'],r.reason))}
+${field('Coverage needed?','coverageNeeded',r.coverageNeeded||'No','select',false,selectOpts(['No','Yes','Covered','Unable to Cover'],r.coverageNeeded||'No'))}
+${field('Dispatch confirmed?','dispatchConfirmed',r.dispatchConfirmed||'No','select',false,selectOpts(['No','Yes','Waiting'],r.dispatchConfirmed||'No'))}
+${field('TMS / system status','systemStatus',r.systemStatus||'')}${field('Paperwork / docs','paperwork',r.paperwork||'','textarea',true)}${field('Issue / delay details','issueDetails',r.issueDetails||'','textarea',true)}
+${field('Follow-up needed','followup',r.followup||'No','select',false,selectOpts(['No','Yes - Today','Yes - Tomorrow','Yes - Payroll','Yes - Maintenance','Other'],r.followup||'No'))}
+${field('Follow-up notes','followupNotes',r.followupNotes||'','textarea',true)}${field('General notes','notes',r.notes||'','textarea',true)}
+</div>`;
 
 formBuilders.workMaintenance=r=>`<div class="formgrid">${field('Tractor / unit','unit',r.unit||'')}${field('Type','kind',r.kind||'Repair','select',false,selectOpts(['Repair','Preventive Maintenance','Inspection Finding','Tire','Electrical','Engine','Brake','Body / Door','Other'],r.kind||'Repair'))}${field('Severity','severity',r.severity||'Normal','select',false,selectOpts(['Urgent','High','Normal','Low'],r.severity||'Normal'))}${field('Discovered date','found',r.found||'','date')}${field('Issue / finding','issue',r.issue||'','textarea',true)}${field('Temporary fix','temp',r.temp||'','textarea',true)}${field('Vendor','vendor',r.vendor||'')}${field('Appointment date','date',r.date||'','date')}${field('Parts','parts',r.parts||'','textarea',true)}${field('Estimate','estimate',r.estimate||'','number')}${field('Actual cost','actual',r.actual||'','number')}${field('Status','status',r.status||'Open','select',false,selectOpts(['Open','Scheduled','In Progress','Waiting on Parts','Completed','Out of Service'],r.status||'Open'))}${field('Return-to-service date','returnDate',r.returnDate||'','date')}${field('Follow-up','followup',r.followup||'','textarea',true)}</div>`;
 
@@ -616,7 +1016,7 @@ function renderFamily(){renderSimple('transport','transportation',r=>`${r.person
  const ft=document.getElementById('familyTime');if(ft)ft.innerHTML=`<h3>Planned Outings</h3>${rec('outing').map(r=>recordCard(r.name||'Outing',`${r.date||''} â¢ ${r.status||''} â¢ ${fmt(r.budget)}`,actionBtns('outing',r.id))).join('')||'<div class="small">No outings.</div>'}<h3>Trips</h3>${rec('trip').map(r=>recordCard(r.name||'Trip',`${r.depart||''} â ${r.returnDate||''} â¢ ${r.destination||''}`,actionBtns('trip',r.id))).join('')||'<div class="small">No trips.</div>'}`;
  const gp=document.getElementById('giftPeople');if(gp)gp.innerHTML=[...people,'Other Person'].map(p=>`<h3>${p}</h3>${rec('gift').filter(g=>g.person===p).map(g=>`<div class="record"><strong>${esc(g.item||'Gift idea')}</strong><div class="small">${esc((g.occasion||'')+' â¢ '+(g.status||''))} â¢ ${fmt(g.spent||g.price)}</div>${actionBtns('gift',g.id)}</div>`).join('')||'<div class="small">No gift ideas.</div>'}<button class="smallbtn" onclick="showGift('${p}')">â Add Gift</button>`).join('');
  renderSimple('contact','familyContacts',r=>r.name||'Contact',r=>`${r.relation||''} â¢ ${r.phone||''}`)}
-function renderWork(){
+function renderWork(){const board=document.getElementById('workRunBoard');if(board){const sh=document.getElementById('workShiftFilter')?.value||'All',st=document.getElementById('workStatusFilter')?.value||'All',rows=rec('workRun').filter(r=>(sh==='All'||r.shift===sh)&&(st==='All'||r.status===st));board.innerHTML=rows.length?rows.map(r=>`<div class="record"><strong>${esc((r.shift||'')+' â '+(r.name||r.route||'Run'))}</strong><div class="small">${esc((r.driver||'No driver')+' â¢ Tractor '+(r.tractor||'â')+' â¢ '+(r.status||''))}</div></div>`).join(''):'<div class="small">No runs match this view.</div>'}const att=document.getElementById('workAttention');if(att){const items=[];rec('workRun').filter(r=>['Delayed','Held','Cancelled'].includes(r.status)||r.coverageNeeded==='Yes').forEach(r=>items.push(`ð£ ${r.shift||''} ${r.name||r.route||'Run'} â ${r.status||''}`));rec('driver').filter(r=>['Call Off','Declined','Unavailable'].includes(r.status)||r.coverageNeeded==='Yes').forEach(r=>items.push(`ð¤ ${r.name||'Driver'} â ${r.status||''}`));rec('tractor').filter(r=>['Maintenance Due','Repair Needed','Out of Service','Inspection Due','Waiting on Parts','At Vendor'].includes(r.status)||r.safeToRun==='No').forEach(r=>items.push(`ð ${r.unit||'Unit'} â ${r.status||''}`));att.innerHTML=items.length?items.map(x=>`<div class="alert">${esc(x)}</div>`).join(''):'<div class="small">Nothing urgent right now.</div>'}const sf=document.getElementById('workShiftFilter');if(sf)sf.onchange=renderWork;const ss=document.getElementById('workStatusFilter');if(ss)ss.onchange=renderWork;renderSimple('workRunTemplate','workRunTemplates',r=>`${r.shift||''} â ${r.name||'Regular Run'}`,r=>`${r.days||''} â¢ ${r.route||''} â¢ ${r.driver||''} â¢ ${r.tractor||''}`);
  const ww=document.getElementById('workWeekPlan');
  if(ww)ww.innerHTML=days.slice(1).concat(days[0]).map(day=>`<details><summary>${day}</summary><div class="formgrid">
  <div class="field"><label>Recurring / due work</label><textarea data-key="work.week.${day}.tasks"></textarea></div>
@@ -626,10 +1026,10 @@ function renderWork(){
  <div class="field"><label>Priority</label><select data-key="work.week.${day}.priority"><option>Urgent</option><option>High</option><option>Normal</option><option>Low</option></select></div>
  <div class="field"><label>Status</label><select data-key="work.week.${day}.status"><option>Not Started</option><option>In Progress</option><option>Waiting</option><option>Done</option><option>Needs Follow-Up</option></select></div>
  </div></details>`).join('');
- renderSimple('workRun','workRuns',r=>`${r.runType||'Run'} â ${r.route||''}`,r=>`${r.driver||''} â¢ ${r.tractor||''} â¢ ${r.status||''}`);
+ renderSimple('workRun','workRuns',r=>`${r.shift||''} â ${r.name||r.route||'Run'}`,r=>`${r.driver||''} â¢ Tractor ${r.tractor||'â'} â¢ ${r.status||''} â¢ ${r.date||''}`);
  renderSimple('workMaintenance','workMaintenance',r=>`${r.unit||'Unit'} â ${r.kind||'Maintenance'}`,r=>`${r.severity||''} â¢ ${r.status||''} â¢ ${r.date||''}`);
  renderSimple('workCompliance','workCompliance',r=>`${r.kind||'Compliance'} â ${r.unit||''}`,r=>`${r.result||''} â¢ Due ${r.due||''} â¢ ${r.status||''}`);
- renderSimple('workAdmin','workAdmin',r=>r.title||r.kind||'Work item',r=>`${r.kind||''} â¢ ${r.status||''} â¢ ${r.due||''}`);renderSimple('workTask','workRecurring',r=>r.title||'Task',r=>`${r.freq||''} â¢ ${r.area||''}`);renderSimple('driver','workDrivers',r=>r.name||'Driver',r=>`${r.run||''} â¢ ${r.status||''}`);renderSimple('tractor','workTractors',r=>r.unit||'Tractor',r=>`${r.status||''} â¢ ${r.due||''}`);renderSimple('workPay','workPay',r=>`${r.kind||'Pay item'} â ${r.date||''}`,r=>`${r.hours||''} hrs â¢ Expected ${fmt(r.expected)} â¢ Actual ${fmt(r.actual)}`)}
+ renderSimple('workAdmin','workAdmin',r=>r.title||r.kind||'Work item',r=>`${r.kind||''} â¢ ${r.status||''} â¢ ${r.due||''}`);renderSimple('workTask','workRecurring',r=>r.title||'Task',r=>`${r.freq||''} â¢ ${r.area||''}`);renderSimple('driver','workDrivers',r=>r.name||'Driver',r=>`${r.shift||''} â¢ ${r.run||''} â¢ ${r.status||''} â¢ Tractor ${r.tractor||'â'}`);renderSimple('tractor','workTractors',r=>r.unit||'Tractor',r=>`${r.shift||''} â¢ ${r.run||''} â¢ ${r.status||''} â¢ Due ${r.due||r.nextServiceDate||''}`);renderSimple('workPay','workPay',r=>`${r.kind||'Pay item'} â ${r.date||''}`,r=>`${r.hours||''} hrs â¢ Expected ${fmt(r.expected)} â¢ Actual ${fmt(r.actual)}`)}
 function renderMeals(){const box=document.getElementById('mealWeek');if(box){box.innerHTML=days.map(d=>{const p='meal.'+d+'.';return `<details><summary>${d}</summary><div class="formgrid"><div class="field"><label>Breakfast</label><input data-meal="${p}breakfast"></div><div class="field"><label>Lunch</label><input data-meal="${p}lunch"></div><div class="field"><label>Dinner</label><input data-meal="${p}dinner"></div><div class="field"><label>Side / vegetable</label><input data-meal="${p}side"></div><div class="field"><label>Kids alternative</label><input data-meal="${p}kids"></div><div class="field"><label>Snacks</label><input data-meal="${p}snacks"></div><div class="field full"><label>Prep / thaw / crockpot</label><textarea data-meal="${p}prep"></textarea></div><div class="field full"><label>Need to Buy</label><textarea data-meal="${p}buy"></textarea><button class="smallbtn" data-mealshop="${d}">â Add to Master Shopping</button></div><div class="field full"><label>Notes</label><textarea data-meal="${p}notes"></textarea></div></div></details>`}).join('');box.querySelectorAll('[data-meal]').forEach(e=>{e.value=getPath(e.dataset.meal);e.oninput=()=>setPath(e.dataset.meal,e.value)});box.querySelectorAll('[data-mealshop]').forEach(b=>b.onclick=()=>{const d=b.dataset.mealshop,v=getPath('meal.'+d+'.buy');if(v.trim())addShopping(v,'Groceries','','','Soon','','Meal plan â '+d)})}
  renderSimple('recipe','recipeList',r=>(r.favorite==='â­ Favorite'?'â­ ':'')+(r.name||'Recipe'),r=>`${r.category||''} â¢ ${r.method||''}`,r=>`<div class="rowbuttons"><button class="smallbtn" onclick="addShopping('${esc((r.ingredients||'').replace(/'/g,"&#39;"))}','Groceries','','','Soon','','Recipe: ${esc(r.name||'')}')">Add Ingredients to Shopping</button></div>`);
  renderSimple('breakfast','breakfastList',r=>r.name||'Breakfast',r=>`${r.tag||''} â¢ ${r.likes||''}`);renderSimple('lunch','lunchList',r=>r.name||'Lunch',r=>`${r.tag||''} â¢ ${r.likes||''}`);renderSimple('snack','snackList',r=>r.name||'Snack',r=>`${r.tag||''} â¢ ${r.likes||''}`)}
@@ -837,15 +1237,64 @@ function renderCleaning(){
  if(roomBox)roomBox.innerHTML=Object.entries(rooms).map(([room,steps])=>`<details><summary>${room}</summary>${steps.map(s=>`<div class="walkstep"><div class="num">${s.split('.')[0]}</div><div>${esc(s.replace(/^\d+\.\s*/,''))}</div></div>`).join('')}</details>`).join('');
  const mBox=document.getElementById('cleanMonthly');
  if(mBox)mBox.innerHTML=monthly.map(([zone,task,how])=>`<label class="task"><input type="checkbox" data-clean-month="${monthKey()}|${esc(task)}"><span><strong>${esc(zone)} â ${esc(task)}</strong><br><span class="small">${esc(how)}</span></span></label>`).join('');
+ const updateMonthlyProgress=()=>{
+   const boxes=[...document.querySelectorAll('[data-clean-month]')];
+   const done=boxes.filter(x=>x.checked).length;
+   const prog=document.getElementById('cleanMonthlyProgress');
+   if(prog)prog.innerHTML=`<div class="alert"><strong>${new Date().toLocaleString(undefined,{month:'long',year:'numeric'})}</strong><br>${done} of ${boxes.length} monthly cleaning tasks completed</div>`;
+ };
+
  const sBox=document.getElementById('cleanSeasonal');
  if(sBox)sBox.innerHTML=seasonal.map(([zone,task,how])=>`<label class="task"><input type="checkbox" data-clean-season="${new Date().getFullYear()}-${Math.floor(new Date().getMonth()/3)+1}|${esc(task)}"><span><strong>${esc(zone)} â ${esc(task)}</strong><br><span class="small">${esc(how)}</span></span></label>`).join('');
  const aBox=document.getElementById('cleanAnnual');
  if(aBox)aBox.innerHTML=annual.map(([zone,task,how])=>`<label class="task"><input type="checkbox" data-clean-annual="${new Date().getFullYear()}|${esc(task)}"><span><strong>${esc(zone)} â ${esc(task)}</strong><br><span class="small">${esc(how)}</span></span></label>`).join('');
- document.querySelectorAll('[data-clean],[data-clean-month],[data-clean-season],[data-clean-annual],[data-clean-night]').forEach(c=>{
+ 
+ const supplyBox=document.getElementById('cleaningSupplyList');
+ if(supplyBox){
+   const supplies=rec('cleaningSupply');
+   supplyBox.innerHTML=supplies.length?supplies.map(r=>`<div class="record">
+     <div class="recordhead"><div><strong>${esc(r.name||'Cleaning item')}</strong><div class="small">${esc((r.kind||'')+' â¢ '+(r.area||'')+' â¢ '+(r.status||''))}</div></div>${actionBtns('cleaningSupply',r.id)}</div>
+     <label class="task"><input type="checkbox" data-clean-have="${r.id}" ${['Plenty','Good','Getting Low','Running Low'].includes(r.status)?'checked':''}> Have this item</label>
+     <div class="small">On hand: ${esc(r.onhand||'â')} â¢ Target: ${esc(r.target||'â')} â¢ Stored: ${esc(r.location||'â')}</div>
+     ${['Running Low','Out','Replace'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc(r.name||'Cleaning item').replace(/'/g,"&#39;")}','Household','${esc(r.target||'')}','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Cleaning Supplies')">ð Add to Master Shopping</button>`:''}
+   </div>`).join(''):'<div class="small">No cleaning products or tools added yet.</div>';
+ }
+ document.querySelectorAll('[data-clean-kit]').forEach(c=>{const k=weekStartKey()+'|cleaningkit|'+c.dataset.cleanKit;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
+ document.querySelectorAll('[data-clean-have]').forEach(c=>{c.onchange=()=>{const r=rec('cleaningSupply').find(x=>x.id===c.dataset.cleanHave);if(r){r.status=c.checked?(r.status==='Out'||r.status==='Replace'?'Good':r.status):'Out';save();renderCleaning()}}});
+ 
+ const weeklyRooms={
+  'Kitchen':['Clear counters completely','Dishes + sink deep reset','Backsplash','Stovetop','Microwave inside/out','Appliance fronts/handles','Table/chairs','Cabinet-front spot clean','Trash can lid/exterior','Sweep/vacuum','Mop'],
+  'Bathroom':['Trash/clutter','Mirror','Sink/counter/faucet','Toilet bowl/seat/base','Tub/shower','Fixtures','Restock TP/towels/toiletries','Bath mat','Sweep/vacuum','Mop'],
+  'Living Room':['Trash/dishes','Put away stray items','Blankets/pillows','Dust tables/TV stand/shelves','Glass/mirrors','High-touch spots','Vacuum couch','Vacuum/sweep floor'],
+  'Primary Bedroom':['Trash/dishes','Laundry pickup','Make/change bed as scheduled','Clear nightstands','Dust surfaces','Put away loose items','Vacuum/sweep'],
+  'Kids Rooms':['Trash/dishes','Dirty clothes','Beds','Toys/books','School/activity items','Clear surfaces','Floor pickup','Vacuum/sweep'],
+  'Laundry Area':['Finish open loads','Put away products','Lint trap','Wipe machine tops/fronts','Check supplies','Sweep/vacuum floor'],
+  'Entry / Hall':['Shoes/bags','Mail/papers','Wipe high-touch spots','Dust ledges','Sweep/vacuum']
+ };
+ const weeklyBox=document.getElementById('weeklyRoomCleaning');
+ if(weeklyBox)weeklyBox.innerHTML=Object.entries(weeklyRooms).map(([room,tasks])=>`<details><summary>${room}</summary>${tasks.map(task=>`<label class="task"><input type="checkbox" data-clean-weekroom="${weekStartKey()}|${esc(room)}|${esc(task)}"> ${esc(task)}</label>`).join('')}</details>`).join('');
+ const deepRooms={
+  'Kitchen':['Refrigerator shelves/drawers','Freezer inventory','Oven','Range hood/filter','Dishwasher interior/filter','Cabinet interiors one zone','Pantry shelf','Behind/under movable small appliances'],
+  'Bathroom':['Shower grout/tracks','Shower curtain/liner','Cabinet/drawer interior','Exhaust vent exterior','Baseboards','Walls/doors','Under-sink declutter'],
+  'Bedrooms':['Under bed','Mattress vacuum/rotate if appropriate','Closet zone','Baseboards','Doors/trim','Light/fan dusting'],
+  'Living Areas':['Under furniture','Baseboards','Blinds/window sills','Upholstery detail','Electronics cords/area','Walls/doors'],
+  'Laundry':['Washer cleaning cycle','Dryer area/lint buildup accessible areas','Cabinet/shelf declutter','Baseboards','Behind machines only if safely accessible']
+ };
+ const deepBox=document.getElementById('deepRoomCleaning');
+ if(deepBox)deepBox.innerHTML=Object.entries(deepRooms).map(([room,tasks])=>`<details><summary>${room}</summary>${tasks.map(task=>`<label class="task"><input type="checkbox" data-clean-deep="${monthKey()}|${esc(room)}|${esc(task)}"> ${esc(task)}</label>`).join('')}</details>`).join('');
+ document.querySelectorAll('[data-clean-daily]').forEach(c=>{const k=todayKey()+'|dailyclean|'+c.dataset.cleanDaily;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
+ document.querySelectorAll('[data-catchup]').forEach(c=>{const k=todayKey()+'|catchup|'+c.dataset.catchup;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
+ document.querySelectorAll('[data-clean-weekreview]').forEach(c=>{const k=weekStartKey()+'|cleanreview|'+c.dataset.cleanWeekreview;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
+ document.querySelectorAll('[data-clean-weekroom]').forEach(c=>{c.checked=!!state.daily[c.dataset.cleanWeekroom];c.onchange=()=>{state.daily[c.dataset.cleanWeekroom]=c.checked;save()}});
+ document.querySelectorAll('[data-clean-deep]').forEach(c=>{c.checked=!!state.daily[c.dataset.cleanDeep];c.onchange=()=>{state.daily[c.dataset.cleanDeep]=c.checked;save()}});
+document.querySelectorAll('[data-clean],[data-clean-month],[data-clean-season],[data-clean-annual],[data-clean-night]').forEach(c=>{
   const k=c.dataset.clean||c.dataset.cleanMonth||c.dataset.cleanSeason||c.dataset.cleanAnnual||(todayKey()+'|night|'+c.dataset.cleanNight);
   c.checked=!!state.daily[k];
-  c.onchange=()=>{state.daily[k]=c.checked;save()}
+  c.onchange=()=>{state.daily[k]=c.checked;save();if(c.dataset.cleanMonth)updateMonthlyProgress()}
  });
+ updateMonthlyProgress();
+ const resetMonth=document.getElementById('resetCleanMonth');
+ if(resetMonth)resetMonth.onclick=()=>{document.querySelectorAll('[data-clean-month]').forEach(c=>{state.daily[c.dataset.cleanMonth]=false;c.checked=false});save();updateMonthlyProgress()};
 }
 function renderHome(){
  const hw=document.getElementById('homeWeekPlan');
@@ -862,17 +1311,40 @@ function renderStorage(){const box=document.getElementById('storageList');if(!bo
 document.getElementById('storageSearch').oninput=renderStorage;
 function renderSelfCare(){
  const d=days[new Date().getDay()], schedule=getPath('selfcare.schedule.'+d)||{}, today=document.getElementById('selfcareToday');
- if(today){const blocks=[['ð Morning',schedule.morning],['ð¿ Shower / Body',schedule.shower],['ð Hair / Scalp',schedule.hair],['ð Evening',schedule.evening],['â¨ Extras',schedule.extras]].filter(x=>x[1]);today.innerHTML=`<div class="alert"><strong>${d}</strong></div>`+(blocks.length?blocks.map(([x,y])=>`<label class="task"><input type="checkbox" data-self-today="${todayKey()}|${x}"><span><strong>${x}</strong><br>${esc(y)}</span></label>`).join(''):'<div class="small">Nothing scheduled yet. Fill in MondayâSunday Schedule.</div>')}
+ if(today){
+  const rows=[
+   ['Day Type',schedule.dayType],
+   ['ð AM',schedule.am],
+   ['AM Treatment',schedule.amTreatment],
+   ['ð¿ Shower',schedule.shower],
+   ['Shave',schedule.shave],
+   ['Body Exfoliation',schedule.exfoliate],
+   ['ð Hair / Scalp',schedule.hair],
+   ['Hair Style',schedule.style],
+   ['ð PM',schedule.pm],
+   ['PM Treatment',schedule.pmTreatment],
+   ['â¨ Extra',schedule.extra]
+  ].filter(x=>x[1]&&x[1]!=='None'&&x[1]!=='No'&&x[1]!=='No Shower Scheduled'&&x[1]!=='Rest / No Hair Task');
+  today.innerHTML=`<div class="alert"><strong>${d}</strong>${schedule.dayType?` â¢ ${esc(schedule.dayType)}`:''}</div>`+
+   (rows.length?rows.map(([a,b])=>`<label class="task"><input type="checkbox" data-self-today="${todayKey()}|${a}"><span><strong>${a}</strong><br>${esc(b)}</span></label>`).join(''):'<div class="small">Nothing scheduled yet for today.</div>')+
+   (schedule.notes?`<div class="hint"><strong>Today notes:</strong> ${esc(schedule.notes)}</div>`:'');
+ }
  const week=document.getElementById('selfcareWeek');if(week)week.innerHTML=days.slice(1).concat(days[0]).map(day=>`<details ${day===d?'open':''}><summary>${day}</summary>
 <div class="formgrid">
-<div class="field"><label>ð AM skincare</label><textarea data-key="selfcare.schedule.${day}.morning" placeholder="Cleanser â treatment â moisturizer â SPF"></textarea></div>
-<div class="field"><label>âï¸ During day</label><textarea data-key="selfcare.schedule.${day}.daytime" placeholder="SPF reapply â¢ lip care â¢ period check â¢ other"></textarea></div>
-<div class="field"><label>ð¿ Shower / Body</label><textarea data-key="selfcare.schedule.${day}.shower" placeholder="Quick/full/no shower â¢ wash â¢ shave â¢ exfoliate â¢ lotion"></textarea></div>
-<div class="field"><label>ð Hair / Scalp</label><textarea data-key="selfcare.schedule.${day}.hair" placeholder="Wash / refresh / scalp / mask / clarify / style"></textarea></div>
-<div class="field"><label>ð PM skincare</label><textarea data-key="selfcare.schedule.${day}.evening" placeholder="Remove â cleanse â treatment â moisturize â eye/lip/spot"></textarea></div>
-<div class="field"><label>â¨ Extra care</label><textarea data-key="selfcare.schedule.${day}.extras" placeholder="Nails â¢ feet â¢ brows â¢ tool cleaning â¢ period pouch"></textarea></div>
+<div class="field"><label>Day type</label><select data-key="selfcare.schedule.${day}.dayType"><option>Full Routine</option><option>Normal Routine</option><option>Quick / Busy Day</option><option>Low-Energy Day</option><option>Travel Day</option><option>Period Day</option><option>Recovery / Rest Day</option></select></div>
+<div class="field"><label>AM skincare</label><select data-key="selfcare.schedule.${day}.am"><option>Full AM</option><option>Simple AM</option><option>Skip Treatment</option><option>Minimum Only</option></select></div>
+<div class="field"><label>AM treatment</label><select data-key="selfcare.schedule.${day}.amTreatment"><option>None</option><option>Acne Treatment</option><option>Hydrating Serum</option><option>Eye Care</option><option>Spot Treatment</option><option>Other</option></select></div>
+<div class="field"><label>Shower</label><select data-key="selfcare.schedule.${day}.shower"><option>No Shower Scheduled</option><option>Quick Shower</option><option>Full Shower</option></select></div>
+<div class="field"><label>Shave</label><select data-key="selfcare.schedule.${day}.shave"><option>No</option><option>Legs</option><option>Underarms</option><option>Legs + Underarms</option><option>Custom</option></select></div>
+<div class="field"><label>Body exfoliation</label><select data-key="selfcare.schedule.${day}.exfoliate"><option>No</option><option>Yes</option><option>As Needed</option></select></div>
+<div class="field"><label>Hair / scalp day</label><select data-key="selfcare.schedule.${day}.hair"><option>Rest / No Hair Task</option><option>Wash Day</option><option>Refresh Day</option><option>Scalp Treatment Day</option><option>Hair Mask / Repair Day</option><option>Clarifying Day</option></select></div>
+<div class="field"><label>Hair style</label><select data-key="selfcare.schedule.${day}.style"><option>Air Dry / Natural</option><option>Refresh Waves</option><option>Heat Style</option><option>Simple / Pulled Back</option><option>Other</option></select></div>
+<div class="field"><label>PM skincare</label><select data-key="selfcare.schedule.${day}.pm"><option>Full PM</option><option>Simple PM</option><option>Skip Treatment</option><option>Minimum Only</option></select></div>
+<div class="field"><label>PM treatment</label><select data-key="selfcare.schedule.${day}.pmTreatment"><option>None</option><option>Acne Treatment</option><option>Exfoliant</option><option>Hydrating Treatment</option><option>Spot Treatment</option><option>Other</option></select></div>
+<div class="field"><label>Extra care</label><select data-key="selfcare.schedule.${day}.extra"><option>None</option><option>Nails</option><option>Foot Care</option><option>Brows / Facial Hair</option><option>Clean Razor</option><option>Clean Hair Tools</option><option>Clean Skincare Tools</option><option>Period Pouch Reset</option><option>Travel Restock</option><option>Other</option></select></div>
 <div class="field"><label>Daily status</label><select data-key="selfcare.schedule.${day}.status"><option>Not Started</option><option>Complete</option><option>Mostly Complete</option><option>Partial</option><option>Skipped</option></select></div>
 <div class="field"><label>If skipped, why?</label><select data-key="selfcare.schedule.${day}.skipReason"><option></option><option>No Time</option><option>Forgot</option><option>Too Tired</option><option>Skin Irritated</option><option>Hair Didn't Need It</option><option>Not Feeling Well</option><option>Traveling</option><option>Period Symptoms</option><option>Product Out</option><option>Other</option></select></div>
+<div class="field full"><label>Special instructions / notes for this day</label><textarea data-key="selfcare.schedule.${day}.notes"></textarea></div>
 </div></details>`).join('');
  const extra=r=>['Running Low','Out'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc(r.name||r.type||'Item').replace(/'/g,"&#39;")}','Personal / Self-Care','','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Self-Care')">ð Add to Shopping</button>`:'';
  renderSimple('skin','skinProducts',r=>r.name||'Skincare product',r=>`${r.type||''} â¢ ${r.when||''} â¢ ${r.days||''} â¢ ${r.status||''}`,extra);
@@ -885,14 +1357,37 @@ function renderSelfCare(){
  document.querySelectorAll('[data-self-today]').forEach(c=>{c.checked=!!state.daily[c.dataset.selfToday];c.onchange=()=>{state.daily[c.dataset.selfToday]=c.checked;save()}});
  bindFields()
 }
-function renderHealth(){renderSimple('mood','moodTracker',r=>`${r.date||''} â ${(r.moods||[]).slice(0,3).join(', ')||'Mood check'}`,r=>`Intensity ${r.intensity||''} â¢ Energy ${r.energy||''} â¢ Stress ${r.stress||''}`);renderSimple('symptom','symptomList',r=>`${r.person||''} â ${(r.symptoms||[]).join(', ')||'Symptoms'}`,r=>`${r.date||''} â¢ Severity ${r.severity||''} â¢ ${r.active==='Yes'?'Active':'Ended'}`);renderSimple('migraine','migraineList',r=>`${r.person||''} â Migraine ${r.severity||''}/10`,r=>`${r.date||''} ${r.start||''} â¢ Worst ${r.worst||''}`);renderSimple('period','periodList',r=>`${r.person||''} â Period`,r=>`${r.start||''} â ${r.end||'Active'} â¢ ${r.flow||''} â¢ Pain ${r.pain||''}`);{
+function renderHealth(){
+ const dash=document.getElementById('healthDashboard');
+ if(dash){
+   const appts=rec('appointment').filter(r=>r.date>=todayKey()).sort((a,b)=>(a.date||'').localeCompare(b.date||'')).slice(0,3);
+   const activeSymptoms=rec('symptom').filter(r=>r.active==='Yes').slice(-3);
+   const lowMeds=rec('med').filter(r=>['Getting Low','Running Low','Out'].includes(r.refillStatus)).slice(0,3);
+   dash.innerHTML=[
+     appts.length?`<div class="alert"><strong>Upcoming Appointments</strong><br>${appts.map(r=>esc((r.person||'')+' â¢ '+(r.kind||'')+' â¢ '+(r.date||''))).join('<br>')}</div>`:'',
+     activeSymptoms.length?`<div class="alert"><strong>Active Symptoms</strong><br>${activeSymptoms.map(r=>esc((r.person||'')+' â¢ '+((r.symptoms||[]).join(', ')||'Symptom'))).join('<br>')}</div>`:'',
+     lowMeds.length?`<div class="alert"><strong>Medication / Supplement Stock</strong><br>${lowMeds.map(r=>esc((r.person||'')+' â¢ '+(r.name||'')+' â¢ '+(r.refillStatus||''))).join('<br>')}</div>`:''
+   ].filter(Boolean).join('')||'<div class="small">Nothing urgent is showing on the dashboard right now.</div>';
+ }
+ const att=document.getElementById('healthAttention');
+ if(att){
+   const items=[];
+   rec('symptom').filter(r=>r.followupNeeded&&r.followupNeeded!=='No'&&r.followupNeeded!=='Watch').forEach(r=>items.push(`ð©º ${r.person||''} â ${r.followupNeeded}`));
+   rec('appointment').filter(r=>['Need to Schedule','Follow-Up Needed','Reschedule'].includes(r.status)).forEach(r=>items.push(`ð ${r.person||''} â ${r.status}: ${r.kind||'Appointment'}`));
+   rec('med').filter(r=>['Running Low','Out'].includes(r.refillStatus)).forEach(r=>items.push(`ð ${r.person||''} â ${r.name||''}: ${r.refillStatus}`));
+   rec('dental').filter(r=>['Due','Follow-Up Needed'].includes(r.status)).forEach(r=>items.push(`${r.kind==='Vision'?'ð':'ð¦·'} ${r.person||''} â ${r.status}`));
+   att.innerHTML=items.length?items.map(x=>`<div class="alert">${esc(x)}</div>`).join(''):'<div class="small">Nothing flagged right now.</div>';
+ }
+renderSimple('mood','moodTracker',r=>`${r.date||''} â ${(r.moods||[]).slice(0,3).join(', ')||'Mood check'}`,r=>`Intensity ${r.intensity||''} â¢ Energy ${r.energy||''} â¢ Stress ${r.stress||''}`);renderSimple('symptom','symptomList',r=>`${r.person||''} â ${(r.symptoms||[]).join(', ')||'Symptoms'}`,r=>`${r.date||''} â¢ Severity ${r.severity||''} â¢ ${r.active==='Yes'?'Active':'Ended'}`);renderSimple('migraine','migraineList',r=>`${r.person||''} â Migraine ${r.severity||''}/10`,r=>`${r.date||''} ${r.start||''} â¢ Worst ${r.worst||''}`);renderSimple('period','periodList',r=>`${r.person||''} â Period`,r=>`${r.start||''} â ${r.end||'Active'} â¢ ${r.flow||''} â¢ Pain ${r.pain||''}`);{
  const box=document.getElementById('appointmentList');
  if(box){
    const scheduled=rec('appointment').map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc((r.person||'')+' â '+(r.kind||'Appointment'))}</strong><div class="small">${esc((r.date||'')+' '+(r.time||'')+' â¢ '+(r.provider||''))}</div></div>${actionBtns('appointment',r.id)}</div></div>`).join('');
    const needed=rec('needsAppointment').map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc((r.person||'')+' â Needs Scheduling: '+(r.kind||''))}</strong><div class="small">${esc('Due '+(r.due||'')+' â¢ '+(r.priority||''))}</div></div>${actionBtns('needsAppointment',r.id)}</div></div>`).join('');
    box.innerHTML=(scheduled+needed)||'<div class="small">No appointments or scheduling needs added.</div>';
  }
-}renderSimple('med','medList',r=>`${r.person||''} â ${r.name||'Medication / Supplement'}`,r=>`${r.kind||''} â¢ ${r.status||''} â¢ ${r.freq||''} â¢ Stock ${r.stock||''}`);renderSimple('dental','dentalVision',r=>`${r.person||''} â ${r.kind||''}`,r=>`${r.provider||''} â¢ Next ${r.next||''}`);renderSimple('journal','journalList',r=>`${r.date||''} â ${r.title||r.kind||'Journal Entry'}`,r=>`${r.kind||''} â¢ ${r.about||''}`)}
+}renderSimple('med','medList',r=>`${r.person||''} â ${r.name||'Medication / Supplement'}`,r=>`${r.kind||''} â¢ ${r.status||''} â¢ ${r.freq||''} â¢ Stock ${r.stock||''}`);renderSimple('dental','dentalVision',r=>`${r.person||''} â ${r.kind||''}`,r=>`${r.provider||''} â¢ Next ${r.next||''}`);renderSimple('journal','journalList',r=>`${r.date||''} â ${r.title||r.kind||'Journal Entry'}`,r=>`${r.kind||''} â¢ ${r.about||''}`)
+ document.querySelectorAll('[data-health-review]').forEach(c=>{const k=weekStartKey()+'|healthreview|'+c.dataset.healthReview;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
+}
 function renderShopping(){const box=document.getElementById('shoppingList');if(!box)return;const sf=(document.getElementById('shopFilterStore')?.value||'').toLowerCase(),cf=document.getElementById('shopFilterCat')?.value||'';const arr=state.shopping.filter(x=>(!sf||(x.store||'').toLowerCase().includes(sf))&&(!cf||x.category===cf));box.innerHTML=arr.map(x=>`<div class="masteritem"><input type="checkbox" data-shopdone="${x.id}" ${x.done?'checked':''}><div style="flex:1"><strong>${esc(x.item)}</strong><div class="small">${esc(x.category)} â¢ Qty ${esc(x.qty||'')} â¢ ${esc(x.store||'Any store')} â¢ ${esc(x.priority||'')} ${x.price?`â¢ ${fmt(x.price)}`:''}</div>${x.source?`<div class="small">From: ${esc(x.source)}</div>`:''}</div><button class="smallbtn danger" data-shopdel="${x.id}">Remove</button></div>`).join('')||'<div class="small">Nothing on the master list.</div>';box.querySelectorAll('[data-shopdone]').forEach(c=>c.onchange=()=>{const x=state.shopping.find(i=>i.id===c.dataset.shopdone);if(x)x.done=c.checked;save()});box.querySelectorAll('[data-shopdel]').forEach(b=>b.onclick=()=>{state.shopping=state.shopping.filter(i=>i.id!==b.dataset.shopdel);save();renderShopping()})}
 document.getElementById('shopAddBtn').onclick=()=>{addShopping(document.getElementById('shopQuick').value,document.getElementById('shopCategory').value,document.getElementById('shopQty').value,document.getElementById('shopStore').value,document.getElementById('shopPriority').value,document.getElementById('shopPrice').value,'Quick Add');document.getElementById('shopQuick').value=''}
 document.getElementById('shopFilterStore').oninput=renderShopping;document.getElementById('shopFilterCat').onchange=renderShopping;
