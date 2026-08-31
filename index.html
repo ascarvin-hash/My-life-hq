@@ -35,7 +35,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v2 â¢ detailed walkthrough build â¢ Quick View â Walkthrough â Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v2.3 â¢ detailed self-care system â¢ Quick View â Walkthrough â Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate">Today</h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -150,9 +150,67 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>ð Monthly Review</summary><div id="monthlyReview"></div><button class="smallbtn" data-add-record="monthReview">â Start Monthly Review</button></details>
 </div></section>
 
-<section id="cleaning" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð§¹ Cleaning</h2>
-<div class="hint">Cleaning = what needs cleaned and when. Home = repairs, maintenance, restock, projects, storage and equipment.</div>
+<section id="cleaning" class="page">
+<div class="topbar"><button class="back">â Home</button></div>
+<div class="card"><h2>ð§¹ Cleaning Command Center</h2>
+<div class="hint"><strong>Cleaning = recurring upkeep.</strong> Home = repairs, maintenance, projects, storage, appliances and restock. Use the color priority when you need a fast reset: ð´ must do, ð¡ should do, ð¢ can wait.</div>
+
+<div class="quickgrid">
+<div class="card"><h3>â¡ Quick Reset</h3>
+<div class="walkstep"><div class="num">1</div><div>Trash / obvious clutter</div></div>
+<div class="walkstep"><div class="num">2</div><div>Dishes + kitchen sink</div></div>
+<div class="walkstep"><div class="num">3</div><div>Bathroom sink/toilet check</div></div>
+<div class="walkstep"><div class="num">4</div><div>Floors where needed</div></div>
+<div class="walkstep"><div class="num">5</div><div>Laundry / put-away check</div></div>
+</div>
+<div class="card"><h3>ð Nightly Reset</h3>
+<label class="task"><input type="checkbox" data-clean-night="kitchen"> Kitchen reset</label>
+<label class="task"><input type="checkbox" data-clean-night="living"> Living room pickup</label>
+<label class="task"><input type="checkbox" data-clean-night="laundry"> Laundry check</label>
+<label class="task"><input type="checkbox" data-clean-night="school"> School / bags / shoes ready</label>
+<label class="task"><input type="checkbox" data-clean-night="trash"> Trash / counters / floors check</label>
+</div>
+</div>
+
+<details open><summary>ð Todayâs Detailed Cleaning</summary>
 <div id="cleaningPlan"></div>
+</details>
+
+<details><summary>ð  Room-by-Room Walkthroughs</summary>
+<div id="roomCleaning"></div>
+</details>
+
+<details><summary>ð§´ Cleaning Products + Tools Reference</summary>
+<div class="formgrid">
+<div class="field"><label>Kitchen products</label><textarea data-key="clean.products.kitchen" placeholder="Dawn Powerwash â¢ Clean Freak/Mr Clean â¢ microfiber cloths â¢ scrubberâ¦"></textarea></div>
+<div class="field"><label>Bathroom products</label><textarea data-key="clean.products.bathroom" placeholder="Scrubbing Bubbles â¢ toilet cleaner â¢ Windex â¢ disinfecting clothsâ¦"></textarea></div>
+<div class="field"><label>Floors</label><textarea data-key="clean.products.floors" placeholder="Vacuum â¢ broom â¢ mop â¢ Mr Clean all-purposeâ¦"></textarea></div>
+<div class="field"><label>Laundry</label><textarea data-key="clean.products.laundry" placeholder="Detergent â¢ stain remover â¢ dryer items â¢ basketsâ¦"></textarea></div>
+<div class="field full"><label>Cleaning Tote / Supplies</label><textarea data-key="clean.products.tote" placeholder="Gloves â¢ microfiber cloths â¢ sponges â¢ scrub brushes â¢ trash bags â¢ paper towelsâ¦"></textarea></div>
+</div>
+</details>
+
+<details><summary>ðï¸ Monthly Cleaning</summary><div id="cleanMonthly"></div></details>
+<details><summary>ð Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
+<details><summary>ð Annual Cleaning</summary><div id="cleanAnnual"></div></details>
+
+<details><summary>ð´ð¡ð¢ Priority / Catch-Up</summary>
+<div class="hint">Use this when the house feels overwhelming. Do all ð´ first, then ð¡ if you have time. ð¢ can wait.</div>
+<div class="formgrid">
+<div class="field"><label>ð´ Must Do</label><textarea data-key="clean.priority.red" placeholder="Health/safety, dishes, trash, bathroom issue, urgent laundryâ¦"></textarea></div>
+<div class="field"><label>ð¡ Should Do</label><textarea data-key="clean.priority.yellow" placeholder="Weekly focus, clutter, floors, laundry catch-upâ¦"></textarea></div>
+<div class="field"><label>ð¢ Can Wait</label><textarea data-key="clean.priority.green" placeholder="Deep cleaning, organizing, cosmetic extrasâ¦"></textarea></div>
+<div class="field"><label>Catch-Up Notes</label><textarea data-key="clean.priority.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>â Walk Me Through Cleaning</summary>
+<div class="walkstep"><div class="num">1</div><div>Look at Todayâs Focus.</div></div>
+<div class="walkstep"><div class="num">2</div><div>If the house feels behind, use ð´/ð¡/ð¢ instead of trying to do everything.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Work one room top-to-bottom: trash/clutter â surfaces â fixtures â floor â restock.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Complete Nightly Reset so tomorrow starts easier.</div></div>
+<div class="walkstep"><div class="num">5</div><div>On Sunday, review Monthly/Seasonal tasks and pick only what is due.</div></div>
+</details>
 </div></section>
 
 <section id="homeLife" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð  Home</h2>
@@ -165,24 +223,19 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div></section>
 
 <section id="selfcare" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð§´ Me + Self-Care</h2>
-<div class="hint">Today should tell you exactly what happens today. Details are underneath when you need instructions/products.</div>
-<div class="card"><h3>â¡ Todayâs Self-Care</h3><div id="selfcareToday"></div></div>
-<details><summary>â Walk Me Through Self-Care</summary>
-<div class="walkstep"><div class="num">1</div><div>Open todayâs AM routine and complete only todayâs scheduled steps.</div></div>
-<div class="walkstep"><div class="num">2</div><div>Check whether today is a shower / hair / treatment day.</div></div>
-<div class="walkstep"><div class="num">3</div><div>Use product details for exact order, amount, area, and instructions.</div></div>
-<div class="walkstep"><div class="num">4</div><div>At night, complete PM routine and mark anything Running Low.</div></div>
-<div class="walkstep"><div class="num">5</div><div>Once weekly, review Running Low and Travel supplies.</div></div>
-</details>
-<details open><summary>ð Weekly Self-Care Schedule</summary><div id="selfcareWeek"></div></details>
+<div class="hint"><strong>Open this and know exactly what to do today.</strong> Routines, products, low-stock items and travel care stay connected.</div>
+<details open><summary>â¡ Todayâs Self-Care</summary><div id="selfcareToday"></div></details>
+<details open><summary>ð MondayâSunday Schedule</summary><div id="selfcareWeek"></div></details>
+<details><summary>ð AM Skincare â Step by Step</summary><div class="hint"><strong>Order:</strong> Cleanse â scheduled treatment â moisturizer â SPF. Use only treatments scheduled for that day.</div><div class="formgrid"><div class="field"><label>Cleanser</label><input data-key="selfcare.am.cleanser"></div><div class="field"><label>Amount / instructions</label><input data-key="selfcare.am.cleanserHow"></div><div class="field"><label>Treatment</label><input data-key="selfcare.am.treatment"></div><div class="field"><label>Treatment days</label><input data-key="selfcare.am.days"></div><div class="field"><label>Moisturizer</label><input data-key="selfcare.am.moisturizer"></div><div class="field"><label>SPF</label><input data-key="selfcare.am.spf"></div><div class="field full"><label>Skip rules / notes</label><textarea data-key="selfcare.am.notes"></textarea></div></div></details>
+<details><summary>ð PM Skincare â Step by Step</summary><div class="hint"><strong>Order:</strong> Remove makeup/SPF if needed â cleanse â scheduled treatment â moisturizer â eye/lip/spot care if used.</div><div class="formgrid"><div class="field"><label>Removal product</label><input data-key="selfcare.pm.remove"></div><div class="field"><label>Cleanser</label><input data-key="selfcare.pm.cleanser"></div><div class="field"><label>Treatment</label><input data-key="selfcare.pm.treatment"></div><div class="field"><label>Treatment days</label><input data-key="selfcare.pm.days"></div><div class="field"><label>Moisturizer</label><input data-key="selfcare.pm.moisturizer"></div><div class="field"><label>Eye / dark-circle care</label><input data-key="selfcare.pm.eye"></div><div class="field"><label>Lip care</label><input data-key="selfcare.pm.lip"></div><div class="field"><label>Spot care</label><input data-key="selfcare.pm.spot"></div></div></details>
 <details><summary>ð§´ Skincare Products + Details</summary><div id="skinProducts"></div><button class="smallbtn" data-add-record="skin">â Add Skincare Product</button></details>
-<details><summary>ð¿ Shower + Body</summary><div id="bodyProducts"></div><button class="smallbtn" data-add-record="body">â Add Shower / Body Product</button></details>
-<details><summary>ð Hair + Scalp</summary><div id="hairProducts"></div><button class="smallbtn" data-add-record="hair">â Add Hair / Scalp Product</button></details>
-<details><summary>ð¸ Period Care</summary><div id="periodCare"></div><button class="smallbtn" data-add-record="periodSupply">â Add Period Supply</button></details>
-<details><summary>ð§³ Travel Self-Care</summary><div id="travelCare"></div><button class="smallbtn" data-add-record="travelCare">â Start Travel Self-Care Plan</button></details>
-<details><summary>â ï¸ Running Low On</summary><div id="selfcareLow"></div><button class="smallbtn" id="selfcareLowAll">ð Add All Needed to Shopping</button></details>
+<details><summary>ð¿ Shower + Body â Detailed</summary><div class="formgrid"><div class="field"><label>Shower days</label><input data-key="selfcare.shower.days"></div><div class="field"><label>Body wash</label><input data-key="selfcare.shower.bodywash"></div><div class="field"><label>Bar soap / where used</label><input data-key="selfcare.shower.bar"></div><div class="field"><label>Washcloth areas</label><textarea data-key="selfcare.shower.washcloth"></textarea></div><div class="field"><label>Silicone scrubber areas</label><textarea data-key="selfcare.shower.scrubber"></textarea></div><div class="field"><label>Shave days / areas</label><textarea data-key="selfcare.shower.shave"></textarea></div><div class="field"><label>Exfoliation days</label><input data-key="selfcare.shower.exfoliate"></div><div class="field"><label>After-shower care</label><input data-key="selfcare.shower.after"></div></div><div class="hint"><strong>Walkthrough:</strong> Gather items â hair first if wash day â wash body â shave/exfoliate only if scheduled â rinse â dry â deodorant â lotion/body care â clean clothes.</div><div id="bodyProducts"></div><button class="smallbtn" data-add-record="body">â Add Shower / Body Product</button></details>
+<details><summary>ð Hair + Scalp â Detailed</summary><div class="formgrid"><div class="field"><label>Wash days</label><input data-key="selfcare.hair.washDays"></div><div class="field"><label>Refresh days</label><input data-key="selfcare.hair.refreshDays"></div><div class="field"><label>Shampoo</label><input data-key="selfcare.hair.shampoo"></div><div class="field"><label>Conditioner</label><input data-key="selfcare.hair.conditioner"></div><div class="field"><label>Scalp brush use</label><input data-key="selfcare.hair.brush"></div><div class="field"><label>Scalp serum</label><input data-key="selfcare.hair.serum"></div><div class="field"><label>Hair mask / repair days</label><input data-key="selfcare.hair.mask"></div><div class="field"><label>Clarifying schedule</label><input data-key="selfcare.hair.clarify"></div><div class="field"><label>Leave-in / frizz care</label><input data-key="selfcare.hair.leavein"></div><div class="field"><label>Heat protectant</label><input data-key="selfcare.hair.heat"></div><div class="field full"><label>Styling / refresh instructions</label><textarea data-key="selfcare.hair.style"></textarea></div></div><div class="hint"><strong>Wash-day order:</strong> Wet/scalp â shampoo scalp â rinse â conditioner mids/ends â mask when scheduled â rinse â gently dry â leave-in â heat protectant if needed â style.</div><div id="hairProducts"></div><button class="smallbtn" data-add-record="hair">â Add Hair / Scalp Product</button></details>
+<details><summary>ð©¸ Period Care â Detailed</summary><div class="formgrid"><div class="field"><label>Preferred brand</label><input data-key="selfcare.period.brand"></div><div class="field"><label>Light target</label><input type="number" data-key="selfcare.period.light"></div><div class="field"><label>Regular target</label><input type="number" data-key="selfcare.period.regular"></div><div class="field"><label>Super target</label><input type="number" data-key="selfcare.period.super"></div><div class="field"><label>Wipes target</label><input type="number" data-key="selfcare.period.wipes"></div><div class="field"><label>Home storage</label><input data-key="selfcare.period.home"></div><div class="field"><label>Period pouch</label><input data-key="selfcare.period.pouch"></div><div class="field full"><label>Comfort items / notes</label><textarea data-key="selfcare.period.comfort"></textarea></div></div><div class="hint"><strong>Bag reset:</strong> Light + Regular + Super â wipes â spare underwear/pouch if desired â comfort items â replace anything used.</div><div id="periodCare"></div><button class="smallbtn" data-add-record="periodSupply">â Add Period Supply</button></details>
+<details><summary>ð§³ Travel Self-Care â Detailed</summary><div id="travelCare"></div><button class="smallbtn" data-add-record="travelCare">â Start Travel Self-Care Plan</button><div class="hint"><strong>Pack:</strong> AM skincare â PM skincare â shower/body â hair/scalp â dental â period supplies â tools/accessories â check quantity â add missing items to Shopping â mark packed.</div></details>
+<details><summary>â ï¸ Running Low / Restock</summary><div id="selfcareLow"></div></details>
+<details><summary>ð§­ Walk Me Through Today</summary><div class="walkstep"><div class="num">1</div><div>Check todayâs schedule.</div></div><div class="walkstep"><div class="num">2</div><div>Complete AM skincare in order.</div></div><div class="walkstep"><div class="num">3</div><div>Do shower/body and hair/scalp only if scheduled.</div></div><div class="walkstep"><div class="num">4</div><div>Complete PM skincare.</div></div><div class="walkstep"><div class="num">5</div><div>Update low product status while using items.</div></div><div class="walkstep"><div class="num">6</div><div>Once weekly, send Running Low/Out items to Shopping.</div></div></details>
 </div></section>
-
 <section id="health" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>â¤ï¸ Health + Wellness</h2>
 <details open><summary>ð§­ Health Walkthroughs</summary>
 <div class="walkstep"><div class="num">1</div><div><strong>Quick check-in:</strong> who â mood(s) â sleep/energy/stress â symptoms/pain â save.</div></div>
@@ -208,22 +261,71 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div id="shoppingList"></div>
 </div></section>
 
-<section id="emergency" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð In Case of Emergency</h2>
-<div class="hint">Keep only what you are comfortable storing. Avoid passwords, full financial account numbers and unnecessary sensitive identifiers.</div>
-<details open><summary>â¡ Quick Emergency View</summary><div class="formgrid">
-<div class="field"><label>Emergency type</label><select data-key="emergency.type"><option></option><option>Fire</option><option>Severe Weather / Tornado</option><option>Power Outage</option><option>Medical Emergency</option><option>Can't Pick Up Kids</option><option>School Emergency</option><option>Car Breakdown / Stranded</option><option>Evacuation</option><option>Missing / Separated Family Member</option><option>Pet Emergency</option><option>Home Utility Issue</option><option>Safety Concern</option><option>Other</option></select></div>
-<div class="field"><label>Status</label><select data-key="emergency.status"><option>Not Started</option><option>In Progress</option><option>Help Contacted</option><option>Waiting</option><option>Resolved</option><option>Follow-Up Needed</option></select></div>
-<div class="field"><label>Who is affected?</label><select data-key="emergency.person"><option>Family / Household</option><option>Me</option><option>Tim</option><option>Nayleigh</option><option>Leslieann</option><option>Lukas</option><option>Brianna</option><option>Pet</option><option>Other</option></select></div>
-<div class="field"><label>Immediate priority</label><select data-key="emergency.priority"><option>Safety first</option><option>Contact help</option><option>Pickup / transportation</option><option>Evacuate</option><option>Utility shutoff</option><option>Other</option></select></div>
+<section id="emergency" class="page">
+<div class="topbar"><button class="back">â Home</button></div>
+<div class="card"><h2>ð In Case of Emergency</h2>
+<div class="alert"><strong>Quick rule:</strong> If there is immediate danger, get to safety and contact the appropriate emergency service first. This page organizes the household plan; it does not replace emergency services.</div>
+
+<details open><summary>â¡ Start Emergency Walkthrough</summary>
+<div class="formgrid">
+<div class="field"><label>Emergency type</label><select data-key="emergency.type"><option></option><option>Medical Emergency</option><option>Fire / Smoke</option><option>Severe Weather / Tornado</option><option>Power Outage</option><option>Water / Plumbing Emergency</option><option>Gas / Utility Concern</option><option>Can't Pick Up Child</option><option>School Emergency</option><option>Car Breakdown / Stranded</option><option>Vehicle Accident</option><option>Evacuation</option><option>Missing / Separated Family Member</option><option>Pet Emergency</option><option>Home Safety Concern</option><option>Other</option></select></div>
+<div class="field"><label>Who is affected?</label><select data-key="emergency.person"><option>Whole Household</option><option>Me</option><option>Tim</option><option>Nayleigh</option><option>Leslieann</option><option>Lukas</option><option>Brianna</option><option>Pet</option><option>Other</option></select></div>
+<div class="field"><label>Status</label><select data-key="emergency.status"><option>Not Started</option><option>In Progress</option><option>Help Contacted</option><option>Someone Is On The Way</option><option>Waiting</option><option>Safe / Stable</option><option>Resolved</option><option>Follow-Up Needed</option></select></div>
+<div class="field"><label>Immediate priority</label><select data-key="emergency.priority"><option>Get everyone safe</option><option>Call emergency services</option><option>Contact school / caregiver</option><option>Arrange pickup / transportation</option><option>Leave / evacuate</option><option>Contact utility / roadside help</option><option>Account for everyone</option><option>Other</option></select></div>
+<div class="field full"><label>Current location / where everyone is</label><textarea data-key="emergency.currentLocation"></textarea></div>
+<div class="field full"><label>What has already been done?</label><textarea data-key="emergency.done"></textarea></div>
+<div class="field full"><label>What still needs to happen?</label><textarea data-key="emergency.next"></textarea></div>
+</div>
+<div class="walkstep"><div class="num">1</div><div>Get away from immediate danger.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Contact the appropriate help.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Account for every household member and the pet.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Confirm pickup, transportation, meeting place, or destination.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Record what still needs follow-up after everyone is safe.</div></div>
+</details>
+
+<details><summary>ð¨âð©âð§âð¦ Household Emergency Profiles</summary>
+<div class="hint">Keep only useful emergency information here. Do not store passwords, Social Security numbers, or full financial account numbers.</div>
+<div class="formgrid">
 <div class="field"><label>Home address</label><input data-key="emergency.address"></div>
-<div class="field"><label>Meeting place</label><input data-key="emergency.meeting"></div>
-<div class="field full"><label>Primary emergency contacts</label><textarea data-key="emergency.contacts"></textarea></div>
-</div></details>
-<details><summary>ð§ Kids Emergency Profiles</summary><div id="emergencyKids"></div></details>
-<details><summary>ð  Home Emergency</summary><div class="formgrid"><div class="field"><label>Utility type</label><select data-key="emergency.utilityType"><option></option><option>Power</option><option>Water</option><option>Gas</option><option>Internet</option><option>Other</option></select></div><div class="field"><label>Issue type</label><input data-key="emergency.utilityIssue"></div><div class="field"><label>Shutoff / breaker location</label><input data-key="emergency.shutoff"></div><div class="field"><label>Company / emergency contact</label><input data-key="emergency.utilityContact"></div><div class="field full"><label>What to do first / what NOT to do</label><textarea data-key="emergency.homeSteps"></textarea></div><div class="field full"><label>Where emergency supplies are</label><textarea data-key="emergency.supplies"></textarea></div></div></details>
-<details><summary>ð¶ Pet Emergency</summary><textarea data-key="emergency.pet" placeholder="Vet â¢ feeding â¢ supplies â¢ crate/leash â¢ backup caregiverâ¦"></textarea></details>
-<details><summary>ð Vehicle / Travel Emergency</summary><div class="formgrid"><div class="field"><label>Vehicle issue</label><select data-key="emergency.vehicleIssue"><option></option><option>Breakdown</option><option>Flat Tire</option><option>Dead Battery</option><option>Accident</option><option>Locked Out</option><option>Out of Fuel</option><option>Weather Delay</option><option>Other</option></select></div><div class="field"><label>Current location</label><input data-key="emergency.vehicleLocation"></div><div class="field"><label>Roadside assistance</label><input data-key="emergency.roadside"></div><div class="field"><label>Emergency kit location</label><input data-key="emergency.carKit"></div><div class="field full"><label>Passengers / who to notify</label><textarea data-key="emergency.vehiclePeople"></textarea></div><div class="field full"><label>Plan / notes</label><textarea data-key="emergency.vehicle"></textarea></div></div></details>
-<details><summary>ðªï¸ Walk Me Through an Emergency</summary><div class="walkstep"><div class="num">1</div><div>Protect immediate safety and call emergency services when appropriate.</div></div><div class="walkstep"><div class="num">2</div><div>Use the household meeting/pickup plan.</div></div><div class="walkstep"><div class="num">3</div><div>Contact backup adults / schools / pet caregiver as needed.</div></div><div class="walkstep"><div class="num">4</div><div>Use Grab & Go / important-location notes.</div></div></details>
+<div class="field"><label>Primary meeting place</label><input data-key="emergency.meeting"></div>
+<div class="field"><label>Backup meeting place</label><input data-key="emergency.meetingBackup"></div>
+<div class="field"><label>Out-of-area contact</label><input data-key="emergency.outArea"></div>
+</div><div id="emergencyPeople"></div></details>
+
+<details><summary>ð Emergency + Backup Contacts</summary><div id="emergencyContacts"></div><button class="smallbtn" data-add-record="emergencyContact">â Add Emergency Contact</button></details>
+
+<details><summary>ð Child / School Pickup Emergency</summary><div class="formgrid">
+<div class="field"><label>Child</label><select data-key="emergency.pickup.child"><option></option><option>Nayleigh</option><option>Leslieann</option><option>Lukas</option><option>Brianna</option></select></div>
+<div class="field"><label>Situation</label><select data-key="emergency.pickup.reason"><option></option><option>I cannot pick up</option><option>Bus issue</option><option>School closing early</option><option>Child sick / needs pickup</option><option>Weather</option><option>Transportation problem</option><option>Other</option></select></div>
+<div class="field"><label>First backup person</label><input data-key="emergency.pickup.first"></div><div class="field"><label>Second backup person</label><input data-key="emergency.pickup.second"></div>
+<div class="field"><label>School contact</label><input data-key="emergency.pickup.schoolContact"></div><div class="field"><label>Pickup confirmed?</label><select data-key="emergency.pickup.confirmed"><option>No</option><option>Waiting</option><option>Yes</option></select></div>
+<div class="field full"><label>Special instructions</label><textarea data-key="emergency.pickup.instructions"></textarea></div></div>
+<div class="hint"><strong>Walkthrough:</strong> Child â what changed â first backup â second backup if needed â notify school â confirm transportation â confirm child accounted for.</div></details>
+
+<details><summary>ð  Home / Utility Emergency</summary><div class="formgrid">
+<div class="field"><label>Type</label><select data-key="emergency.home.type"><option></option><option>Power</option><option>Water Leak / Flooding</option><option>Plumbing</option><option>Gas Concern</option><option>Heating / Cooling</option><option>Fire / Smoke</option><option>Electrical</option><option>Lock / Security</option><option>Other</option></select></div>
+<div class="field"><label>Location</label><input data-key="emergency.home.location"></div><div class="field"><label>Main water shutoff</label><input data-key="emergency.home.water"></div><div class="field"><label>Breaker panel</label><input data-key="emergency.home.breaker"></div>
+<div class="field"><label>Fire extinguisher(s)</label><input data-key="emergency.home.extinguisher"></div><div class="field"><label>Emergency supplies</label><input data-key="emergency.home.supplies"></div>
+<div class="field"><label>Utility / repair contact</label><input data-key="emergency.home.contact"></div><div class="field"><label>Help status</label><select data-key="emergency.home.help"><option>Not contacted</option><option>Calling</option><option>Contacted</option><option>On the way</option></select></div>
+<div class="field full"><label>Household instructions / safe first steps</label><textarea data-key="emergency.home.steps"></textarea></div></div></details>
+
+<details><summary>ð Vehicle / Roadside Emergency</summary><div class="formgrid">
+<div class="field"><label>Problem</label><select data-key="emergency.vehicle.issue"><option></option><option>Breakdown</option><option>Flat Tire</option><option>Dead Battery</option><option>Accident</option><option>Locked Out</option><option>Out of Fuel</option><option>Overheating</option><option>Warning Light</option><option>Weather / Road Closure</option><option>Other</option></select></div>
+<div class="field"><label>Driver</label><select data-key="emergency.vehicle.driver"><option></option><option>Me</option><option>Tim</option><option>Other</option></select></div><div class="field"><label>Passengers</label><input data-key="emergency.vehicle.passengers"></div>
+<div class="field"><label>Current location</label><input data-key="emergency.vehicle.location"></div><div class="field"><label>Roadside assistance</label><input data-key="emergency.vehicle.roadside"></div><div class="field"><label>Tow/service status</label><select data-key="emergency.vehicle.tow"><option>Not contacted</option><option>Calling</option><option>Contacted</option><option>On the way</option></select></div>
+<div class="field"><label>Emergency kit location</label><input data-key="emergency.vehicle.kit"></div><div class="field"><label>Safe destination</label><input data-key="emergency.vehicle.destination"></div><div class="field full"><label>Who to notify / notes</label><textarea data-key="emergency.vehicle.notes"></textarea></div></div></details>
+
+<details><summary>ð¾ Pet Emergency</summary><div class="formgrid">
+<div class="field"><label>Pet name</label><input data-key="emergency.pet.name"></div><div class="field"><label>Problem</label><select data-key="emergency.pet.problem"><option></option><option>Injury</option><option>Illness / symptoms</option><option>Poison / ate something</option><option>Missing / escaped</option><option>Evacuation / transport</option><option>Other</option></select></div>
+<div class="field"><label>Regular veterinarian</label><input data-key="emergency.pet.vet"></div><div class="field"><label>Emergency veterinarian</label><input data-key="emergency.pet.emergencyVet"></div><div class="field"><label>Carrier / leash</label><input data-key="emergency.pet.carrier"></div><div class="field"><label>Food / supplies</label><input data-key="emergency.pet.supplies"></div><div class="field"><label>Backup caregiver</label><input data-key="emergency.pet.caregiver"></div><div class="field"><label>Transportation</label><input data-key="emergency.pet.transport"></div><div class="field full"><label>Care / feeding / medication notes</label><textarea data-key="emergency.pet.notes"></textarea></div></div></details>
+
+<details><summary>ð¨ Evacuation / Leave-Home Walkthrough</summary><div class="formgrid"><div class="field"><label>Reason</label><select data-key="emergency.evac.reason"><option></option><option>Fire</option><option>Severe Weather</option><option>Utility / Gas</option><option>Flooding</option><option>Safety Concern</option><option>Other</option></select></div><div class="field"><label>Destination</label><input data-key="emergency.evac.destination"></div><div class="field"><label>Primary route</label><input data-key="emergency.evac.route"></div><div class="field"><label>Backup route</label><input data-key="emergency.evac.backupRoute"></div></div>
+<label class="task"><input type="checkbox" data-emergency-check="people"> Everyone accounted for</label><label class="task"><input type="checkbox" data-emergency-check="pet"> Pet + leash/carrier</label><label class="task"><input type="checkbox" data-emergency-check="phones"> Phones + chargers</label><label class="task"><input type="checkbox" data-emergency-check="meds"> Needed medications / essential care items</label><label class="task"><input type="checkbox" data-emergency-check="wallet"> Wallet / keys / essential documents</label><label class="task"><input type="checkbox" data-emergency-check="water"> Water / immediate food needs</label><label class="task"><input type="checkbox" data-emergency-check="kids"> Kids' immediate comfort / care items</label><label class="task"><input type="checkbox" data-emergency-check="vehicle"> Vehicle / fuel / route checked</label><label class="task"><input type="checkbox" data-emergency-check="contacts"> Important contacts notified</label></details>
+
+<details><summary>ð Where Important Emergency Things Are</summary><div class="formgrid">
+<div class="field"><label>First aid</label><input data-key="emergency.where.firstaid"></div><div class="field"><label>Fire extinguishers</label><input data-key="emergency.where.fire"></div><div class="field"><label>Flashlights / batteries</label><input data-key="emergency.where.flashlights"></div><div class="field"><label>Emergency bags</label><input data-key="emergency.where.bags"></div><div class="field"><label>Spare keys</label><input data-key="emergency.where.keys"></div><div class="field"><label>Pet carrier / leash</label><input data-key="emergency.where.pet"></div><div class="field"><label>Important papers</label><input data-key="emergency.where.papers"></div><div class="field"><label>Vehicle emergency kit</label><input data-key="emergency.where.vehicle"></div></div></details>
+
+<details><summary>ð After Emergency / Follow-Up</summary><div class="formgrid"><div class="field"><label>Date</label><input type="date" data-key="emergency.followup.date"></div><div class="field"><label>Status</label><select data-key="emergency.followup.status"><option>Nothing needed</option><option>Follow-Up Needed</option><option>Scheduled</option><option>Waiting</option><option>Completed</option></select></div><div class="field full"><label>Calls / appointments / repairs / school follow-up</label><textarea data-key="emergency.followup.actions"></textarea></div><div class="field full"><label>Supplies used / need replacing</label><textarea data-key="emergency.followup.supplies"></textarea></div><div class="field full"><label>What should change in our plan?</label><textarea data-key="emergency.followup.plan"></textarea></div></div></details>
 </div></section>
 
 <section id="help" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>â How to Use My Life HQ</h2>
@@ -374,7 +476,7 @@ appliance:r=>`<div class="formgrid">${field('Item','name',r.name||'')}${field('C
 skin:r=>productForm(r,'Skincare',['Cleanser','Toner','Serum','Acne Treatment','Eye Care','Moisturizer','SPF','Mask','Exfoliant','Other']),
 body:r=>productForm(r,'Shower / Body',['Body Wash','Bar Soap','Exfoliant','Shave Product','Lotion','Deodorant','Foot Care','Tool / Accessory','Other']),
 hair:r=>productForm(r,'Hair / Scalp',['Shampoo','Conditioner','Scalp Treatment','Leave-In','Styling Product','Heat Protectant','Mask / Repair','Clarifying','Tool / Accessory','Other']),
-periodSupply:r=>`<div class="formgrid">${field('Product','name',r.name||'')}${field('Type / absorbency','type',r.type||'','select',false,selectOpts(['Tampax Light','Tampax Regular','Tampax Super','Wipes','Spare Underwear','Washable Pouch','Other'],r.type))}${field('Home target quantity','homeTarget',r.homeTarget||'')}${field('Home on hand','homeOnhand',r.homeOnhand||'')}${field('Purse / car target','carryTarget',r.carryTarget||'')}${field('Travel target','travelTarget',r.travelTarget||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Running Low','Out'],r.status||'Good'))}${field('Preferred store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
+periodSupply:r=>`<div class="formgrid">${field('Product','name',r.name||'')}${field('Type / absorbency','type',r.type||'','select',false,selectOpts(['Tampax Light','Tampax Regular','Tampax Super','Wipes','Spare Underwear','Washable Pouch','Other'],r.type))}${field('Home target quantity','homeTarget',r.homeTarget||'')}${field('Home on hand','homeOnhand',r.homeOnhand||'')}${field('Purse / car target','carryTarget',r.carryTarget||'')}${field('Travel target','travelTarget',r.travelTarget||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}${field('Preferred store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
 travelCare:r=>`<div class="formgrid">${field('Trip','name',r.name||'')}${field('Departure','depart',r.depart||'','date')}${field('Return','returnDate',r.returnDate||'','date')}${field('Travel type','kind',r.kind||'Road Trip','select',false,selectOpts(['Road Trip','Flying','Hotel','Visiting Family','Camping','Other'],r.kind||'Road Trip'))}${field('Routine level','routine',r.routine||'Normal','select',false,selectOpts(['Normal','Simplified','Bare Minimum'],r.routine||'Normal'))}${field('Period expected?','period',r.period||'Unknown','select',false,selectOpts(['Yes','No','Unknown'],r.period||'Unknown'))}${field('Skincare packing','skin',r.skin||'','textarea',true)}${field('Shower / body packing','body',r.body||'','textarea',true)}${field('Hair / scalp packing','hair',r.hair||'','textarea',true)}${field('Oral / other personal care','oral',r.oral||'','textarea',true)}${field('Period care','periodItems',r.periodItems||'','textarea',true)}${field('Keep accessible in car / overnight','accessible',r.accessible||'','textarea',true)}${field('Need to buy','buy',r.buy||'','textarea',true)}${field('Need to refill / decant','decant',r.decant||'','textarea',true)}${field('Home-from-trip reset','reset',r.reset||'','textarea',true)}</div>`,
 mood:r=>`<div class="formgrid">${field('Date','date',r.date||todayKey(),'date')}${field('Time','time',r.time||'','time')}${field('Intensity 1â10','intensity',r.intensity||'','number')}${field('Energy 1â5','energy',r.energy||'','number')}${field('Stress 1â5','stress',r.stress||'','number')}${field('Sleep quality','sleep',r.sleep||'','select',false,selectOpts(['Great','Good','Fair','Poor'],r.sleep))}<div class="field full"><label>Moods â choose more than one</label><div style="max-height:240px;overflow:auto">${checks('moods',moodOptions,r.moods||[])}</div></div>${field('What may have affected my mood?','trigger',r.trigger||'','textarea',true)}${field('What happened / what helped / what do I need?','notes',r.notes||'','textarea',true)}</div>`,
 symptom:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Date','date',r.date||todayKey(),'date')}${field('Start time','time',r.time||'','time')}${field('Severity 1â10','severity',r.severity||'','number')}${field('Onset','onset',r.onset||'Gradual','select',false,selectOpts(['Sudden','Gradual','Unknown'],r.onset||'Gradual'))}${field('Frequency','frequency',r.frequency||'','select',false,selectOpts(['Constant','Comes & Goes','Only with movement','Only at certain times','One-time','Other'],r.frequency))}${field('Change','change',r.change||'','select',false,selectOpts(['Improving','Same','Worsening','Gone','Came back'],r.change))}${field('Still happening?','active',r.active||'Yes','select',false,selectOpts(['Yes','No'],r.active||'Yes'))}<div class="field full"><label>Symptoms â choose more than one</label><div style="max-height:220px;overflow:auto">${checks('symptoms',symptomOptions,r.symptoms||[])}</div></div>${field('Body location','location',r.location||'','select',false,selectOpts(['Head','Face','Neck','Chest','Upper Back','Lower Back','Abdomen','Side / Flank','Arm','Hand','Hip','Leg','Foot','Other'],r.location))}${field('Side','side',r.side||'','select',false,selectOpts(['Left','Right','Both','Center','N/A'],r.side))}${field('What it feels like','feel',r.feel||'','textarea',true)}${field('Possible trigger','trigger',r.trigger||'','textarea',true)}${field('What made it worse / helped','help',r.help||'','textarea',true)}${field('What I tried','tried',r.tried||'','textarea',true)}${field('Follow-up needed?','followupNeeded',r.followupNeeded||'No','select',false,selectOpts(['No','Watch','Call / message provider','Appointment','Urgent evaluation'],r.followupNeeded||'No'))}${field('Follow-up / duration / notes','notes',r.notes||'','textarea',true)}</div>`,
@@ -382,12 +484,12 @@ migraine:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','sel
 period:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Start date','start',r.start||todayKey(),'date')}${field('End date','end',r.end||'','date')}${field('Cycle day','cycleDay',r.cycleDay||'')}${field('Flow','flow',r.flow||'Medium','select',false,selectOpts(['Spotting','Very Light','Light','Medium','Heavy','Very Heavy'],r.flow||'Medium'))}${field('Day status','dayStatus',r.dayStatus||'','select',false,selectOpts(['Starting','Ongoing','Ending','Ended'],r.dayStatus))}${field('Pain / cramps 0â10','pain',r.pain||'','number')}${field('Symptoms','symptoms',r.symptoms||'','textarea',true)}${field('Mood / energy','mood',r.mood||'','textarea',true)}${field('Pain location/type','painDetails',r.painDetails||'','textarea',true)}${field('What helped','help',r.help||'','textarea',true)}${field('Daily notes','notes',r.notes||'','textarea',true)}</div>`,
 appointment:r=>`<div class="formgrid">${field('Person(s)','person',r.person||'Me','select',false,selectOpts([...people,'Family / Multiple People'],r.person||'Me'))}${field('Appointment type','kind',r.kind||'','select',false,selectOpts(['Primary Care','Dental','Vision','Specialist','Therapy / Counseling','School','Activity / Sports','Hair / Beauty','Veterinary','Vehicle / Home Service','Other'],r.kind))}${field('Provider / place','provider',r.provider||'')}${field('Date','date',r.date||'','date')}${field('Start time','time',r.time||'','time')}${field('Expected duration','duration',r.duration||'')}${field('Address','address',r.address||'','textarea',true)}${field('Phone','phone',r.phone||'')}${field('Reason','reason',r.reason||'','textarea',true)}${field('Visit type','visitType',r.visitType||'','select',false,selectOpts(['New','Follow-Up','Annual / Routine','Other'],r.visitType))}${field('Confirmation / referral / forms','prep',r.prep||'','textarea',true)}${field('Questions / symptoms to discuss','questions',r.questions||'','textarea',true)}${field('What to bring / prep','bring',r.bring||'','textarea',true)}${field('Transportation / driver / leave time','transport',r.transport||'','textarea',true)}${field('Estimated cost / copay','cost',r.cost||'','number')}${field('Follow-up / instructions / next appointment','followup',r.followup||'','textarea',true)}</div>`,
 needsAppointment:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Appointment needed','kind',r.kind||'')}${field('Provider / type','provider',r.provider||'')}${field('Due by','due',r.due||'','date')}${field('Priority','priority',r.priority||'Normal','select',false,selectOpts(['Urgent','High','Normal','Low'],r.priority||'Normal'))}${field('Phone / contact','phone',r.phone||'')}${field('Reason / notes','notes',r.notes||'','textarea',true)}</div>`,
-med:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Type','kind',r.kind||'Medication','select',false,selectOpts(['Medication','Vitamin','Supplement','As-needed item','Other'],r.kind||'Medication'))}${field('Name','name',r.name||'')}${field('Brand / generic','brand',r.brand||'')}${field('Strength / concentration','strength',r.strength||'')}${field('Form','form',r.form||'','select',false,selectOpts(['Tablet','Capsule','Gummy','Liquid','Powder','Cream','Spray','Other'],r.form))}${field('Status','status',r.status||'Active','select',false,selectOpts(['Active','As Needed','Temporarily Taking','Paused','Stopped'],r.status||'Active'))}${field('Instructions from label / provider','instructions',r.instructions||'','textarea',true)}${field('Frequency','freq',r.freq||'Daily','select',false,selectOpts(['Daily','Twice Daily','Three Times Daily','Weekly','Certain Days','As Needed','Temporary Course','Custom'],r.freq||'Daily'))}${field('Days / times','schedule',r.schedule||'','textarea',true)}${field('Start date','start',r.start||'','date')}${field('End date','end',r.end||'','date')}${field('Purpose','purpose',r.purpose||'','textarea',true)}${field('Prescriber / pharmacy','provider',r.provider||'')}${field('Quantity / refills / next refill','refill',r.refill||'','textarea',true)}${field('Status on hand','stock',r.stock||'Good','select',false,selectOpts(['Plenty','Good','Running Low','Out'],r.stock||'Good'))}${field('Travel / emergency notes','travel',r.travel||'','textarea',true)}${field('Important warnings / storage / notes','notes',r.notes||'','textarea',true)}</div>`,
+med:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Type','kind',r.kind||'Medication','select',false,selectOpts(['Medication','Vitamin','Supplement','As-needed item','Other'],r.kind||'Medication'))}${field('Name','name',r.name||'')}${field('Brand / generic','brand',r.brand||'')}${field('Strength / concentration','strength',r.strength||'')}${field('Form','form',r.form||'','select',false,selectOpts(['Tablet','Capsule','Gummy','Liquid','Powder','Cream','Spray','Other'],r.form))}${field('Status','status',r.status||'Active','select',false,selectOpts(['Active','As Needed','Temporarily Taking','Paused','Stopped'],r.status||'Active'))}${field('Instructions from label / provider','instructions',r.instructions||'','textarea',true)}${field('Frequency','freq',r.freq||'Daily','select',false,selectOpts(['Daily','Twice Daily','Three Times Daily','Weekly','Certain Days','As Needed','Temporary Course','Custom'],r.freq||'Daily'))}${field('Days / times','schedule',r.schedule||'','textarea',true)}${field('Start date','start',r.start||'','date')}${field('End date','end',r.end||'','date')}${field('Purpose','purpose',r.purpose||'','textarea',true)}${field('Prescriber / pharmacy','provider',r.provider||'')}${field('Quantity / refills / next refill','refill',r.refill||'','textarea',true)}${field('Status on hand','stock',r.stock||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.stock||'Good'))}${field('Travel / emergency notes','travel',r.travel||'','textarea',true)}${field('Important warnings / storage / notes','notes',r.notes||'','textarea',true)}</div>`,
 dental:r=>`<div class="formgrid">${field('Person','person',r.person||'Me','select',false,selectOpts(people,r.person||'Me'))}${field('Type','kind',r.kind||'Dental','select',false,selectOpts(['Dental','Vision'],r.kind||'Dental'))}${field('Provider / office','provider',r.provider||'')}${field('Phone / location','contact',r.contact||'')}${field('Last exam / cleaning','last',r.last||'','date')}${field('Next due','next',r.next||'','date')}${field('Normal frequency','freq',r.freq||'')}${field('Current concerns','concerns',r.concerns||'','textarea',true)}${field('Treatment / glasses / contacts / orthodontics','treatment',r.treatment||'','textarea',true)}${field('Estimated cost / follow-up','cost',r.cost||'','textarea',true)}${field('Home care / supplies reference','homecare',r.homecare||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
 journal:r=>`<div class="formgrid">${field('Date','date',r.date||todayKey(),'date')}${field('Time','time',r.time||'','time')}${field('Title','title',r.title||'')}${field('Entry type','kind',r.kind||'Daily Journal','select',false,selectOpts(['Daily Journal','Check-In','Brain Dump','Gratitude','Vent','Memory','Health','Family','Work','Personal','Other'],r.kind||'Daily Journal'))}${field('Who / what this is about','about',r.about||'')}${field('Overall day 1â5','dayRating',r.dayRating||'','number')}${field('Energy 1â5','energy',r.energy||'','number')}${field('Stress 1â5','stress',r.stress||'','number')}${field('Moods','moods',r.moods||'','textarea',true)}${field('What happened?','happened',r.happened||'','textarea',true)}${field('What went well?','well',r.well||'','textarea',true)}${field('What was difficult?','hard',r.hard||'','textarea',true)}${field('What am I grateful for?','grateful',r.grateful||'','textarea',true)}${field('What do I need right now?','need',r.need||'','textarea',true)}${field('Tomorrow / follow-up','tomorrow',r.tomorrow||'','textarea',true)}${field('Free write','free',r.free||'','textarea',true)}</div>`
 };
 function foodLibraryForm(r,label,tags){return `<div class="formgrid">${field(label+' name','name',r.name||'')}${field('Tag / type','tag',r.tag||'','select',false,selectOpts(tags,r.tag))}${field('Who likes it','likes',r.likes||'','textarea',true)}${field('Prep time','prep',r.prep||'')}${field('Ingredients / items','ingredients',r.ingredients||'','textarea',true)}${field('Serving / portion notes','portion',r.portion||'','textarea',true)}${field('Prep ahead / storage','storage',r.storage||'','textarea',true)}${field('School / travel friendly?','travel',r.travel||'')}${field('Estimated cost','cost',r.cost||'','number')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`}
-function productForm(r,label,types){return `<div class="formgrid">${field('Product','name',r.name||'')}${field('Product type','type',r.type||'','select',false,selectOpts(types,r.type))}${field('Purpose','purpose',r.purpose||'')}${field('AM / PM / Shower','when',r.when||'')}${field('Days used','days',r.days||'')}${field('Frequency','freq',r.freq||'')}${field('Order / step','order',r.order||'')}${field('Amount','amount',r.amount||'')}${field('Where to apply','area',r.area||'')}${field('Wet / damp / dry','condition',r.condition||'')}${field('Rinse / leave-on / wait time','directions',r.directions||'','textarea',true)}${field('How to use / caution / do not combine','how',r.how||'','textarea',true)}${field('Opened date','opened',r.opened||'','date')}${field('Backups on hand','backup',r.backup||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Running Low','Out'],r.status||'Good'))}${field('Usual store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Budget alternative','budgetAlt',r.budgetAlt||'')}${field('Preferred upgrade','upgrade',r.upgrade||'')}${field('Travel version','travel',r.travel||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`}
+function productForm(r,label,types){return `<div class="formgrid">${field('Product','name',r.name||'')}${field('Product type','type',r.type||'','select',false,selectOpts(types,r.type))}${field('Purpose','purpose',r.purpose||'')}${field('AM / PM / Shower','when',r.when||'')}${field('Days used','days',r.days||'')}${field('Frequency','freq',r.freq||'')}${field('Order / step','order',r.order||'')}${field('Amount','amount',r.amount||'')}${field('Where to apply','area',r.area||'')}${field('Wet / damp / dry','condition',r.condition||'')}${field('Rinse / leave-on / wait time','directions',r.directions||'','textarea',true)}${field('How to use / caution / do not combine','how',r.how||'','textarea',true)}${field('Opened date','opened',r.opened||'','date')}${field('Backups on hand','backup',r.backup||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}${field('Usual store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Budget alternative','budgetAlt',r.budgetAlt||'')}${field('Preferred upgrade','upgrade',r.upgrade||'')}${field('Travel version','travel',r.travel||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`}
 
 let modalType='',modalId=null;
 function showForm(type,obj={}){modalType=type;modalId=obj.id||null;document.getElementById('modalTitle').textContent=(modalId?'Edit ':'Add ')+type.replace(/([A-Z])/g,' $1');document.getElementById('modalBody').innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}</form>`;document.getElementById('modal').style.display='block'}
@@ -422,8 +524,9 @@ function kidProfileHTML(k){
  <details><summary>ð Gifts</summary><div class="hint">This is the same gift record shown under Family â Gifts by Person.</div><div>${gifts.map(g=>recordCard(g.occasion||'Gift idea',`${g.item||''} â¢ ${g.status||''}`,actionBtns('gift',g.id))).join('')||'<div class="small">No gift ideas yet.</div>'}</div><button class="smallbtn" onclick="showGift('${k}')">â Add Gift Idea</button></details>
  </div>`;
 }
-formBuilders.kidToiletry=r=>`<div class="formgrid">${field('Child','person',r.person||kids[0],'select',false,selectOpts(kids,r.person||kids[0]))}${field('Category','category',r.category||'Bath / Shower','select',false,selectOpts(['Bath / Shower','Oral Care','Hair Care','Skin / Body Care','Period Care','Travel Toiletries','Other'],r.category||'Bath / Shower'))}${field('Item / product','item',r.item||'')}${field('Brand','brand',r.brand||'')}${field('Preferred type / scent / size','size',r.size||'')}${field('Backup / substitute','sub',r.sub||'')}${field('Quantity to keep','target',r.target||'')}${field('Quantity on hand','onhand',r.onhand||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Running Low','Out'],r.status||'Good'))}${field('Usual store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Travel quantity / notes','travel',r.travel||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
+formBuilders.kidToiletry=r=>`<div class="formgrid">${field('Child','person',r.person||kids[0],'select',false,selectOpts(kids,r.person||kids[0]))}${field('Category','category',r.category||'Bath / Shower','select',false,selectOpts(['Bath / Shower','Oral Care','Hair Care','Skin / Body Care','Period Care','Travel Toiletries','Other'],r.category||'Bath / Shower'))}${field('Item / product','item',r.item||'')}${field('Brand','brand',r.brand||'')}${field('Preferred type / scent / size','size',r.size||'')}${field('Backup / substitute','sub',r.sub||'')}${field('Quantity to keep','target',r.target||'')}${field('Quantity on hand','onhand',r.onhand||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}${field('Usual store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Travel quantity / notes','travel',r.travel||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
 
+formBuilders.emergencyContact=r=>`<div class="formgrid">${field('Name','name',r.name||'')}${field('Relationship / role','role',r.role||'')}${field('Primary phone','phone',r.phone||'')}${field('Backup phone','backupPhone',r.backupPhone||'')}${field('Can pick up kids?','kids',r.kids||'No','select',false,selectOpts(['No','Yes','Only certain children'],r.kids||'No'))}${field('Can help with pet?','pet',r.pet||'No','select',false,selectOpts(['No','Yes'],r.pet||'No'))}${field('Priority','priority',r.priority||'First','select',false,selectOpts(['First','Second','Third','Other'],r.priority||'First'))}${field('Availability / distance','availability',r.availability||'')}${field('Who / what they can help with','help',r.help||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
 formBuilders.workAdmin=r=>`<div class="formgrid">${field('Type','kind',r.kind||'Report','select',false,selectOpts(['Invoice','Order','Report','Inspection / QVI','IVMR / MMR','BCSA','Fuel','Other'],r.kind||'Report'))}${field('Title / item','title',r.title||'')}${field('Due date','due',r.due||'','date')}${field('Status','status',r.status||'Open','select',false,selectOpts(['Open','Waiting','Submitted','Completed','Archived'],r.status||'Open'))}${field('Vendor / system / location','where',r.where||'')}${field('Amount / cost','amount',r.amount||'','number')}${field('Reference / confirmation','reference',r.reference||'')}${field('Follow-up date','followup',r.followup||'','date')}${field('Detailed notes / steps','notes',r.notes||'','textarea',true)}</div>`;
 formBuilders.gift=r=>`<div class="formgrid">${field('Person','person',r.person||kids[0],'select',false,selectOpts([...people,'Other Person'],r.person||kids[0]))}${field('Occasion','occasion',r.occasion||'Anytime','select',false,selectOpts(['Birthday','Christmas','Anytime','Experience','Stocking Stuffer','Need','Other'],r.occasion||'Anytime'))}${field('Gift / idea','item',r.item||'')}${field('Priority','priority',r.priority||'Normal','select',false,selectOpts(['High','Normal','Low'],r.priority||'Normal'))}${field('Estimated price','price',r.price||'','number')}${field('Store / website','store',r.store||'')}${field('Size / color / style','details',r.details||'')}${field('Status','status',r.status||'Idea','select',false,selectOpts(['Idea','Planning','Bought','Arrived','Hidden','Wrapped','Given'],r.status||'Idea'))}${field('Budget','budget',r.budget||'','number')}${field('Actual spent','spent',r.spent||'','number')}${field('Where hidden / stored','hidden',r.hidden||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
 function showGift(person){showForm('gift',{person})}
@@ -449,101 +552,205 @@ function renderMoney(){
  const summary=document.getElementById('moneySummary');if(summary){const income=rec('income').reduce((s,r)=>s+money(r.actual||r.expected),0),bills=rec('bill').filter(r=>r.status!=='Paid').reduce((s,r)=>s+money(r.amount),0),exp=rec('expense').filter(r=>r.status!=='Completed'&&r.status!=='Paid / Purchased').reduce((s,r)=>s+Math.max(0,money(r.expected)-money(r.funded)),0);summary.textContent=`Income tracked: ${fmt(income)} â¢ Unpaid bills: ${fmt(bills)} â¢ Unfunded upcoming expenses: ${fmt(exp)}`}}
 function cleanFocusForDay(d){return {Sunday:'Weekly Reset + planning',Monday:'Bathrooms + laundry reset',Tuesday:'Light reset + Money Day',Wednesday:'Kitchen',Thursday:'Living areas',Friday:'Floors + catch-up',Saturday:'Errands + one project'}[d]}
 function renderCleaning(){
- const box=document.getElementById('cleaningPlan');if(!box)return;
+ const today=days[new Date().getDay()];
  const plan={
- Monday:[
-  ['Bathrooms â mirror','Windex + glass microfiber','2â3 min'],
-  ['Bathrooms â sink/counter/faucet','Bathroom cleaner + microfiber','5 min'],
-  ['Bathrooms â toilet exterior + bowl','Toilet cleaner + disinfecting cloth','5â7 min'],
-  ['Bathrooms â tub/shower','Scrubbing Bubbles + scrubber','8â10 min'],
-  ['Bathrooms â trash + towels + toiletries','Empty / replace / restock','5 min'],
-  ['Laundry â sort/load/start','Laundry products','5 min'],
-  ['Laundry â fold + put away','Finish the cycle completely','10â15 min'],
-  ['Floors â bathroom/laundry','Sweep/vacuum then mop','8â10 min']
- ],
- Tuesday:[
-  ['Quick kitchen reset','Counters + sink + obvious dishes','10 min'],
-  ['Bathroom quick check','Sink/toilet/trash only','5 min'],
-  ['Living room pickup','Clutter + blankets + surfaces','10 min'],
-  ['Laundry catch-up','One unfinished load only','10 min'],
-  ['Money-day surface reset','Clear desk/table before Money review','5 min']
- ],
- Wednesday:[
-  ['Kitchen â clear counters','Put food/items away','5 min'],
-  ['Kitchen â counters/backsplash','Clean Freak/Mr Clean + microfiber','5â8 min'],
-  ['Kitchen â stovetop','Degrease/wipe','5 min'],
-  ['Kitchen â microwave','Inside + outside','5 min'],
-  ['Kitchen â appliance fronts/handles','Microfiber + appropriate cleaner','5 min'],
-  ['Kitchen â sink/faucet','Dawn / cleaner + rinse','5 min'],
-  ['Kitchen â table/chairs','Wipe + reset','5 min'],
-  ['Kitchen â trash','Empty + new liner','3 min'],
-  ['Kitchen â floors','Sweep/vacuum then mop','10â15 min']
- ],
- Thursday:[
-  ['Living area â pickup','Toys/clutter/blankets','10 min'],
-  ['Living area â dust','Shelves/TV stand/tables','8 min'],
-  ['Living area â glass/mirrors','Glass cleaner','5 min'],
-  ['Living area â high-touch','Handles/remotes/switches','5 min'],
-  ['Living area â couch','Vacuum crumbs / reset cushions','8 min'],
-  ['Living area â floor','Vacuum / sweep','10 min']
- ],
- Friday:[
-  ['Whole-house floor pickup','Clear path for floors','10 min'],
-  ['Vacuum bedrooms/halls/living','Vacuum','15â20 min'],
-  ['Kitchen/bathroom hard floors','Sweep/vacuum','10 min'],
-  ['Mop hard floors','Mr Clean all-purpose if appropriate','15 min'],
-  ['Catch-up','Choose ONE missed weekly task','10â20 min']
- ],
- Saturday:[
-  ['Laundry catch-up','Finish all open loads','15 min'],
-  ['Kids rooms quick reset','Trash/clothes/floor/surfaces','10 min each'],
-  ['Kitchen quick reset','Counters/sink/dishes/floor check','10 min'],
-  ['One project only','Choose a monthly/seasonal item','20â30 min']
- ],
- Sunday:[
-  ['Kitchen reset','Counters/sink/dishes/trash','10 min'],
-  ['Living room reset','Pickup/blankets/surfaces','10 min'],
-  ['Bathroom quick check','Toilet/sink/trash','5 min'],
-  ['Laundry check','Prep for Monday','5 min'],
-  ['Trash/recycling','Empty what needs it','5 min'],
-  ['Restock cleaning tote','Refill cleaners/cloths/bags','5 min'],
-  ['Plan next week','Review monthly/seasonal tasks','10 min']
- ]};
+  Monday:{
+   focus:'Bathrooms + Laundry Reset',
+   items:[
+    ['ð´','Bathroom clutter/trash','Clear floor/counter, empty trash','Trash bag','5 min'],
+    ['ð´','Toilet','Bowl first, then lid/seat/base/exterior','Toilet cleaner + disinfecting cloth','7 min'],
+    ['ð¡','Sink + faucet + counter','Remove items, spray, wipe, polish faucet','Bathroom cleaner + microfiber','5 min'],
+    ['ð¡','Mirror','Top to bottom, dry edges','Windex + glass microfiber','3 min'],
+    ['ð¡','Tub / shower','Spray, let sit, scrub problem areas, rinse','Scrubbing Bubbles + scrubber','10 min'],
+    ['ð¢','Restock bathroom','TP, towels, toiletries, wipes','Restock supplies','5 min'],
+    ['ð´','Laundry â active load','Sort â wash â dry â fold â put away','Laundry products + baskets','15 min active'],
+    ['ð¡','Laundry area reset','Lint trap, bottles away, wipe machines','Microfiber','5 min'],
+    ['ð¡','Bathroom/laundry floors','Pick up â vacuum/sweep â mop','Vacuum/broom + mop','10 min']
+   ]
+  },
+  Tuesday:{
+   focus:'Light Reset + Money Day',
+   items:[
+    ['ð´','Kitchen reset','Dishes, sink, counters','Dawn/Clean Freak + microfiber','10 min'],
+    ['ð¡','Bathroom quick check','Sink, toilet, trash','Bathroom cleaner','5 min'],
+    ['ð¡','Living room pickup','Clutter, blankets, pillows','Basket','10 min'],
+    ['ð¡','Laundry catch-up','Finish one open load completely','Laundry products','10 min active'],
+    ['ð¢','Desk / money area','Clear papers and reset surface','Basket/microfiber','5 min']
+   ]
+  },
+  Wednesday:{
+   focus:'Detailed Kitchen',
+   items:[
+    ['ð´','Dishes + sink','Finish dishes, scrub sink, polish faucet','Dawn Powerwash + scrubber','10 min'],
+    ['ð´','Counters','Clear completely, spray/wipe, return only needed items','Clean Freak/Mr Clean + microfiber','8 min'],
+    ['ð¡','Backsplash','Spot clean grease/splashes','All-purpose cleaner','5 min'],
+    ['ð¡','Stovetop','Remove loose crumbs, degrease, wipe dry','Degreaser + cloth','7 min'],
+    ['ð¡','Microwave','Inside, plate, door, handle','Damp cloth + cleaner','5 min'],
+    ['ð¡','Appliance fronts/handles','Fridge, dishwasher, oven','Appropriate cleaner + microfiber','6 min'],
+    ['ð¡','Table + chairs','Wipe top, edges, chair seats','All-purpose cleaner','5 min'],
+    ['ð´','Trash','Empty, new liner, wipe lid if needed','Trash bag + disinfectant','4 min'],
+    ['ð¡','Floor','Pick up â sweep/vacuum â mop','Vacuum/broom + mop','15 min'],
+    ['ð¢','One small kitchen detail','Choose cabinet front, drawer, or shelf','As needed','10 min']
+   ]
+  },
+  Thursday:{
+   focus:'Living Areas',
+   items:[
+    ['ð´','Pickup','Trash, toys, cups, random items','Basket + trash bag','10 min'],
+    ['ð¡','Soft items','Fold blankets, fluff pillows','Hands','3 min'],
+    ['ð¡','Dust surfaces','TV stand, shelves, tables','Microfiber','8 min'],
+    ['ð¡','Glass / mirrors','Clean visible marks','Windex + glass cloth','5 min'],
+    ['ð¡','High touch','Remotes, switches, handles','Disinfecting wipe','5 min'],
+    ['ð¡','Couch','Crumbs, cushions, quick vacuum','Vacuum attachment','8 min'],
+    ['ð¡','Floor','Vacuum/sweep thoroughly','Vacuum/broom','12 min']
+   ]
+  },
+  Friday:{
+   focus:'Floors + Weekly Catch-Up',
+   items:[
+    ['ð´','Floor pickup','Get clothes/toys/items off floors','Basket','10 min'],
+    ['ð´','Vacuum main areas','Bedrooms, halls, living room','Vacuum','20 min'],
+    ['ð¡','Hard floors','Kitchen/bath/laundry sweep or vacuum','Vacuum/broom','10 min'],
+    ['ð¡','Mop','Work from cleanest to dirtiest areas','Mop + appropriate cleaner','15 min'],
+    ['ð¡','Catch-up','Choose ONE missed weekly cleaning task','As needed','15 min'],
+    ['ð¢','Spot clean baseboards','One small zone only','Microfiber','10 min']
+   ]
+  },
+  Saturday:{
+   focus:'Catch-Up + One Project',
+   items:[
+    ['ð´','Laundry','Finish open loads and put away','Laundry products','15 min active'],
+    ['ð¡','Kids rooms quick reset','Trash â clothes â surfaces â floor','Basket + trash bag','10 min each'],
+    ['ð¡','Kitchen quick reset','Dishes, counters, sink, floor check','Kitchen cleaners','10 min'],
+    ['ð¡','One monthly/seasonal task','Pick ONE from lists below','As needed','20â30 min'],
+    ['ð¢','Donation / declutter bag','Add obvious items only','Bag/box','10 min']
+   ]
+  },
+  Sunday:{
+   focus:'Weekly Reset',
+   items:[
+    ['ð´','Kitchen reset','Dishes, sink, counters, trash','Kitchen cleaners','10 min'],
+    ['ð¡','Living room reset','Pickup, blankets, surfaces','Basket/microfiber','10 min'],
+    ['ð¡','Bathrooms quick check','Toilet, sink, trash, towels','Bathroom cleaner','8 min'],
+    ['ð¡','Laundry prep','Collect/sort and prep Monday load','Baskets','7 min'],
+    ['ð´','Trash/recycling','Empty anything full','Bags','7 min'],
+    ['ð¡','Cleaning tote','Refill cloths, bags, cleaners','Cleaning supplies','5 min'],
+    ['ð¡','Plan cleaning week','Review monthly/seasonal and choose only due tasks','My Life HQ','10 min']
+   ]
+  }
+ };
  const monthly=[
-  'Deep clean refrigerator shelves/drawers',
-  'Clean oven / range hood',
-  'Wash baseboards in one zone',
-  'Wash doors / trim / fingerprints',
-  'Deep clean shower/tub',
-  'Wash shower curtain / liner',
-  'Vacuum under furniture',
-  'Wash bedding / mattress refresh',
-  'Declutter one cabinet / drawer / closet'
+  ['Kitchen','Deep clean refrigerator shelves/drawers','Remove food â wipe shelves/drawers â toss expired â return grouped'],
+  ['Kitchen','Oven / range hood','Degrease safely and wipe'],
+  ['Bathroom','Deep clean shower/tub','Doors/curtain, tracks, fixtures, grout/problem areas'],
+  ['Bathroom','Wash shower curtain / liner','Follow material instructions'],
+  ['Bedrooms','Bedding + mattress refresh','Wash bedding, vacuum/rotate mattress if appropriate'],
+  ['Living areas','Vacuum under furniture','Move only what is safe/manageable'],
+  ['Whole house','Baseboards â one zone','Dust first, damp wipe second'],
+  ['Whole house','Doors / trim / fingerprints','Focus on high-touch marks'],
+  ['Organization','One cabinet/drawer/closet','Empty â sort â wipe â return â donate/trash']
  ];
  const seasonal=[
-  'Wash windows/screens',
-  'Deep clean vents/fans',
-  'Check smoke/CO detector cleaning',
-  'Seasonal closet/clothing rotation',
-  'Deep clean pantry/freezer',
-  'Outdoor entry/patio reset',
-  'Wash walls/high-touch areas'
+  ['Windows','Windows + screens','Inside/out where practical'],
+  ['Airflow','Fans + vents','Dust/vacuum reachable areas'],
+  ['Safety','Smoke/CO detector exterior cleaning','Clean only per manufacturer guidance'],
+  ['Closets','Seasonal clothing rotation','Store out-of-season, pull next season'],
+  ['Kitchen','Pantry/freezer reset','Inventory, toss expired, wipe, organize'],
+  ['Outdoor','Entry / patio reset','Sweep, wash, remove clutter'],
+  ['Walls','High-touch wall spot cleaning','Test cleaner first']
  ];
  const annual=[
-  'Whole-home deep-clean review',
-  'Curtains / blinds deep clean',
-  'Behind/under major appliances',
-  'Garage/storage deep reset',
-  'Replace worn cleaning tools',
-  'Review cleaning products and routines'
+  ['Whole Home','Full deep-clean review','Identify areas that never get reached'],
+  ['Windows','Curtains / blinds deep clean','Follow fabric/material care'],
+  ['Appliances','Behind/under major appliances','Only move appliances safely'],
+  ['Storage','Garage / storage deep reset','Keep / donate / trash / relocate'],
+  ['Tools','Replace worn cleaning tools','Sponges, brushes, mop heads, cloths'],
+  ['System','Review products + routines','Remove duplicate products/tasks']
  ];
- box.innerHTML=Object.entries(plan).map(([d,items])=>`<details ${d===days[new Date().getDay()]?'open':''}><summary>${d} â ${cleanFocusForDay(d)}</summary><div class="hint">Work top to bottom. Stop when the listed focus is complete; extras can go in Today â Cleaning Notes.</div>${items.map(([task,how,time])=>`<label class="task"><input type="checkbox" data-clean="${weekStartKey()}|${d}|${esc(task)}"><span><strong>${esc(task)}</strong><br><span class="small">${esc(how)} â¢ ${esc(time)}</span></span></label>`).join('')}</details>`).join('')+
- `<details><summary>ðï¸ Monthly Cleaning</summary>${monthly.map(x=>`<label class="task"><input type="checkbox" data-clean-month="${monthKey()}|${esc(x)}"> ${esc(x)}</label>`).join('')}</details>`+
- `<details><summary>ð Seasonal / Quarterly</summary>${seasonal.map(x=>`<label class="task"><input type="checkbox" data-clean-season="${new Date().getFullYear()}-${Math.floor(new Date().getMonth()/3)+1}|${esc(x)}"> ${esc(x)}</label>`).join('')}</details>`+
- `<details><summary>ð Annual</summary>${annual.map(x=>`<label class="task"><input type="checkbox" data-clean-annual="${new Date().getFullYear()}|${esc(x)}"> ${esc(x)}</label>`).join('')}</details>`;
- box.querySelectorAll('[data-clean],[data-clean-month],[data-clean-season],[data-clean-annual]').forEach(c=>{
-  const k=c.dataset.clean||c.dataset.cleanMonth||c.dataset.cleanSeason||c.dataset.cleanAnnual;
-  c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}
+ const rooms={
+  'Kitchen':[
+   '1. Put food away and clear counters.',
+   '2. Load/wash dishes.',
+   '3. Spray counters/backsplash and let cleaner work briefly.',
+   '4. Wipe stovetop and microwave.',
+   '5. Wipe appliance fronts and handles.',
+   '6. Scrub sink and faucet.',
+   '7. Wipe table/chairs.',
+   '8. Empty trash.',
+   '9. Sweep/vacuum.',
+   '10. Mop and let floor dry.'
+  ],
+  'Bathroom':[
+   '1. Remove clothes/trash and clear counters.',
+   '2. Apply toilet/tub cleaners first so they can sit.',
+   '3. Clean mirror.',
+   '4. Clean sink/counter/faucet.',
+   '5. Finish toilet top-to-bottom.',
+   '6. Scrub/rinse tub or shower.',
+   '7. Replace towels and restock supplies.',
+   '8. Empty trash.',
+   '9. Sweep/vacuum.',
+   '10. Mop.'
+  ],
+  'Bedroom':[
+   '1. Trash and dishes out.',
+   '2. Clothes into hamper / closet.',
+   '3. Make bed.',
+   '4. Clear nightstands/surfaces.',
+   '5. Dust.',
+   '6. Put away loose items.',
+   '7. Vacuum/sweep.',
+   '8. Change bedding when scheduled.'
+  ],
+  'Living Room':[
+   '1. Trash/dishes out.',
+   '2. Put away random items.',
+   '3. Fold blankets / reset pillows.',
+   '4. Dust tables/TV stand/shelves.',
+   '5. Clean glass/high-touch spots.',
+   '6. Vacuum couch if needed.',
+   '7. Vacuum/sweep floor.'
+  ],
+  'Laundry':[
+   '1. Gather and sort.',
+   '2. Start highest-priority load.',
+   '3. Move load promptly.',
+   '4. Fold/hang.',
+   '5. Put away completely.',
+   '6. Clean lint trap.',
+   '7. Wipe machine tops/fronts.',
+   '8. Sweep/vacuum floor.',
+   '9. Restock laundry products.'
+  ],
+  'Kids Room':[
+   '1. Trash/dishes.',
+   '2. Dirty clothes to hamper.',
+   '3. Make bed.',
+   '4. Toys/books into homes.',
+   '5. School/activity items together.',
+   '6. Clear surfaces.',
+   '7. Floor pickup.',
+   '8. Vacuum/sweep.'
+  ]
+ };
+ const box=document.getElementById('cleaningPlan');
+ if(box){
+  const info=plan[today];
+  box.innerHTML=`<div class="alert"><strong>${today}: ${info.focus}</strong><br><span class="small">Do ð´ first. Stop after ð¡ if energy/time is low.</span></div>`+
+   info.items.map(([pri,task,how,tool,time])=>`<label class="task"><input type="checkbox" data-clean="${weekStartKey()}|${today}|${esc(task)}"><span><strong>${pri} ${esc(task)}</strong><br><span class="small">${esc(how)} â¢ ${esc(tool)} â¢ ${esc(time)}</span></span></label>`).join('');
+ }
+ const roomBox=document.getElementById('roomCleaning');
+ if(roomBox)roomBox.innerHTML=Object.entries(rooms).map(([room,steps])=>`<details><summary>${room}</summary>${steps.map(s=>`<div class="walkstep"><div class="num">${s.split('.')[0]}</div><div>${esc(s.replace(/^\d+\.\s*/,''))}</div></div>`).join('')}</details>`).join('');
+ const mBox=document.getElementById('cleanMonthly');
+ if(mBox)mBox.innerHTML=monthly.map(([zone,task,how])=>`<label class="task"><input type="checkbox" data-clean-month="${monthKey()}|${esc(task)}"><span><strong>${esc(zone)} â ${esc(task)}</strong><br><span class="small">${esc(how)}</span></span></label>`).join('');
+ const sBox=document.getElementById('cleanSeasonal');
+ if(sBox)sBox.innerHTML=seasonal.map(([zone,task,how])=>`<label class="task"><input type="checkbox" data-clean-season="${new Date().getFullYear()}-${Math.floor(new Date().getMonth()/3)+1}|${esc(task)}"><span><strong>${esc(zone)} â ${esc(task)}</strong><br><span class="small">${esc(how)}</span></span></label>`).join('');
+ const aBox=document.getElementById('cleanAnnual');
+ if(aBox)aBox.innerHTML=annual.map(([zone,task,how])=>`<label class="task"><input type="checkbox" data-clean-annual="${new Date().getFullYear()}|${esc(task)}"><span><strong>${esc(zone)} â ${esc(task)}</strong><br><span class="small">${esc(how)}</span></span></label>`).join('');
+ document.querySelectorAll('[data-clean],[data-clean-month],[data-clean-season],[data-clean-annual],[data-clean-night]').forEach(c=>{
+  const k=c.dataset.clean||c.dataset.cleanMonth||c.dataset.cleanSeason||c.dataset.cleanAnnual||(todayKey()+'|night|'+c.dataset.cleanNight);
+  c.checked=!!state.daily[k];
+  c.onchange=()=>{state.daily[k]=c.checked;save()}
  });
 }
 function renderHome(){renderSimple('repair','repairList',r=>`${r.area||'Home'} â ${r.item||r.task||'Repair / Maintenance'}`,r=>`${r.status||''} â¢ ${r.due||''} â¢ ${r.priority||''}`,r=>r.needed?`<button class="smallbtn" onclick="addShopping('${esc(r.needed).replace(/'/g,"&#39;")}','Household','','','Soon','','Home repair')">Add Parts/Supplies to Shopping</button>`:'');renderSimple('restock','restockList',r=>r.item||'Household item',r=>`${r.category||''} â¢ ${r.status||''} â¢ On hand ${r.onhand||''}`,r=>['Running Low','Out'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc((r.item||'Item')).replace(/'/g,"&#39;")}','Household','${esc(r.target||'')}','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Household Restock')">ð Add to Master Shopping</button>`:'');renderSimple('project','projectList',r=>`${r.room||'Room'} â ${r.name||'Project'}`,r=>`${r.status||''} â¢ Budget ${fmt(r.budget)} â¢ ${r.complete||''}`,r=>r.supplies?`<button class="smallbtn" onclick="addShopping('${esc(r.supplies).replace(/'/g,"&#39;")}','Household','','','Soon','','Home project')">Add Supplies to Shopping</button>`:'');renderStorage();renderSimple('appliance','applianceList',r=>r.name||'Appliance',r=>`${r.brand||''} ${r.model||''} â¢ ${r.status||''} â¢ Warranty ${r.warrantyEnd||''}`)}
@@ -551,25 +758,19 @@ document.getElementById('restockAllBtn').onclick=()=>rec('restock').filter(r=>['
 function renderStorage(){const box=document.getElementById('storageList');if(!box)return;const q=(document.getElementById('storageSearch')?.value||'').toLowerCase();const arr=rec('storage').filter(r=>!q||JSON.stringify(r).toLowerCase().includes(q));box.innerHTML=arr.map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc(r.name||'Storage')}</strong><div class="small">${esc((r.location||'')+' â '+(r.exact||'')+' â¢ '+(r.container||''))}</div></div>${actionBtns('storage',r.id)}</div><div class="small">${esc(r.contents||'')}</div></div>`).join('')||'<div class="small">Nothing found.</div>'}
 document.getElementById('storageSearch').oninput=renderStorage;
 function renderSelfCare(){
- const todayName=days[new Date().getDay()];
- const todayBox=document.getElementById('selfcareToday');
- if(todayBox){
-  const pieces=[
-   ['ð Morning',getPath('selfcare.schedule.'+todayName+'.morning')],
-   ['ð¿ Shower / Hair',getPath('selfcare.schedule.'+todayName+'.shower')],
-   ['ð Evening',getPath('selfcare.schedule.'+todayName+'.evening')],
-   ['â¨ Extras',getPath('selfcare.schedule.'+todayName+'.extras')]
-  ].filter(x=>x[1]);
-  todayBox.innerHTML=pieces.length?pieces.map(([a,b])=>`<div class="alert"><strong>${a}</strong><br>${esc(b)}</div>`).join(''):'<div class="small">Nothing scheduled yet for '+todayName+'. Fill in Weekly Self-Care Schedule below.</div>';
- }
- const box=document.getElementById('selfcareWeek');if(box){box.innerHTML=days.map(d=>`<div class="weekday"><strong>${d}</strong><div class="formgrid"><input data-selfday="${d}.morning" placeholder="Morning routine"><input data-selfday="${d}.shower" placeholder="Shower / hair"><input data-selfday="${d}.evening" placeholder="Evening routine"><input data-selfday="${d}.extras" placeholder="Extras / treatment"></div></div>`).join('');box.querySelectorAll('[data-selfday]').forEach(e=>{const k='selfcare.schedule.'+e.dataset.selfday;e.value=getPath(k);e.oninput=()=>setPath(k,e.value)})}
- renderSimple('skin','skinProducts',r=>r.name||'Skincare product',r=>`${r.type||''} â¢ ${r.when||''} â¢ ${r.days||''} â¢ ${r.status||''}`);
- renderSimple('body','bodyProducts',r=>r.name||'Body product',r=>`${r.type||''} â¢ ${r.days||''} â¢ ${r.status||''}`);
- renderSimple('hair','hairProducts',r=>r.name||'Hair product',r=>`${r.type||''} â¢ ${r.days||''} â¢ ${r.status||''}`);
- renderSimple('periodSupply','periodCare',r=>r.name||r.type||'Period supply',r=>`${r.type||''} â¢ ${r.status||''} â¢ Home ${r.homeOnhand||''}`);
+ const d=days[new Date().getDay()], schedule=getPath('selfcare.schedule.'+d)||{}, today=document.getElementById('selfcareToday');
+ if(today){const blocks=[['ð Morning',schedule.morning],['ð¿ Shower / Body',schedule.shower],['ð Hair / Scalp',schedule.hair],['ð Evening',schedule.evening],['â¨ Extras',schedule.extras]].filter(x=>x[1]);today.innerHTML=`<div class="alert"><strong>${d}</strong></div>`+(blocks.length?blocks.map(([x,y])=>`<label class="task"><input type="checkbox" data-self-today="${todayKey()}|${x}"><span><strong>${x}</strong><br>${esc(y)}</span></label>`).join(''):'<div class="small">Nothing scheduled yet. Fill in MondayâSunday Schedule.</div>')}
+ const week=document.getElementById('selfcareWeek');if(week)week.innerHTML=days.slice(1).concat(days[0]).map(day=>`<details ${day===d?'open':''}><summary>${day}</summary><div class="formgrid"><div class="field"><label>ð Morning</label><textarea data-key="selfcare.schedule.${day}.morning"></textarea></div><div class="field"><label>ð¿ Shower / Body</label><textarea data-key="selfcare.schedule.${day}.shower"></textarea></div><div class="field"><label>ð Hair / Scalp</label><textarea data-key="selfcare.schedule.${day}.hair"></textarea></div><div class="field"><label>ð Evening</label><textarea data-key="selfcare.schedule.${day}.evening"></textarea></div><div class="field full"><label>â¨ Extras</label><textarea data-key="selfcare.schedule.${day}.extras"></textarea></div></div></details>`).join('');
+ const extra=r=>['Running Low','Out'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc(r.name||r.type||'Item').replace(/'/g,"&#39;")}','Personal / Self-Care','','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Self-Care')">ð Add to Shopping</button>`:'';
+ renderSimple('skin','skinProducts',r=>r.name||'Skincare product',r=>`${r.type||''} â¢ ${r.when||''} â¢ ${r.days||''} â¢ ${r.status||''}`,extra);
+ renderSimple('body','bodyProducts',r=>r.name||'Body product',r=>`${r.type||''} â¢ ${r.days||''} â¢ ${r.status||''}`,extra);
+ renderSimple('hair','hairProducts',r=>r.name||'Hair product',r=>`${r.type||''} â¢ ${r.days||''} â¢ ${r.status||''}`,extra);
+ renderSimple('periodSupply','periodCare',r=>r.name||r.type||'Period supply',r=>`${r.type||''} â¢ ${r.status||''} â¢ Home ${r.homeOnhand||''}`,extra);
  renderSimple('travelCare','travelCare',r=>r.name||'Travel Self-Care',r=>`${r.depart||''} â ${r.returnDate||''} â¢ ${r.routine||''}`);
- const low=[...rec('skin'),...rec('body'),...rec('hair'),...rec('periodSupply')].filter(r=>['Running Low','Out'].includes(r.status));const l=document.getElementById('selfcareLow');if(l)l.innerHTML=low.map(r=>`<div class="record"><strong>${esc(r.name||r.type||'Item')}</strong><div class="small">${esc(r.status)} â¢ ${esc(r.store||'')}</div><button class="smallbtn" onclick="addShopping('${esc((r.name||r.type||'Item')).replace(/'/g,"&#39;")}','Personal / Self-Care','','${esc(r.store||'').replace(/'/g,"&#39;")}','Need Now','${esc(r.price||'')}','Self-Care')">Add to Shopping</button></div>`).join('')||'<div class="small">Nothing running low.</div>'}
-document.getElementById('selfcareLowAll').onclick=()=>[...rec('skin'),...rec('body'),...rec('hair'),...rec('periodSupply')].filter(r=>['Running Low','Out'].includes(r.status)).forEach(r=>addShopping(r.name||r.type||'Item','Personal / Self-Care','',r.store||'','Need Now',r.price||'','Self-Care'));
+ const low=[...rec('skin'),...rec('body'),...rec('hair'),...rec('periodSupply')].filter(r=>['Getting Low','Running Low','Out','Ordered'].includes(r.status)), l=document.getElementById('selfcareLow');if(l)l.innerHTML=low.length?low.map(r=>`<div class="record"><strong>${esc(r.name||r.type||'Item')}</strong><div class="small">${esc(r.status||'')} â¢ ${esc(r.store||'')}</div>${extra(r)}</div>`).join(''):'<div class="small">Nothing is marked low right now.</div>';
+ document.querySelectorAll('[data-self-today]').forEach(c=>{c.checked=!!state.daily[c.dataset.selfToday];c.onchange=()=>{state.daily[c.dataset.selfToday]=c.checked;save()}});
+ bindFields()
+}
 function renderHealth(){renderSimple('mood','moodTracker',r=>`${r.date||''} â ${(r.moods||[]).slice(0,3).join(', ')||'Mood check'}`,r=>`Intensity ${r.intensity||''} â¢ Energy ${r.energy||''} â¢ Stress ${r.stress||''}`);renderSimple('symptom','symptomList',r=>`${r.person||''} â ${(r.symptoms||[]).join(', ')||'Symptoms'}`,r=>`${r.date||''} â¢ Severity ${r.severity||''} â¢ ${r.active==='Yes'?'Active':'Ended'}`);renderSimple('migraine','migraineList',r=>`${r.person||''} â Migraine ${r.severity||''}/10`,r=>`${r.date||''} ${r.start||''} â¢ Worst ${r.worst||''}`);renderSimple('period','periodList',r=>`${r.person||''} â Period`,r=>`${r.start||''} â ${r.end||'Active'} â¢ ${r.flow||''} â¢ Pain ${r.pain||''}`);{
  const box=document.getElementById('appointmentList');
  if(box){
