@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.5 Full Kids Profiles Restored - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.6 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v8.5 - Full Kids Profiles Restored</div>
+<div class="alert"><strong>Current App Version:</strong> v8.6 - Cleaning + Sunday Review + Meal Add-to-Day + Spending</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -220,15 +220,35 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Schedule Inbox</summary><div class="hint">Temporary holding place for things that involve a date/time but are not properly planned yet.</div><div id="scheduleInbox"></div><button class="smallbtn" data-add-record="schedule">Add Schedule Item</button><button class="smallbtn" data-process="schedule">Process Schedule Inbox</button></details>
 <details><summary>This Week</summary><div id="weekDays"></div></details>
 <details open><summary>Sunday Review + Carry Forward</summary>
-<div class="hint"><strong>Unfinished Weekly Walkthrough tasks show here automatically.</strong> Send one task - or all unfinished tasks - straight to Carry Forward without retyping it.</div>
-<div id="sundayCarryTasks"></div>
-<button class="smallbtn" id="sendAllWeeklyCarry">Send ALL Unfinished to Carry Forward</button>
+<div class="hint"><strong>Use this once on Sunday.</strong> Close the current week, move unfinished items forward, and set up the next week.</div>
+<details open><summary>1. Finish the Current Week</summary>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.inbox"> Review To-Do Inbox / Brain Dump</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.schedule"> Review appointments, school events, deadlines</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.work"> Review unfinished Work items</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.home"> Review Cleaning/Home items</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.money"> Review Money / spending / bills</label>
+</details>
+<details><summary>2. Carry Forward</summary>
+<div class="hint">Write or paste unfinished items here, then use your regular Carry Forward area to move them into the new week.</div>
+<div class="field"><label>Items to carry forward</label><textarea data-key="week.sunday.carry"></textarea></div>
+</details>
+<details><summary>3. Build Next Week</summary>
 <div class="formgrid">
-<div class="field"><label>What went well?</label><textarea data-key="week.sunday.wentWell"></textarea></div>
-<div class="field"><label>What did not get done?</label><textarea data-key="week.sunday.notDone"></textarea></div>
-<div class="field"><label>Needs attention next week</label><textarea data-key="week.sunday.next"></textarea></div>
-<div class="field"><label>Intentionally dropping</label><textarea data-key="week.sunday.drop"></textarea></div>
-</div></details>
+<div class="field full"><label>Top priorities next week</label><textarea data-key="week.sunday.nextPriorities"></textarea></div>
+<div class="field full"><label>Appointments / school / deadlines</label><textarea data-key="week.sunday.nextSchedule"></textarea></div>
+<div class="field full"><label>Work focus</label><textarea data-key="week.sunday.nextWork"></textarea></div>
+<div class="field full"><label>Meals / groceries to plan</label><textarea data-key="week.sunday.nextMeals"></textarea></div>
+<div class="field full"><label>Cleaning / home focus</label><textarea data-key="week.sunday.nextHome"></textarea></div>
+</div>
+</details>
+<details><summary>4. Final Sunday Reset</summary>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.bags"> Bags/backpacks/work items ready</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.clothes"> Clothes/laundry checked</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.food"> Breakfast/lunch/snacks ready enough</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.calendar"> Calendar checked one last time</label>
+<label class="task"><input type="checkbox" data-key-check="week.sunday.top3"> Monday Top 3 chosen</label>
+</details>
+</details>
 <details><summary>Start This Week</summary><div class="walkstep"><div class="num">1</div><div>Check calendar and appointments.</div></div><div class="walkstep"><div class="num">2</div><div>Process To-Do + Schedule Inboxes.</div></div><div class="walkstep"><div class="num">3</div><div>Check kids, family, work, bills, meals and home.</div></div><div class="walkstep"><div class="num">4</div><div>Choose Top 5 priorities.</div></div></details>
 </div></section>
 
@@ -650,13 +670,26 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping -> Groceries.</div><div id="mealWeek"></div></details>
-<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Meal Plan</strong> on any recipe, breakfast, lunch, or snack. Choose the day and meal slot, then save.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">Add Meal / Recipe</button></details>
+<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Day</strong> on any saved dinner/recipe, breakfast, lunch, or snack. Choose Monday-Sunday and it goes straight to that day.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">Add Meal / Recipe</button></details>
 <details><summary> Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
 <details><summary> Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">Add Lunch</button></details>
 <details><summary> Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
 </div></section>
 
 <section id="money" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#70d47b" stroke="#2f7f3b" stroke-width="3"/><text x="32" y="43" text-anchor="middle" font-family="Arial" font-size="31" font-weight="700" fill="#fff">$</text></svg>Money Command Center</h2><div id="moneySummary" class="alert"></div>
+<details open><summary>Daily / Weekly Spending Tracker</summary>
+<div class="hint"><strong>Enter purchases as they happen.</strong> The current week totals automatically below.</div>
+<div class="formgrid">
+<div class="field"><label>Week starting</label><input type="date" id="spendWeekStart"></div>
+<div class="field"><label>Category filter</label><select id="spendCategoryFilter"><option>All</option><option>Groceries</option><option>Gas</option><option>Household</option><option>Kids</option><option>Self / Personal</option><option>Eating Out</option><option>Pets</option><option>Bills</option><option>Work</option><option>Misc</option><option>Other</option></select></div>
+</div>
+<div class="quickgrid">
+<div class="card"><h3>This Week Total</h3><div id="weeklySpendTotal"></div></div>
+<div class="card"><h3>Today Total</h3><div id="todaySpendTotal"></div></div>
+</div>
+<div id="weeklySpendList"></div>
+<button class="smallbtn" data-add-record="spendingEntry">Add Spending Entry</button>
+</details>
 <details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">Add Bill</button></details>
 <details><summary>Income + Pay</summary><div id="incomeList"></div><button class="smallbtn" data-add-record="income">Add Paycheck / Income</button></details>
 
@@ -1639,7 +1672,10 @@ document.addEventListener('click',e=>{
  }
 })
 
-function bindFields(){document.querySelectorAll('[data-key]').forEach(el=>{el.value=getPath(el.dataset.key);el.oninput=()=>setPath(el.dataset.key,el.value);el.onchange=()=>setPath(el.dataset.key,el.value)})}
+function bindFields(){
+ document.querySelectorAll('[data-key]').forEach(el=>{el.value=getPath(el.dataset.key);el.oninput=()=>setPath(el.dataset.key,el.value);el.onchange=()=>setPath(el.dataset.key,el.value)});
+ document.querySelectorAll('[data-key-check]').forEach(el=>{el.checked=getPath(el.dataset.keyCheck)==='1';el.onchange=()=>setPath(el.dataset.keyCheck,el.checked?'1':'')});
+}
 function bindDaily(){const k=todayKey();document.querySelectorAll('[data-daily]').forEach(c=>{const key=k+'|'+c.dataset.daily;c.checked=!!state.daily[key];c.onchange=()=>{state.daily[key]=c.checked;save()}})}
 function recordCard(title,meta,buttons=''){return `<div class="record"><div class="recordhead"><div><strong>${esc(title)}</strong>${meta?`<div class="small">${esc(meta)}</div>`:''}</div>${buttons}</div></div>`}
 function deleteRec(type,id){state.records[type]=(rec(type)).filter(x=>x.id!==id);save();renderAll()}
@@ -1933,6 +1969,17 @@ ${field('Payroll status','status',r.status||'Not Started','select',false,selectO
 ${field('Correction type','followupType',r.followupType||'','select',false,selectOpts(['','Hours','Rate','Run Pay','Wait Time','PTO','Bonus','Deduction','Other'],r.followupType))}${field('Notes','notes',r.notes||'','textarea',true)}
 </div>`;
 
+formBuilders.spendingEntry=r=>`<div class="formgrid">
+${field('Date','date',r.date||todayKey(),'date')}
+${field('Category','category',r.category||'Groceries','select',false,selectOpts(['Groceries','Gas','Household','Kids','Self / Personal','Eating Out','Pets','Bills','Work','Misc','Other'],r.category||'Groceries'))}
+${field('Merchant / store','merchant',r.merchant||'')}
+${field('Item / description','item',r.item||'')}
+${field('Amount','amount',r.amount||'','number')}
+${field('Payment method','paymentMethod',r.paymentMethod||'Debit','select',false,selectOpts(['Debit','Credit Card','Cash','Apple Pay / Digital','Bank Draft','Other'],r.paymentMethod||'Debit'))}
+${field('Need or want','needWant',r.needWant||'Need','select',false,selectOpts(['Need','Want','Mixed','Not Sure'],r.needWant||'Need'))}
+${field('Budget / envelope','budget',r.budget||'')}
+${field('Notes','notes',r.notes||'','textarea',true)}
+</div>`;
 formBuilders.myWorkHours=r=>`<div class="formgrid">
 ${field('Date','date',r.date||todayKey(),'date')}${field('Day','day',r.day||'','select',false,selectOpts(['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],r.day))}
 ${field('Work type','type',r.type||'Regular Work','select',false,selectOpts(['Regular Work','After-Hours','Payroll','Settlement','Declines','Dispatch / Run Issue','Driver Issue','Tractor / Maintenance','Report / Admin','Invoice / Ordering','Wait Time','Other'],r.type||'Regular Work'))}
@@ -2163,17 +2210,48 @@ const board=document.getElementById('workRunBoard');if(board){const sh=document.
  renderSimple('workMaintenance','workMaintenance',r=>`${r.unit||'Unit'} \u2014 ${r.kind||'Maintenance'}`,r=>`${r.severity||''} \u2022 ${r.status||''} \u2022 ${r.date||''}`);
  renderSimple('workCompliance','workCompliance',r=>`${r.kind||'Compliance'} \u2014 ${r.unit||''}`,r=>`${r.result||''} \u2022 Due ${r.due||''} \u2022 ${r.status||''}`);
  renderSimple('workAdmin','workAdmin',r=>r.title||r.kind||'Work item',r=>`${r.kind||''} \u2022 ${r.status||''} \u2022 ${r.due||''}`);renderSimple('workTask','workRecurring',r=>r.title||'Task',r=>`${r.freq||''} \u2022 ${r.area||''}`);renderSimple('driver','workDrivers',r=>r.name||'Driver',r=>`${r.shift||''} \u2022 ${r.run||''} \u2022 ${r.status||''} \u2022 Tractor ${r.tractor||'\u2014'}`);renderSimple('tractor','workTractors',r=>r.unit||'Tractor',r=>`${r.shift||''} \u2022 ${r.run||''} \u2022 ${r.status||''} \u2022 Due ${r.due||r.nextServiceDate||''}`);renderSimple('workPay','workPay',r=>`${r.kind||'Pay item'} \u2014 ${r.date||''}`,r=>`${r.hours||''} hrs \u2022 Expected ${fmt(r.expected)} \u2022 Actual ${fmt(r.actual)}`)}
+
+function addLibraryItemDirectToDay(item,defaultSlot){
+ const day=prompt('Add to which day?\\nMonday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday');
+ if(!day)return;
+ const map={monday:'Monday',tuesday:'Tuesday',wednesday:'Wednesday',thursday:'Thursday',friday:'Friday',saturday:'Saturday',sunday:'Sunday'};
+ const chosen=map[day.trim().toLowerCase()];
+ if(!chosen){alert('Please enter a day Monday through Sunday.');return}
+ const key='meal.'+chosen+'.'+defaultSlot;
+ const current=getPath(key)||'';
+ if(current){
+   const append=confirm('Something is already planned there. Press OK to add this item too, or Cancel to replace it.');
+   setPath(key,append?current+' / '+item:item);
+ }else setPath(key,item);
+ renderMeals();bindFields();
+}
 function renderMeals(){const box=document.getElementById('mealWeek');if(box){box.innerHTML=days.map(d=>{const p='meal.'+d+'.';return `<details><summary>${d}</summary><div class="formgrid"><div class="field"><label>Breakfast</label><input data-meal="${p}breakfast"></div><div class="field"><label>Lunch</label><input data-meal="${p}lunch"></div><div class="field"><label>Dinner</label><input data-meal="${p}dinner"></div><div class="field"><label>Side / vegetable</label><input data-meal="${p}side"></div><div class="field"><label>Kids alternative</label><input data-meal="${p}kids"></div><div class="field"><label>Snacks</label><input data-meal="${p}snacks"></div><div class="field full"><label>Prep / thaw / crockpot</label><textarea data-meal="${p}prep"></textarea></div><div class="field full"><label>Need to Buy</label><textarea data-meal="${p}buy"></textarea><button class="smallbtn" data-mealshop="${d}">Add to Master Shopping</button></div><div class="field full"><label>Notes</label><textarea data-meal="${p}notes"></textarea></div></div></details>`}).join('');box.querySelectorAll('[data-meal]').forEach(e=>{e.value=getPath(e.dataset.meal);e.oninput=()=>setPath(e.dataset.meal,e.value)});box.querySelectorAll('[data-mealshop]').forEach(b=>b.onclick=()=>{const d=b.dataset.mealshop,v=getPath('meal.'+d+'.buy');if(v.trim())addShopping(v,'Groceries','','','Soon','','Meal plan \u2014 '+d)})}
   renderSimple('recipe','recipeList',
  r=>(r.favorite==='Favorite'?'':'')+(r.name||'Recipe'),
  r=>`${r.category||''} \u2022 ${r.method||''}`,
  r=>`<div class="rowbuttons">
- <button class="smallbtn" onclick="addLibraryToMealPlan('${esc((r.name||'Recipe')).replace(/'/g,"&#39;")}','Dinner')">Add to Day</button>
+ <button class="smallbtn" data-library-add-day="recipe" data-id="${r.id}" data-slot="Dinner">Add to Day</button>
  <button class="smallbtn" onclick="addShopping('${esc((r.ingredients||'').replace(/'/g,"&#39;"))}','Groceries','','','Soon','','Recipe: ${esc(r.name||'')}')">Add Ingredients to Shopping</button>
  </div>`);
- renderSimple('breakfast','breakfastList',r=>r.name||'Breakfast',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" onclick="addLibraryToMealPlan('${esc((r.name||'Breakfast')).replace(/'/g,"&#39;")}','Breakfast')">Add to Day</button>`);
- renderSimple('lunch','lunchList',r=>r.name||'Lunch',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" onclick="addLibraryToMealPlan('${esc((r.name||'Lunch')).replace(/'/g,"&#39;")}','Lunch')">Add to Day</button>`);
- renderSimple('snack','snackList',r=>r.name||'Snack',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" onclick="addLibraryToMealPlan('${esc((r.name||'Snack')).replace(/'/g,"&#39;")}','Snacks')">Add to Day</button>`)
+ renderSimple('breakfast','breakfastList',r=>r.name||'Breakfast',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" data-library-add-day="breakfast" data-id="${r.id}" data-slot="Breakfast">Add to Day</button>`);
+ renderSimple('lunch','lunchList',r=>r.name||'Lunch',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" data-library-add-day="lunch" data-id="${r.id}" data-slot="Lunch">Add to Day</button>`);
+ renderSimple('snack','snackList',r=>r.name||'Snack',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" data-library-add-day="snack" data-id="${r.id}" data-slot="Snacks">Add to Day</button>`)
+
+
+ const mealsPage=document.getElementById('meals');
+ if(mealsPage&&!mealsPage.dataset.libraryDayBound){
+   mealsPage.dataset.libraryDayBound='1';
+   mealsPage.addEventListener('click',e=>{
+     const b=e.target.closest('[data-library-add-day]');
+     if(!b)return;
+     e.preventDefault();
+     const type=b.dataset.libraryAddDay,id=b.dataset.id,slot=b.dataset.slot||'Dinner';
+     const row=rec(type).find(x=>String(x.id)===String(id));
+     if(!row)return;
+     const item=row.name||row.title||row.item||'Item';
+     addLibraryToMealPlan(item,slot);
+   });
+ }
 }
 function renderMoney(){
  const wc=document.getElementById('weeklySpendCategoryFilter')?.value||'All';
@@ -2212,7 +2290,28 @@ function renderMoney(){
  renderSimple('expense','expenseList',r=>r.name||'Upcoming Expense',r=>`${r.due||''} \u2022 ${fmt(r.expected)} \u2022 ${r.status||''} \u2022 ${r.funding||''}`);
  renderSimple('monthReview','monthlyReview',r=>r.month||'Monthly Review',r=>`Income ${fmt(r.actualIncome)} \u2022 Bills ${fmt(r.billsPaid)} \u2022 Spending ${fmt(r.spending)}`);
  const summary=document.getElementById('moneySummary');if(summary){const income=rec('income').reduce((s,r)=>s+money(r.actual||r.expected),0),bills=rec('bill').filter(r=>r.status!=='Paid').reduce((s,r)=>s+money(r.amount),0),exp=rec('expense').filter(r=>r.status!=='Completed'&&r.status!=='Paid / Purchased').reduce((s,r)=>s+Math.max(0,money(r.expected)-money(r.funded)),0);summary.textContent=`Income tracked: ${fmt(income)} \u2022 Unpaid bills: ${fmt(bills)} \u2022 Unfunded upcoming expenses: ${fmt(exp)}`}}
-function cleanFocusForDay(d){return {Sunday:'Weekly Reset + planning',Monday:'Bathrooms + laundry reset',Tuesday:'Light reset + Money Day',Wednesday:'Kitchen',Thursday:'Living areas',Friday:'Floors + catch-up',Saturday:'Errands + one project'}[d]}
+function cleanFocusForDay(d){return {Sunday:'Weekly Reset + planning',Monday:'Bathrooms + laundry reset',Tuesday:'Light reset + Money Day',Wednesday:'Kitchen',Thursday:'Living areas',Friday:'Floors + catch-up',Saturday:'Errands + one project'}[d]
+ const sws=document.getElementById('spendWeekStart');
+ if(sws&&!sws.value)sws.value=weekStartKey();
+ const weekStart=sws?.value||weekStartKey();
+ const wd=new Date(weekStart+'T00:00:00');const we=new Date(wd);we.setDate(we.getDate()+6);
+ const cat=document.getElementById('spendCategoryFilter')?.value||'All';
+ const allSpend=rec('spendingEntry');
+ const rows=allSpend.filter(r=>{
+   if(!r.date)return false;
+   const d=new Date(r.date+'T00:00:00');
+   const inWeek=d>=wd&&d<=we;
+   return inWeek&&(cat==='All'||r.category===cat);
+ });
+ const weekTotal=rows.reduce((a,r)=>a+(+r.amount||0),0);
+ const todayTotal=allSpend.filter(r=>r.date===todayKey()).reduce((a,r)=>a+(+r.amount||0),0);
+ const wt=document.getElementById('weeklySpendTotal');if(wt)wt.innerHTML=`<strong>${fmt(weekTotal)}</strong><div class="small">${rows.length} entries</div>`;
+ const tt=document.getElementById('todaySpendTotal');if(tt)tt.innerHTML=`<strong>${fmt(todayTotal)}</strong><div class="small">${todayKey()}</div>`;
+ const list=document.getElementById('weeklySpendList');
+ if(list)list.innerHTML=rows.sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(r=>recordCard(`${r.date||''} - ${r.merchant||r.item||r.category||'Spending'}`,`${r.category||''} - ${fmt(r.amount)} - ${r.paymentMethod||''}`,actionBtns('spendingEntry',r.id))).join('')||'<div class="small">No spending entries for this week.</div>';
+ if(sws)sws.onchange=renderMoney;
+ const cf=document.getElementById('spendCategoryFilter');if(cf)cf.onchange=renderMoney;
+}
 function renderCleaning(){
  const beddingItems=[
   ['primary','Primary Bed / Sheets'],['kid1','Kid Bed 1 / Sheets'],['kid2','Kid Bed 2 / Sheets'],['kid3','Kid Bed 3 / Sheets'],['kid4','Kid Bed 4 / Sheets'],
@@ -2985,7 +3084,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=8.5-'+Date.now();
+   location.href='./?v=8.6-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
