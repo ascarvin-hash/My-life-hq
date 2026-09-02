@@ -1,4 +1,4 @@
-const CACHE='my-life-hq-v8-3';
+const CACHE='my-life-hq-v8-4';
 const CORE=['./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));

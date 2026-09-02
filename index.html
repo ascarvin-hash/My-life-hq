@@ -63,10 +63,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 .kid-accordion>summary{font-size:18px;padding:15px 14px;background:var(--soft);color:var(--accent)}
 .kid-accordion-body{padding:4px 10px 12px}
 .kid-accordion .panel{border:0;margin:0;padding:0}
+
+.kid-static{margin:12px 0;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+.kid-static>summary{font-size:19px;padding:16px;background:var(--soft);color:var(--accent);font-weight:800}
+.kid-static-body{padding:8px 12px 14px}
+.kid-static .panel{border:0;margin:0;padding:0}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.3 Fresh Update Fix - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.4 Kids Names Restored - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -95,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v8.3 - Fresh Update Fix</div>
+<div class="alert"><strong>Current App Version:</strong> v8.4 - Kids Names Restored</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -230,8 +235,23 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <section id="kids" class="page">
 <div class="topbar"><button class="back"><- Home</button></div>
 <div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="23" cy="22" r="10" fill="#ffd7b5"/><circle cx="43" cy="24" r="9" fill="#ffd7b5"/><path d="M12 56c1-14 8-21 18-21s17 7 18 21" fill="#82c7ff" stroke="#555" stroke-width="3"/><path d="M32 56c1-12 6-18 14-18s13 6 14 18" fill="#ff9ec4" stroke="#555" stroke-width="3"/></svg>Kids + School</h2>
-<div class="hint"><strong>Kids + School</strong><br>Each child is now an expandable section. Tap the child's name to open it. No separate links or tabs are required.</div>
-<div id="kidsDirectory"></div>
+<div class="hint"><strong>Kids + School</strong><br>Tap a child's name to open their profile. The names are built directly into the page so they always remain visible.</div>
+<details class="kid-static" open>
+<summary>Nayleigh</summary>
+<div id="kidBody0" class="kid-static-body"><div class="small">Loading Nayleigh's profile...</div></div>
+</details>
+<details class="kid-static" >
+<summary>Leslieann</summary>
+<div id="kidBody1" class="kid-static-body"><div class="small">Loading Leslieann's profile...</div></div>
+</details>
+<details class="kid-static" >
+<summary>Lukas</summary>
+<div id="kidBody2" class="kid-static-body"><div class="small">Loading Lukas's profile...</div></div>
+</details>
+<details class="kid-static" >
+<summary>Brianna</summary>
+<div id="kidBody3" class="kid-static-body"><div class="small">Loading Brianna's profile...</div></div>
+</details>
 </div>
 </section>
 
@@ -1785,28 +1805,26 @@ formBuilders.workAdmin=r=>`<div class="formgrid">${field('Type','kind',r.kind||'
 formBuilders.gift=r=>`<div class="formgrid">${field('Person','person',r.person||kids[0],'select',false,selectOpts([...people,'Other Person'],r.person||kids[0]))}${field('Occasion','occasion',r.occasion||'Anytime','select',false,selectOpts(['Birthday','Christmas','Anytime','Experience','Stocking Stuffer','Need','Other'],r.occasion||'Anytime'))}${field('Gift / idea','item',r.item||'')}${field('Priority','priority',r.priority||'Normal','select',false,selectOpts(['High','Normal','Low'],r.priority||'Normal'))}${field('Estimated price','price',r.price||'','number')}${field('Store / website','store',r.store||'')}${field('Size / color / style','details',r.details||'')}${field('Status','status',r.status||'Idea','select',false,selectOpts(['Idea','Planning','Bought','Arrived','Hidden','Wrapped','Given'],r.status||'Idea'))}${field('Budget','budget',r.budget||'','number')}${field('Actual spent','spent',r.spent||'','number')}${field('Where hidden / stored','hidden',r.hidden||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
 function showGift(person){showForm('gift',{person})}
 
-function kidAccordionHTML(k,i){
- const full=kidProfileHTML(k);
- const inner=full
-   .replace(/^<div class="panel"><h2>.*?<\/h2>/s,'')
-   .replace(/<\/div>\s*$/s,'');
- return `<details class="kid-accordion" ${i===0?'open':''}>
-   <summary>${esc(k)}</summary>
-   <div class="kid-accordion-body">${inner}</div>
- </details>`;
-}
 function renderKids(){
- const directory=document.getElementById('kidsDirectory');
- if(!directory)return;
- directory.innerHTML=kids.map((k,i)=>kidAccordionHTML(k,i)).join('');
- directory.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
+ kids.forEach((k,i)=>{
+   const body=document.getElementById('kidBody'+i);
+   if(!body)return;
+   const full=kidProfileHTML(k);
+   const inner=full
+     .replace(/^<div class="panel"><h2>.*?<\/h2>/s,'')
+     .replace(/<\/div>\s*$/s,'');
+   body.innerHTML=inner;
+ });
+ const kidsSection=document.getElementById('kids');
+ if(!kidsSection)return;
+ kidsSection.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
    if(el.name.startsWith('kid.')){
      el.value=getPath(el.name);
      el.oninput=()=>setPath(el.name,el.value);
      el.onchange=()=>setPath(el.name,el.value);
    }
  });
- directory.onclick=e=>{
+ kidsSection.onclick=e=>{
    const b=e.target.closest('[data-kid-action]');
    if(!b)return;
    e.preventDefault();
@@ -2709,7 +2727,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=8.3-'+Date.now();
+   location.href='./?v=8.4-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
