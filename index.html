@@ -58,10 +58,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 .priority-dot{display:inline-block;width:.78em;height:.78em;border-radius:50%;vertical-align:-.04em;margin:0 .16em}
 .priority-red{background:#d94b55}.priority-yellow{background:#e8b93f}.priority-green{background:#56a96b}
 .walk-icon{display:inline-grid;width:1.55em;height:1.55em;border-radius:50%;place-items:center;font-size:.78em;font-weight:800;background:var(--soft);color:var(--accent)}
+
+.kid-accordion{margin:10px 0;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+.kid-accordion>summary{font-size:18px;padding:15px 14px;background:var(--soft);color:var(--accent)}
+.kid-accordion-body{padding:4px 10px 12px}
+.kid-accordion .panel{border:0;margin:0;padding:0}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - Cloud Sync + Kids Link Fix - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - Cloud Sync + Kids Accordion Fix - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -215,7 +220,13 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Start This Week</summary><div class="walkstep"><div class="num">1</div><div>Check calendar and appointments.</div></div><div class="walkstep"><div class="num">2</div><div>Process To-Do + Schedule Inboxes.</div></div><div class="walkstep"><div class="num">3</div><div>Check kids, family, work, bills, meals and home.</div></div><div class="walkstep"><div class="num">4</div><div>Choose Top 5 priorities.</div></div></details>
 </div></section>
 
-<section id="kids" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="23" cy="22" r="10" fill="#ffd7b5"/><circle cx="43" cy="24" r="9" fill="#ffd7b5"/><path d="M12 56c1-14 8-21 18-21s17 7 18 21" fill="#82c7ff" stroke="#555" stroke-width="3"/><path d="M32 56c1-12 6-18 14-18s13 6 14 18" fill="#ff9ec4" stroke="#555" stroke-width="3"/></svg>Kids + School</h2><div class="tabs" id="kidTabs"></div><div id="kidContent"></div></div></section>
+<section id="kids" class="page">
+<div class="topbar"><button class="back"><- Home</button></div>
+<div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="23" cy="22" r="10" fill="#ffd7b5"/><circle cx="43" cy="24" r="9" fill="#ffd7b5"/><path d="M12 56c1-14 8-21 18-21s17 7 18 21" fill="#82c7ff" stroke="#555" stroke-width="3"/><path d="M32 56c1-12 6-18 14-18s13 6 14 18" fill="#ff9ec4" stroke="#555" stroke-width="3"/></svg>Kids + School</h2>
+<div class="hint"><strong>Kids + School</strong><br>Each child is now an expandable section. Tap the child's name to open it. No separate links or tabs are required.</div>
+<div id="kidsDirectory"></div>
+</div>
+</section>
 
 <section id="family" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="20" cy="19" r="8" fill="#ffd7b5"/><circle cx="44" cy="19" r="8" fill="#ffd7b5"/><circle cx="32" cy="34" r="7" fill="#ffd7b5"/><path d="M8 55c1-12 6-19 12-19s11 7 12 19M32 55c1-12 6-19 12-19s11 7 12 19M22 58c1-10 4-16 10-16s9 6 10 16" fill="#9ad58b" stroke="#555" stroke-width="3"/></svg>Family</h2>
 <details open><summary>Transportation</summary><div class="hint">Household transportation command center. Kid-specific school transportation can also be seen from each child's School Year profile.</div><div id="transportation"></div><button class="smallbtn" data-add-record="transport">Add Transportation Plan / Change</button></details>
@@ -1766,30 +1777,33 @@ formBuilders.workCompliance=r=>`<div class="formgrid">${field('Type','kind',r.ki
 formBuilders.workAdmin=r=>`<div class="formgrid">${field('Type','kind',r.kind||'Report','select',false,selectOpts(['Invoice','Order','Report','Inspection / QVI','IVMR / MMR','BCSA','Fuel','Other'],r.kind||'Report'))}${field('Title / item','title',r.title||'')}${field('Due date','due',r.due||'','date')}${field('Status','status',r.status||'Open','select',false,selectOpts(['Open','Waiting','Submitted','Completed','Archived'],r.status||'Open'))}${field('Vendor / system / location','where',r.where||'')}${field('Amount / cost','amount',r.amount||'','number')}${field('Reference / confirmation','reference',r.reference||'')}${field('Follow-up date','followup',r.followup||'','date')}${field('Detailed notes / steps','notes',r.notes||'','textarea',true)}</div>`;
 formBuilders.gift=r=>`<div class="formgrid">${field('Person','person',r.person||kids[0],'select',false,selectOpts([...people,'Other Person'],r.person||kids[0]))}${field('Occasion','occasion',r.occasion||'Anytime','select',false,selectOpts(['Birthday','Christmas','Anytime','Experience','Stocking Stuffer','Need','Other'],r.occasion||'Anytime'))}${field('Gift / idea','item',r.item||'')}${field('Priority','priority',r.priority||'Normal','select',false,selectOpts(['High','Normal','Low'],r.priority||'Normal'))}${field('Estimated price','price',r.price||'','number')}${field('Store / website','store',r.store||'')}${field('Size / color / style','details',r.details||'')}${field('Status','status',r.status||'Idea','select',false,selectOpts(['Idea','Planning','Bought','Arrived','Hidden','Wrapped','Given'],r.status||'Idea'))}${field('Budget','budget',r.budget||'','number')}${field('Actual spent','spent',r.spent||'','number')}${field('Where hidden / stored','hidden',r.hidden||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
 function showGift(person){showForm('gift',{person})}
+
+function kidAccordionHTML(k,i){
+ const full=kidProfileHTML(k);
+ const inner=full
+   .replace(/^<div class="panel"><h2>.*?<\/h2>/s,'')
+   .replace(/<\/div>\s*$/s,'');
+ return `<details class="kid-accordion" ${i===0?'open':''}>
+   <summary>${esc(k)}</summary>
+   <div class="kid-accordion-body">${inner}</div>
+ </details>`;
+}
 function renderKids(){
- const tabs=document.getElementById('kidTabs'),content=document.getElementById('kidContent');
- if(!tabs||!content)return;
- tabs.innerHTML=kids.map(k=>`<button type="button" data-kidtab="${esc(k)}">${esc(k)}</button>`).join('');
- const show=k=>{
-   content.innerHTML=kidProfileHTML(k);
-   content.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
-     if(el.name.startsWith('kid.')){
-       el.value=getPath(el.name);
-       el.oninput=()=>setPath(el.name,el.value);
-       el.onchange=()=>setPath(el.name,el.value);
-     }
-   });
- };
- tabs.onclick=e=>{
-   const b=e.target.closest('[data-kidtab]');
-   if(!b)return;
-   e.preventDefault();
-   show(b.dataset.kidtab);
- };
- content.onclick=e=>{
+ const directory=document.getElementById('kidsDirectory');
+ if(!directory)return;
+ directory.innerHTML=kids.map((k,i)=>kidAccordionHTML(k,i)).join('');
+ directory.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
+   if(el.name.startsWith('kid.')){
+     el.value=getPath(el.name);
+     el.oninput=()=>setPath(el.name,el.value);
+     el.onchange=()=>setPath(el.name,el.value);
+   }
+ });
+ directory.onclick=e=>{
    const b=e.target.closest('[data-kid-action]');
    if(!b)return;
    e.preventDefault();
+   e.stopPropagation();
    const person=b.dataset.person||kids[0],action=b.dataset.kidAction,id=b.dataset.id;
    if(action==='add-toiletry')showForm('kidToiletry',{person});
    else if(action==='add-activity')showForm('activity',{person});
@@ -1802,7 +1816,6 @@ function renderKids(){
      addShopping(a.needed||a.name||'Activity item','Kids / School','','','Soon','',person+' activity');
    }
  };
- show(kids[0]);
 }
 function renderFamily(){renderSimple('transport','transportation',r=>`${r.person||'Family'} \u2014 ${r.kind||'Transportation'}`,r=>`${r.date||''} ${r.leave||''} \u2022 ${r.morning||r.afternoon||''}`);const acts=document.getElementById('familyActivities');if(acts)acts.innerHTML=kids.map(k=>`<h3>${k}</h3>${rec('activity').filter(a=>a.person===k&&a.status!=='Finished / Archived').map(a=>`<div class="record"><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.practiceDays||'')+' '+(a.practiceTime||'')+' \u2022 '+(a.location||''))}</div><div class="small">Fees: ${fmt(a.fee)} \u2022 Due: ${esc(a.feeDue||'')} \u2022 Needed: ${esc(a.needed||'')}</div></div>`).join('')||'<div class="small">No active activities.</div>'}`).join('');
  const ft=document.getElementById('familyTime');if(ft)ft.innerHTML=`<h3>Planned Outings</h3>${rec('outing').map(r=>recordCard(r.name||'Outing',`${r.date||''} \u2022 ${r.status||''} \u2022 ${fmt(r.budget)}`,actionBtns('outing',r.id))).join('')||'<div class="small">No outings.</div>'}<h3>Trips</h3>${rec('trip').map(r=>recordCard(r.name||'Trip',`${r.depart||''} \u2192 ${r.returnDate||''} \u2022 ${r.destination||''}`,actionBtns('trip',r.id))).join('')||'<div class="small">No trips.</div>'}`;
