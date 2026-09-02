@@ -66,7 +66,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - Cloud Sync + Kids Accordion Fix - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.3 Fresh Update Fix - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -95,6 +95,13 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
+<div class="alert"><strong>Current App Version:</strong> v8.3 - Fresh Update Fix</div>
+<div class="rowbuttons">
+<button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
+<button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
+</div>
+<div id="appUpdateStatus" class="small"></div>
+
 <div class="hint"><strong>Your local backup still matters.</strong> Cloud sync is protected by your My Life HQ sign-in. On first setup, choose which copy should become the cloud master instead of letting one device overwrite the other automatically.</div>
 
 <details open><summary>Cloud Sign In</summary>
@@ -2674,11 +2681,46 @@ function bindCloudControls(){
  if(q('cloudAutoSync'))q('cloudAutoSync').onchange=e=>{syncMeta.autoSync=e.target.checked;saveSyncMeta();updateCloudUi();if(syncMeta.autoSync)cloudSmartSync()};
 }
 
+
+async function forceAppUpdate(){
+ const st=document.getElementById('appUpdateStatus');
+ try{
+   if(st)st.textContent='Checking for the newest My Life HQ version...';
+   if('serviceWorker' in navigator){
+     const regs=await navigator.serviceWorker.getRegistrations();
+     for(const reg of regs){try{await reg.update()}catch(e){}}
+   }
+   if(st)st.textContent='Update check complete. Reloading newest version...';
+   setTimeout(()=>location.reload(true),500);
+ }catch(e){
+   if(st)st.textContent='Update check failed. Try Clear App Cache and Reload.';
+ }
+}
+async function clearAppCacheAndReload(){
+ const st=document.getElementById('appUpdateStatus');
+ try{
+   if(st)st.textContent='Clearing old cached app files...';
+   if('caches' in window){
+     const keys=await caches.keys();
+     await Promise.all(keys.map(k=>caches.delete(k)));
+   }
+   if('serviceWorker' in navigator){
+     const regs=await navigator.serviceWorker.getRegistrations();
+     await Promise.all(regs.map(r=>r.unregister()));
+   }
+   if(st)st.textContent='Old app cache cleared. Reloading...';
+   location.href='./?v=8.3-'+Date.now();
+ }catch(e){
+   if(st)st.textContent='Could not clear the cache automatically.';
+ }
+}
 function renderAll(){bindFields();bindDaily();renderToday();renderWeek();renderPriorities();renderInboxes();renderKids();renderFamily();renderWork();renderMeals();renderMoney();renderCleaning();renderHome();renderSelfCare();renderHealth();renderShopping();renderEmergency()}
 document.getElementById('backupBtn').onclick=()=>{const payload={app:'My Life HQ',version:'Final Rebuild v1',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='My-Life-HQ-Backup-'+todayKey()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('backupStatus').textContent='Backup created \u2713'}
 document.getElementById('restoreFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const p=JSON.parse(rd.result);if(!p.state)throw Error('Invalid backup');if(confirm('Restore this backup to THIS device? Cloud data will not be overwritten until you explicitly sync.')){state=p.state;suppressCloudSync=true;localStorage.setItem(APP_KEY,JSON.stringify(state));suppressCloudSync=false;markLocalModified();location.reload()}}catch(err){alert('Could not restore: '+err.message)}};rd.readAsText(f)}
 document.getElementById('homeDateText').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
 loadSyncMeta();load();seedDefaults();dailyCarryForward();renderAll();initCloud();
+const forceUpdateBtn=document.getElementById('forceAppUpdate');if(forceUpdateBtn)forceUpdateBtn.onclick=forceAppUpdate;
+const clearCacheBtn=document.getElementById('clearAppCache');if(clearCacheBtn)clearCacheBtn.onclick=clearAppCacheAndReload;
 </script>
 
 <script>
