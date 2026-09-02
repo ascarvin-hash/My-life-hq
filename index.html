@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#6d557a">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,10 +33,18 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 .todayhero{background:linear-gradient(135deg,#6d557a,#8a7196);color:#fff;border-radius:20px;padding:16px;margin:10px 0}.todayhero h2{margin:0}.todayhero .small{color:#f6eff8}.quickgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
 .weekday{border:1px solid var(--line);border-radius:14px;padding:10px;margin:7px 0}.rowbuttons{display:flex;gap:7px;flex-wrap:wrap}
 @media(max-width:650px){.navgrid,.formgrid,.quickgrid{grid-template-columns:1fr}.full{grid-column:auto}}
+
+
+:root{
+  --emoji-font: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+}
+.emoji, h1, h2, h3, h4, summary, button, .alert, .hint {
+  font-variant-emoji: emoji;
+}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.0 - Repaired emoji character encoding â¢ Quick View â Walkthrough â Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.1 - UTF-8 emoji display fix â¢ Quick View â Walkthrough â Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate">Today</h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
