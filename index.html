@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Emoji source safety: HTML uses numeric entities; JavaScript uses Unicode escapes. -->
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#6d557a">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -44,9 +45,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<div id="emojiRenderTest" class="small" style="padding:6px 12px;text-align:center">Emoji test: ð ð§¹ ð§º ð¼ ð½ï¸ ð° â¤ï¸ ð</div>
-
-<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.2 - Restored emoji headings and global emoji font â¢ Quick View â Walkthrough â Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark">&#x1F3E1;</div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.3 - Encoding-safe emoji entities â¢ Quick View â Walkthrough â Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate">Today</h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +107,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="week" class="page">
 <div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Week & Planning</h2>
-<details open><summary>ð§­ Weekly Walkthrough Tasks</summary>
+<details open><summary>&#x1F9ED; Weekly Walkthrough Tasks</summary>
 <div class="hint"><strong>Choose from the dropdowns or select âAdd My Ownâ.</strong> You can set up several tasks for the week without retyping common things.</div>
 
 <div id="weeklyWalkthroughTasks"></div>
@@ -128,10 +127,10 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 
 <details open><summary>â­ This Week Priorities</summary><div class="hint">The few things that absolutely matter this weekânot every task. Aim for Top 5.</div><div id="priorityList"></div><button class="smallbtn" data-add-record="priority">Add Weekly Priority</button></details>
-<details><summary>ð§  Brain Dump Inbox / History</summary><div class="hint">Unprocessed thoughts stay here; processed ones show where they were sent.</div><div id="weeklyBrainDump"></div></details><details><summary>To-Do Inbox</summary><div class="hint">Something needs to be done, but you have not organized it yet. Process it later into Today, Week, a section, or Done.</div><div id="todoInbox"></div><button class="smallbtn" data-add-record="todo">Add To-Do</button><button class="smallbtn" data-process="todo">Process Inbox</button></details>
+<details><summary>&#x1F9E0; Brain Dump Inbox / History</summary><div class="hint">Unprocessed thoughts stay here; processed ones show where they were sent.</div><div id="weeklyBrainDump"></div></details><details><summary>To-Do Inbox</summary><div class="hint">Something needs to be done, but you have not organized it yet. Process it later into Today, Week, a section, or Done.</div><div id="todoInbox"></div><button class="smallbtn" data-add-record="todo">Add To-Do</button><button class="smallbtn" data-process="todo">Process Inbox</button></details>
 <details><summary>Schedule Inbox</summary><div class="hint">Temporary holding place for things that involve a date/time but are not properly planned yet.</div><div id="scheduleInbox"></div><button class="smallbtn" data-add-record="schedule">Add Schedule Item</button><button class="smallbtn" data-process="schedule">Process Schedule Inbox</button></details>
 <details><summary>This Week</summary><div id="weekDays"></div></details>
-<details open><summary>ð Sunday Review + Carry Forward</summary>
+<details open><summary>&#x1F319; Sunday Review + Carry Forward</summary>
 <div class="hint"><strong>Unfinished Weekly Walkthrough tasks show here automatically.</strong> Send one taskâor all unfinished tasksâstraight to Carry Forward without retyping it.</div>
 <div id="sundayCarryTasks"></div>
 <button class="smallbtn" id="sendAllWeeklyCarry">Send ALL Unfinished to Carry Forward</button>
@@ -154,14 +153,14 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Important Contacts</summary><div id="familyContacts"></div><button class="smallbtn" data-add-record="contact">Add Contact</button></details>
 </div></section>
 
-<section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð¼ Work Command Center</h2>
+<section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>&#x1F4BC; Work Command Center</h2>
 <div class="quickgrid"><div class="card"><h3>Run Board</h3><div class="formgrid">
 <div class="field"><label>Shift</label><select id="workShiftFilter"><option>All</option><option>AM</option><option>PM</option><option>Team</option></select></div>
 <div class="field"><label>Status</label><select id="workStatusFilter"><option>All</option><option>Scheduled</option><option>Driver Confirmed</option><option>Ready</option><option>Dispatched</option><option>Delayed</option><option>Held</option><option>Completed</option><option>Cancelled</option></select></div>
 </div><div id="workRunBoard"></div></div><div class="card"><h3>Needs Attention</h3><div id="workAttention"></div></div></div>
 <details><summary>Assigned Run Schedule</summary><div id="workRunTemplates"></div><button class="smallbtn" data-add-record="workRunTemplate">Add Assigned Run</button></details>
 
-<details open><summary>ðï¸ Work History â Current Month + Previous Months</summary>
+<details open><summary>&#x1F5D3;&#xFE0F; Work History â Current Month + Previous Months</summary>
 <div class="hint"><strong>Look back at runs, driver issues and tractor issues by month.</strong> Current month opens by default.</div>
 <div class="formgrid">
 <div class="field"><label>Month to view</label><input type="month" id="workHistoryMonth"></div>
@@ -170,7 +169,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Show</label><select id="workHistoryType"><option>Runs + Driver Issues + Tractor Issues</option><option>Runs Only</option><option>Driver Issues Only</option><option>Tractor Issues Only</option></select></div>
 </div><div id="workMonthSummary"></div><div id="workMonthHistory"></div></details>
 
-<details open><summary>ðï¸ Driver Time Off â Current Month + Future</summary>
+<details open><summary>&#x1F3D6;&#xFE0F; Driver Time Off â Current Month + Future</summary>
 <div class="hint"><strong>Enter time off as soon as it is planned.</strong> This month and future requests stay visible for coverage planning.</div>
 <div class="quickgrid"><div class="card"><h3>This Month</h3><div id="driverTimeOffCurrent"></div></div><div class="card"><h3>Future Planned Time Off</h3><div id="driverTimeOffFuture"></div></div></div>
 <div class="formgrid"><div class="field"><label>Filter driver</label><select id="timeOffDriverFilter"><option>All Drivers</option></select></div><div class="field"><label>Filter status</label><select id="timeOffStatusFilter"><option>All</option><option>Requested</option><option>Pending</option><option>Approved</option><option>Denied</option><option>Cancelled</option><option>Completed</option></select></div></div>
@@ -203,7 +202,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="walkstep"><div class="num">4</div><div><strong>Close:</strong> waiting items â tomorrow follow-ups â after-hours time.</div></div>
 </details>
 <details><summary>Invoices / Ordering / Reports</summary><div id="workAdmin"></div><button class="smallbtn" data-add-record="workAdmin">Add Invoice / Order / Report</button></details>
-<details open><summary>ðµ Weekly Driver Payroll</summary>
+<details open><summary>&#x1F4B5; Weekly Driver Payroll</summary>
 <div class="hint"><strong>This is the payroll home for EVERY driver each week.</strong> Create one payroll entry per driver, even if they had PTO, a call-off, decline, no run, coverage change, or zero payable runs. That keeps the weekly roster complete.</div>
 <div class="formgrid">
 <div class="field"><label>Work week start</label><input type="date" data-key="work.payroll.weekStart"></div>
@@ -227,7 +226,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="quickgrid"><div class="card"><h3>Today</h3><div id="myHoursToday"></div></div><div class="card"><h3>This Week</h3><div id="myHoursSummary"></div></div><div class="card"><h3>Needs Follow-Up</h3><div id="myHoursAttention"></div></div></div>
 <div id="myHoursList"></div><button class="smallbtn" data-add-record="myWorkHours">Add My Work Time</button>
 </details>
-<details open><summary>ð Work Reference Center</summary>
+<details open><summary>&#x1F4DA; Work Reference Center</summary>
 <div class="hint"><strong>Keep the information you need to do the job here.</strong> This is reference information, not a daily task list.</div>
 <details open><summary>Daily / Weekly Procedures</summary><div class="formgrid">
 <div class="field"><label>Start-of-day procedure</label><textarea data-key="work.reference.startDay" placeholder="Example: check declines, Linehaul Central, cameras, email, urgent driver/run issues..."></textarea></div>
@@ -272,19 +271,19 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="meals" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð½ï¸ Meals</h2>
+<section id="meals" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>&#x1F37D;&#xFE0F; Meals</h2>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping â Groceries.</div><div id="mealWeek"></div></details>
 <details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Meal Plan</strong> on any recipe, breakfast, lunch, or snack. Choose the day and meal slot, then save.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">Add Meal / Recipe</button></details>
-<details><summary>ð³ Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
-<details><summary>ð¥ª Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">Add Lunch</button></details>
-<details><summary>ð¿ Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
+<details><summary>&#x1F373; Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
+<details><summary>&#x1F96A; Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">Add Lunch</button></details>
+<details><summary>&#x1F37F; Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
 </div></section>
 
-<section id="money" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð° Money Command Center</h2><div id="moneySummary" class="alert"></div>
+<section id="money" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>&#x1F4B0; Money Command Center</h2><div id="moneySummary" class="alert"></div>
 <details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">Add Bill</button></details>
 <details><summary>Income + Pay</summary><div id="incomeList"></div><button class="smallbtn" data-add-record="income">Add Paycheck / Income</button></details>
 
-<details open><summary>ð³ Weekly Spending Tracker</summary>
+<details open><summary>&#x1F4B3; Weekly Spending Tracker</summary>
 <div class="hint"><strong>Use this throughout the week.</strong> Add purchases as they happen, then compare actual spending to your weekly limits before the week gets away from you.</div>
 
 <div class="formgrid">
@@ -349,11 +348,11 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="cleaning" class="page">
 <div class="topbar"><button class="back">â Home</button></div>
-<div class="card"><h2>ð§¹ Cleaning Command Center</h2>
-<div class="hint"><strong>Cleaning = recurring upkeep.</strong> Home = repairs, maintenance, projects, storage, appliances and restock. Use the color priority when you need a fast reset: ð´ must do, ð¡ should do, ð¢ can wait.</div>
+<div class="card"><h2>&#x1F9F9; Cleaning Command Center</h2>
+<div class="hint"><strong>Cleaning = recurring upkeep.</strong> Home = repairs, maintenance, projects, storage, appliances and restock. Use the color priority when you need a fast reset: &#x1F534; must do, &#x1F7E1; should do, &#x1F7E2; can wait.</div>
 
 <div class="quickgrid">
-<div class="card"><h3>â¡ Quick Reset</h3>
+<div class="card"><h3>&#x26A1; Quick Reset</h3>
 <div class="hint">Check each item as you finish it. These reset each day.</div>
 <label class="task"><input type="checkbox" data-clean-quick="trash">Trash / obvious clutter</label>
 <label class="task"><input type="checkbox" data-clean-quick="dishes">Dishes + kitchen sink</label>
@@ -361,7 +360,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <label class="task"><input type="checkbox" data-clean-quick="floors">Floors where needed</label>
 <label class="task"><input type="checkbox" data-clean-quick="laundry">Laundry / put-away check</label>
 </div>
-<div class="card"><h3>ð Nightly Reset</h3>
+<div class="card"><h3>&#x1F319; Nightly Reset</h3>
 <label class="task"><input type="checkbox" data-clean-night="kitchen">Kitchen reset</label>
 <label class="task"><input type="checkbox" data-clean-night="living">Living room pickup</label>
 <label class="task"><input type="checkbox" data-clean-night="laundry">Laundry check</label>
@@ -370,15 +369,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 </div>
 
-<details open><summary>ð§¼ Todayâs Detailed Cleaning</summary>
+<details open><summary>&#x1F9FC; Todayâs Detailed Cleaning</summary>
 <div id="cleaningPlan"></div>
 </details>
 
-<details><summary>ð  Room-by-Room Walkthroughs</summary>
+<details><summary>&#x1F3E0; Room-by-Room Walkthroughs</summary>
 <div id="roomCleaning"></div>
 </details>
 
-<details open><summary>ð§´ Cleaning Products + Tools Reference / Inventory</summary>
+<details open><summary>&#x1F9F4; Cleaning Products + Tools Reference / Inventory</summary>
 <div class="hint"><strong>Check what you have and update its stock level.</strong> Anything Getting Low, Running Low, Out, or needing Replacement can be sent directly to Master Shopping.</div>
 <div id="cleaningSupplySummary"></div>
 <div id="cleaningSupplyList"></div>
@@ -387,16 +386,16 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </details>
 
-<details open><summary>ð Monthly Cleaning â Check Off Tasks</summary>
+<details open><summary>&#x1F4C6; Monthly Cleaning â Check Off Tasks</summary>
 <div class="hint"><strong>Check each task off as you finish it.</strong> Your checks stay saved for the current month and reset naturally when a new month begins.</div>
 <div id="cleanMonthlyProgress"></div>
 <div id="cleanMonthly"></div>
 <button class="smallbtn" id="resetCleanMonth">âº Reset This Monthâs Checkmarks</button>
 </details>
-<details><summary>ð Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
-<details><summary>ð Annual Cleaning</summary><div id="cleanAnnual"></div></details>
+<details><summary>&#x1F342; Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
+<details><summary>&#x1F4C5; Annual Cleaning</summary><div id="cleanAnnual"></div></details>
 
-<details><summary>ð¨ Priority and Catch-Up</summary>
+<details><summary>&#x1F6A8; Priority and Catch-Up</summary>
 <div class="hint"><strong>Use this when regular cleaning has fallen behind.</strong> Pick what is going on, how much time/energy you have, and what matters most. The examples below help you decide what belongs in each priority.</div>
 
 <div class="formgrid">
@@ -508,7 +507,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <label class="task"><input type="checkbox" data-clean-daily="school">School bags / shoes / activity gear reset</label>
 </details>
 
-<details open><summary>ð§º Laundry System â Detailed</summary>
+<details open><summary>&#x1F9FA; Laundry System â Detailed</summary>
 <div class="hint"><strong>Use this as the actual laundry workflow.</strong> Pick the load type, follow the checklist, and check each step off as you go. You do not need to fill out a bunch of blank boxes first.</div>
 
 <div class="formgrid">
@@ -605,7 +604,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 </details>
 
-<details open><summary>ðï¸ Bedding and Towels Schedule</summary>
+<details open><summary>&#x1F6CF;&#xFE0F; Bedding and Towels Schedule</summary>
 <div class="hint"><strong>Keep this inside Laundry so all washable household items stay together.</strong> Set the normal frequency/day, record when it was last washed, and plan the next wash.</div>
 <div id="beddingTowelSchedule"></div>
 </details>
@@ -632,7 +631,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div id="deepRoomCleaning"></div>
 </details>
 
-<details><summary>â±ï¸ Cleaning by Time</summary>
+<details><summary>â±&#xFE0F; Cleaning by Time</summary>
 <div class="hint"><strong>Pick the amount of time you have and check tasks off as you go.</strong> Stop when the timer ends. You do not have to keep cleaning just because more could be done.</div>
 
 <details><summary>5-Minute Rescue</summary>
@@ -693,7 +692,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 
 <details open><summary>Cleaning Priority + Catch-Up Mode</summary>
-<div class="hint"><strong>Use this when cleaning is behind, you are overwhelmed, or you need to decide what matters first.</strong> Pick your situation with the dropdowns, then work from ð´ down. You do NOT have to finish every section.</div>
+<div class="hint"><strong>Use this when cleaning is behind, you are overwhelmed, or you need to decide what matters first.</strong> Pick your situation with the dropdowns, then work from &#x1F534; down. You do NOT have to finish every section.</div>
 
 <div class="formgrid">
 <div class="field"><label>House status</label><select data-key="clean.catchup.status">
@@ -771,14 +770,14 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div></details>
 <details><summary>Walk Me Through Cleaning</summary>
 <div class="walkstep"><div class="num">1</div><div>Look at Todayâs Focus.</div></div>
-<div class="walkstep"><div class="num">2</div><div>If the house feels behind, use ð´/ð¡/ð¢ instead of trying to do everything.</div></div>
+<div class="walkstep"><div class="num">2</div><div>If the house feels behind, use &#x1F534;/&#x1F7E1;/&#x1F7E2; instead of trying to do everything.</div></div>
 <div class="walkstep"><div class="num">3</div><div>Work one room top-to-bottom: trash/clutter â surfaces â fixtures â floor â restock.</div></div>
 <div class="walkstep"><div class="num">4</div><div>Complete Nightly Reset so tomorrow starts easier.</div></div>
 <div class="walkstep"><div class="num">5</div><div>On Sunday, review Monthly/Seasonal tasks and pick only what is due.</div></div>
 </details>
 </div></section>
 
-<section id="homeLife" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð  Home</h2>
+<section id="homeLife" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>&#x1F3E0; Home</h2>
 <details open><summary>Weekly Home Planner</summary>
 <div class="formgrid">
 <div class="field"><label>Week of</label><input type="date" data-key="home.week.start"></div>
@@ -1021,7 +1020,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Walk Me Through Today</summary><div class="walkstep"><div class="num">1</div><div>Check todayâs schedule.</div></div><div class="walkstep"><div class="num">2</div><div>Complete AM skincare in order.</div></div><div class="walkstep"><div class="num">3</div><div>Do shower/body and hair/scalp only if scheduled.</div></div><div class="walkstep"><div class="num">4</div><div>Complete PM skincare.</div></div><div class="walkstep"><div class="num">5</div><div>Update low product status while using items.</div></div><div class="walkstep"><div class="num">6</div><div>Once weekly, send Running Low/Out items to Shopping.</div></div></details>
 </div></section>
 <section id="health" class="page"><div class="topbar"><button class="back">â Home</button></div>
-<div class="card"><h2>â¤ï¸ Health + Wellness</h2><details open><summary>Health Profile + Preferences â Everyone</summary><div class="hint">Planning details for each person.</div><div id="healthProfiles"></div></details>
+<div class="card"><h2>&#x2764;&#xFE0F; Health + Wellness</h2><details open><summary>Health Profile + Preferences â Everyone</summary><div class="hint">Planning details for each person.</div><div id="healthProfiles"></div></details>
 <div class="hint"><strong>Start with Who is this for?</strong> Then use dropdowns/multi-selects so you are not forced to type everything into notes.</div>
 
 <div class="quickgrid">
@@ -1139,10 +1138,10 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div></section>
 
 <section id="help" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>How to Use My Life HQ</h2>
-<div class="walkstep"><div class="num">ð</div><div><strong>Morning:</strong> Today â Top 3 â kids/school â dinner â carry forward.</div></div>
-<div class="walkstep"><div class="num">ð</div><div><strong>Evening:</strong> house reset â tomorrow needs â unfinished items â tomorrow preview.</div></div>
-<div class="walkstep"><div class="num">ð°</div><div><strong>Money review:</strong> income â bills â spending â envelopes â savings â debt â upcoming â safe-to-spend.</div></div>
-<div class="walkstep"><div class="num">ð</div><div><strong>Weekly:</strong> calendar â inboxes â kids â work â meals â shopping â money â home â priorities.</div></div>
+<div class="walkstep"><div class="num">&#x1F305;</div><div><strong>Morning:</strong> Today â Top 3 â kids/school â dinner â carry forward.</div></div>
+<div class="walkstep"><div class="num">&#x1F319;</div><div><strong>Evening:</strong> house reset â tomorrow needs â unfinished items â tomorrow preview.</div></div>
+<div class="walkstep"><div class="num">&#x1F4B0;</div><div><strong>Money review:</strong> income â bills â spending â envelopes â savings â debt â upcoming â safe-to-spend.</div></div>
+<div class="walkstep"><div class="num">&#x1F504;</div><div><strong>Weekly:</strong> calendar â inboxes â kids â work â meals â shopping â money â home â priorities.</div></div>
 <div class="hint"><strong>Brain Dump:</strong> thoughts/ideas not organized yet. <strong>To-Do Inbox:</strong> something must be done. <strong>Schedule Inbox:</strong> something needs a date/time. <strong>Today Notes:</strong> information about today. <strong>Shopping:</strong> something must be bought.</div>
 </div></section>
 
@@ -1399,7 +1398,7 @@ function renderWeek(){
      const already=state.carry.some(x=>!x.done&&x.sourceWeeklyId===r.id);
      return `<div class="record"><div class="recordhead"><div><strong>${esc(text)}</strong><div class="small">${esc((r.category||'')+' â¢ '+(r.day||'')+' â¢ '+(r.status||''))}</div></div>
      <button class="smallbtn" data-send-weekly-carry="${r.id}" ${already?'disabled':''}>${already?' Sent to Carry Forward':' Send to Carry Forward'}</button></div></div>`;
-   }).join(''):'<div class="small">No unfinished Weekly Walkthrough tasks. â</div>';
+   }).join(''):'<div class="small">No unfinished Weekly Walkthrough tasks. \u2713</div>';
    sc.querySelectorAll('[data-send-weekly-carry]').forEach(b=>b.onclick=()=>{
      const r=rec('weeklyWalkTask').find(x=>x.id===b.dataset.sendWeeklyCarry);if(!r)return;
      const text=r.task==='Add My Own'?(r.customTask||'Custom Weekly Task'):(r.task||'Weekly Task');
@@ -1623,7 +1622,7 @@ function renderWork(){
  const monthRuns=rec('workRun').filter(x=>(x.date||'').slice(0,7)===historyMonth&&(historyShift==='All'||x.shift===historyShift)&&(historyStatus==='All'||x.status===historyStatus));
  const monthDrivers=rec('driver').filter(x=>(x.date||'').slice(0,7)===historyMonth&&['Call Off','Declined','Unavailable','PTO','Off'].includes(x.status));
  const monthTractors=rec('tractor').filter(x=>[x.oosDate,x.appointment,x.lastServiceDate,x.nextServiceDate,x.lastInspection,x.due,x.returnDate].filter(Boolean).some(d=>(d||'').slice(0,7)===historyMonth)&&['Maintenance Due','Repair Needed','Out of Service','Inspection Due','Waiting on Parts','At Vendor'].includes(x.status));
- const historyBox=document.getElementById('workMonthHistory');if(historyBox){const blocks=[];if(historyType==='Runs + Driver Issues + Tractor Issues'||historyType==='Runs Only')monthRuns.forEach(x=>blocks.push(`<div class="record"><strong>ð£ ${esc((x.shift||'')+' â '+(x.name||x.route||'Run'))}</strong><div class="small">${esc((x.date||'')+' â¢ '+(x.driver||'No driver')+' â¢ Tractor '+(x.tractor||'â')+' â¢ '+(x.status||''))}</div></div>`));if(historyType==='Runs + Driver Issues + Tractor Issues'||historyType==='Driver Issues Only')monthDrivers.forEach(x=>blocks.push(`<div class="record"><strong>ð¤ ${esc(x.name||'Driver')}</strong><div class="small">${esc((x.date||'')+' â¢ '+(x.shift||'')+' â¢ '+(x.status||'')+' â¢ '+(x.run||''))}</div></div>`));if(historyType==='Runs + Driver Issues + Tractor Issues'||historyType==='Tractor Issues Only')monthTractors.forEach(x=>blocks.push(`<div class="record"><strong>ð ${esc(x.unit||'Tractor')}</strong><div class="small">${esc((x.shift||'')+' â¢ '+(x.status||'')+' â¢ '+(x.issueCategory||''))}</div></div>`));historyBox.innerHTML=blocks.length?blocks.join(''):'<div class="small">No work history matches this month/filter.</div>'}
+ const historyBox=document.getElementById('workMonthHistory');if(historyBox){const blocks=[];if(historyType==='Runs + Driver Issues + Tractor Issues'||historyType==='Runs Only')monthRuns.forEach(x=>blocks.push(`<div class="record"><strong>\u{1F6E3} ${esc((x.shift||'')+' â '+(x.name||x.route||'Run'))}</strong><div class="small">${esc((x.date||'')+' â¢ '+(x.driver||'No driver')+' â¢ Tractor '+(x.tractor||'â')+' â¢ '+(x.status||''))}</div></div>`));if(historyType==='Runs + Driver Issues + Tractor Issues'||historyType==='Driver Issues Only')monthDrivers.forEach(x=>blocks.push(`<div class="record"><strong>\u{1F464} ${esc(x.name||'Driver')}</strong><div class="small">${esc((x.date||'')+' â¢ '+(x.shift||'')+' â¢ '+(x.status||'')+' â¢ '+(x.run||''))}</div></div>`));if(historyType==='Runs + Driver Issues + Tractor Issues'||historyType==='Tractor Issues Only')monthTractors.forEach(x=>blocks.push(`<div class="record"><strong>\u{1F69A} ${esc(x.unit||'Tractor')}</strong><div class="small">${esc((x.shift||'')+' â¢ '+(x.status||'')+' â¢ '+(x.issueCategory||''))}</div></div>`));historyBox.innerHTML=blocks.length?blocks.join(''):'<div class="small">No work history matches this month/filter.</div>'}
  const historySummary=document.getElementById('workMonthSummary');if(historySummary)historySummary.innerHTML=`<div class="alert"><strong>${historyMonth}</strong><br>${monthRuns.length} run records â¢ ${monthDrivers.length} driver issues â¢ ${monthTractors.length} tractor issues</div>`;
  ['workHistoryMonth','workHistoryShift','workHistoryStatus','workHistoryType'].forEach(id=>{const el=document.getElementById(id);if(el)el.onchange=renderWork});
 
@@ -1638,14 +1637,14 @@ function renderWork(){
  if(timeOffDriver)timeOffDriver.onchange=renderWork;const timeOffStatusEl=document.getElementById('timeOffStatusFilter');if(timeOffStatusEl)timeOffStatusEl.onchange=renderWork;
 
  renderSimple('driverPayroll','driverPayrollList',r=>`${r.driver||'Driver'} â ${r.shift||''}`,r=>`${r.weekStart||''} â ${r.weekEnd||''} â¢ ${r.status||''} â¢ Expected ${fmt(r.expected||0)} â¢ Actual ${fmt(r.actual||0)}`);
- const prc=document.getElementById('payrollRosterCheck');if(prc){const weekStart=getPath('work.payroll.weekStart')||'',rows=rec('driverPayroll').filter(r=>!weekStart||r.weekStart===weekStart),names=[...new Set(rec('driver').map(x=>x.name).filter(Boolean))].sort();prc.innerHTML=names.length?names.map(n=>{const found=rows.some(r=>r.driver===n);return `<div class="small">${found?'â':'â'} ${esc(n)} ${found?'â payroll entry added':'â NEEDS payroll entry'}</div>`}).join(''):'<div class="small">Add drivers in Drivers / Coverage and they will appear here as a payroll roster check.</div>';}
+ const prc=document.getElementById('payrollRosterCheck');if(prc){const weekStart=getPath('work.payroll.weekStart')||'',rows=rec('driverPayroll').filter(r=>!weekStart||r.weekStart===weekStart),names=[...new Set(rec('driver').map(x=>x.name).filter(Boolean))].sort();prc.innerHTML=names.length?names.map(n=>{const found=rows.some(r=>r.driver===n);return `<div class="small">${found?'\u2611':'\u2610'} ${esc(n)} ${found?'â payroll entry added':'â NEEDS payroll entry'}</div>`}).join(''):'<div class="small">Add drivers in Drivers / Coverage and they will appear here as a payroll roster check.</div>';}
  const dps=document.getElementById('driverPayrollSummary');if(dps){const rows=rec('driverPayroll'),reg=rows.reduce((a,r)=>a+(+r.regularHours||0),0),ot=rows.reduce((a,r)=>a+(+r.overtimeHours||0),0),wait=rows.reduce((a,r)=>a+(+r.waitHours||0),0),exp=rows.reduce((a,r)=>a+(+r.expected||0),0),act=rows.reduce((a,r)=>a+(+r.actual||0),0);dps.innerHTML=`<div class="small">${rows.length} entries<br>Regular: ${reg.toFixed(2)} hrs â¢ OT: ${ot.toFixed(2)} â¢ Wait: ${wait.toFixed(2)}<br>Expected: ${fmt(exp)} â¢ Actual: ${fmt(act)} â¢ Difference: ${fmt(act-exp)}</div>`}
  const dpa=document.getElementById('driverPayrollAttention');if(dpa){const rows=rec('driverPayroll').filter(r=>['Missing Info','Correction Needed'].includes(r.status)||(r.actual!==''&&(+r.expected||0)!==(+r.actual||0)));dpa.innerHTML=rows.length?rows.map(r=>`<div class="alert"><strong>${esc(r.driver||'Driver')}</strong><br>${esc(r.status||'')} ${r.followupType?'â¢ '+esc(r.followupType):''}</div>`).join(''):'<div class="small">No payroll issues flagged.</div>'}
  renderSimple('myWorkHours','myHoursList',r=>`${r.date||''} â ${r.type||'Work'}`,r=>`${r.shift||''} â¢ ${r.hours||0} hrs â¢ ${r.paidStatus||''} ${r.afterHours==='Yes'?'â¢ After-hours':''}`);
  const mhs=document.getElementById('myHoursSummary');if(mhs){const rows=rec('myWorkHours'),total=rows.reduce((a,r)=>a+(+r.hours||0),0),after=rows.filter(r=>r.afterHours==='Yes').reduce((a,r)=>a+(+r.hours||0),0),exp=rows.reduce((a,r)=>a+(+r.expectedPay||0),0),act=rows.reduce((a,r)=>a+(+r.actualPay||0),0);mhs.innerHTML=`<div class="small">${total.toFixed(2)} total hours â¢ ${after.toFixed(2)} after-hours<br>Expected pay: ${fmt(exp)} â¢ Actual pay: ${fmt(act)}</div>`}
  const mht=document.getElementById('myHoursToday');if(mht){const rows=rec('myWorkHours').filter(r=>r.date===todayKey()),hrs=rows.reduce((a,r)=>a+(+r.hours||0),0),after=rows.filter(r=>r.afterHours==='Yes').reduce((a,r)=>a+(+r.hours||0),0);mht.innerHTML=`<div class="small"><strong>${todayKey()}</strong><br>${rows.length} time entries<br>Total: ${hrs.toFixed(2)} hrs<br>After-hours: ${after.toFixed(2)} hrs</div>`;}
  const mha=document.getElementById('myHoursAttention');if(mha){const rows=rec('myWorkHours').filter(r=>['Unpaid','Needs Correction'].includes(r.paidStatus)||String(r.followup||'').startsWith('Yes'));mha.innerHTML=rows.length?rows.map(r=>`<div class="alert"><strong>${esc(r.date||'')}</strong> â ${esc(r.type||'Work')}<br>${esc(r.paidStatus||'')} ${r.followup?'â¢ '+esc(r.followup):''}</div>`).join(''):'<div class="small">No hour/pay issues flagged.</div>'}
-const board=document.getElementById('workRunBoard');if(board){const sh=document.getElementById('workShiftFilter')?.value||'All',st=document.getElementById('workStatusFilter')?.value||'All',rows=rec('workRun').filter(r=>(sh==='All'||r.shift===sh)&&(st==='All'||r.status===st));board.innerHTML=rows.length?rows.map(r=>`<div class="record"><strong>${esc((r.shift||'')+' â '+(r.name||r.route||'Run'))}</strong><div class="small">${esc((r.driver||'No driver')+' â¢ Tractor '+(r.tractor||'â')+' â¢ '+(r.status||''))}</div></div>`).join(''):'<div class="small">No runs match this view.</div>'}const att=document.getElementById('workAttention');if(att){const items=[];rec('workRun').filter(r=>['Delayed','Held','Cancelled'].includes(r.status)||r.coverageNeeded==='Yes').forEach(r=>items.push(`ð£ ${r.shift||''} ${r.name||r.route||'Run'} â ${r.status||''}`));rec('driver').filter(r=>['Call Off','Declined','Unavailable'].includes(r.status)||r.coverageNeeded==='Yes').forEach(r=>items.push(`ð¤ ${r.name||'Driver'} â ${r.status||''}`));rec('tractor').filter(r=>['Maintenance Due','Repair Needed','Out of Service','Inspection Due','Waiting on Parts','At Vendor'].includes(r.status)||r.safeToRun==='No').forEach(r=>items.push(`ð ${r.unit||'Unit'} â ${r.status||''}`));att.innerHTML=items.length?items.map(x=>`<div class="alert">${esc(x)}</div>`).join(''):'<div class="small">Nothing urgent right now.</div>'}const sf=document.getElementById('workShiftFilter');if(sf)sf.onchange=renderWork;const ss=document.getElementById('workStatusFilter');if(ss)ss.onchange=renderWork;renderSimple('workRunTemplate','workRunTemplates',r=>`${r.shift||''} â ${r.name||'Regular Run'}`,r=>`${r.days||''} â¢ ${r.route||''} â¢ ${r.driver||''} â¢ ${r.tractor||''}`);
+const board=document.getElementById('workRunBoard');if(board){const sh=document.getElementById('workShiftFilter')?.value||'All',st=document.getElementById('workStatusFilter')?.value||'All',rows=rec('workRun').filter(r=>(sh==='All'||r.shift===sh)&&(st==='All'||r.status===st));board.innerHTML=rows.length?rows.map(r=>`<div class="record"><strong>${esc((r.shift||'')+' â '+(r.name||r.route||'Run'))}</strong><div class="small">${esc((r.driver||'No driver')+' â¢ Tractor '+(r.tractor||'â')+' â¢ '+(r.status||''))}</div></div>`).join(''):'<div class="small">No runs match this view.</div>'}const att=document.getElementById('workAttention');if(att){const items=[];rec('workRun').filter(r=>['Delayed','Held','Cancelled'].includes(r.status)||r.coverageNeeded==='Yes').forEach(r=>items.push(`\u{1F6E3} ${r.shift||''} ${r.name||r.route||'Run'} â ${r.status||''}`));rec('driver').filter(r=>['Call Off','Declined','Unavailable'].includes(r.status)||r.coverageNeeded==='Yes').forEach(r=>items.push(`\u{1F464} ${r.name||'Driver'} â ${r.status||''}`));rec('tractor').filter(r=>['Maintenance Due','Repair Needed','Out of Service','Inspection Due','Waiting on Parts','At Vendor'].includes(r.status)||r.safeToRun==='No').forEach(r=>items.push(`\u{1F69A} ${r.unit||'Unit'} â ${r.status||''}`));att.innerHTML=items.length?items.map(x=>`<div class="alert">${esc(x)}</div>`).join(''):'<div class="small">Nothing urgent right now.</div>'}const sf=document.getElementById('workShiftFilter');if(sf)sf.onchange=renderWork;const ss=document.getElementById('workStatusFilter');if(ss)ss.onchange=renderWork;renderSimple('workRunTemplate','workRunTemplates',r=>`${r.shift||''} â ${r.name||'Regular Run'}`,r=>`${r.days||''} â¢ ${r.route||''} â¢ ${r.driver||''} â¢ ${r.tractor||''}`);
  const ww=document.getElementById('workWeekPlan');
  if(ww)ww.innerHTML=days.slice(1).concat(days[0]).map(day=>`<details><summary>${day}</summary><div class="formgrid">
  <div class="field"><label>Recurring / due work</label><textarea data-key="work.week.${day}.tasks"></textarea></div>
@@ -1777,85 +1776,85 @@ function renderCleaning(){
   Monday:{
    focus:'Bathrooms + Laundry Reset',
    items:[
-    ['ð´','Bathroom clutter/trash','Clear floor/counter, empty trash','Trash bag','5 min'],
-    ['ð´','Toilet','Bowl first, then lid/seat/base/exterior','Toilet cleaner + disinfecting cloth','7 min'],
-    ['ð¡','Sink + faucet + counter','Remove items, spray, wipe, polish faucet','Bathroom cleaner + microfiber','5 min'],
-    ['ð¡','Mirror','Top to bottom, dry edges','Windex + glass microfiber','3 min'],
-    ['ð¡','Tub / shower','Spray, let sit, scrub problem areas, rinse','Scrubbing Bubbles + scrubber','10 min'],
-    ['ð¢','Restock bathroom','TP, towels, toiletries, wipes','Restock supplies','5 min'],
-    ['ð´','Laundry â active load','Sort â wash â dry â fold â put away','Laundry products + baskets','15 min active'],
-    ['ð¡','Laundry area reset','Lint trap, bottles away, wipe machines','Microfiber','5 min'],
-    ['ð¡','Bathroom/laundry floors','Pick up â vacuum/sweep â mop','Vacuum/broom + mop','10 min']
+    ['\u{1F534}','Bathroom clutter/trash','Clear floor/counter, empty trash','Trash bag','5 min'],
+    ['\u{1F534}','Toilet','Bowl first, then lid/seat/base/exterior','Toilet cleaner + disinfecting cloth','7 min'],
+    ['\u{1F7E1}','Sink + faucet + counter','Remove items, spray, wipe, polish faucet','Bathroom cleaner + microfiber','5 min'],
+    ['\u{1F7E1}','Mirror','Top to bottom, dry edges','Windex + glass microfiber','3 min'],
+    ['\u{1F7E1}','Tub / shower','Spray, let sit, scrub problem areas, rinse','Scrubbing Bubbles + scrubber','10 min'],
+    ['\u{1F7E2}','Restock bathroom','TP, towels, toiletries, wipes','Restock supplies','5 min'],
+    ['\u{1F534}','Laundry â active load','Sort â wash â dry â fold â put away','Laundry products + baskets','15 min active'],
+    ['\u{1F7E1}','Laundry area reset','Lint trap, bottles away, wipe machines','Microfiber','5 min'],
+    ['\u{1F7E1}','Bathroom/laundry floors','Pick up â vacuum/sweep â mop','Vacuum/broom + mop','10 min']
    ]
   },
   Tuesday:{
    focus:'Light Reset + Money Day',
    items:[
-    ['ð´','Kitchen reset','Dishes, sink, counters','Dawn/Clean Freak + microfiber','10 min'],
-    ['ð¡','Bathroom quick check','Sink, toilet, trash','Bathroom cleaner','5 min'],
-    ['ð¡','Living room pickup','Clutter, blankets, pillows','Basket','10 min'],
-    ['ð¡','Laundry catch-up','Finish one open load completely','Laundry products','10 min active'],
-    ['ð¢','Desk / money area','Clear papers and reset surface','Basket/microfiber','5 min']
+    ['\u{1F534}','Kitchen reset','Dishes, sink, counters','Dawn/Clean Freak + microfiber','10 min'],
+    ['\u{1F7E1}','Bathroom quick check','Sink, toilet, trash','Bathroom cleaner','5 min'],
+    ['\u{1F7E1}','Living room pickup','Clutter, blankets, pillows','Basket','10 min'],
+    ['\u{1F7E1}','Laundry catch-up','Finish one open load completely','Laundry products','10 min active'],
+    ['\u{1F7E2}','Desk / money area','Clear papers and reset surface','Basket/microfiber','5 min']
    ]
   },
   Wednesday:{
    focus:'Detailed Kitchen',
    items:[
-    ['ð´','Dishes + sink','Finish dishes, scrub sink, polish faucet','Dawn Powerwash + scrubber','10 min'],
-    ['ð´','Counters','Clear completely, spray/wipe, return only needed items','Clean Freak/Mr Clean + microfiber','8 min'],
-    ['ð¡','Backsplash','Spot clean grease/splashes','All-purpose cleaner','5 min'],
-    ['ð¡','Stovetop','Remove loose crumbs, degrease, wipe dry','Degreaser + cloth','7 min'],
-    ['ð¡','Microwave','Inside, plate, door, handle','Damp cloth + cleaner','5 min'],
-    ['ð¡','Appliance fronts/handles','Fridge, dishwasher, oven','Appropriate cleaner + microfiber','6 min'],
-    ['ð¡','Table + chairs','Wipe top, edges, chair seats','All-purpose cleaner','5 min'],
-    ['ð´','Trash','Empty, new liner, wipe lid if needed','Trash bag + disinfectant','4 min'],
-    ['ð¡','Floor','Pick up â sweep/vacuum â mop','Vacuum/broom + mop','15 min'],
-    ['ð¢','One small kitchen detail','Choose cabinet front, drawer, or shelf','As needed','10 min']
+    ['\u{1F534}','Dishes + sink','Finish dishes, scrub sink, polish faucet','Dawn Powerwash + scrubber','10 min'],
+    ['\u{1F534}','Counters','Clear completely, spray/wipe, return only needed items','Clean Freak/Mr Clean + microfiber','8 min'],
+    ['\u{1F7E1}','Backsplash','Spot clean grease/splashes','All-purpose cleaner','5 min'],
+    ['\u{1F7E1}','Stovetop','Remove loose crumbs, degrease, wipe dry','Degreaser + cloth','7 min'],
+    ['\u{1F7E1}','Microwave','Inside, plate, door, handle','Damp cloth + cleaner','5 min'],
+    ['\u{1F7E1}','Appliance fronts/handles','Fridge, dishwasher, oven','Appropriate cleaner + microfiber','6 min'],
+    ['\u{1F7E1}','Table + chairs','Wipe top, edges, chair seats','All-purpose cleaner','5 min'],
+    ['\u{1F534}','Trash','Empty, new liner, wipe lid if needed','Trash bag + disinfectant','4 min'],
+    ['\u{1F7E1}','Floor','Pick up â sweep/vacuum â mop','Vacuum/broom + mop','15 min'],
+    ['\u{1F7E2}','One small kitchen detail','Choose cabinet front, drawer, or shelf','As needed','10 min']
    ]
   },
   Thursday:{
    focus:'Living Areas',
    items:[
-    ['ð´','Pickup','Trash, toys, cups, random items','Basket + trash bag','10 min'],
-    ['ð¡','Soft items','Fold blankets, fluff pillows','Hands','3 min'],
-    ['ð¡','Dust surfaces','TV stand, shelves, tables','Microfiber','8 min'],
-    ['ð¡','Glass / mirrors','Clean visible marks','Windex + glass cloth','5 min'],
-    ['ð¡','High touch','Remotes, switches, handles','Disinfecting wipe','5 min'],
-    ['ð¡','Couch','Crumbs, cushions, quick vacuum','Vacuum attachment','8 min'],
-    ['ð¡','Floor','Vacuum/sweep thoroughly','Vacuum/broom','12 min']
+    ['\u{1F534}','Pickup','Trash, toys, cups, random items','Basket + trash bag','10 min'],
+    ['\u{1F7E1}','Soft items','Fold blankets, fluff pillows','Hands','3 min'],
+    ['\u{1F7E1}','Dust surfaces','TV stand, shelves, tables','Microfiber','8 min'],
+    ['\u{1F7E1}','Glass / mirrors','Clean visible marks','Windex + glass cloth','5 min'],
+    ['\u{1F7E1}','High touch','Remotes, switches, handles','Disinfecting wipe','5 min'],
+    ['\u{1F7E1}','Couch','Crumbs, cushions, quick vacuum','Vacuum attachment','8 min'],
+    ['\u{1F7E1}','Floor','Vacuum/sweep thoroughly','Vacuum/broom','12 min']
    ]
   },
   Friday:{
    focus:'Floors + Weekly Catch-Up',
    items:[
-    ['ð´','Floor pickup','Get clothes/toys/items off floors','Basket','10 min'],
-    ['ð´','Vacuum main areas','Bedrooms, halls, living room','Vacuum','20 min'],
-    ['ð¡','Hard floors','Kitchen/bath/laundry sweep or vacuum','Vacuum/broom','10 min'],
-    ['ð¡','Mop','Work from cleanest to dirtiest areas','Mop + appropriate cleaner','15 min'],
-    ['ð¡','Catch-up','Choose ONE missed weekly cleaning task','As needed','15 min'],
-    ['ð¢','Spot clean baseboards','One small zone only','Microfiber','10 min']
+    ['\u{1F534}','Floor pickup','Get clothes/toys/items off floors','Basket','10 min'],
+    ['\u{1F534}','Vacuum main areas','Bedrooms, halls, living room','Vacuum','20 min'],
+    ['\u{1F7E1}','Hard floors','Kitchen/bath/laundry sweep or vacuum','Vacuum/broom','10 min'],
+    ['\u{1F7E1}','Mop','Work from cleanest to dirtiest areas','Mop + appropriate cleaner','15 min'],
+    ['\u{1F7E1}','Catch-up','Choose ONE missed weekly cleaning task','As needed','15 min'],
+    ['\u{1F7E2}','Spot clean baseboards','One small zone only','Microfiber','10 min']
    ]
   },
   Saturday:{
    focus:'Catch-Up + One Project',
    items:[
-    ['ð´','Laundry','Finish open loads and put away','Laundry products','15 min active'],
-    ['ð¡','Kids rooms quick reset','Trash â clothes â surfaces â floor','Basket + trash bag','10 min each'],
-    ['ð¡','Kitchen quick reset','Dishes, counters, sink, floor check','Kitchen cleaners','10 min'],
-    ['ð¡','One monthly/seasonal task','Pick ONE from lists below','As needed','20â30 min'],
-    ['ð¢','Donation / declutter bag','Add obvious items only','Bag/box','10 min']
+    ['\u{1F534}','Laundry','Finish open loads and put away','Laundry products','15 min active'],
+    ['\u{1F7E1}','Kids rooms quick reset','Trash â clothes â surfaces â floor','Basket + trash bag','10 min each'],
+    ['\u{1F7E1}','Kitchen quick reset','Dishes, counters, sink, floor check','Kitchen cleaners','10 min'],
+    ['\u{1F7E1}','One monthly/seasonal task','Pick ONE from lists below','As needed','20â30 min'],
+    ['\u{1F7E2}','Donation / declutter bag','Add obvious items only','Bag/box','10 min']
    ]
   },
   Sunday:{
    focus:'Weekly Reset',
    items:[
-    ['ð´','Kitchen reset','Dishes, sink, counters, trash','Kitchen cleaners','10 min'],
-    ['ð¡','Living room reset','Pickup, blankets, surfaces','Basket/microfiber','10 min'],
-    ['ð¡','Bathrooms quick check','Toilet, sink, trash, towels','Bathroom cleaner','8 min'],
-    ['ð¡','Laundry prep','Collect/sort and prep Monday load','Baskets','7 min'],
-    ['ð´','Trash/recycling','Empty anything full','Bags','7 min'],
-    ['ð¡','Cleaning tote','Refill cloths, bags, cleaners','Cleaning supplies','5 min'],
-    ['ð¡','Plan cleaning week','Review monthly/seasonal and choose only due tasks','My Life HQ','10 min']
+    ['\u{1F534}','Kitchen reset','Dishes, sink, counters, trash','Kitchen cleaners','10 min'],
+    ['\u{1F7E1}','Living room reset','Pickup, blankets, surfaces','Basket/microfiber','10 min'],
+    ['\u{1F7E1}','Bathrooms quick check','Toilet, sink, trash, towels','Bathroom cleaner','8 min'],
+    ['\u{1F7E1}','Laundry prep','Collect/sort and prep Monday load','Baskets','7 min'],
+    ['\u{1F534}','Trash/recycling','Empty anything full','Bags','7 min'],
+    ['\u{1F7E1}','Cleaning tote','Refill cloths, bags, cleaners','Cleaning supplies','5 min'],
+    ['\u{1F7E1}','Plan cleaning week','Review monthly/seasonal and choose only due tasks','My Life HQ','10 min']
    ]
   }
  };
@@ -1956,7 +1955,7 @@ function renderCleaning(){
  const box=document.getElementById('cleaningPlan');
  if(box){
   const info=plan[today];
-  box.innerHTML=`<div class="alert"><strong>${today}: ${info.focus}</strong><br><span class="small">Do ð´ first. Stop after ð¡ if energy/time is low.</span></div>`+
+  box.innerHTML=`<div class="alert"><strong>${today}: ${info.focus}</strong><br><span class="small">Do \u{1F534} first. Stop after \u{1F7E1} if energy/time is low.</span></div>`+
    info.items.map(([pri,task,how,tool,time])=>{
      const base=`${weekStartKey()}|${today}|${task}`;
      const steps=(how||'').split(/\s*(?:â|,|;|\+| then )\s*/i).map(x=>x.trim()).filter(Boolean);
@@ -2047,7 +2046,7 @@ document.querySelectorAll('[data-clean],[data-clean-month],[data-clean-season],[
    const groups={};
    all.forEach(c=>{const g=c.dataset.quickSub.split('|')[0];(groups[g]||(groups[g]=[])).push(c)});
    let completeGroups=0;
-   Object.entries(groups).forEach(([g,boxes])=>{const done=boxes.filter(x=>x.checked).length;if(done===boxes.length)completeGroups++;const el=document.getElementById('qrCount-'+g);if(el)el.textContent=`(${done}/${boxes.length}${done===boxes.length?' â':''})`});
+   Object.entries(groups).forEach(([g,boxes])=>{const done=boxes.filter(x=>x.checked).length;if(done===boxes.length)completeGroups++;const el=document.getElementById('qrCount-'+g);if(el)el.textContent=`(${done}/${boxes.length}${done===boxes.length?' \u2713':''})`});
    const p=document.getElementById('quickResetProgress');
    if(p)p.innerHTML=`<div class="alert"><strong>Quick Reset Progress</strong><br>${completeGroups} of ${Object.keys(groups).length} main tasks complete â¢ ${all.filter(x=>x.checked).length} of ${all.length} subtasks checked</div>`;
  }
@@ -2062,7 +2061,7 @@ document.querySelectorAll('[data-clean],[data-clean-month],[data-clean-season],[
    const all=[...document.querySelectorAll('[data-catchup-sub]')],groups={};
    all.forEach(c=>{const g=c.dataset.catchupSub.split('|')[0];(groups[g]||(groups[g]=[])).push(c)});
    let doneGroups=0;
-   Object.entries(groups).forEach(([g,boxes])=>{const done=boxes.filter(x=>x.checked).length;if(done===boxes.length)doneGroups++;const el=document.getElementById('catchCount-'+g);if(el)el.textContent=`(${done}/${boxes.length}${done===boxes.length?' â':''})`});
+   Object.entries(groups).forEach(([g,boxes])=>{const done=boxes.filter(x=>x.checked).length;if(done===boxes.length)doneGroups++;const el=document.getElementById('catchCount-'+g);if(el)el.textContent=`(${done}/${boxes.length}${done===boxes.length?' \u2713':''})`});
    const p=document.getElementById('catchupProgress');
    if(p)p.innerHTML=`<div class="alert"><strong>Catch-Up Progress</strong><br>${doneGroups} of ${Object.keys(groups).length} priority sections complete â¢ ${all.filter(x=>x.checked).length} of ${all.length} tasks checked</div>`;
  }
@@ -2092,16 +2091,16 @@ function renderSelfCare(){
  if(today){
   const rows=[
    ['Day Type',schedule.dayType],
-   ['ð AM',schedule.am],
+   ['\u{1F305} AM',schedule.am],
    ['AM Treatment',schedule.amTreatment],
-   ['ð¿ Shower',schedule.shower],
+   ['\u{1F6BF} Shower',schedule.shower],
    ['Shave',schedule.shave],
    ['Body Exfoliation',schedule.exfoliate],
-   ['ð Hair / Scalp',schedule.hair],
+   ['\u{1F487} Hair / Scalp',schedule.hair],
    ['Hair Style',schedule.style],
-   ['ð PM',schedule.pm],
+   ['\u{1F319} PM',schedule.pm],
    ['PM Treatment',schedule.pmTreatment],
-   ['â¨ Extra',schedule.extra]
+   ['\u2728 Extra',schedule.extra]
   ].filter(x=>x[1]&&x[1]!=='None'&&x[1]!=='No'&&x[1]!=='No Shower Scheduled'&&x[1]!=='Rest / No Hair Task');
   today.innerHTML=`<div class="alert"><strong>${d}</strong>${schedule.dayType?` â¢ ${esc(schedule.dayType)}`:''}</div>`+
    (rows.length?rows.map(([a,b])=>`<label class="task"><input type="checkbox" data-self-today="${todayKey()}|${a}"><span><strong>${a}</strong><br>${esc(b)}</span></label>`).join(''):'<div class="small">Nothing scheduled yet for today.</div>')+
@@ -2213,7 +2212,7 @@ function renderSelfCare(){
  function updateSelfDayCounts(){
    days.forEach(day=>{
      const boxes=[...document.querySelectorAll(`[data-self-day^="${day}|"]`)],done=boxes.filter(x=>x.checked).length,el=document.getElementById('selfDayCount-'+day);
-     if(el)el.textContent=boxes.length?`(${done}/${boxes.length}${done===boxes.length?' â':''})`:'';
+     if(el)el.textContent=boxes.length?`(${done}/${boxes.length}${done===boxes.length?' \u2713':''})`:'';
    });
  }
  updateSelfDayCounts();
@@ -2246,10 +2245,10 @@ function renderHealth(){ const hp=document.getElementById('healthProfiles');if(h
  const att=document.getElementById('healthAttention');
  if(att){
    const items=[];
-   rec('symptom').filter(r=>r.followupNeeded&&r.followupNeeded!=='No'&&r.followupNeeded!=='Watch').forEach(r=>items.push(`ð©º ${r.person||''} â ${r.followupNeeded}`));
-   rec('appointment').filter(r=>['Need to Schedule','Follow-Up Needed','Reschedule'].includes(r.status)).forEach(r=>items.push(`ð ${r.person||''} â ${r.status}: ${r.kind||'Appointment'}`));
-   rec('med').filter(r=>['Running Low','Out'].includes(r.refillStatus)).forEach(r=>items.push(`ð ${r.person||''} â ${r.name||''}: ${r.refillStatus}`));
-   rec('dental').filter(r=>['Due','Follow-Up Needed'].includes(r.status)).forEach(r=>items.push(`${r.kind==='Vision'?'ð':'ð¦·'} ${r.person||''} â ${r.status}`));
+   rec('symptom').filter(r=>r.followupNeeded&&r.followupNeeded!=='No'&&r.followupNeeded!=='Watch').forEach(r=>items.push(`\u{1FA7A} ${r.person||''} â ${r.followupNeeded}`));
+   rec('appointment').filter(r=>['Need to Schedule','Follow-Up Needed','Reschedule'].includes(r.status)).forEach(r=>items.push(`\u{1F4C5} ${r.person||''} â ${r.status}: ${r.kind||'Appointment'}`));
+   rec('med').filter(r=>['Running Low','Out'].includes(r.refillStatus)).forEach(r=>items.push(`\u{1F48A} ${r.person||''} â ${r.name||''}: ${r.refillStatus}`));
+   rec('dental').filter(r=>['Due','Follow-Up Needed'].includes(r.status)).forEach(r=>items.push(`${r.kind==='Vision'?'\u{1F453}':'\u{1F9B7}'} ${r.person||''} â ${r.status}`));
    att.innerHTML=items.length?items.map(x=>`<div class="alert">${esc(x)}</div>`).join(''):'<div class="small">Nothing flagged right now.</div>';
  }
 renderSimple('mood','moodTracker',r=>`${r.date||''} â ${(r.moods||[]).slice(0,3).join(', ')||'Mood check'}`,r=>`Intensity ${r.intensity||''} â¢ Energy ${r.energy||''} â¢ Stress ${r.stress||''}`);renderSimple('symptom','symptomList',r=>`${r.person||''} â ${(r.symptoms||[]).join(', ')||'Symptoms'}`,r=>`${r.date||''} â¢ Severity ${r.severity||''} â¢ ${r.active==='Yes'?'Active':'Ended'}`);renderSimple('migraine','migraineList',r=>`${r.person||''} â Migraine ${r.severity||''}/10`,r=>`${r.date||''} ${r.start||''} â¢ Worst ${r.worst||''}`);renderSimple('period','periodList',r=>`${r.person||''} â Period`,r=>`${r.start||''} â ${r.end||'Active'} â¢ ${r.flow||''} â¢ Pain ${r.pain||''}`);{
@@ -2285,15 +2284,15 @@ function renderToday(){
  renderSimple('brainDump','todayBrainDump',x=>x.text||'Brain Dump',x=>`${x.kind||''} â¢ ${x.when||''} â¢ ${x.priority||''} â¢ ${x.status||''}`,x=>x.status==='Unprocessed'?`<button class="smallbtn" data-brain-process="${x.id}">Process / Send</button>`:'');
  document.querySelectorAll('#todayBrainDump [data-brain-process]').forEach(b=>b.onclick=()=>processBrainDump(b.dataset.brainProcess));
  const d=days[new Date().getDay()];document.getElementById('todayTitle').textContent='â­ '+d;document.getElementById('cleanFocus').textContent=cleanFocusForDay(d);document.getElementById('cleanFocus').onclick=()=>openPage('cleaning');
- const alerts=[];rec('repair').filter(r=>r.status!=='Complete'&&r.status!=='Archived'&&(r.priority==='Urgent'||r.due===todayKey())).forEach(r=>alerts.push('ð  '+(r.item||r.task||'Home item')));rec('appointment').filter(r=>r.date===todayKey()).forEach(r=>alerts.push('ð '+r.person+' â '+(r.kind||'Appointment')+' '+(r.time||'')));rec('bill').filter(r=>r.status!=='Paid'&&r.payDate===todayKey()).forEach(r=>alerts.push('ð° Pay bill: '+r.name));rec('activity').filter(r=>r.events&&r.events.includes(todayKey())).forEach(r=>alerts.push('ð '+r.person+' â '+r.name));document.getElementById('todayAlerts').innerHTML=alerts.length?alerts.map(a=>`<div class="alert">${esc(a)}</div>`).join(''):'<div class="small">Nothing flagged right now.</div>';
+ const alerts=[];rec('repair').filter(r=>r.status!=='Complete'&&r.status!=='Archived'&&(r.priority==='Urgent'||r.due===todayKey())).forEach(r=>alerts.push('\u{1F3E0} '+(r.item||r.task||'Home item')));rec('appointment').filter(r=>r.date===todayKey()).forEach(r=>alerts.push('\u{1F4C5} '+r.person+' â '+(r.kind||'Appointment')+' '+(r.time||'')));rec('bill').filter(r=>r.status!=='Paid'&&r.payDate===todayKey()).forEach(r=>alerts.push('\u{1F4B0} Pay bill: '+r.name));rec('activity').filter(r=>r.events&&r.events.includes(todayKey())).forEach(r=>alerts.push('\u{1F3C3} '+r.person+' â '+r.name));document.getElementById('todayAlerts').innerHTML=alerts.length?alerts.map(a=>`<div class="alert">${esc(a)}</div>`).join(''):'<div class="small">Nothing flagged right now.</div>';
  renderCarry();
  const tom=days[(new Date().getDay()+1)%7],parts=[];['events','must','meal','notes'].forEach(k=>{const v=getPath('week.'+tom+'.'+k);if(v)parts.push(`${k}: ${v}`)});const meal=getPath('meal.'+tom+'.dinner');if(meal&&!parts.some(x=>x.includes(meal)))parts.push('Dinner: '+meal);document.getElementById('tomorrowPreview').textContent=tom+'\\n'+(parts.join('\\n')||'Nothing planned yet.');
 }
-function renderCarry(){const box=document.getElementById('carryList');if(!box)return;box.innerHTML=state.carry.filter(x=>!x.done).map(x=>`<label class="task"><input type="checkbox" data-carry="${x.id}">${esc(x.text)}</label>`).join('')||'<div class="small">Nothing waiting. â</div>';box.querySelectorAll('[data-carry]').forEach(c=>c.onchange=()=>{const x=state.carry.find(i=>i.id===c.dataset.carry);if(x)x.done=true;save();renderCarry()})}
+function renderCarry(){const box=document.getElementById('carryList');if(!box)return;box.innerHTML=state.carry.filter(x=>!x.done).map(x=>`<label class="task"><input type="checkbox" data-carry="${x.id}">${esc(x.text)}</label>`).join('')||'<div class="small">Nothing waiting. \u2713</div>';box.querySelectorAll('[data-carry]').forEach(c=>c.onchange=()=>{const x=state.carry.find(i=>i.id===c.dataset.carry);if(x)x.done=true;save();renderCarry()})}
 document.getElementById('carryAddBtn').onclick=()=>{const f=document.getElementById('carryAdd'),v=f.value.trim();if(!v)return;state.carry.push({id:uid(),text:v,done:false});f.value='';save();renderCarry()}
 function dailyCarryForward(){const k=todayKey(),last=state.meta.lastDay;if(last&&last!==k){['today.top1','today.top2','today.top3','today.notes','today.cleanExtra','today.cleanLater'].forEach(p=>{const v=getPath(p);if(v&&String(v).trim())state.carry.push({id:uid(),text:v,done:false,from:last});state.data[p]=''});save()}state.meta.lastDay=k;save()}
 function renderAll(){bindFields();bindDaily();renderToday();renderWeek();renderPriorities();renderInboxes();renderKids();renderFamily();renderWork();renderMeals();renderMoney();renderCleaning();renderHome();renderSelfCare();renderHealth();renderShopping();renderEmergency()}
-document.getElementById('backupBtn').onclick=()=>{const payload={app:'My Life HQ',version:'Final Rebuild v1',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='My-Life-HQ-Backup-'+todayKey()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('backupStatus').textContent='Backup created â'}
+document.getElementById('backupBtn').onclick=()=>{const payload={app:'My Life HQ',version:'Final Rebuild v1',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='My-Life-HQ-Backup-'+todayKey()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('backupStatus').textContent='Backup created \u2713'}
 document.getElementById('restoreFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const p=JSON.parse(rd.result);if(!p.state)throw Error('Invalid backup');if(confirm('Restore this My Life HQ backup?')){state=p.state;save();location.reload()}}catch(err){alert('Could not restore: '+err.message)}};rd.readAsText(f)}
 document.getElementById('homeDate').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
 load();seedDefaults();dailyCarryForward();renderAll();
