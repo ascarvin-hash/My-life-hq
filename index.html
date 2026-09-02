@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.6 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.7 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v8.6 - Cleaning + Sunday Review + Meal Add-to-Day + Spending</div>
+<div class="alert"><strong>Current App Version:</strong> v8.7 - Cleaning + Sunday Review + Meal Add-to-Day + Spending</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -233,13 +233,13 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Items to carry forward</label><textarea data-key="week.sunday.carry"></textarea></div>
 </details>
 <details><summary>3. Build Next Week</summary>
+<div class="hint">Type an item, choose where it belongs, and send it there.</div>
 <div class="formgrid">
-<div class="field full"><label>Top priorities next week</label><textarea data-key="week.sunday.nextPriorities"></textarea></div>
-<div class="field full"><label>Appointments / school / deadlines</label><textarea data-key="week.sunday.nextSchedule"></textarea></div>
-<div class="field full"><label>Work focus</label><textarea data-key="week.sunday.nextWork"></textarea></div>
-<div class="field full"><label>Meals / groceries to plan</label><textarea data-key="week.sunday.nextMeals"></textarea></div>
-<div class="field full"><label>Cleaning / home focus</label><textarea data-key="week.sunday.nextHome"></textarea></div>
+<div class="field full"><label>Item / task</label><input id="nextWeekItem"></div>
+<div class="field"><label>Send to</label><select id="nextWeekDestination"><option>Monday Top 3</option><option>To-Do Inbox</option><option>Work</option><option>Meals</option><option>Cleaning / Home</option><option>Money</option><option>School / Kids</option><option>Carry Forward</option></select></div>
+<div class="field"><label>Day if needed</label><select id="nextWeekDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
 </div>
+<button class="action" id="sendNextWeekItem">Send Item</button><div id="nextWeekSentStatus" class="small"></div>
 </details>
 <details><summary>4. Final Sunday Reset</summary>
 <label class="task"><input type="checkbox" data-key-check="week.sunday.bags"> Bags/backpacks/work items ready</label>
@@ -666,14 +666,40 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field full"><label>Other work reference notes</label><textarea data-key="work.reference.other"></textarea></div>
 </div></details>
 </details>
-</div></section>
+<details><summary>Work Reference Center</summary>
+<div class="hint">Open a topic for quick-reference details.</div>
+<details><summary>Runs / Dispatch Reference</summary>
+<details><summary>Run Types</summary><div class="small">Assigned, On-Call, URR, Other.</div></details>
+<details><summary>Shift</summary><div class="small">AM, PM, Team, Other.</div></details>
+<details><summary>Run Status</summary><div class="small">Scheduled, Driver Confirmed, Ready, Dispatched, Delayed, Held, Completed, Cancelled.</div></details>
+<details><summary>Exceptions</summary><div class="small">Declined, sat/no run, half run, no driver, coverage change, tractor issue, time-off issue, delay, other.</div></details>
+</details>
+<details><summary>Payroll / Settlement Reference</summary>
+<details><summary>Weekly Payroll Walkthrough</summary><div class="small">Verify drivers -> runs/hours -> PTO/half/no-run exceptions -> rate/pay method -> adjustments -> Ready -> Submit -> Verify.</div></details>
+<details><summary>Payroll Exceptions</summary><div class="small">Missing hours, wrong rate, wait time, PTO, bonus, deduction, run-pay correction, coverage change.</div></details>
+<details><summary>Settlement Review</summary><div class="small">Compare expected vs actual -> flag differences -> correction note -> follow-up -> verify.</div></details>
+</details>
+<details><summary>Tractor / Maintenance Reference</summary>
+<details><summary>Status Options</summary><div class="small">Available, Assigned, Shop, Out of Service, Maintenance Due, Spare/Backup.</div></details>
+<details><summary>Repair Types</summary><div class="small">PM service, tires, brakes, lights/electrical, fluids/leaks, engine, transmission, DEF/emissions, damage, camera/ELD, inspection, roadside, other.</div></details>
+<details><summary>Repair Workflow</summary><div class="small">Report -> verify tractor -> document symptom -> vendor/repair -> out-of-service time -> follow-up -> return to service -> close notes.</div></details>
+</details>
+<details><summary>Safety / Compliance Reference</summary>
+<details><summary>Pre/Post Trip</summary><div class="small">Lights, tires, brakes, fluids/leaks, coupling, mirrors, horn, emergency equipment, damage, ELD/camera.</div></details>
+<details><summary>Driver Follow-Up</summary><div class="small">KI/SRI coaching, videos, roadside prep, one-on-ones, training due, repeated issues.</div></details>
+</details>
+<details><summary>Daily / Weekly Work Walkthrough</summary>
+<details><summary>Daily</summary><div class="small">Linehaul Central, cameras, applicants, shipment tracking, URR/run tracking, declines, emails, run/driver issues, tractor issues, follow-ups.</div></details>
+<details><summary>Weekly</summary><div class="small">Sunday availability, Monday Penske Fuel, Tuesday payroll/settlement, Saturday PM URR/run tracking, time-off review, maintenance review, unresolved exceptions.</div></details>
+</details>
+</details></div></section>
 
 <section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping -> Groceries.</div><div id="mealWeek"></div></details>
-<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Day</strong> on any saved dinner/recipe, breakfast, lunch, or snack. Choose Monday-Sunday and it goes straight to that day.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">Add Meal / Recipe</button></details>
-<details><summary> Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
-<details><summary> Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">Add Lunch</button></details>
-<details><summary> Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
+<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Day</strong> on any saved dinner/recipe, breakfast, lunch, or snack. Choose Monday-Sunday and it goes straight to that day.</div><div id="recipeList"></div><button class="smallbtn" data-meal-library-add="recipe">Add Meal / Recipe</button></details>
+<details><summary> Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-meal-library-add="breakfast">Add Breakfast</button></details>
+<details><summary> Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-meal-library-add="lunch">Add Lunch</button></details>
+<details><summary> Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-meal-library-add="snack">Add Snack</button></details>
 </div></section>
 
 <section id="money" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#70d47b" stroke="#2f7f3b" stroke-width="3"/><text x="32" y="43" text-anchor="middle" font-family="Arial" font-size="31" font-weight="700" fill="#fff">$</text></svg>Money Command Center</h2><div id="moneySummary" class="alert"></div>
@@ -1034,7 +1060,34 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 
 <details><summary>Weekly Room Checklist - Full Detail</summary>
-<div id="weeklyRoomCleaning"></div>
+<div class="hint">Open each room for the weekly checklist.</div>
+<details><summary>Kitchen Weekly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.micro"> Microwave</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.appliances"> Appliance fronts</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.cab"> Cabinet spot clean</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.floor"> Full floor clean</label>
+</details>
+<details><summary>Bathroom Weekly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.tub"> Tub/shower scrub</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.toilet"> Toilet detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.storage"> Product/storage reset</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.floor"> Full floor clean</label>
+</details>
+<details><summary>Living Areas Weekly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.living.dust"> Dust surfaces</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.living.upholstery"> Vacuum upholstery</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.living.floor"> Full floor clean</label>
+</details>
+<details><summary>Bedrooms Weekly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bed.bedding"> Bedding check/change</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bed.dust"> Dust surfaces</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bed.floor"> Full floor clean</label>
+</details>
+<details><summary>Laundry Area Weekly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.machine"> Washer/dryer wipe-down</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.supplies"> Supplies check</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.floor"> Floor clean</label>
+</details>
 </details>
 
 <details><summary>Deep-Clean Tasks by Room</summary>
@@ -1184,6 +1237,33 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="walkstep"><div class="num">3</div><div>Work one room top-to-bottom: trash/clutter -> surfaces -> fixtures -> floor -> restock.</div></div>
 <div class="walkstep"><div class="num">4</div><div>Complete Nightly Reset so tomorrow starts easier.</div></div>
 <div class="walkstep"><div class="num">5</div><div>On Sunday, review Monthly/Seasonal tasks and pick only what is due.</div></div>
+</details>
+<details><summary>Deep Cleaning Tasks by Room</summary>
+<div class="hint">Open a room for deeper tasks beyond the weekly checklist.</div>
+<details><summary>Kitchen Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.fridge"> Fridge interior</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.oven"> Oven</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.cabinets"> Cabinets inside/out</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.baseboards"> Baseboards</label>
+</details>
+<details><summary>Bathroom Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.grout"> Grout/caulk</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.vent"> Vent/fan</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.storage"> Empty/wipe storage</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.baseboards"> Baseboards</label>
+</details>
+<details><summary>Living Room Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.furniture"> Under/behind furniture</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.upholstery"> Upholstery detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.windows"> Windows/blinds</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.baseboards"> Baseboards</label>
+</details>
+<details><summary>Bedrooms Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.mattress"> Mattress/under bed</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.closet"> Closet detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.windows"> Windows/blinds</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.baseboards"> Baseboards</label>
+</details>
 </details>
 </div></section>
 
@@ -2252,6 +2332,12 @@ function renderMeals(){const box=document.getElementById('mealWeek');if(box){box
      addLibraryToMealPlan(item,slot);
    });
  }
+
+ const ms=document.getElementById('meals');
+ if(ms&&!ms.dataset.addLibBound){
+   ms.dataset.addLibBound='1';
+   ms.addEventListener('click',e=>{const b=e.target.closest('[data-meal-library-add]');if(!b)return;e.preventDefault();showForm(b.dataset.mealLibraryAdd,{})});
+ }
 }
 function renderMoney(){
  const wc=document.getElementById('weeklySpendCategoryFilter')?.value||'All';
@@ -3084,10 +3170,28 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=8.6-'+Date.now();
+   location.href='./?v=8.7-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
+}
+
+function sendNextWeekItem(){
+ const item=(document.getElementById('nextWeekItem')?.value||'').trim();
+ const dest=document.getElementById('nextWeekDestination')?.value||'To-Do Inbox';
+ const day=document.getElementById('nextWeekDay')?.value||'Monday';
+ const out=document.getElementById('nextWeekSentStatus');
+ if(!item){if(out)out.textContent='Enter an item first.';return}
+ if(dest==='Monday Top 3'){
+   const key='day.'+day+'.top3';setPath(key,(getPath(key)?getPath(key)+' / ':'')+item);
+ }else if(dest==='To-Do Inbox') rec('todo').push({id:uid(),title:item,status:'Not Started',day});
+ else if(dest==='Work') rec('workTask').push({id:uid(),title:item,freq:'Next Week',area:'General',notes:'From Sunday Review'});
+ else if(dest==='Meals') setPath('meal.'+day+'.notes',(getPath('meal.'+day+'.notes')?getPath('meal.'+day+'.notes')+'\\n':'')+item);
+ else if(dest==='Cleaning / Home') rec('homeTask').push({id:uid(),name:item,status:'To Do',when:day,notes:'From Sunday Review'});
+ else if(dest==='Money') rec('moneyTask').push({id:uid(),name:item,status:'To Do',notes:'From Sunday Review'});
+ else if(dest==='School / Kids') rec('kidTask').push({id:uid(),name:item,status:'To Do',day,notes:'From Sunday Review'});
+ else state.carry.push({id:uid(),title:item,source:'Sunday Review',created:todayKey()});
+ save();renderAll();if(out)out.textContent='Sent to '+dest+'.';
 }
 function renderAll(){bindFields();bindDaily();renderToday();renderWeek();renderPriorities();renderInboxes();renderKids();renderFamily();renderWork();renderMeals();renderMoney();renderCleaning();renderHome();renderSelfCare();renderHealth();renderShopping();renderEmergency()}
 document.getElementById('backupBtn').onclick=()=>{const payload={app:'My Life HQ',version:'Final Rebuild v1',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='My-Life-HQ-Backup-'+todayKey()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('backupStatus').textContent='Backup created \u2713'}
@@ -3096,6 +3200,7 @@ document.getElementById('homeDateText').textContent=new Date().toLocaleDateStrin
 loadSyncMeta();load();seedDefaults();dailyCarryForward();renderAll();initCloud();
 const forceUpdateBtn=document.getElementById('forceAppUpdate');if(forceUpdateBtn)forceUpdateBtn.onclick=forceAppUpdate;
 const clearCacheBtn=document.getElementById('clearAppCache');if(clearCacheBtn)clearCacheBtn.onclick=clearAppCacheAndReload;
+const nextWeekBtn=document.getElementById('sendNextWeekItem');if(nextWeekBtn)nextWeekBtn.onclick=sendNextWeekItem;
 </script>
 
 <script>
