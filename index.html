@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.8 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.0 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v8.8 - Verified Live Section Rebuild</div>
+<div class="alert"><strong>Current App Version:</strong> v9.0 - Meal Library Global Button Fix</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -237,7 +237,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="formgrid">
 <div class="field full"><label>Item / task</label><input id="nextWeekItem" placeholder="What needs to happen next week?"></div>
 <div class="field"><label>Send to</label><select id="nextWeekDestination"><option>Monday Top 3</option><option>To-Do Inbox</option><option>Work</option><option>Meals</option><option>Cleaning / Home</option><option>Money</option><option>School / Kids</option><option>Carry Forward</option></select></div>
-<div class="field"><label>Day if needed</label><select id="nextWeekDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
+<div class="field"><label>Day if needed</label><select id="nextWeekDay"><option>No Specific Day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
 </div>
 <button class="action" id="sendNextWeekItem">Send Item</button>
 <div id="nextWeekSentStatus" class="small"></div>
@@ -624,67 +624,99 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="quickgrid"><div class="card"><h3>Today</h3><div id="myHoursToday"></div></div><div class="card"><h3>This Week</h3><div id="myHoursSummary"></div></div><div class="card"><h3>Needs Follow-Up</h3><div id="myHoursAttention"></div></div></div>
 <div id="myHoursList"></div><button class="smallbtn" data-add-record="myWorkHours">Add My Work Time</button>
 </details>
-<details><summary>Work Reference Center</summary>
-<div class="hint">Open a topic for quick-reference details.</div>
+<details open><summary>Work Reference Center</summary>
+<div class="hint"><strong>Use this as your Work walkthrough and quick reference.</strong> Open the section for the task you are working on.</div>
+
+<details open><summary>Daily Work Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div><strong>Check Linehaul Central</strong><br>Review current runs, changes, holds, declines, and anything needing follow-up.</div></div>
+<div class="walkstep"><div class="num">2</div><div><strong>Check Cameras</strong><br>Review events, note anything needing driver follow-up, and record completed reviews.</div></div>
+<div class="walkstep"><div class="num">3</div><div><strong>Check Applicants / Indeed</strong><br>Review new applicants, messages, interviews, and follow-ups.</div></div>
+<div class="walkstep"><div class="num">4</div><div><strong>Update Shipment / Trailer Tracking</strong><br>Confirm ELD/trailer/shipment information is current.</div></div>
+<div class="walkstep"><div class="num">5</div><div><strong>Update Runs / URR</strong><br>Record AM, PM, Team, Assigned, On-Call, URR, half run, sat/no run, coverage changes, and declines.</div></div>
+<div class="walkstep"><div class="num">6</div><div><strong>Check Driver Issues / Time Off</strong><br>Update planned time off, call-offs, coverage, and follow-up needed.</div></div>
+<div class="walkstep"><div class="num">7</div><div><strong>Check Tractors / Maintenance</strong><br>Review availability, shop status, maintenance due, and open repairs.</div></div>
+<div class="walkstep"><div class="num">8</div><div><strong>Check Emails</strong><br>Handle urgent items, flag follow-ups, and leave non-urgent items for the appropriate workflow.</div></div>
+<div class="walkstep"><div class="num">9</div><div><strong>End-of-Day Review</strong><br>Confirm anything unresolved is in Follow-Up, Carry Forward, Driver Time Off, Payroll, Run History, or Maintenance.</div></div>
+</details>
+
+<details><summary>Weekly Work Walkthrough</summary>
+<details><summary>Sunday</summary><div class="small">Availability review, on-call coverage, upcoming time off, run/tractor concerns for the new week.</div></details>
+<details><summary>Monday</summary><div class="small">Penske Fuel, open maintenance/fuel issues, follow-ups carried from weekend.</div></details>
+<details><summary>Tuesday</summary><div class="small">Payroll, settlement preparation/review, missing run/hour corrections, time-off/payroll effects.</div></details>
+<details><summary>Wednesday - Friday</summary><div class="small">Normal daily workflows plus unresolved payroll, driver, run, tractor, and compliance follow-up.</div></details>
+<details><summary>Saturday</summary><div class="small">PM URR / run tracking, close out the work week, flag anything that must carry into Sunday.</div></details>
+</details>
+
 <details><summary>Runs / Dispatch Reference</summary>
-<details><summary>Run Types</summary><div class="small">Assigned, On-Call, URR, Other.</div></details>
+<details><summary>Run Type</summary><div class="small">Assigned, On-Call, URR, Other.</div></details>
 <details><summary>Shift</summary><div class="small">AM, PM, Team, Other.</div></details>
 <details><summary>Run Status</summary><div class="small">Scheduled, Driver Confirmed, Ready, Dispatched, Delayed, Held, Completed, Cancelled.</div></details>
-<details><summary>Exceptions</summary><div class="small">Declined, sat/no run, half run, no driver, coverage change, tractor issue, time-off issue, terminal/weather delay, other.</div></details>
+<details><summary>Common Exceptions</summary><div class="small">Declined run, sat/no run, half run, no driver, coverage change, tractor issue, time-off issue, terminal/weather delay, other.</div></details>
+<details><summary>Run Issue Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Confirm run, shift, date, driver, tractor.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Choose current status / exception.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Record what changed and why.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Assign coverage / replacement if needed.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Mark follow-up and update history.</div></div>
 </details>
+</details>
+
 <details><summary>Payroll / Settlement Reference</summary>
-<details><summary>Weekly Payroll Walkthrough</summary><div class="small">Verify driver list -> runs/hours -> PTO/half/no-run exceptions -> rate/pay method -> adjustments -> Ready -> Submit -> Verify.</div></details>
-<details><summary>Payroll Exceptions</summary><div class="small">Missing hours, wrong rate, wait time, PTO, bonus, deduction, run-pay correction, coverage change.</div></details>
-<details><summary>Settlement Review</summary><div class="small">Compare expected vs actual -> flag differences -> correction note -> follow-up -> verify.</div></details>
+<details><summary>Weekly Payroll Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Confirm every active driver is listed.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Verify scheduled vs worked runs/days.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Review half runs, no runs, declines, PTO, call-offs, wait time, and coverage changes.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Verify hours / run pay / rate / bonus / adjustments.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Flag missing information or corrections.</div></div>
+<div class="walkstep"><div class="num">6</div><div>Mark Ready, Submit, then Verify once confirmed.</div></div>
 </details>
+<details><summary>Common Payroll Exceptions</summary><div class="small">Missing hours, wrong rate, wait time, PTO, bonus, deduction, run-pay correction, half run, no run, coverage change.</div></details>
+<details><summary>Settlement Review Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Compare expected vs actual.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Identify the difference.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Record correction type and amount.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Follow up if needed.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Mark verified / complete.</div></div>
+</details>
+</details>
+
 <details><summary>Tractor / Maintenance Reference</summary>
 <details><summary>Status Options</summary><div class="small">Available, Assigned, Shop, Out of Service, Maintenance Due, Spare/Backup.</div></details>
 <details><summary>Repair Types</summary><div class="small">PM service, tires, brakes, lights/electrical, fluids/leaks, engine, transmission, DEF/emissions, body/damage, camera/ELD, inspection, roadside, other.</div></details>
-<details><summary>Repair Workflow</summary><div class="small">Issue reported -> verify tractor -> document symptom -> assign vendor/repair -> record out-of-service time -> follow-up -> return to service -> close notes.</div></details>
-</details>
-<details><summary>Safety / Compliance Reference</summary>
-<details><summary>Pre/Post Trip</summary><div class="small">Lights, tires, brakes, fluids/leaks, coupling, mirrors, horn, emergency equipment, visible damage, ELD/camera.</div></details>
-<details><summary>Driver Follow-Up</summary><div class="small">KI/SRI coaching, monthly videos, roadside prep, one-on-ones, training due, repeated issue follow-up.</div></details>
-</details>
-<details><summary>Daily / Weekly Work Walkthrough</summary>
-<details><summary>Daily</summary><div class="small">Linehaul Central, cameras, applicants, shipment tracking, URR/run tracking, declines, emails, driver/run issues, tractor/maintenance, follow-ups.</div></details>
-<details><summary>Weekly</summary><div class="small">Sunday availability, Monday Penske Fuel, Tuesday payroll/settlement, Saturday PM URR/run tracking, time-off review, maintenance review, unresolved exceptions.</div></details>
+<details><summary>Maintenance Issue Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Identify tractor and driver/run affected.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Document symptom / issue.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Set tractor status.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Assign vendor / repair / roadside if needed.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Record out-of-service time and expected return.</div></div>
+<div class="walkstep"><div class="num">6</div><div>Follow up and return to service when cleared.</div></div>
 </details>
 </details>
-<details><summary>Work Reference Center</summary>
-<div class="hint">Open a topic for quick-reference details.</div>
-<details><summary>Runs / Dispatch Reference</summary>
-<details><summary>Run Types</summary><div class="small">Assigned, On-Call, URR, Other.</div></details>
-<details><summary>Shift</summary><div class="small">AM, PM, Team, Other.</div></details>
-<details><summary>Run Status</summary><div class="small">Scheduled, Driver Confirmed, Ready, Dispatched, Delayed, Held, Completed, Cancelled.</div></details>
-<details><summary>Exceptions</summary><div class="small">Declined, sat/no run, half run, no driver, coverage change, tractor issue, time-off issue, delay, other.</div></details>
-</details>
-<details><summary>Payroll / Settlement Reference</summary>
-<details><summary>Weekly Payroll Walkthrough</summary><div class="small">Verify drivers -> runs/hours -> PTO/half/no-run exceptions -> rate/pay method -> adjustments -> Ready -> Submit -> Verify.</div></details>
-<details><summary>Payroll Exceptions</summary><div class="small">Missing hours, wrong rate, wait time, PTO, bonus, deduction, run-pay correction, coverage change.</div></details>
-<details><summary>Settlement Review</summary><div class="small">Compare expected vs actual -> flag differences -> correction note -> follow-up -> verify.</div></details>
-</details>
-<details><summary>Tractor / Maintenance Reference</summary>
-<details><summary>Status Options</summary><div class="small">Available, Assigned, Shop, Out of Service, Maintenance Due, Spare/Backup.</div></details>
-<details><summary>Repair Types</summary><div class="small">PM service, tires, brakes, lights/electrical, fluids/leaks, engine, transmission, DEF/emissions, damage, camera/ELD, inspection, roadside, other.</div></details>
-<details><summary>Repair Workflow</summary><div class="small">Report -> verify tractor -> document symptom -> vendor/repair -> out-of-service time -> follow-up -> return to service -> close notes.</div></details>
-</details>
-<details><summary>Safety / Compliance Reference</summary>
-<details><summary>Pre/Post Trip</summary><div class="small">Lights, tires, brakes, fluids/leaks, coupling, mirrors, horn, emergency equipment, damage, ELD/camera.</div></details>
-<details><summary>Driver Follow-Up</summary><div class="small">KI/SRI coaching, videos, roadside prep, one-on-ones, training due, repeated issues.</div></details>
-</details>
-<details><summary>Daily / Weekly Work Walkthrough</summary>
-<details><summary>Daily</summary><div class="small">Linehaul Central, cameras, applicants, shipment tracking, URR/run tracking, declines, emails, run/driver issues, tractor issues, follow-ups.</div></details>
-<details><summary>Weekly</summary><div class="small">Sunday availability, Monday Penske Fuel, Tuesday payroll/settlement, Saturday PM URR/run tracking, time-off review, maintenance review, unresolved exceptions.</div></details>
-</details>
-</details></div></section>
 
-<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2>
+<details><summary>Safety / Compliance Reference</summary>
+<details><summary>Pre/Post Trip Reference</summary><div class="small">Lights, tires, brakes, fluids/leaks, coupling, mirrors, horn, emergency equipment, visible damage, ELD/camera.</div></details>
+<details><summary>Driver Coaching / Follow-Up</summary><div class="small">KI/SRI coaching, monthly videos, roadside prep, pre/post trip, ELD entry, coupling, one-on-ones, repeated issue follow-up.</div></details>
+<details><summary>Safety Follow-Up Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Document issue / event.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Identify required coaching / training.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Record driver contact / completion.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Set next follow-up date if needed.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Close only when completed.</div></div>
+</details>
+</details>
+
+<details><summary>My Hours Reference</summary>
+<div class="small">Track regular work, after-hours work, payroll/settlement, calls, driver issues, run issues, maintenance, reports/admin, and other work. Review weekly total plus after-hours separately.</div>
+</details>
+</details>
+</div></section>
+
+<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2><div class="small"><strong>Meal Library Actions:</strong> v9.0 global buttons active</div>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping -> Groceries.</div><div id="mealWeek"></div></details>
-<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Day</strong> on any saved dinner/recipe, breakfast, lunch, or snack. Choose Monday-Sunday and it goes straight to that day.</div><div id="recipeList"></div><button class="smallbtn" data-meal-library-add="recipe">Add Meal / Recipe</button></details>
-<details><summary> Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-meal-library-add="breakfast">Add Breakfast</button></details>
-<details><summary> Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-meal-library-add="lunch">Add Lunch</button></details>
-<details><summary> Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-meal-library-add="snack">Add Snack</button></details>
+<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Day</strong> on any saved dinner/recipe, breakfast, lunch, or snack. Choose Monday-Sunday and it goes straight to that day.</div><div id="recipeList"></div><button type="button" class="smallbtn" data-meal-library-add="recipe">Add Meal / Recipe</button></details>
+<details><summary> Breakfast Library</summary><div id="breakfastList"></div><button type="button" class="smallbtn" data-meal-library-add="breakfast">Add Breakfast</button></details>
+<details><summary> Lunch Library</summary><div id="lunchList"></div><button type="button" class="smallbtn" data-meal-library-add="lunch">Add Lunch</button></details>
+<details><summary> Snack Library</summary><div id="snackList"></div><button type="button" class="smallbtn" data-meal-library-add="snack">Add Snack</button></details>
 </div></section>
 
 <section id="money" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#70d47b" stroke="#2f7f3b" stroke-width="3"/><text x="32" y="43" text-anchor="middle" font-family="Arial" font-size="31" font-weight="700" fill="#fff">$</text></svg>Money Command Center</h2><div id="moneySummary" class="alert"></div>
@@ -2032,7 +2064,16 @@ ${field('Planning note','note',r.note||'')}
 function addLibraryToMealPlan(item,slot='Dinner'){
  showForm('mealPlanPick',{item,slot});
 }
-function showForm(type,obj={}){modalType=type;modalId=obj.id||null;document.getElementById('modalTitle').textContent=(modalId?'Edit ':'Add ')+type.replace(/([A-Z])/g,' $1');document.getElementById('modalBody').innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}</form>`;document.getElementById('modal').style.display='block';
+function showForm(type,obj={}){
+ if(!formBuilders[type]){alert('This form is not available: '+type);return}
+ modalType=type;modalId=obj.id||null;
+ const title=document.getElementById('modalTitle'),body=document.getElementById('modalBody'),modal=document.getElementById('modal');
+ if(!title||!body||!modal){alert('The form window could not open. Please reload My Life HQ.');return}
+ title.textContent=(modalId?'Edit ':'Add ')+type.replace(/([A-Z])/g,' $1');
+ body.innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}</form>`;
+ modal.style.display='block';
+ modal.setAttribute('aria-hidden','false');
+ setTimeout(()=>{const first=body.querySelector('input,select,textarea');if(first)first.focus()},50);
 }
 document.getElementById('modalClose').onclick=()=>document.getElementById('modal').style.display='none';
 document.getElementById('modalSave').onclick=()=>{
@@ -2057,6 +2098,30 @@ document.getElementById('modalSave').onclick=()=>{
  save();document.getElementById('modal').style.display='none';renderAll()
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-add-record]');if(b)showForm(b.dataset.addRecord,{})})
+
+document.addEventListener('click',e=>{
+ const add=e.target.closest('[data-meal-library-add]');
+ if(add){
+   e.preventDefault();
+   e.stopPropagation();
+   const type=add.dataset.mealLibraryAdd;
+   if(!formBuilders[type]){alert('Meal library form is unavailable: '+type);return}
+   showForm(type,{});
+   return;
+ }
+ const send=e.target.closest('[data-library-add-day]');
+ if(send){
+   e.preventDefault();
+   e.stopPropagation();
+   const type=send.dataset.libraryAddDay;
+   const row=rec(type).find(x=>String(x.id)===String(send.dataset.id));
+   if(!row){alert('Could not find that saved library item.');return}
+   const item=row.name||row.title||row.item||'Item';
+   addLibraryToMealPlan(item,send.dataset.slot||'Dinner');
+   return;
+ }
+});
+
 
 function renderSimple(type,container,titleFn,metaFn,extraFn){const box=document.getElementById(container);if(!box)return;box.innerHTML=rec(type).map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc(titleFn(r))}</strong><div class="small">${esc(metaFn(r)||'')}</div></div>${actionBtns(type,r.id)}</div>${extraFn?extraFn(r):''}</div>`).join('')||'<div class="small">Nothing added yet.</div>'}
 function renderWeek(){
@@ -2473,34 +2538,15 @@ function renderMeals(){const box=document.getElementById('mealWeek');if(box){box
  r=>(r.favorite==='Favorite'?'':'')+(r.name||'Recipe'),
  r=>`${r.category||''} \u2022 ${r.method||''}`,
  r=>`<div class="rowbuttons">
- <button class="smallbtn" data-library-add-day="recipe" data-id="${r.id}" data-slot="Dinner">Add to Day</button>
+ <button type="button" class="smallbtn" data-library-add-day="recipe" data-id="${r.id}" data-slot="Dinner">Add to Day</button>
  <button class="smallbtn" onclick="addShopping('${esc((r.ingredients||'').replace(/'/g,"&#39;"))}','Groceries','','','Soon','','Recipe: ${esc(r.name||'')}')">Add Ingredients to Shopping</button>
  </div>`);
- renderSimple('breakfast','breakfastList',r=>r.name||'Breakfast',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" data-library-add-day="breakfast" data-id="${r.id}" data-slot="Breakfast">Add to Day</button>`);
- renderSimple('lunch','lunchList',r=>r.name||'Lunch',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" data-library-add-day="lunch" data-id="${r.id}" data-slot="Lunch">Add to Day</button>`);
- renderSimple('snack','snackList',r=>r.name||'Snack',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button class="smallbtn" data-library-add-day="snack" data-id="${r.id}" data-slot="Snacks">Add to Day</button>`)
+ renderSimple('breakfast','breakfastList',r=>r.name||'Breakfast',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button type="button" class="smallbtn" data-library-add-day="breakfast" data-id="${r.id}" data-slot="Breakfast">Add to Day</button>`);
+ renderSimple('lunch','lunchList',r=>r.name||'Lunch',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button type="button" class="smallbtn" data-library-add-day="lunch" data-id="${r.id}" data-slot="Lunch">Add to Day</button>`);
+ renderSimple('snack','snackList',r=>r.name||'Snack',r=>`${r.tag||''} \u2022 ${r.likes||''}`,r=>`<button type="button" class="smallbtn" data-library-add-day="snack" data-id="${r.id}" data-slot="Snacks">Add to Day</button>`)
 
 
- const mealsPage=document.getElementById('meals');
- if(mealsPage&&!mealsPage.dataset.libraryDayBound){
-   mealsPage.dataset.libraryDayBound='1';
-   mealsPage.addEventListener('click',e=>{
-     const b=e.target.closest('[data-library-add-day]');
-     if(!b)return;
-     e.preventDefault();
-     const type=b.dataset.libraryAddDay,id=b.dataset.id,slot=b.dataset.slot||'Dinner';
-     const row=rec(type).find(x=>String(x.id)===String(id));
-     if(!row)return;
-     const item=row.name||row.title||row.item||'Item';
-     addLibraryToMealPlan(item,slot);
-   });
- }
 
- const ms=document.getElementById('meals');
- if(ms&&!ms.dataset.addLibBound){
-   ms.dataset.addLibBound='1';
-   ms.addEventListener('click',e=>{const b=e.target.closest('[data-meal-library-add]');if(!b)return;e.preventDefault();showForm(b.dataset.mealLibraryAdd,{})});
- }
 }
 function renderMoney(){
  const wc=document.getElementById('weeklySpendCategoryFilter')?.value||'All';
@@ -3333,7 +3379,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=8.8-'+Date.now();
+   location.href='./?v=9.0-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
@@ -3342,19 +3388,37 @@ async function clearAppCacheAndReload(){
 function sendNextWeekItem(){
  const item=(document.getElementById('nextWeekItem')?.value||'').trim();
  const dest=document.getElementById('nextWeekDestination')?.value||'To-Do Inbox';
- const day=document.getElementById('nextWeekDay')?.value||'Monday';
+ const day=document.getElementById('nextWeekDay')?.value||'No Specific Day';
+ const hasDay=day!=='No Specific Day';
  const out=document.getElementById('nextWeekSentStatus');
  if(!item){if(out)out.textContent='Enter an item first.';return}
+
  if(dest==='Monday Top 3'){
-   const key='day.'+day+'.top3';setPath(key,(getPath(key)?getPath(key)+' / ':'')+item);
- }else if(dest==='To-Do Inbox') rec('todo').push({id:uid(),title:item,status:'Not Started',day});
- else if(dest==='Work') rec('workTask').push({id:uid(),title:item,freq:'Next Week',area:'General',notes:'From Sunday Review'});
- else if(dest==='Meals') setPath('meal.'+day+'.notes',(getPath('meal.'+day+'.notes')?getPath('meal.'+day+'.notes')+'\\n':'')+item);
- else if(dest==='Cleaning / Home') rec('homeTask').push({id:uid(),name:item,status:'To Do',when:day,notes:'From Sunday Review'});
- else if(dest==='Money') rec('moneyTask').push({id:uid(),name:item,status:'To Do',notes:'From Sunday Review'});
- else if(dest==='School / Kids') rec('kidTask').push({id:uid(),name:item,status:'To Do',day,notes:'From Sunday Review'});
- else state.carry.push({id:uid(),title:item,source:'Sunday Review',created:todayKey()});
- save();renderAll();if(out)out.textContent='Sent to '+dest+'.';
+   const useDay=hasDay?day:'Monday';
+   const k='day.'+useDay+'.top3';
+   setPath(k,(getPath(k)?getPath(k)+' / ':'')+item);
+ }else if(dest==='To-Do Inbox'){
+   rec('todo').push({id:uid(),title:item,status:'Not Started',day:hasDay?day:''});
+ }else if(dest==='Work'){
+   rec('workTask').push({id:uid(),title:item,freq:hasDay?day:'Next Week',area:'General',notes:'Added from Sunday Review'});
+ }else if(dest==='Meals'){
+   if(hasDay){
+     setPath('meal.'+day+'.notes',(getPath('meal.'+day+'.notes')?getPath('meal.'+day+'.notes')+'\n':'')+item);
+   }else{
+     rec('mealIdea').push({id:uid(),name:item,notes:'Added from Sunday Review'});
+   }
+ }else if(dest==='Cleaning / Home'){
+   rec('homeTask').push({id:uid(),name:item,status:'To Do',when:hasDay?day:'',notes:'Added from Sunday Review'});
+ }else if(dest==='Money'){
+   rec('moneyTask').push({id:uid(),name:item,status:'To Do',day:hasDay?day:'',notes:'Added from Sunday Review'});
+ }else if(dest==='School / Kids'){
+   rec('kidTask').push({id:uid(),name:item,status:'To Do',day:hasDay?day:'',notes:'Added from Sunday Review'});
+ }else{
+   state.carry.push({id:uid(),title:item,source:'Sunday Review',created:todayKey(),day:hasDay?day:''});
+ }
+ save();renderAll();
+ if(out)out.textContent='Sent to '+dest+(hasDay?' for '+day:' with no specific day')+'.';
+ const inp=document.getElementById('nextWeekItem');if(inp)inp.value='';
 }
 function renderAll(){bindFields();bindDaily();renderToday();renderWeek();renderPriorities();renderInboxes();renderKids();renderFamily();renderWork();renderMeals();renderMoney();renderCleaning();renderHome();renderSelfCare();renderHealth();renderShopping();renderEmergency()}
 document.getElementById('backupBtn').onclick=()=>{const payload={app:'My Life HQ',version:'Final Rebuild v1',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='My-Life-HQ-Backup-'+todayKey()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('backupStatus').textContent='Backup created \u2713'}
