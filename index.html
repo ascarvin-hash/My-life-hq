@@ -171,15 +171,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Status</label><select id="workStatusFilter"><option>All</option><option>Scheduled</option><option>Driver Confirmed</option><option>Ready</option><option>Dispatched</option><option>Delayed</option><option>Held</option><option>Completed</option><option>Cancelled</option></select></div>
 </div><div id="workRunBoard"></div></div><div class="card"><h3>Needs Attention</h3><div id="workAttention"></div></div></div>
 
-<div class="card"><h3>Driver List</h3>
-<div class="hint"><strong>Add each driver once.</strong> Their names will stay saved and appear in driver dropdowns throughout Work.</div>
-<div id="savedDriverList"></div>
+<details open><summary>Driver Names - Add and Save</summary>
+<div class="hint"><strong>Add a driver here one time.</strong> The name stays saved and will appear in the Driver dropdowns for Runs, Driver Status, Payroll, Time Off, Coverage, Assigned Runs, and Tractor assignments.</div>
 <div class="formgrid">
-<div class="field"><label>New driver name</label><input id="newDriverName" placeholder="Enter driver name"></div>
+<div class="field"><label>Driver name to save</label><input id="newDriverName" placeholder="Example: John Smith"></div>
 <div class="field"><label>Default shift</label><select id="newDriverShift"><option>AM</option><option>PM</option><option>Team</option><option>Flexible / Coverage</option></select></div>
 </div>
-<button class="smallbtn" id="addSavedDriver">Add Driver</button>
-</div>
+<button class="action" id="addSavedDriver">Save Driver Name</button>
+<div id="savedDriverList"></div>
+</details>
 <details><summary>Assigned Run Schedule</summary><div id="workRunTemplates"></div><button class="smallbtn" data-add-record="workRunTemplate">Add Assigned Run</button></details>
 
 <details open><summary> Work History - Current Month + Previous Months</summary>
@@ -1292,14 +1292,14 @@ outing:r=>`<div class="formgrid">${field('Place / activity','name',r.name||'')}$
 trip:r=>`<div class="formgrid">${field('Trip name','name',r.name||'')}${field('Type','kind',r.kind||'Road Trip','select',false,selectOpts(['Road Trip','Vacation','Weekend Trip','Visiting Family','Camping','Other'],r.kind||'Road Trip'))}${field('Status','status',r.status||'Planning','select',false,selectOpts(['Idea','Planning','Booked','Ready','Traveling','Completed'],r.status||'Planning'))}${field('Destination','destination',r.destination||'')}${field('Departure','depart',r.depart||'','date')}${field('Return','returnDate',r.returnDate||'','date')}${field('Who is going','who',r.who||'','textarea',true)}${field('Estimated budget','budget',r.budget||'','number')}${field('Route / overnight stops','route',r.route||'','textarea',true)}${field('Lodging / reservations','lodging',r.lodging||'','textarea',true)}${field('Activities','activities',r.activities||'','textarea',true)}${field('Packing notes','packing',r.packing||'','textarea',true)}${field('Food / snacks','food',r.food||'','textarea',true)}${field('Kids / pet / vehicle prep','prep',r.prep||'','textarea',true)}${field('Shopping before leaving','shopping',r.shopping||'','textarea',true)}${field('Departure checklist / notes','notes',r.notes||'','textarea',true)}</div>`,
 contact:r=>`<div class="formgrid">${field('Name','name',r.name||'')}${field('Relationship / role','relation',r.relation||'')}${field('Phone','phone',r.phone||'')}${field('Email','email',r.email||'')}${field('Address','address',r.address||'','textarea',true)}${field('Connected to / can help with','connected',r.connected||'','textarea',true)}${field('Emergency / pickup notes','notes',r.notes||'','textarea',true)}</div>`,
 workTask:r=>`<div class="formgrid">${field('Task','title',r.title||'')}${field('Frequency','freq',r.freq||'','select',false,selectOpts(['Daily','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Weekly','Monthly','As Needed'],r.freq))}${field('Time / deadline','time',r.time||'')}${field('System / area','area',r.area||'')}${field('Walkthrough / notes','notes',r.notes||'','textarea',true)}</div>`,
-driver:r=>`<div class="formgrid">${field('Driver','name',r.name||'')}${field('Primary shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Flexible / Coverage'],r.shift||'AM'))}${field('Normal run / route','run',r.run||'')}
+driver:r=>`<div class="formgrid">${driverPicker('Driver','name',r.name||'')}${field('Primary shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Flexible / Coverage'],r.shift||'AM'))}${field('Normal run / route','run',r.run||'')}
 ${field('Status','status',r.status||'Available','select',false,selectOpts(['Available','Running','Off','PTO','Call Off','Declined','On Call','Training','Unavailable','Other'],r.status||'Available'))}
 ${field('Date','date',r.date||'','date')}${field('Start time','startTime',r.startTime||'','time')}${field('Assigned tractor','tractor',r.tractor||'')}${field('Assigned trailer','trailer',r.trailer||'')}
-${field('Coverage needed?','coverageNeeded',r.coverageNeeded||'No','select',false,selectOpts(['No','Yes','Covered'],r.coverageNeeded||'No'))}${field('Replacement / backup','backup',r.backup||'')}
+${field('Coverage needed?','coverageNeeded',r.coverageNeeded||'No','select',false,selectOpts(['No','Yes','Covered'],r.coverageNeeded||'No'))}${optionalDriverPicker('Replacement / backup','backup',r.backup||'')}
 ${field('Reason / detail','reason',r.reason||'','select',false,selectOpts(['','PTO','Call Off','Decline','Schedule Change','Training','Personal','Other'],r.reason))}${field('Decline / call-off time','eventTime',r.eventTime||'','time')}
 ${field('Confirmed?','confirmed',r.confirmed||'','select',false,selectOpts(['','Yes','No','Waiting'],r.confirmed))}${field('Follow-up needed','followup',r.followup||'No','select',false,selectOpts(['No','Yes'],r.followup||'No'))}${field('Notes','notes',r.notes||'','textarea',true)}</div>`,
 tractor:r=>`<div class="formgrid">
-${field('Tractor / unit number','unit',r.unit||'')}${field('Primary shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Spare / Float'],r.shift||'AM'))}${field('Primary run / route','run',r.run||'')}${field('Assigned driver','driver',r.driver||'')}
+${field('Tractor / unit number','unit',r.unit||'')}${field('Primary shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Spare / Float'],r.shift||'AM'))}${field('Primary run / route','run',r.run||'')}${optionalDriverPicker('Assigned driver','driver',r.driver||'')}
 ${field('Status','status',r.status||'Available','select',false,selectOpts(['Available','Running','Maintenance Due','Repair Needed','Out of Service','Inspection Due','Waiting on Parts','At Vendor','Spare','Other'],r.status||'Available'))}
 ${field('Current mileage / odometer','mileage',r.mileage||'','number')}${field('Last service mileage','lastServiceMileage',r.lastServiceMileage||'','number')}${field('Next service mileage','nextServiceMileage',r.nextServiceMileage||'','number')}
 ${field('Last service date','lastServiceDate',r.lastServiceDate||'','date')}${field('Next service date','nextServiceDate',r.nextServiceDate||'','date')}${field('Fuel status / fuel-card notes','fuel',r.fuel||'')}
@@ -1385,28 +1385,11 @@ function addLibraryToMealPlan(item,slot='Dinner'){
  showForm('mealPlanPick',{item,slot});
 }
 function showForm(type,obj={}){modalType=type;modalId=obj.id||null;document.getElementById('modalTitle').textContent=(modalId?'Edit ':'Add ')+type.replace(/([A-Z])/g,' $1');document.getElementById('modalBody').innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}</form>`;document.getElementById('modal').style.display='block';
- document.querySelectorAll('#modal select[name="driver"],#modal select[name="coverageDriver"]').forEach(sel=>{
-   sel.addEventListener('change',()=>{
-     if(sel.value==='Add New Driver'){
-       const name=prompt('Enter new driver name');
-       if(name&&name.trim()){
-         const clean=name.trim();
-         if(!savedDrivers().some(x=>String(x.name).toLowerCase()===clean.toLowerCase())){
-           rec('savedDriver').push({id:uid(),name:clean,shift:'AM',status:'Active',run:'',tractor:'',contact:'',notes:''});
-           save();
-         }
-         const opt=document.createElement('option');opt.value=clean;opt.textContent=clean;
-         sel.insertBefore(opt,sel.lastElementChild);sel.value=clean;
-       }else{
-         sel.value='';
-       }
-     }
-   });
- });
 }
 document.getElementById('modalClose').onclick=()=>document.getElementById('modal').style.display='none';
 document.getElementById('modalSave').onclick=()=>{
- const data=formData();
+ let data=formData();
+ data=normalizeDriverFields(data);
  if(modalType==='mealPlanPick'){
    const slotMap={'Breakfast':'breakfast','Lunch':'lunch','Dinner':'dinner','Side / Vegetable':'side','Kids Alternative':'kids','Snacks':'snacks'};
    const key='meal.'+data.day+'.'+slotMap[data.slot];
@@ -1527,16 +1510,50 @@ function driverSelectOptions(current=''){
   if(current && !opts.includes(current)) opts.unshift(current);
   return selectOpts(opts,current||names[0]||'Add New Driver');
 }
+
+function driverPicker(label,name,current=''){
+  return `<div class="field"><label>${label}</label>
+  <select name="${name}">${driverSelectOptions(current)}</select>
+  <input name="${name}New" placeholder="If adding a new driver, type the name here" style="margin-top:6px">
+  </div>`;
+}
+function optionalDriverPicker(label,name,current=''){
+  const names=savedDriverNames();
+  const opts=['',...names,'Add New Driver'];
+  if(current && !opts.includes(current))opts.splice(1,0,current);
+  return `<div class="field"><label>${label}</label>
+  <select name="${name}">${selectOpts(opts,current||'')}</select>
+  <input name="${name}New" placeholder="If adding a new driver, type the name here" style="margin-top:6px">
+  </div>`;
+}
+function normalizeDriverFields(data){
+  ['driver','name','backup','backupDriver','coverageDriver'].forEach(key=>{
+    const newKey=key+'New', typed=(data[newKey]||'').trim();
+    if(data[key]==='Add New Driver' || typed){
+      const name=typed;
+      if(name){
+        data[key]=name;
+        if(!savedDrivers().some(x=>String(x.name).toLowerCase()===name.toLowerCase())){
+          rec('savedDriver').push({id:uid(),name,shift:data.shift||'AM',status:'Active',run:data.run||'',tractor:data.tractor||'',contact:'',notes:''});
+        }
+      }else if(data[key]==='Add New Driver'){
+        data[key]='';
+      }
+    }
+    delete data[newKey];
+  });
+  return data;
+}
 formBuilders.driverTimeOff=r=>`<div class="formgrid">
-${field('Driver','driver',r.driver||savedDriverNames()[0]||'Add New Driver','select',false,driverSelectOptions(r.driver||''))}${field('Shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Flexible / Coverage'],r.shift||'AM'))}${field('Normal run / route affected','run',r.run||'')}
+${driverPicker('Driver','driver',r.driver||'')}${field('Shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Flexible / Coverage'],r.shift||'AM'))}${field('Normal run / route affected','run',r.run||'')}
 ${field('Time-off type','kind',r.kind||'PTO / Vacation','select',false,selectOpts(['PTO / Vacation','Planned Day Off','Personal Day','Sick / Illness','Appointment','Family / Childcare','Bereavement','Leave','Unpaid Time Off','Schedule Request','Other'],r.kind||'PTO / Vacation'))}
 ${field('Start date','startDate',r.startDate||'','date')}${field('End date','endDate',r.endDate||'','date')}${field('Day portion','portion',r.portion||'Full Day','select',false,selectOpts(['Full Day','Partial Day','AM Only','PM Only','Late Start','Early Leave','Other'],r.portion||'Full Day'))}${field('Start time if partial','startTime',r.startTime||'','time')}${field('End time if partial','endTime',r.endTime||'','time')}
 ${field('Request status','status',r.status||'Requested','select',false,selectOpts(['Requested','Pending','Approved','Denied','Cancelled','Completed'],r.status||'Requested'))}${field('Date requested','requestDate',r.requestDate||todayKey(),'date')}${field('Approved / reviewed by','approvedBy',r.approvedBy||'')}${field('Approval / review date','approvalDate',r.approvalDate||'','date')}
-${field('Coverage needed?','coverageNeeded',r.coverageNeeded||'Yes','select',false,selectOpts(['Yes','No','Maybe','Covered'],r.coverageNeeded||'Yes'))}${field('Coverage / backup driver','coverageDriver',r.coverageDriver||'','select',false,selectOpts(['',...savedDriverNames(),'Add New Driver'],r.coverageDriver||''))}${field('Coverage notes','coverageNotes',r.coverageNotes||'','textarea',true)}
+${field('Coverage needed?','coverageNeeded',r.coverageNeeded||'Yes','select',false,selectOpts(['Yes','No','Maybe','Covered'],r.coverageNeeded||'Yes'))}${optionalDriverPicker('Coverage / backup driver','coverageDriver',r.coverageDriver||'')}${field('Coverage notes','coverageNotes',r.coverageNotes||'','textarea',true)}
 ${field('Payroll effect','payrollEffect',r.payrollEffect||'','select',false,selectOpts(['','Paid PTO','Unpaid','Sick Pay','No Payroll Change','Needs Payroll Review','Other'],r.payrollEffect))}${field('Entered in payroll / schedule?','entered',r.entered||'No','select',false,selectOpts(['No','Schedule Only','Payroll Only','Both','Not Needed'],r.entered||'No'))}${field('Follow-up needed','followup',r.followup||'No','select',false,selectOpts(['No','Confirm Coverage','Confirm Approval','Payroll Follow-Up','Driver Follow-Up','Other'],r.followup||'No'))}${field('Reason / notes','notes',r.notes||'','textarea',true)}
 </div>`;
 formBuilders.driverPayroll=r=>`<div class="formgrid">
-${field('Driver','driver',r.driver||savedDriverNames()[0]||'Add New Driver','select',false,driverSelectOptions(r.driver||''))}${field('Shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Mixed / Multiple'],r.shift||'AM'))}${field('Run / route','run',r.run||'')}
+${driverPicker('Driver','driver',r.driver||'')}${field('Shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team','Mixed / Multiple'],r.shift||'AM'))}${field('Run / route','run',r.run||'')}
 ${field('Week start','weekStart',r.weekStart||'','date')}${field('Week end','weekEnd',r.weekEnd||'','date')}${field('Days scheduled','daysScheduled',r.daysScheduled||'')}${field('Days worked','daysWorked',r.daysWorked||'')}${field('Runs scheduled','runsScheduled',r.runsScheduled||'','number')}${field('Full runs completed','fullRuns',r.fullRuns||'','number')}${field('Half runs','halfRuns',r.halfRuns||'','number')}${field('No runs / sat','noRuns',r.noRuns||'','number')}
 ${field('Regular hours','regularHours',r.regularHours||'','number')}${field('Overtime hours','overtimeHours',r.overtimeHours||'','number')}${field('Wait time hours','waitHours',r.waitHours||'','number')}${field('Extra / rescue runs','extraRuns',r.extraRuns||'')}
 ${field('Exception','exception',r.exception||'','select',false,selectOpts(['','None','PTO','Call Off','Declined Run','Missed Run','Sat / No Run','Half Run','On Call / On Hold','Coverage Change','Time Off','Other'],r.exception))}
@@ -1649,7 +1666,7 @@ formBuilders.workRunTemplate=r=>`<div class="formgrid">
 ${field('Shift','shift',r.shift||'AM','select',false,selectOpts(['AM','PM','Team'],r.shift||'AM'))}
 ${field('Run name / number','name',r.name||'')}${field('Run type','runType',r.runType||'Assigned','select',false,selectOpts(['Assigned','AM','PM','URR','Other'],r.runType||'Assigned'))}
 ${field('Route','route',r.route||'')}${field('Origin','origin',r.origin||'')}${field('Destination','destination',r.destination||'')}${field('Days','days',r.days||'')}
-${field('Normal driver','driver',r.driver||savedDriverNames()[0]||'Add New Driver','select',false,driverSelectOptions(r.driver||''))}${field('Normal tractor','tractor',r.tractor||'')}${field('Departure','departure',r.departure||'','time')}${field('Arrival','arrival',r.arrival||'','time')}
+${driverPicker('Normal driver','driver',r.driver||'')}${field('Normal tractor','tractor',r.tractor||'')}${field('Departure','departure',r.departure||'','time')}${field('Arrival','arrival',r.arrival||'','time')}
 ${field('Backup / on-call notes','backup',r.backup||'','textarea',true)}${field('Active?','active',r.active||'Yes','select',false,selectOpts(['Yes','No','Seasonal'],r.active||'Yes'))}${field('Notes','notes',r.notes||'','textarea',true)}
 </div>`;
 formBuilders.workRun=r=>`<div class="formgrid">
@@ -1657,7 +1674,7 @@ ${field('Shift / run group','shift',r.shift||'AM','select',false,selectOpts(['AM
 ${field('Run type','runType',r.runType||'Assigned','select',false,selectOpts(['Assigned','AM','PM','URR','Other'],r.runType||'Assigned'))}
 ${field('Run name / number','name',r.name||'')}${field('Route','route',r.route||'')}${field('Origin','origin',r.origin||'')}${field('Destination','destination',r.destination||'')}
 ${field('Scheduled days','days',r.days||'')}${field('Date','date',r.date||'','date')}${field('Scheduled departure','planned',r.planned||'','time')}${field('Scheduled arrival','plannedArrival',r.plannedArrival||'','time')}
-${field('Actual departure','actual',r.actual||'','time')}${field('Actual arrival','arrival',r.arrival||'','time')}${field('Primary driver','driver',r.driver||'')}${field('Backup / coverage driver','backupDriver',r.backupDriver||'')}
+${field('Actual departure','actual',r.actual||'','time')}${field('Actual arrival','arrival',r.arrival||'','time')}${driverPicker('Primary driver','driver',r.driver||'')}${optionalDriverPicker('Backup / coverage driver','backupDriver',r.backupDriver||'')}
 ${field('Tractor','tractor',r.tractor||'')}${field('Trailer','trailer',r.trailer||'')}${field('Load / shipment reference','loadRef',r.loadRef||'')}
 ${field('Status','status',r.status||'Scheduled','select',false,selectOpts(['Scheduled','Driver Confirmed','Ready','Dispatched','Delayed','Held','Cancelled','Completed'],r.status||'Scheduled'))}
 ${field('Driver response','driverResponse',r.driverResponse||'','select',false,selectOpts(['','Accepted','Declined','Call Off','PTO','No Response','Coverage Assigned'],r.driverResponse))}
@@ -1684,7 +1701,7 @@ function renderWork(){
  const savedDriverBox=document.getElementById('savedDriverList');
  if(savedDriverBox){
    const rows=savedDrivers();
-   savedDriverBox.innerHTML=rows.length?rows.map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc(r.name)}</strong><div class="small">${esc((r.shift||'')+(r.run?' - '+r.run:'')+(r.status?' - '+r.status:''))}</div></div>${actionBtns('savedDriver',r.id)}</div></div>`).join(''):'<div class="small">No drivers saved yet.</div>';
+   savedDriverBox.innerHTML=rows.length?rows.map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc(r.name)}</strong><div class="small">${esc((r.shift||'')+(r.run?' - '+r.run:'')+(r.status?' - '+r.status:''))}</div></div>${actionBtns('savedDriver',r.id)}</div></div>`).join(''):'<div class="alert"><strong>No driver names saved yet.</strong><br>Type a driver name above and tap Save Driver Name.</div>';
  }
  const addSavedDriverBtn=document.getElementById('addSavedDriver');
  if(addSavedDriverBtn)addSavedDriverBtn.onclick=()=>{
