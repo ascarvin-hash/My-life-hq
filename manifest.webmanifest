@@ -1,12 +1,12 @@
 {
   "name": "My Life HQ",
   "short_name": "My Life HQ",
-  "description": "Personal home, family, planning, routines, meals, money, cleaning, and life organizer.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f7f3f8",
+  "background_color": "#f8f6f8",
   "theme_color": "#6d557a",
+  "description": "My Life HQ personal command center",
   "icons": [
     {
       "src": "icon-192.png",
