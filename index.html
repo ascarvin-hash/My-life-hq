@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.0 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.1 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v9.0 - Meal Library Global Button Fix</div>
+<div class="alert"><strong>Current App Version:</strong> v9.1 - Meal Library Dedicated Save Fix</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -711,7 +711,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2><div class="small"><strong>Meal Library Actions:</strong> v9.0 global buttons active</div>
+<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2><div class="small"><strong>Meal Library Actions:</strong> v9.1 dedicated Save active</div><div id="mealLibrarySaveStatus" class="alert" style="display:none"></div>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping -> Groceries.</div><div id="mealWeek"></div></details>
 <details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Day</strong> on any saved dinner/recipe, breakfast, lunch, or snack. Choose Monday-Sunday and it goes straight to that day.</div><div id="recipeList"></div><button type="button" class="smallbtn" data-meal-library-add="recipe">Add Meal / Recipe</button></details>
 <details><summary> Breakfast Library</summary><div id="breakfastList"></div><button type="button" class="smallbtn" data-meal-library-add="breakfast">Add Breakfast</button></details>
@@ -1802,7 +1802,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="hint"><strong>Brain Dump:</strong> thoughts/ideas not organized yet. <strong>To-Do Inbox:</strong> something must be done. <strong>Schedule Inbox:</strong> something needs a date/time. <strong>Today Notes:</strong> information about today. <strong>Shopping:</strong> something must be bought.</div>
 </div></section>
 
-<div id="modal" style="display:none;position:fixed;inset:0;background:#0008;z-index:100;padding:18px;overflow:auto"><div style="max-width:720px;margin:20px auto;background:#fff;border-radius:18px;padding:14px"><div class="recordhead"><h2 id="modalTitle">Add</h2><button id="modalClose" class="smallbtn">Close</button></div><div id="modalBody"></div><div class="rowbuttons"><button id="modalSave" class="action">Save</button></div></div></div>
+<div id="modal" style="display:none;position:fixed;inset:0;background:#0008;z-index:100;padding:18px;overflow:auto"><div style="max-width:720px;margin:20px auto;background:#fff;border-radius:18px;padding:14px"><div class="recordhead"><h2 id="modalTitle">Add</h2><button type="button" id="modalClose" class="smallbtn">Close</button></div><div id="modalBody"></div><div class="rowbuttons"><button type="button" id="modalSave" class="action">Save</button></div></div></div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -2078,24 +2078,52 @@ function showForm(type,obj={}){
 document.getElementById('modalClose').onclick=()=>document.getElementById('modal').style.display='none';
 document.getElementById('modalSave').onclick=()=>{
  let data=formData();
- data=normalizeDriverFields(data);
+
+ if(['recipe','breakfast','lunch','snack'].includes(modalType)){
+   const name=(data.name||'').trim();
+   if(!name){alert('Enter a name before saving.');const first=document.querySelector('#dynamicForm [name="name"]');if(first)first.focus();return}
+   data.name=name;
+   if(modalId){
+     const i=rec(modalType).findIndex(x=>String(x.id)===String(modalId));
+     if(i>=0)rec(modalType)[i]={...rec(modalType)[i],...data};
+     else rec(modalType).push({id:uid(),...data});
+   }else rec(modalType).push({id:uid(),...data});
+   save();
+   document.getElementById('modal').style.display='none';
+   renderMeals();
+   const status=document.getElementById('mealLibrarySaveStatus');
+   if(status){const labels={recipe:'Meal / Recipe',breakfast:'Breakfast',lunch:'Lunch',snack:'Snack'};status.textContent=(labels[modalType]||'Item')+' saved to the library: '+name;status.style.display='block';setTimeout(()=>{status.style.display='none'},3500)}
+   return;
+ }
+
  if(modalType==='mealPlanPick'){
    const slotMap={'Breakfast':'breakfast','Lunch':'lunch','Dinner':'dinner','Side / Vegetable':'side','Kids Alternative':'kids','Snacks':'snacks'};
-   const key='meal.'+data.day+'.'+slotMap[data.slot];
+   const slot=slotMap[data.slot];
+   if(!data.day||!slot){alert('Choose a day and meal slot.');return}
+   const key='meal.'+data.day+'.'+slot;
    const current=getPath(key)||'';
-   let value=data.item||'';
-   if(data.mode==='Append to Existing' || (data.mode==='Replace Empty / Append if Used' && current.trim())) value=current.trim()?current.trim()+' \u2022 '+value:value;
-   if(data.mode==='Replace Existing') value=data.item||'';
+   let value=(data.item||'').trim();
+   if(!value){alert('The library item is blank.');return}
+   if(data.mode==='Append to Existing' || (data.mode==='Replace Empty / Append if Used' && current.trim())) value=current.trim()?current.trim()+' / '+value:value;
+   if(data.mode==='Replace Existing')value=(data.item||'').trim();
    setPath(key,value);
-   if(data.note&&data.note.trim()){
-     const nk='meal.'+data.day+'.notes',n=getPath(nk)||'';
-     setPath(nk,n.trim()?n.trim()+'\n'+data.note:data.note);
-   }
-   save();document.getElementById('modal').style.display='none';renderAll();return;
+   if(data.note&&data.note.trim()){const nk='meal.'+data.day+'.notes',n=getPath(nk)||'';setPath(nk,n.trim()?n.trim()+'\n'+data.note:data.note)}
+   save();
+   document.getElementById('modal').style.display='none';
+   renderMeals();
+   const status=document.getElementById('mealLibrarySaveStatus');
+   if(status){status.textContent='Added '+(data.item||'item')+' to '+data.day+' - '+data.slot+'.';status.style.display='block';setTimeout(()=>{status.style.display='none'},3500)}
+   return;
  }
- if(modalId){const i=rec(modalType).findIndex(x=>x.id===modalId);if(i>=0)rec(modalType)[i]={...rec(modalType)[i],...data}}
- else rec(modalType).push({id:uid(),...data});
- save();document.getElementById('modal').style.display='none';renderAll()
+
+ data=normalizeDriverFields(data);
+ if(modalId){
+   const i=rec(modalType).findIndex(x=>x.id===modalId);
+   if(i>=0)rec(modalType)[i]={...rec(modalType)[i],...data};
+ }else rec(modalType).push({id:uid(),...data});
+ save();
+ document.getElementById('modal').style.display='none';
+ renderAll();
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-add-record]');if(b)showForm(b.dataset.addRecord,{})})
 
@@ -3379,7 +3407,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=9.0-'+Date.now();
+   location.href='./?v=9.1-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
