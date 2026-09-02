@@ -44,7 +44,9 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.1 - UTF-8 emoji display fix â¢ Quick View â Walkthrough â Details</small></div></div></header>
+<div id="emojiRenderTest" class="small" style="padding:6px 12px;text-align:center">Emoji test: ð ð§¹ ð§º ð¼ ð½ï¸ ð° â¤ï¸ ð</div>
+
+<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.2 - Restored emoji headings and global emoji font â¢ Quick View â Walkthrough â Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate">Today</h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -106,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="week" class="page">
 <div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Week & Planning</h2>
-<details open><summary>Weekly Walkthrough Tasks</summary>
+<details open><summary>ð§­ Weekly Walkthrough Tasks</summary>
 <div class="hint"><strong>Choose from the dropdowns or select âAdd My Ownâ.</strong> You can set up several tasks for the week without retyping common things.</div>
 
 <div id="weeklyWalkthroughTasks"></div>
@@ -126,10 +128,10 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 
 <details open><summary>â­ This Week Priorities</summary><div class="hint">The few things that absolutely matter this weekânot every task. Aim for Top 5.</div><div id="priorityList"></div><button class="smallbtn" data-add-record="priority">Add Weekly Priority</button></details>
-<details><summary>Brain Dump Inbox / History</summary><div class="hint">Unprocessed thoughts stay here; processed ones show where they were sent.</div><div id="weeklyBrainDump"></div></details><details><summary>To-Do Inbox</summary><div class="hint">Something needs to be done, but you have not organized it yet. Process it later into Today, Week, a section, or Done.</div><div id="todoInbox"></div><button class="smallbtn" data-add-record="todo">Add To-Do</button><button class="smallbtn" data-process="todo">Process Inbox</button></details>
+<details><summary>ð§  Brain Dump Inbox / History</summary><div class="hint">Unprocessed thoughts stay here; processed ones show where they were sent.</div><div id="weeklyBrainDump"></div></details><details><summary>To-Do Inbox</summary><div class="hint">Something needs to be done, but you have not organized it yet. Process it later into Today, Week, a section, or Done.</div><div id="todoInbox"></div><button class="smallbtn" data-add-record="todo">Add To-Do</button><button class="smallbtn" data-process="todo">Process Inbox</button></details>
 <details><summary>Schedule Inbox</summary><div class="hint">Temporary holding place for things that involve a date/time but are not properly planned yet.</div><div id="scheduleInbox"></div><button class="smallbtn" data-add-record="schedule">Add Schedule Item</button><button class="smallbtn" data-process="schedule">Process Schedule Inbox</button></details>
 <details><summary>This Week</summary><div id="weekDays"></div></details>
-<details open><summary>Sunday Review + Carry Forward</summary>
+<details open><summary>ð Sunday Review + Carry Forward</summary>
 <div class="hint"><strong>Unfinished Weekly Walkthrough tasks show here automatically.</strong> Send one taskâor all unfinished tasksâstraight to Carry Forward without retyping it.</div>
 <div id="sundayCarryTasks"></div>
 <button class="smallbtn" id="sendAllWeeklyCarry">Send ALL Unfinished to Carry Forward</button>
@@ -152,14 +154,14 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Important Contacts</summary><div id="familyContacts"></div><button class="smallbtn" data-add-record="contact">Add Contact</button></details>
 </div></section>
 
-<section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Work Command Center</h2>
+<section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð¼ Work Command Center</h2>
 <div class="quickgrid"><div class="card"><h3>Run Board</h3><div class="formgrid">
 <div class="field"><label>Shift</label><select id="workShiftFilter"><option>All</option><option>AM</option><option>PM</option><option>Team</option></select></div>
 <div class="field"><label>Status</label><select id="workStatusFilter"><option>All</option><option>Scheduled</option><option>Driver Confirmed</option><option>Ready</option><option>Dispatched</option><option>Delayed</option><option>Held</option><option>Completed</option><option>Cancelled</option></select></div>
 </div><div id="workRunBoard"></div></div><div class="card"><h3>Needs Attention</h3><div id="workAttention"></div></div></div>
 <details><summary>Assigned Run Schedule</summary><div id="workRunTemplates"></div><button class="smallbtn" data-add-record="workRunTemplate">Add Assigned Run</button></details>
 
-<details open><summary>Work History â Current Month + Previous Months</summary>
+<details open><summary>ðï¸ Work History â Current Month + Previous Months</summary>
 <div class="hint"><strong>Look back at runs, driver issues and tractor issues by month.</strong> Current month opens by default.</div>
 <div class="formgrid">
 <div class="field"><label>Month to view</label><input type="month" id="workHistoryMonth"></div>
@@ -168,7 +170,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Show</label><select id="workHistoryType"><option>Runs + Driver Issues + Tractor Issues</option><option>Runs Only</option><option>Driver Issues Only</option><option>Tractor Issues Only</option></select></div>
 </div><div id="workMonthSummary"></div><div id="workMonthHistory"></div></details>
 
-<details open><summary>Driver Time Off â Current Month + Future</summary>
+<details open><summary>ðï¸ Driver Time Off â Current Month + Future</summary>
 <div class="hint"><strong>Enter time off as soon as it is planned.</strong> This month and future requests stay visible for coverage planning.</div>
 <div class="quickgrid"><div class="card"><h3>This Month</h3><div id="driverTimeOffCurrent"></div></div><div class="card"><h3>Future Planned Time Off</h3><div id="driverTimeOffFuture"></div></div></div>
 <div class="formgrid"><div class="field"><label>Filter driver</label><select id="timeOffDriverFilter"><option>All Drivers</option></select></div><div class="field"><label>Filter status</label><select id="timeOffStatusFilter"><option>All</option><option>Requested</option><option>Pending</option><option>Approved</option><option>Denied</option><option>Cancelled</option><option>Completed</option></select></div></div>
@@ -201,7 +203,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="walkstep"><div class="num">4</div><div><strong>Close:</strong> waiting items â tomorrow follow-ups â after-hours time.</div></div>
 </details>
 <details><summary>Invoices / Ordering / Reports</summary><div id="workAdmin"></div><button class="smallbtn" data-add-record="workAdmin">Add Invoice / Order / Report</button></details>
-<details open><summary>Weekly Driver Payroll</summary>
+<details open><summary>ðµ Weekly Driver Payroll</summary>
 <div class="hint"><strong>This is the payroll home for EVERY driver each week.</strong> Create one payroll entry per driver, even if they had PTO, a call-off, decline, no run, coverage change, or zero payable runs. That keeps the weekly roster complete.</div>
 <div class="formgrid">
 <div class="field"><label>Work week start</label><input type="date" data-key="work.payroll.weekStart"></div>
@@ -225,7 +227,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="quickgrid"><div class="card"><h3>Today</h3><div id="myHoursToday"></div></div><div class="card"><h3>This Week</h3><div id="myHoursSummary"></div></div><div class="card"><h3>Needs Follow-Up</h3><div id="myHoursAttention"></div></div></div>
 <div id="myHoursList"></div><button class="smallbtn" data-add-record="myWorkHours">Add My Work Time</button>
 </details>
-<details open><summary>Work Reference Center</summary>
+<details open><summary>ð Work Reference Center</summary>
 <div class="hint"><strong>Keep the information you need to do the job here.</strong> This is reference information, not a daily task list.</div>
 <details open><summary>Daily / Weekly Procedures</summary><div class="formgrid">
 <div class="field"><label>Start-of-day procedure</label><textarea data-key="work.reference.startDay" placeholder="Example: check declines, Linehaul Central, cameras, email, urgent driver/run issues..."></textarea></div>
@@ -270,19 +272,19 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="meals" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Meals</h2>
+<section id="meals" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð½ï¸ Meals</h2>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping â Groceries.</div><div id="mealWeek"></div></details>
 <details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Meal Plan</strong> on any recipe, breakfast, lunch, or snack. Choose the day and meal slot, then save.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">Add Meal / Recipe</button></details>
-<details><summary>Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
-<details><summary>Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">Add Lunch</button></details>
-<details><summary>Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
+<details><summary>ð³ Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
+<details><summary>ð¥ª Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">Add Lunch</button></details>
+<details><summary>ð¿ Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
 </div></section>
 
-<section id="money" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Money Command Center</h2><div id="moneySummary" class="alert"></div>
+<section id="money" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð° Money Command Center</h2><div id="moneySummary" class="alert"></div>
 <details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">Add Bill</button></details>
 <details><summary>Income + Pay</summary><div id="incomeList"></div><button class="smallbtn" data-add-record="income">Add Paycheck / Income</button></details>
 
-<details open><summary>Weekly Spending Tracker</summary>
+<details open><summary>ð³ Weekly Spending Tracker</summary>
 <div class="hint"><strong>Use this throughout the week.</strong> Add purchases as they happen, then compare actual spending to your weekly limits before the week gets away from you.</div>
 
 <div class="formgrid">
@@ -347,11 +349,11 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="cleaning" class="page">
 <div class="topbar"><button class="back">â Home</button></div>
-<div class="card"><h2>Cleaning Command Center</h2>
+<div class="card"><h2>ð§¹ Cleaning Command Center</h2>
 <div class="hint"><strong>Cleaning = recurring upkeep.</strong> Home = repairs, maintenance, projects, storage, appliances and restock. Use the color priority when you need a fast reset: ð´ must do, ð¡ should do, ð¢ can wait.</div>
 
 <div class="quickgrid">
-<div class="card"><h3>Quick Reset</h3>
+<div class="card"><h3>â¡ Quick Reset</h3>
 <div class="hint">Check each item as you finish it. These reset each day.</div>
 <label class="task"><input type="checkbox" data-clean-quick="trash">Trash / obvious clutter</label>
 <label class="task"><input type="checkbox" data-clean-quick="dishes">Dishes + kitchen sink</label>
@@ -359,7 +361,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <label class="task"><input type="checkbox" data-clean-quick="floors">Floors where needed</label>
 <label class="task"><input type="checkbox" data-clean-quick="laundry">Laundry / put-away check</label>
 </div>
-<div class="card"><h3>Nightly Reset</h3>
+<div class="card"><h3>ð Nightly Reset</h3>
 <label class="task"><input type="checkbox" data-clean-night="kitchen">Kitchen reset</label>
 <label class="task"><input type="checkbox" data-clean-night="living">Living room pickup</label>
 <label class="task"><input type="checkbox" data-clean-night="laundry">Laundry check</label>
@@ -368,15 +370,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 </div>
 
-<details open><summary>Todayâs Detailed Cleaning</summary>
+<details open><summary>ð§¼ Todayâs Detailed Cleaning</summary>
 <div id="cleaningPlan"></div>
 </details>
 
-<details><summary>Room-by-Room Walkthroughs</summary>
+<details><summary>ð  Room-by-Room Walkthroughs</summary>
 <div id="roomCleaning"></div>
 </details>
 
-<details open><summary>Cleaning Products + Tools Reference / Inventory</summary>
+<details open><summary>ð§´ Cleaning Products + Tools Reference / Inventory</summary>
 <div class="hint"><strong>Check what you have and update its stock level.</strong> Anything Getting Low, Running Low, Out, or needing Replacement can be sent directly to Master Shopping.</div>
 <div id="cleaningSupplySummary"></div>
 <div id="cleaningSupplyList"></div>
@@ -385,16 +387,16 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </details>
 
-<details open><summary>Monthly Cleaning â Check Off Tasks</summary>
+<details open><summary>ð Monthly Cleaning â Check Off Tasks</summary>
 <div class="hint"><strong>Check each task off as you finish it.</strong> Your checks stay saved for the current month and reset naturally when a new month begins.</div>
 <div id="cleanMonthlyProgress"></div>
 <div id="cleanMonthly"></div>
 <button class="smallbtn" id="resetCleanMonth">âº Reset This Monthâs Checkmarks</button>
 </details>
-<details><summary>Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
-<details><summary>Annual Cleaning</summary><div id="cleanAnnual"></div></details>
+<details><summary>ð Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
+<details><summary>ð Annual Cleaning</summary><div id="cleanAnnual"></div></details>
 
-<details><summary>Priority and Catch-Up</summary>
+<details><summary>ð¨ Priority and Catch-Up</summary>
 <div class="hint"><strong>Use this when regular cleaning has fallen behind.</strong> Pick what is going on, how much time/energy you have, and what matters most. The examples below help you decide what belongs in each priority.</div>
 
 <div class="formgrid">
@@ -506,7 +508,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <label class="task"><input type="checkbox" data-clean-daily="school">School bags / shoes / activity gear reset</label>
 </details>
 
-<details open><summary>Laundry System â Detailed</summary>
+<details open><summary>ð§º Laundry System â Detailed</summary>
 <div class="hint"><strong>Use this as the actual laundry workflow.</strong> Pick the load type, follow the checklist, and check each step off as you go. You do not need to fill out a bunch of blank boxes first.</div>
 
 <div class="formgrid">
@@ -603,7 +605,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 </details>
 
-<details open><summary>Bedding and Towels Schedule</summary>
+<details open><summary>ðï¸ Bedding and Towels Schedule</summary>
 <div class="hint"><strong>Keep this inside Laundry so all washable household items stay together.</strong> Set the normal frequency/day, record when it was last washed, and plan the next wash.</div>
 <div id="beddingTowelSchedule"></div>
 </details>
@@ -630,7 +632,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div id="deepRoomCleaning"></div>
 </details>
 
-<details><summary>Cleaning by Time</summary>
+<details><summary>â±ï¸ Cleaning by Time</summary>
 <div class="hint"><strong>Pick the amount of time you have and check tasks off as you go.</strong> Stop when the timer ends. You do not have to keep cleaning just because more could be done.</div>
 
 <details><summary>5-Minute Rescue</summary>
@@ -776,7 +778,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="homeLife" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Home</h2>
+<section id="homeLife" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>ð  Home</h2>
 <details open><summary>Weekly Home Planner</summary>
 <div class="formgrid">
 <div class="field"><label>Week of</label><input type="date" data-key="home.week.start"></div>
@@ -1019,7 +1021,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Walk Me Through Today</summary><div class="walkstep"><div class="num">1</div><div>Check todayâs schedule.</div></div><div class="walkstep"><div class="num">2</div><div>Complete AM skincare in order.</div></div><div class="walkstep"><div class="num">3</div><div>Do shower/body and hair/scalp only if scheduled.</div></div><div class="walkstep"><div class="num">4</div><div>Complete PM skincare.</div></div><div class="walkstep"><div class="num">5</div><div>Update low product status while using items.</div></div><div class="walkstep"><div class="num">6</div><div>Once weekly, send Running Low/Out items to Shopping.</div></div></details>
 </div></section>
 <section id="health" class="page"><div class="topbar"><button class="back">â Home</button></div>
-<div class="card"><h2>Health + Wellness</h2><details open><summary>Health Profile + Preferences â Everyone</summary><div class="hint">Planning details for each person.</div><div id="healthProfiles"></div></details>
+<div class="card"><h2>â¤ï¸ Health + Wellness</h2><details open><summary>Health Profile + Preferences â Everyone</summary><div class="hint">Planning details for each person.</div><div id="healthProfiles"></div></details>
 <div class="hint"><strong>Start with Who is this for?</strong> Then use dropdowns/multi-selects so you are not forced to type everything into notes.</div>
 
 <div class="quickgrid">
