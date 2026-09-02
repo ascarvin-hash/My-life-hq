@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.7 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.8 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v8.7 - Cleaning + Sunday Review + Meal Add-to-Day + Spending</div>
+<div class="alert"><strong>Current App Version:</strong> v8.8 - Verified Live Section Rebuild</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -233,13 +233,14 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Items to carry forward</label><textarea data-key="week.sunday.carry"></textarea></div>
 </details>
 <details><summary>3. Build Next Week</summary>
-<div class="hint">Type an item, choose where it belongs, and send it there.</div>
+<div class="hint">Type an item, choose where it belongs, then send it there.</div>
 <div class="formgrid">
-<div class="field full"><label>Item / task</label><input id="nextWeekItem"></div>
+<div class="field full"><label>Item / task</label><input id="nextWeekItem" placeholder="What needs to happen next week?"></div>
 <div class="field"><label>Send to</label><select id="nextWeekDestination"><option>Monday Top 3</option><option>To-Do Inbox</option><option>Work</option><option>Meals</option><option>Cleaning / Home</option><option>Money</option><option>School / Kids</option><option>Carry Forward</option></select></div>
 <div class="field"><label>Day if needed</label><select id="nextWeekDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
 </div>
-<button class="action" id="sendNextWeekItem">Send Item</button><div id="nextWeekSentStatus" class="small"></div>
+<button class="action" id="sendNextWeekItem">Send Item</button>
+<div id="nextWeekSentStatus" class="small"></div>
 </details>
 <details><summary>4. Final Sunday Reset</summary>
 <label class="task"><input type="checkbox" data-key-check="week.sunday.bags"> Bags/backpacks/work items ready</label>
@@ -623,48 +624,32 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="quickgrid"><div class="card"><h3>Today</h3><div id="myHoursToday"></div></div><div class="card"><h3>This Week</h3><div id="myHoursSummary"></div></div><div class="card"><h3>Needs Follow-Up</h3><div id="myHoursAttention"></div></div></div>
 <div id="myHoursList"></div><button class="smallbtn" data-add-record="myWorkHours">Add My Work Time</button>
 </details>
-<details open><summary> Work Reference Center</summary>
-<div class="hint"><strong>Keep the information you need to do the job here.</strong> This is reference information, not a daily task list.</div>
-<details open><summary>Daily / Weekly Procedures</summary><div class="formgrid">
-<div class="field"><label>Start-of-day procedure</label><textarea data-key="work.reference.startDay" placeholder="Example: check declines, Linehaul Central, cameras, email, urgent driver/run issues..."></textarea></div>
-<div class="field"><label>End-of-day procedure</label><textarea data-key="work.reference.endDay" placeholder="Example: waiting items, follow-ups, tomorrow coverage, after-hours time..."></textarea></div>
-<div class="field"><label>Weekly recurring work</label><textarea data-key="work.reference.weekly" placeholder="Availability, fuel, payroll, settlement, URR, reports..."></textarea></div>
-<div class="field"><label>Month-end / periodic work</label><textarea data-key="work.reference.monthly"></textarea></div>
-</div></details>
-<details><summary>Payroll and Settlement Reference</summary><div class="formgrid">
-<div class="field"><label>Payroll process / steps</label><textarea data-key="work.reference.payrollSteps"></textarea></div>
-<div class="field"><label>Payroll deadlines / release times</label><textarea data-key="work.reference.payrollDeadlines"></textarea></div>
-<div class="field"><label>Pay rules / exceptions</label><textarea data-key="work.reference.payRules" placeholder="Wait time, extra runs, PTO, declines, corrections, etc."></textarea></div>
-<div class="field"><label>Settlement process / notes</label><textarea data-key="work.reference.settlement"></textarea></div>
-</div></details>
-<details><summary>Runs and Dispatch Reference</summary><div class="formgrid">
-<div class="field"><label>AM run reference</label><textarea data-key="work.reference.amRuns"></textarea></div>
-<div class="field"><label>PM run reference</label><textarea data-key="work.reference.pmRuns"></textarea></div>
-<div class="field"><label>Team run reference</label><textarea data-key="work.reference.teamRuns"></textarea></div>
-<div class="field"><label>URR reference</label><textarea data-key="work.reference.urr"></textarea></div>
-<div class="field"><label>On-call / coverage procedure</label><textarea data-key="work.reference.coverage"></textarea></div>
-<div class="field"><label>Decline / no-run / half-run procedure</label><textarea data-key="work.reference.runExceptions"></textarea></div>
-</div></details>
-<details><summary>Tractors and Maintenance Reference</summary><div class="formgrid">
-<div class="field"><label>Tractor / unit notes</label><textarea data-key="work.reference.tractors"></textarea></div>
-<div class="field"><label>Maintenance process</label><textarea data-key="work.reference.maintenance"></textarea></div>
-<div class="field"><label>IVMR / MMR procedure</label><textarea data-key="work.reference.ivmr"></textarea></div>
-<div class="field"><label>Inspection / QVI / BCSA notes</label><textarea data-key="work.reference.inspections"></textarea></div>
-<div class="field"><label>Vendor / Penske notes</label><textarea data-key="work.reference.vendor"></textarea></div>
-</div></details>
-<details><summary>Safety and Compliance Reference</summary><div class="formgrid">
-<div class="field"><label>KI / coaching process</label><textarea data-key="work.reference.ki"></textarea></div>
-<div class="field"><label>Camera event process</label><textarea data-key="work.reference.camera"></textarea></div>
-<div class="field"><label>Roadside / safety procedure</label><textarea data-key="work.reference.roadside"></textarea></div>
-<div class="field"><label>Pre-trip / post-trip / ELD reminders</label><textarea data-key="work.reference.eld"></textarea></div>
-</div></details>
-<details><summary>Systems, Contacts, and Templates</summary><div class="formgrid">
-<div class="field"><label>Systems / websites used</label><textarea data-key="work.reference.systems" placeholder="Linehaul Central, ELD, cameras, Indeed, spreadsheets, etc."></textarea></div>
-<div class="field"><label>Important contacts</label><textarea data-key="work.reference.contacts"></textarea></div>
-<div class="field"><label>Email / report templates</label><textarea data-key="work.reference.templates"></textarea></div>
-<div class="field"><label>File / spreadsheet locations</label><textarea data-key="work.reference.files"></textarea></div>
-<div class="field full"><label>Other work reference notes</label><textarea data-key="work.reference.other"></textarea></div>
-</div></details>
+<details><summary>Work Reference Center</summary>
+<div class="hint">Open a topic for quick-reference details.</div>
+<details><summary>Runs / Dispatch Reference</summary>
+<details><summary>Run Types</summary><div class="small">Assigned, On-Call, URR, Other.</div></details>
+<details><summary>Shift</summary><div class="small">AM, PM, Team, Other.</div></details>
+<details><summary>Run Status</summary><div class="small">Scheduled, Driver Confirmed, Ready, Dispatched, Delayed, Held, Completed, Cancelled.</div></details>
+<details><summary>Exceptions</summary><div class="small">Declined, sat/no run, half run, no driver, coverage change, tractor issue, time-off issue, terminal/weather delay, other.</div></details>
+</details>
+<details><summary>Payroll / Settlement Reference</summary>
+<details><summary>Weekly Payroll Walkthrough</summary><div class="small">Verify driver list -> runs/hours -> PTO/half/no-run exceptions -> rate/pay method -> adjustments -> Ready -> Submit -> Verify.</div></details>
+<details><summary>Payroll Exceptions</summary><div class="small">Missing hours, wrong rate, wait time, PTO, bonus, deduction, run-pay correction, coverage change.</div></details>
+<details><summary>Settlement Review</summary><div class="small">Compare expected vs actual -> flag differences -> correction note -> follow-up -> verify.</div></details>
+</details>
+<details><summary>Tractor / Maintenance Reference</summary>
+<details><summary>Status Options</summary><div class="small">Available, Assigned, Shop, Out of Service, Maintenance Due, Spare/Backup.</div></details>
+<details><summary>Repair Types</summary><div class="small">PM service, tires, brakes, lights/electrical, fluids/leaks, engine, transmission, DEF/emissions, body/damage, camera/ELD, inspection, roadside, other.</div></details>
+<details><summary>Repair Workflow</summary><div class="small">Issue reported -> verify tractor -> document symptom -> assign vendor/repair -> record out-of-service time -> follow-up -> return to service -> close notes.</div></details>
+</details>
+<details><summary>Safety / Compliance Reference</summary>
+<details><summary>Pre/Post Trip</summary><div class="small">Lights, tires, brakes, fluids/leaks, coupling, mirrors, horn, emergency equipment, visible damage, ELD/camera.</div></details>
+<details><summary>Driver Follow-Up</summary><div class="small">KI/SRI coaching, monthly videos, roadside prep, one-on-ones, training due, repeated issue follow-up.</div></details>
+</details>
+<details><summary>Daily / Weekly Work Walkthrough</summary>
+<details><summary>Daily</summary><div class="small">Linehaul Central, cameras, applicants, shipment tracking, URR/run tracking, declines, emails, driver/run issues, tractor/maintenance, follow-ups.</div></details>
+<details><summary>Weekly</summary><div class="small">Sunday availability, Monday Penske Fuel, Tuesday payroll/settlement, Saturday PM URR/run tracking, time-off review, maintenance review, unresolved exceptions.</div></details>
+</details>
 </details>
 <details><summary>Work Reference Center</summary>
 <div class="hint">Open a topic for quick-reference details.</div>
@@ -805,12 +790,85 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 </div>
 
-<details open><summary> Today's Detailed Cleaning</summary>
-<div id="cleaningPlan"></div>
+<details open><summary>Today's Detailed Cleaning</summary>
+<div class="hint">Open the room you want. Every item below can be checked off for today.</div>
+<details><summary>Kitchen</summary>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.clear"> Clear counters and table</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.dishes"> Dishes / dishwasher</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.sink"> Clean sink and faucet</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.stove"> Clean stove / cooktop</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.appliances"> Wipe appliance fronts</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.trash"> Trash / recycling</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.floor"> Sweep / vacuum floor</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.kitchen.mop"> Mop if needed</label>
+</details>
+<details><summary>Bathroom</summary>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.clear"> Clear counter / vanity</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.sink"> Clean sink and faucet</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.mirror"> Clean mirror</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.toilet"> Clean toilet</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.tub"> Quick clean tub / shower</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.restocks"> Check towels / toilet paper</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.trash"> Empty trash</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bath.floor"> Sweep / mop floor</label>
+</details>
+<details><summary>Living Room</summary>
+<label class="task"><input type="checkbox" data-daily="clean.today.living.pickup"> Pick up clutter</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.living.dishes"> Remove dishes / trash</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.living.soft"> Straighten blankets / pillows</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.living.surfaces"> Wipe surfaces</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.living.floor"> Vacuum / sweep</label>
+</details>
+<details><summary>Bedrooms</summary>
+<label class="task"><input type="checkbox" data-daily="clean.today.bed.make"> Make / straighten bed</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bed.clothes"> Pick up clothes</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bed.trash"> Remove trash / dishes</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bed.surfaces"> Clear / wipe surfaces</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.bed.floor"> Vacuum / sweep</label>
+</details>
+<details><summary>Laundry Area</summary>
+<label class="task"><input type="checkbox" data-daily="clean.today.laundry.collect"> Collect / sort laundry</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.laundry.load"> Start / finish active load</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.laundry.fold"> Fold / put away</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.laundry.machine"> Wipe washer / dryer</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.laundry.supplies"> Straighten supplies</label>
+<label class="task"><input type="checkbox" data-daily="clean.today.laundry.floor"> Sweep / vacuum floor</label>
+</details>
 </details>
 
-<details><summary> Room-by-Room Walkthroughs</summary>
-<div id="roomCleaning"></div>
+<details><summary>Room-by-Room Walkthroughs</summary>
+<div class="hint">Open a room for the exact cleaning order.</div>
+<details><summary>Kitchen Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Remove trash and dishes.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Return misplaced items.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Clear counters and table.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Clean sink, faucet and stove.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Wipe appliance fronts and obvious cabinet spots.</div></div>
+<div class="walkstep"><div class="num">6</div><div>Sweep / vacuum, then mop.</div></div>
+</details>
+<details><summary>Bathroom Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Remove laundry and trash.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Put products away.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Spray sink, toilet and tub/shower.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Clean mirror and fixtures.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Scrub and rinse toilet/tub/shower.</div></div>
+<div class="walkstep"><div class="num">6</div><div>Restock paper and towels.</div></div>
+<div class="walkstep"><div class="num">7</div><div>Sweep and mop.</div></div>
+</details>
+<details><summary>Living Room Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Remove trash and dishes.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Return misplaced items.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Straighten blankets and pillows.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Dust / wipe surfaces.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Vacuum upholstery and floor.</div></div>
+</details>
+<details><summary>Bedroom Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Make the bed.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Collect laundry, trash and dishes.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Put away clothes and misplaced items.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Wipe surfaces.</div></div>
+<div class="walkstep"><div class="num">5</div><div>Vacuum / sweep.</div></div>
+</details>
 </details>
 
 <details open><summary> Cleaning Products + Tools Reference / Inventory</summary>
@@ -822,14 +880,75 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </details>
 
-<details open><summary> Monthly Cleaning - Check Off Tasks</summary>
-<div class="hint"><strong>Check each task off as you finish it.</strong> Your checks stay saved for the current month and reset naturally when a new month begins.</div>
-<div id="cleanMonthlyProgress"></div>
-<div id="cleanMonthly"></div>
-<button class="smallbtn" id="resetCleanMonth">Reset Reset This Month's Checkmarks</button>
+<details><summary>Monthly Cleaning - Check Off Tasks</summary>
+<div class="hint">Open an area for monthly deep-clean tasks.</div>
+<details><summary>Kitchen Monthly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.kitchen.fridge"> Deep clean fridge shelves / drawers</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.kitchen.oven"> Oven / stove detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.kitchen.cabinets"> Cabinet fronts</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.kitchen.pantry"> Pantry reset</label>
 </details>
-<details><summary> Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
-<details><summary> Annual Cleaning</summary><div id="cleanAnnual"></div></details>
+<details><summary>Bathroom Monthly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bath.grout"> Grout / caulk detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bath.cabinets"> Vanity / cabinet fronts</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bath.vent"> Vent / fan detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bath.storage"> Product / storage reset</label>
+</details>
+<details><summary>Bedrooms Monthly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bed.mattress"> Vacuum / rotate mattress if due</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bed.under"> Clean under bed</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bed.baseboards"> Baseboards</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.bed.closet"> Closet reset</label>
+</details>
+<details><summary>Whole House Monthly</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.house.doors"> Doors / frames / switch plates</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.house.baseboards"> Baseboards</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.house.windows"> Interior windows / mirrors</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.house.furniture"> Under movable furniture</label>
+<label class="task"><input type="checkbox" data-key-check="clean.monthly.house.laundry"> Washer / dryer deep clean</label>
+</details>
+</details>
+<details><summary>Seasonal / Quarterly Cleaning</summary>
+<div class="hint">Open a category for quarterly tasks.</div>
+<div class="formgrid"><div class="field"><label>Season</label><select data-key="clean.seasonal.period"><option>Winter</option><option>Spring</option><option>Summer</option><option>Fall</option></select></div><div class="field"><label>Last completed</label><input type="date" data-key="clean.seasonal.last"></div></div>
+<details><summary>Windows / Air / Light</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.windows"> Windows / screens / tracks</label>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.blinds"> Blinds / curtains</label>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.fans"> Fans / light fixtures</label>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.filters"> Filters / vents</label>
+</details>
+<details><summary>Closets / Storage</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.closets"> Closet season swap</label>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.toys"> Kids / toy declutter</label>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.storage"> Storage-area reset</label>
+</details>
+<details><summary>Kitchen / Food</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.pantry"> Pantry inventory</label>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.freezer"> Freezer inventory</label>
+</details>
+<details><summary>Safety / Outside</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.entry"> Entry / porch reset</label>
+<label class="task"><input type="checkbox" data-key-check="clean.seasonal.safety"> Smoke / CO detector check</label>
+</details>
+</details>
+<details><summary>Annual Cleaning</summary>
+<div class="hint">Open a category during your yearly reset.</div>
+<div class="formgrid"><div class="field"><label>Last annual reset</label><input type="date" data-key="clean.annual.last"></div></div>
+<details><summary>Appliances / Floors</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.appliances"> Behind / under major appliances</label>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.carpet"> Deep clean carpets / rugs</label>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.upholstery"> Upholstery deep clean</label>
+</details>
+<details><summary>Walls / Storage</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.walls"> Wash walls / doors</label>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.storage"> Storage / garage reset</label>
+</details>
+<details><summary>Paper / Safety / Declutter</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.documents"> Household file purge</label>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.emergency"> Emergency supplies review</label>
+<label class="task"><input type="checkbox" data-key-check="clean.annual.donate"> Donation / declutter sweep</label>
+</details>
+</details>
 
 <details><summary> Priority and Catch-Up</summary>
 <div class="hint"><strong>Use this when regular cleaning has fallen behind.</strong> Pick what is going on, how much time/energy you have, and what matters most. The examples below help you decide what belongs in each priority.</div>
@@ -1062,15 +1181,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Weekly Room Checklist - Full Detail</summary>
 <div class="hint">Open each room for the weekly checklist.</div>
 <details><summary>Kitchen Weekly</summary>
-<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.micro"> Microwave</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.microwave"> Microwave inside / out</label>
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.appliances"> Appliance fronts</label>
-<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.cab"> Cabinet spot clean</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.cabinets"> Cabinet spot clean</label>
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.kitchen.floor"> Full floor clean</label>
 </details>
 <details><summary>Bathroom Weekly</summary>
-<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.tub"> Tub/shower scrub</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.tub"> Tub / shower scrub</label>
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.toilet"> Toilet detail</label>
-<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.storage"> Product/storage reset</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.storage"> Product / storage reset</label>
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.bath.floor"> Full floor clean</label>
 </details>
 <details><summary>Living Areas Weekly</summary>
@@ -1079,19 +1198,43 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.living.floor"> Full floor clean</label>
 </details>
 <details><summary>Bedrooms Weekly</summary>
-<label class="task"><input type="checkbox" data-key-check="clean.weekly.bed.bedding"> Bedding check/change</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.bed.bedding"> Bedding check / change</label>
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.bed.dust"> Dust surfaces</label>
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.bed.floor"> Full floor clean</label>
 </details>
 <details><summary>Laundry Area Weekly</summary>
-<label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.machine"> Washer/dryer wipe-down</label>
-<label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.supplies"> Supplies check</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.machine"> Washer / dryer wipe-down</label>
+<label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.supplies"> Supply inventory check</label>
 <label class="task"><input type="checkbox" data-key-check="clean.weekly.laundry.floor"> Floor clean</label>
 </details>
 </details>
 
 <details><summary>Deep-Clean Tasks by Room</summary>
-<div id="deepRoomCleaning"></div>
+<div class="hint">Open a room for deeper tasks beyond weekly cleaning.</div>
+<details><summary>Kitchen Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.fridge"> Fridge interior</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.oven"> Oven</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.cabinets"> Cabinets inside / out</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.baseboards"> Baseboards</label>
+</details>
+<details><summary>Bathroom Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.grout"> Grout / caulk</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.vent"> Vent / fan</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.storage"> Empty / wipe storage</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bath.baseboards"> Baseboards</label>
+</details>
+<details><summary>Living Room Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.furniture"> Under / behind furniture</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.upholstery"> Upholstery detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.windows"> Windows / blinds</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.living.baseboards"> Baseboards</label>
+</details>
+<details><summary>Bedrooms Deep Clean</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.mattress"> Mattress / under bed</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.closet"> Closet detail</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.windows"> Windows / blinds</label>
+<label class="task"><input type="checkbox" data-key-check="clean.deep.bed.baseboards"> Baseboards</label>
+</details>
 </details>
 
 <details><summary> Cleaning by Time</summary>
@@ -1237,14 +1380,6 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="walkstep"><div class="num">3</div><div>Work one room top-to-bottom: trash/clutter -> surfaces -> fixtures -> floor -> restock.</div></div>
 <div class="walkstep"><div class="num">4</div><div>Complete Nightly Reset so tomorrow starts easier.</div></div>
 <div class="walkstep"><div class="num">5</div><div>On Sunday, review Monthly/Seasonal tasks and pick only what is due.</div></div>
-</details>
-<details><summary>Deep Cleaning Tasks by Room</summary>
-<div class="hint">Open a room for deeper tasks beyond the weekly checklist.</div>
-<details><summary>Kitchen Deep Clean</summary>
-<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.fridge"> Fridge interior</label>
-<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.oven"> Oven</label>
-<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.cabinets"> Cabinets inside/out</label>
-<label class="task"><input type="checkbox" data-key-check="clean.deep.kitchen.baseboards"> Baseboards</label>
 </details>
 <details><summary>Bathroom Deep Clean</summary>
 <label class="task"><input type="checkbox" data-key-check="clean.deep.bath.grout"> Grout/caulk</label>
@@ -1859,6 +1994,34 @@ ${field('Notes / reactions / results','notes',r.notes||'','textarea',true)}
 
 let modalType='',modalId=null;
 
+formBuilders.recipe=r=>`<div class="formgrid">
+${field('Meal / recipe name','name',r.name||'')}
+${field('Category','category',r.category||'Dinner','select',false,selectOpts(['Dinner','Crockpot','Freezer Meal','Quick Meal','Pasta','Chicken','Beef','Other'],r.category||'Dinner'))}
+${field('Method','method',r.method||'')}
+${field('Ingredients','ingredients',r.ingredients||'','textarea',true)}
+${field('Directions','directions',r.directions||'','textarea',true)}
+${field('Sides / pairings','sides',r.sides||'')}
+${field('Family notes','notes',r.notes||'','textarea',true)}
+${field('Favorite?','favorite',r.favorite||'','select',false,selectOpts(['','Favorite'],r.favorite||''))}
+</div>`;
+formBuilders.breakfast=r=>`<div class="formgrid">
+${field('Breakfast name','name',r.name||'')}
+${field('Tag / type','tag',r.tag||'')}
+${field('Who likes it','likes',r.likes||'')}
+${field('Ingredients / notes','notes',r.notes||'','textarea',true)}
+</div>`;
+formBuilders.lunch=r=>`<div class="formgrid">
+${field('Lunch name','name',r.name||'')}
+${field('Tag / type','tag',r.tag||'')}
+${field('Who likes it','likes',r.likes||'')}
+${field('Ingredients / notes','notes',r.notes||'','textarea',true)}
+</div>`;
+formBuilders.snack=r=>`<div class="formgrid">
+${field('Snack name','name',r.name||'')}
+${field('Tag / type','tag',r.tag||'')}
+${field('Who likes it','likes',r.likes||'')}
+${field('Packing / notes','notes',r.notes||'','textarea',true)}
+</div>`;
 formBuilders.mealPlanPick=r=>`<div class="hint"><strong>Add this library item directly to a day.</strong> Pick Monday\u2013Sunday. The meal slot is already selected based on which library you came from, but you can change it if needed.</div><div class="formgrid">
 ${field('Library item','item',r.item||'')}
 ${field('Add to day','day',r.day||days[new Date().getDay()],'select',false,selectOpts(['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],r.day||days[new Date().getDay()]))}
@@ -3170,7 +3333,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=8.7-'+Date.now();
+   location.href='./?v=8.8-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
