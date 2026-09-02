@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.4 Kids Names Restored - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v8.5 Full Kids Profiles Restored - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v8.4 - Kids Names Restored</div>
+<div class="alert"><strong>Current App Version:</strong> v8.5 - Full Kids Profiles Restored</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -235,22 +235,279 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <section id="kids" class="page">
 <div class="topbar"><button class="back"><- Home</button></div>
 <div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="23" cy="22" r="10" fill="#ffd7b5"/><circle cx="43" cy="24" r="9" fill="#ffd7b5"/><path d="M12 56c1-14 8-21 18-21s17 7 18 21" fill="#82c7ff" stroke="#555" stroke-width="3"/><path d="M32 56c1-12 6-18 14-18s13 6 14 18" fill="#ff9ec4" stroke="#555" stroke-width="3"/></svg>Kids + School</h2>
-<div class="hint"><strong>Kids + School</strong><br>Tap a child's name to open their profile. The names are built directly into the page so they always remain visible.</div>
+<div class="hint"><strong>Kids + School</strong><br>Each child now has the full profile built directly into the page. Tap the child's name, then open the section you need.</div>
+
 <details class="kid-static" open>
 <summary>Nayleigh</summary>
-<div id="kidBody0" class="kid-static-body"><div class="small">Loading Nayleigh's profile...</div></div>
+<div class="kid-static-body">
+
+<details open><summary>Detailed Profile</summary>
+<div class="formgrid">
+<div class="field"><label>Birthday</label><input type="date" data-key="kid.Nayleigh.birthday"></div>
+<div class="field"><label>Nickname / preferred name</label><input data-key="kid.Nayleigh.nickname"></div>
+<div class="field"><label>Phone</label><input data-key="kid.Nayleigh.phone"></div>
+<div class="field"><label>Email (if used)</label><input data-key="kid.Nayleigh.email"></div>
+<div class="field"><label>Shirt size</label><input data-key="kid.Nayleigh.shirt"></div>
+<div class="field"><label>Pants / shorts</label><input data-key="kid.Nayleigh.pants"></div>
+<div class="field"><label>Dress / skirt size</label><input data-key="kid.Nayleigh.dress"></div>
+<div class="field"><label>Pajamas</label><input data-key="kid.Nayleigh.pjs"></div>
+<div class="field"><label>Underwear</label><input data-key="kid.Nayleigh.underwear"></div>
+<div class="field"><label>Socks</label><input data-key="kid.Nayleigh.socks"></div>
+<div class="field"><label>Shoe size</label><input data-key="kid.Nayleigh.shoe"></div>
+<div class="field"><label>Coat / jacket</label><input data-key="kid.Nayleigh.coat"></div>
+<div class="field full"><label>Favorite colors / characters</label><textarea data-key="kid.Nayleigh.colors"></textarea></div>
+<div class="field full"><label>Favorites / interests / hobbies</label><textarea data-key="kid.Nayleigh.favorites"></textarea></div>
+<div class="field full"><label>Foods / snacks / dislikes</label><textarea data-key="kid.Nayleigh.foods"></textarea></div>
+<div class="field full"><label>Current needs / things to replace</label><textarea data-key="kid.Nayleigh.needs"></textarea></div>
+<div class="field full"><label>Friends / important people</label><textarea data-key="kid.Nayleigh.friendsProfile"></textarea></div>
+<div class="field full"><label>Gift / wishlist notes</label><textarea data-key="kid.Nayleigh.wishlistNotes"></textarea></div>
+<div class="field full"><label>Important dates / notes</label><textarea data-key="kid.Nayleigh.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>School Year</summary>
+<div class="formgrid">
+<div class="field"><label>School</label><input data-key="kid.Nayleigh.school"></div>
+<div class="field"><label>Grade</label><input data-key="kid.Nayleigh.grade"></div>
+<div class="field"><label>School year</label><input data-key="kid.Nayleigh.schoolYear"></div>
+<div class="field"><label>Teacher / homeroom</label><input data-key="kid.Nayleigh.teacher"></div>
+<div class="field"><label>Start / end time</label><input data-key="kid.Nayleigh.schoolTimes"></div>
+<div class="field"><label>Transportation / bus</label><input data-key="kid.Nayleigh.schoolTransport"></div>
+<div class="field full"><label>Teachers / staff / contacts</label><textarea data-key="kid.Nayleigh.staff"></textarea></div>
+<div class="field full"><label>Schedule / subjects</label><textarea data-key="kid.Nayleigh.schedule"></textarea></div>
+<div class="field full"><label>Apps / portals (no passwords)</label><textarea data-key="kid.Nayleigh.apps"></textarea></div>
+<div class="field full"><label>Lunch notes</label><textarea data-key="kid.Nayleigh.lunch"></textarea></div>
+<div class="field full"><label>Supplies / running low</label><textarea data-key="kid.Nayleigh.supplies"></textarea></div>
+<div class="field full"><label>Homework / projects / tests</label><textarea data-key="kid.Nayleigh.schoolWork"></textarea></div>
+<div class="field full"><label>Forms / deadlines</label><textarea data-key="kid.Nayleigh.forms"></textarea></div>
+<div class="field full"><label>Important school dates</label><textarea data-key="kid.Nayleigh.schoolDates"></textarea></div>
+<div class="field full"><label>Friends / parent contacts</label><textarea data-key="kid.Nayleigh.friends"></textarea></div>
+<div class="field full"><label>School-year notes</label><textarea data-key="kid.Nayleigh.schoolNotes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Personal Care & Toiletries</summary>
+<div class="hint">Track preferred products, quantity, and Running Low / Out items.</div>
+<div id="kidToiletries0"></div>
+<button class="smallbtn" data-kid-action="add-toiletry" data-person="Nayleigh">Add Toiletry / Product</button>
+</details>
+
+<details><summary>Activities</summary>
+<div id="kidActivities0"></div>
+<button class="smallbtn" data-kid-action="add-activity" data-person="Nayleigh">Add Activity</button>
+</details>
+
+<details><summary>Gifts</summary>
+<div class="hint">Gift ideas here are shared with Family Gifts.</div>
+<div id="kidGifts0"></div>
+<button class="smallbtn" data-kid-action="add-gift" data-person="Nayleigh">Add Gift Idea</button>
+</details>
+
+</div>
 </details>
 <details class="kid-static" >
 <summary>Leslieann</summary>
-<div id="kidBody1" class="kid-static-body"><div class="small">Loading Leslieann's profile...</div></div>
+<div class="kid-static-body">
+
+<details open><summary>Detailed Profile</summary>
+<div class="formgrid">
+<div class="field"><label>Birthday</label><input type="date" data-key="kid.Leslieann.birthday"></div>
+<div class="field"><label>Nickname / preferred name</label><input data-key="kid.Leslieann.nickname"></div>
+<div class="field"><label>Phone</label><input data-key="kid.Leslieann.phone"></div>
+<div class="field"><label>Email (if used)</label><input data-key="kid.Leslieann.email"></div>
+<div class="field"><label>Shirt size</label><input data-key="kid.Leslieann.shirt"></div>
+<div class="field"><label>Pants / shorts</label><input data-key="kid.Leslieann.pants"></div>
+<div class="field"><label>Dress / skirt size</label><input data-key="kid.Leslieann.dress"></div>
+<div class="field"><label>Pajamas</label><input data-key="kid.Leslieann.pjs"></div>
+<div class="field"><label>Underwear</label><input data-key="kid.Leslieann.underwear"></div>
+<div class="field"><label>Socks</label><input data-key="kid.Leslieann.socks"></div>
+<div class="field"><label>Shoe size</label><input data-key="kid.Leslieann.shoe"></div>
+<div class="field"><label>Coat / jacket</label><input data-key="kid.Leslieann.coat"></div>
+<div class="field full"><label>Favorite colors / characters</label><textarea data-key="kid.Leslieann.colors"></textarea></div>
+<div class="field full"><label>Favorites / interests / hobbies</label><textarea data-key="kid.Leslieann.favorites"></textarea></div>
+<div class="field full"><label>Foods / snacks / dislikes</label><textarea data-key="kid.Leslieann.foods"></textarea></div>
+<div class="field full"><label>Current needs / things to replace</label><textarea data-key="kid.Leslieann.needs"></textarea></div>
+<div class="field full"><label>Friends / important people</label><textarea data-key="kid.Leslieann.friendsProfile"></textarea></div>
+<div class="field full"><label>Gift / wishlist notes</label><textarea data-key="kid.Leslieann.wishlistNotes"></textarea></div>
+<div class="field full"><label>Important dates / notes</label><textarea data-key="kid.Leslieann.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>School Year</summary>
+<div class="formgrid">
+<div class="field"><label>School</label><input data-key="kid.Leslieann.school"></div>
+<div class="field"><label>Grade</label><input data-key="kid.Leslieann.grade"></div>
+<div class="field"><label>School year</label><input data-key="kid.Leslieann.schoolYear"></div>
+<div class="field"><label>Teacher / homeroom</label><input data-key="kid.Leslieann.teacher"></div>
+<div class="field"><label>Start / end time</label><input data-key="kid.Leslieann.schoolTimes"></div>
+<div class="field"><label>Transportation / bus</label><input data-key="kid.Leslieann.schoolTransport"></div>
+<div class="field full"><label>Teachers / staff / contacts</label><textarea data-key="kid.Leslieann.staff"></textarea></div>
+<div class="field full"><label>Schedule / subjects</label><textarea data-key="kid.Leslieann.schedule"></textarea></div>
+<div class="field full"><label>Apps / portals (no passwords)</label><textarea data-key="kid.Leslieann.apps"></textarea></div>
+<div class="field full"><label>Lunch notes</label><textarea data-key="kid.Leslieann.lunch"></textarea></div>
+<div class="field full"><label>Supplies / running low</label><textarea data-key="kid.Leslieann.supplies"></textarea></div>
+<div class="field full"><label>Homework / projects / tests</label><textarea data-key="kid.Leslieann.schoolWork"></textarea></div>
+<div class="field full"><label>Forms / deadlines</label><textarea data-key="kid.Leslieann.forms"></textarea></div>
+<div class="field full"><label>Important school dates</label><textarea data-key="kid.Leslieann.schoolDates"></textarea></div>
+<div class="field full"><label>Friends / parent contacts</label><textarea data-key="kid.Leslieann.friends"></textarea></div>
+<div class="field full"><label>School-year notes</label><textarea data-key="kid.Leslieann.schoolNotes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Personal Care & Toiletries</summary>
+<div class="hint">Track preferred products, quantity, and Running Low / Out items.</div>
+<div id="kidToiletries1"></div>
+<button class="smallbtn" data-kid-action="add-toiletry" data-person="Leslieann">Add Toiletry / Product</button>
+</details>
+
+<details><summary>Activities</summary>
+<div id="kidActivities1"></div>
+<button class="smallbtn" data-kid-action="add-activity" data-person="Leslieann">Add Activity</button>
+</details>
+
+<details><summary>Gifts</summary>
+<div class="hint">Gift ideas here are shared with Family Gifts.</div>
+<div id="kidGifts1"></div>
+<button class="smallbtn" data-kid-action="add-gift" data-person="Leslieann">Add Gift Idea</button>
+</details>
+
+</div>
 </details>
 <details class="kid-static" >
 <summary>Lukas</summary>
-<div id="kidBody2" class="kid-static-body"><div class="small">Loading Lukas's profile...</div></div>
+<div class="kid-static-body">
+
+<details open><summary>Detailed Profile</summary>
+<div class="formgrid">
+<div class="field"><label>Birthday</label><input type="date" data-key="kid.Lukas.birthday"></div>
+<div class="field"><label>Nickname / preferred name</label><input data-key="kid.Lukas.nickname"></div>
+<div class="field"><label>Phone</label><input data-key="kid.Lukas.phone"></div>
+<div class="field"><label>Email (if used)</label><input data-key="kid.Lukas.email"></div>
+<div class="field"><label>Shirt size</label><input data-key="kid.Lukas.shirt"></div>
+<div class="field"><label>Pants / shorts</label><input data-key="kid.Lukas.pants"></div>
+<div class="field"><label>Dress / skirt size</label><input data-key="kid.Lukas.dress"></div>
+<div class="field"><label>Pajamas</label><input data-key="kid.Lukas.pjs"></div>
+<div class="field"><label>Underwear</label><input data-key="kid.Lukas.underwear"></div>
+<div class="field"><label>Socks</label><input data-key="kid.Lukas.socks"></div>
+<div class="field"><label>Shoe size</label><input data-key="kid.Lukas.shoe"></div>
+<div class="field"><label>Coat / jacket</label><input data-key="kid.Lukas.coat"></div>
+<div class="field full"><label>Favorite colors / characters</label><textarea data-key="kid.Lukas.colors"></textarea></div>
+<div class="field full"><label>Favorites / interests / hobbies</label><textarea data-key="kid.Lukas.favorites"></textarea></div>
+<div class="field full"><label>Foods / snacks / dislikes</label><textarea data-key="kid.Lukas.foods"></textarea></div>
+<div class="field full"><label>Current needs / things to replace</label><textarea data-key="kid.Lukas.needs"></textarea></div>
+<div class="field full"><label>Friends / important people</label><textarea data-key="kid.Lukas.friendsProfile"></textarea></div>
+<div class="field full"><label>Gift / wishlist notes</label><textarea data-key="kid.Lukas.wishlistNotes"></textarea></div>
+<div class="field full"><label>Important dates / notes</label><textarea data-key="kid.Lukas.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>School Year</summary>
+<div class="formgrid">
+<div class="field"><label>School</label><input data-key="kid.Lukas.school"></div>
+<div class="field"><label>Grade</label><input data-key="kid.Lukas.grade"></div>
+<div class="field"><label>School year</label><input data-key="kid.Lukas.schoolYear"></div>
+<div class="field"><label>Teacher / homeroom</label><input data-key="kid.Lukas.teacher"></div>
+<div class="field"><label>Start / end time</label><input data-key="kid.Lukas.schoolTimes"></div>
+<div class="field"><label>Transportation / bus</label><input data-key="kid.Lukas.schoolTransport"></div>
+<div class="field full"><label>Teachers / staff / contacts</label><textarea data-key="kid.Lukas.staff"></textarea></div>
+<div class="field full"><label>Schedule / subjects</label><textarea data-key="kid.Lukas.schedule"></textarea></div>
+<div class="field full"><label>Apps / portals (no passwords)</label><textarea data-key="kid.Lukas.apps"></textarea></div>
+<div class="field full"><label>Lunch notes</label><textarea data-key="kid.Lukas.lunch"></textarea></div>
+<div class="field full"><label>Supplies / running low</label><textarea data-key="kid.Lukas.supplies"></textarea></div>
+<div class="field full"><label>Homework / projects / tests</label><textarea data-key="kid.Lukas.schoolWork"></textarea></div>
+<div class="field full"><label>Forms / deadlines</label><textarea data-key="kid.Lukas.forms"></textarea></div>
+<div class="field full"><label>Important school dates</label><textarea data-key="kid.Lukas.schoolDates"></textarea></div>
+<div class="field full"><label>Friends / parent contacts</label><textarea data-key="kid.Lukas.friends"></textarea></div>
+<div class="field full"><label>School-year notes</label><textarea data-key="kid.Lukas.schoolNotes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Personal Care & Toiletries</summary>
+<div class="hint">Track preferred products, quantity, and Running Low / Out items.</div>
+<div id="kidToiletries2"></div>
+<button class="smallbtn" data-kid-action="add-toiletry" data-person="Lukas">Add Toiletry / Product</button>
+</details>
+
+<details><summary>Activities</summary>
+<div id="kidActivities2"></div>
+<button class="smallbtn" data-kid-action="add-activity" data-person="Lukas">Add Activity</button>
+</details>
+
+<details><summary>Gifts</summary>
+<div class="hint">Gift ideas here are shared with Family Gifts.</div>
+<div id="kidGifts2"></div>
+<button class="smallbtn" data-kid-action="add-gift" data-person="Lukas">Add Gift Idea</button>
+</details>
+
+</div>
 </details>
 <details class="kid-static" >
 <summary>Brianna</summary>
-<div id="kidBody3" class="kid-static-body"><div class="small">Loading Brianna's profile...</div></div>
+<div class="kid-static-body">
+
+<details open><summary>Detailed Profile</summary>
+<div class="formgrid">
+<div class="field"><label>Birthday</label><input type="date" data-key="kid.Brianna.birthday"></div>
+<div class="field"><label>Nickname / preferred name</label><input data-key="kid.Brianna.nickname"></div>
+<div class="field"><label>Phone</label><input data-key="kid.Brianna.phone"></div>
+<div class="field"><label>Email (if used)</label><input data-key="kid.Brianna.email"></div>
+<div class="field"><label>Shirt size</label><input data-key="kid.Brianna.shirt"></div>
+<div class="field"><label>Pants / shorts</label><input data-key="kid.Brianna.pants"></div>
+<div class="field"><label>Dress / skirt size</label><input data-key="kid.Brianna.dress"></div>
+<div class="field"><label>Pajamas</label><input data-key="kid.Brianna.pjs"></div>
+<div class="field"><label>Underwear</label><input data-key="kid.Brianna.underwear"></div>
+<div class="field"><label>Socks</label><input data-key="kid.Brianna.socks"></div>
+<div class="field"><label>Shoe size</label><input data-key="kid.Brianna.shoe"></div>
+<div class="field"><label>Coat / jacket</label><input data-key="kid.Brianna.coat"></div>
+<div class="field full"><label>Favorite colors / characters</label><textarea data-key="kid.Brianna.colors"></textarea></div>
+<div class="field full"><label>Favorites / interests / hobbies</label><textarea data-key="kid.Brianna.favorites"></textarea></div>
+<div class="field full"><label>Foods / snacks / dislikes</label><textarea data-key="kid.Brianna.foods"></textarea></div>
+<div class="field full"><label>Current needs / things to replace</label><textarea data-key="kid.Brianna.needs"></textarea></div>
+<div class="field full"><label>Friends / important people</label><textarea data-key="kid.Brianna.friendsProfile"></textarea></div>
+<div class="field full"><label>Gift / wishlist notes</label><textarea data-key="kid.Brianna.wishlistNotes"></textarea></div>
+<div class="field full"><label>Important dates / notes</label><textarea data-key="kid.Brianna.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>School Year</summary>
+<div class="formgrid">
+<div class="field"><label>School</label><input data-key="kid.Brianna.school"></div>
+<div class="field"><label>Grade</label><input data-key="kid.Brianna.grade"></div>
+<div class="field"><label>School year</label><input data-key="kid.Brianna.schoolYear"></div>
+<div class="field"><label>Teacher / homeroom</label><input data-key="kid.Brianna.teacher"></div>
+<div class="field"><label>Start / end time</label><input data-key="kid.Brianna.schoolTimes"></div>
+<div class="field"><label>Transportation / bus</label><input data-key="kid.Brianna.schoolTransport"></div>
+<div class="field full"><label>Teachers / staff / contacts</label><textarea data-key="kid.Brianna.staff"></textarea></div>
+<div class="field full"><label>Schedule / subjects</label><textarea data-key="kid.Brianna.schedule"></textarea></div>
+<div class="field full"><label>Apps / portals (no passwords)</label><textarea data-key="kid.Brianna.apps"></textarea></div>
+<div class="field full"><label>Lunch notes</label><textarea data-key="kid.Brianna.lunch"></textarea></div>
+<div class="field full"><label>Supplies / running low</label><textarea data-key="kid.Brianna.supplies"></textarea></div>
+<div class="field full"><label>Homework / projects / tests</label><textarea data-key="kid.Brianna.schoolWork"></textarea></div>
+<div class="field full"><label>Forms / deadlines</label><textarea data-key="kid.Brianna.forms"></textarea></div>
+<div class="field full"><label>Important school dates</label><textarea data-key="kid.Brianna.schoolDates"></textarea></div>
+<div class="field full"><label>Friends / parent contacts</label><textarea data-key="kid.Brianna.friends"></textarea></div>
+<div class="field full"><label>School-year notes</label><textarea data-key="kid.Brianna.schoolNotes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Personal Care & Toiletries</summary>
+<div class="hint">Track preferred products, quantity, and Running Low / Out items.</div>
+<div id="kidToiletries3"></div>
+<button class="smallbtn" data-kid-action="add-toiletry" data-person="Brianna">Add Toiletry / Product</button>
+</details>
+
+<details><summary>Activities</summary>
+<div id="kidActivities3"></div>
+<button class="smallbtn" data-kid-action="add-activity" data-person="Brianna">Add Activity</button>
+</details>
+
+<details><summary>Gifts</summary>
+<div class="hint">Gift ideas here are shared with Family Gifts.</div>
+<div id="kidGifts3"></div>
+<button class="smallbtn" data-kid-action="add-gift" data-person="Brianna">Add Gift Idea</button>
+</details>
+
+</div>
 </details>
 </div>
 </section>
@@ -1807,23 +2064,23 @@ function showGift(person){showForm('gift',{person})}
 
 function renderKids(){
  kids.forEach((k,i)=>{
-   const body=document.getElementById('kidBody'+i);
-   if(!body)return;
-   const full=kidProfileHTML(k);
-   const inner=full
-     .replace(/^<div class="panel"><h2>.*?<\/h2>/s,'')
-     .replace(/<\/div>\s*$/s,'');
-   body.innerHTML=inner;
+   const toiletries=rec('kidToiletry').filter(x=>x.person===k);
+   const acts=rec('activity').filter(x=>x.person===k);
+   const gifts=rec('gift').filter(x=>x.person===k);
+
+   const tb=document.getElementById('kidToiletries'+i);
+   if(tb)tb.innerHTML=toiletries.map(t=>`<div class="record"><div class="recordhead"><div><strong>${esc(t.item||'Toiletry')}</strong><div class="small">${esc((t.category||'')+' - '+(t.status||''))}</div></div>${actionBtns('kidToiletry',t.id)}</div>${['Running Low','Out'].includes(t.status)?`<button class="smallbtn" data-kid-action="shop-toiletry" data-id="${t.id}" data-person="${esc(k)}">Add to Shopping</button>`:''}</div>`).join('')||'<div class="small">No toiletries added yet.</div>';
+
+   const ab=document.getElementById('kidActivities'+i);
+   if(ab)ab.innerHTML=acts.map(a=>`<div class="record"><div class="recordhead"><div><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.status||'')+' - '+(a.practiceDays||'')+' '+(a.practiceTime||''))}</div></div>${actionBtns('activity',a.id)}</div>${a.needed?`<div class="alert">Equipment / items needed: ${esc(a.needed)} <button class="smallbtn" data-kid-action="shop-activity" data-id="${a.id}" data-person="${esc(k)}">Add to Shopping</button></div>`:''}</div>`).join('')||'<div class="small">No activities added yet.</div>';
+
+   const gb=document.getElementById('kidGifts'+i);
+   if(gb)gb.innerHTML=gifts.map(g=>recordCard(g.occasion||'Gift idea',`${g.item||''} - ${g.status||''}`,actionBtns('gift',g.id))).join('')||'<div class="small">No gift ideas yet.</div>';
  });
+
  const kidsSection=document.getElementById('kids');
  if(!kidsSection)return;
- kidsSection.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
-   if(el.name.startsWith('kid.')){
-     el.value=getPath(el.name);
-     el.oninput=()=>setPath(el.name,el.value);
-     el.onchange=()=>setPath(el.name,el.value);
-   }
- });
+
  kidsSection.onclick=e=>{
    const b=e.target.closest('[data-kid-action]');
    if(!b)return;
@@ -1841,6 +2098,7 @@ function renderKids(){
      addShopping(a.needed||a.name||'Activity item','Kids / School','','','Soon','',person+' activity');
    }
  };
+ bindFields();
 }
 function renderFamily(){renderSimple('transport','transportation',r=>`${r.person||'Family'} \u2014 ${r.kind||'Transportation'}`,r=>`${r.date||''} ${r.leave||''} \u2022 ${r.morning||r.afternoon||''}`);const acts=document.getElementById('familyActivities');if(acts)acts.innerHTML=kids.map(k=>`<h3>${k}</h3>${rec('activity').filter(a=>a.person===k&&a.status!=='Finished / Archived').map(a=>`<div class="record"><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.practiceDays||'')+' '+(a.practiceTime||'')+' \u2022 '+(a.location||''))}</div><div class="small">Fees: ${fmt(a.fee)} \u2022 Due: ${esc(a.feeDue||'')} \u2022 Needed: ${esc(a.needed||'')}</div></div>`).join('')||'<div class="small">No active activities.</div>'}`).join('');
  const ft=document.getElementById('familyTime');if(ft)ft.innerHTML=`<h3>Planned Outings</h3>${rec('outing').map(r=>recordCard(r.name||'Outing',`${r.date||''} \u2022 ${r.status||''} \u2022 ${fmt(r.budget)}`,actionBtns('outing',r.id))).join('')||'<div class="small">No outings.</div>'}<h3>Trips</h3>${rec('trip').map(r=>recordCard(r.name||'Trip',`${r.depart||''} \u2192 ${r.returnDate||''} \u2022 ${r.destination||''}`,actionBtns('trip',r.id))).join('')||'<div class="small">No trips.</div>'}`;
@@ -2727,7 +2985,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=8.4-'+Date.now();
+   location.href='./?v=8.5-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
