@@ -35,25 +35,25 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v5.8 - Multi-select health triggers â¢ Quick View â Walkthrough â Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark">ð¡</div><div><strong>My Life HQ</strong><small>Consolidated fixes v5.9 - Clean titles and text â¢ Quick View â Walkthrough â Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate">Today</h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
 <div class="navgrid">
 <button class="navbtn" data-go="today" onclick="window.MLHQGo && window.MLHQGo('today')">â­ Today<span>Daily dashboard + routines</span></button>
-<button class="navbtn" data-go="week" onclick="window.MLHQGo && window.MLHQGo('week')">ð Week & Planning<span>Priorities, To-Do Inbox, Schedule Inbox</span></button>
-<button class="navbtn" data-go="kids" onclick="window.MLHQGo && window.MLHQGo('kids')">ð§ Kids + School<span>Named profiles, school year, toiletries, activities</span></button>
-<button class="navbtn" data-go="family" onclick="window.MLHQGo && window.MLHQGo('family')">ð¨âð©âð§âð¦ Family<span>Transportation, activities, family time, gifts</span></button>
-<button class="navbtn" data-go="work" onclick="window.MLHQGo && window.MLHQGo('work')">ð¼ Work<span>Daily/weekly workflows + trackers</span></button>
-<button class="navbtn" data-go="meals" onclick="window.MLHQGo && window.MLHQGo('meals')">ð½ï¸ Meals<span>Weekly plan + recipes + breakfast/lunch/snacks</span></button>
-<button class="navbtn" data-go="money" onclick="window.MLHQGo && window.MLHQGo('money')">ð° Money<span>Bills, pay, budgets, savings, debt</span></button>
-<button class="navbtn" data-go="cleaning" onclick="window.MLHQGo && window.MLHQGo('cleaning')">ð§¹ Cleaning<span>Your existing daily/weekly cleaning system</span></button>
-<button class="navbtn" data-go="homeLife" onclick="window.MLHQGo && window.MLHQGo('homeLife')">ð  Home<span>Maintenance, restock, projects, storage, equipment</span></button>
-<button class="navbtn" data-go="selfcare" onclick="window.MLHQGo && window.MLHQGo('selfcare')">ð§´ Me + Self-Care<span>Exact days, products, routines, travel</span></button>
-<button class="navbtn" data-go="health" onclick="window.MLHQGo && window.MLHQGo('health')">â¤ï¸ Health<span>Mood, symptoms, migraine, period, household health</span></button>
-<button class="navbtn" data-go="shopping" onclick="window.MLHQGo && window.MLHQGo('shopping')">ð Master Shopping<span>Everything to buy in one list</span></button>
-<button class="navbtn" data-go="emergency" onclick="window.MLHQGo && window.MLHQGo('emergency')">ð Emergency<span>Fast household emergency reference</span></button>
-<button class="navbtn" data-go="help" onclick="window.MLHQGo && window.MLHQGo('help')">â How to Use<span>Walkthroughs + where things belong</span></button>
+<button class="navbtn" data-go="week" onclick="window.MLHQGo && window.MLHQGo('week')">Week & Planning<span>Priorities, To-Do Inbox, Schedule Inbox</span></button>
+<button class="navbtn" data-go="kids" onclick="window.MLHQGo && window.MLHQGo('kids')">Kids + School<span>Named profiles, school year, toiletries, activities</span></button>
+<button class="navbtn" data-go="family" onclick="window.MLHQGo && window.MLHQGo('family')">Family<span>Transportation, activities, family time, gifts</span></button>
+<button class="navbtn" data-go="work" onclick="window.MLHQGo && window.MLHQGo('work')">Work<span>Daily/weekly workflows + trackers</span></button>
+<button class="navbtn" data-go="meals" onclick="window.MLHQGo && window.MLHQGo('meals')">Meals<span>Weekly plan + recipes + breakfast/lunch/snacks</span></button>
+<button class="navbtn" data-go="money" onclick="window.MLHQGo && window.MLHQGo('money')">Money<span>Bills, pay, budgets, savings, debt</span></button>
+<button class="navbtn" data-go="cleaning" onclick="window.MLHQGo && window.MLHQGo('cleaning')">Cleaning<span>Your existing daily/weekly cleaning system</span></button>
+<button class="navbtn" data-go="homeLife" onclick="window.MLHQGo && window.MLHQGo('homeLife')">Home<span>Maintenance, restock, projects, storage, equipment</span></button>
+<button class="navbtn" data-go="selfcare" onclick="window.MLHQGo && window.MLHQGo('selfcare')">Me + Self-Care<span>Exact days, products, routines, travel</span></button>
+<button class="navbtn" data-go="health" onclick="window.MLHQGo && window.MLHQGo('health')">Health<span>Mood, symptoms, migraine, period, household health</span></button>
+<button class="navbtn" data-go="shopping" onclick="window.MLHQGo && window.MLHQGo('shopping')">Master Shopping<span>Everything to buy in one list</span></button>
+<button class="navbtn" data-go="emergency" onclick="window.MLHQGo && window.MLHQGo('emergency')">Emergency<span>Fast household emergency reference</span></button>
+<button class="navbtn" data-go="help" onclick="window.MLHQGo && window.MLHQGo('help')">How to Use<span>Walkthroughs + where things belong</span></button>
 </div>
 <div class="card">
 <h2>Data</h2>
@@ -71,25 +71,25 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="card"><h3>Dinner</h3><input data-key="today.dinner" placeholder="Dinner"><textarea data-key="today.dinnerPrep" placeholder="Thaw / prep / pickup note"></textarea></div>
 </div>
 <div class="card"><h2>Morning Start</h2>
-<label class="task"><input type="checkbox" data-daily="morning.today"> Check Today + Top 3</label>
-<label class="task"><input type="checkbox" data-daily="morning.kids"> Check kids/school alerts</label>
-<label class="task"><input type="checkbox" data-daily="morning.dinner"> Check dinner + thaw/prep</label>
-<label class="task"><input type="checkbox" data-daily="morning.carry"> Check Carry Forward</label>
+<label class="task"><input type="checkbox" data-daily="morning.today">Check Today + Top 3</label>
+<label class="task"><input type="checkbox" data-daily="morning.kids">Check kids/school alerts</label>
+<label class="task"><input type="checkbox" data-daily="morning.dinner">Check dinner + thaw/prep</label>
+<label class="task"><input type="checkbox" data-daily="morning.carry">Check Carry Forward</label>
 <button class="smallbtn" data-walk="morning">Walk Me Through Morning</button>
 </div>
 <div class="card"><h2>Todayâs Cleaning Focus</h2><button id="cleanFocus" class="alert" style="width:100%;text-align:left;border:0;font:inherit;color:inherit;cursor:pointer"></button>
-<div class="field"><label>ð Cleaning Notes / Extra Tasks</label><textarea data-key="today.cleanExtra" placeholder="Cleaning that needs attention today but is not already in the normal checklist. Example: wash couch blanket."></textarea></div>
-<div class="field"><label>â¡ï¸ Carry Forward / Do Later</label><textarea data-key="today.cleanLater" placeholder="Cleaning you noticed but do not need to do today. Example: organize under sink this weekend."></textarea></div>
+<div class="field"><label>Cleaning Notes / Extra Tasks</label><textarea data-key="today.cleanExtra" placeholder="Cleaning that needs attention today but is not already in the normal checklist. Example: wash couch blanket."></textarea></div>
+<div class="field"><label>Carry Forward / Do Later</label><textarea data-key="today.cleanLater" placeholder="Cleaning you noticed but do not need to do today. Example: organize under sink this weekend."></textarea></div>
 <button class="smallbtn" data-go="cleaning" onclick="window.MLHQGo && window.MLHQGo('cleaning')">Open Cleaning</button>
 </div>
 <div class="card"><h2>Needs Attention</h2><div id="todayAlerts" class="small">Nothing flagged.</div></div>
-<div class="card"><h2>Quick Brain Dump</h2><div class="hint"><strong>Get it out of your head now; organize it later.</strong> Add it quickly, then send it where it belongs.</div><div id="todayBrainDump"></div><button class="smallbtn" data-add-record="brainDump">â Quick Brain Dump</button></div><div class="card"><h2>Today Notes</h2><div class="hint">Temporary information about todayânot tasks or scheduled events. During Evening Close, decide whether to discard, task, schedule, journal, or carry forward.</div><textarea data-key="today.notes" placeholder="Something about today I want visibleâ¦"></textarea></div>
+<div class="card"><h2>Quick Brain Dump</h2><div class="hint"><strong>Get it out of your head now; organize it later.</strong> Add it quickly, then send it where it belongs.</div><div id="todayBrainDump"></div><button class="smallbtn" data-add-record="brainDump">Quick Brain Dump</button></div><div class="card"><h2>Today Notes</h2><div class="hint">Temporary information about todayânot tasks or scheduled events. During Evening Close, decide whether to discard, task, schedule, journal, or carry forward.</div><textarea data-key="today.notes" placeholder="Something about today I want visibleâ¦"></textarea></div>
 <div class="card"><h2>Carry Forward</h2><div id="carryList"></div><div class="formgrid"><input id="carryAdd" placeholder="Something important that must not get lost tomorrow"><button id="carryAddBtn" class="smallbtn">Add</button></div></div>
 <div class="card"><h2>Evening Close</h2>
-<label class="task"><input type="checkbox" data-daily="evening.house"> Kitchen + house reset</label>
-<label class="task"><input type="checkbox" data-daily="evening.school"> Check tomorrow school needs</label>
-<label class="task"><input type="checkbox" data-daily="evening.todo"> Review unfinished Today items</label>
-<label class="task"><input type="checkbox" data-daily="evening.tomorrow"> Check tomorrow preview</label>
+<label class="task"><input type="checkbox" data-daily="evening.house">Kitchen + house reset</label>
+<label class="task"><input type="checkbox" data-daily="evening.school">Check tomorrow school needs</label>
+<label class="task"><input type="checkbox" data-daily="evening.todo">Review unfinished Today items</label>
+<label class="task"><input type="checkbox" data-daily="evening.tomorrow">Check tomorrow preview</label>
 <div id="tomorrowPreview" class="alert"></div>
 <button class="smallbtn" data-walk="evening">Walk Me Through Evening</button>
 </div>
@@ -101,7 +101,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="hint"><strong>Choose from the dropdowns or select âAdd My Ownâ.</strong> You can set up several tasks for the week without retyping common things.</div>
 
 <div id="weeklyWalkthroughTasks"></div>
-<button class="smallbtn" data-add-record="weeklyWalkTask">â Add Weekly Task</button>
+<button class="smallbtn" data-add-record="weeklyWalkTask">Add Weekly Task</button>
 
 <details><summary>Suggested Weekly Task Options</summary>
 <div class="small">
@@ -116,14 +116,14 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </details>
 
-<details open><summary>â­ This Week Priorities</summary><div class="hint">The few things that absolutely matter this weekânot every task. Aim for Top 5.</div><div id="priorityList"></div><button class="smallbtn" data-add-record="priority">â Add Weekly Priority</button></details>
-<details><summary>Brain Dump Inbox / History</summary><div class="hint">Unprocessed thoughts stay here; processed ones show where they were sent.</div><div id="weeklyBrainDump"></div></details><details><summary>To-Do Inbox</summary><div class="hint">Something needs to be done, but you have not organized it yet. Process it later into Today, Week, a section, or Done.</div><div id="todoInbox"></div><button class="smallbtn" data-add-record="todo">â Add To-Do</button><button class="smallbtn" data-process="todo">ð Process Inbox</button></details>
-<details><summary>Schedule Inbox</summary><div class="hint">Temporary holding place for things that involve a date/time but are not properly planned yet.</div><div id="scheduleInbox"></div><button class="smallbtn" data-add-record="schedule">â Add Schedule Item</button><button class="smallbtn" data-process="schedule">ð Process Schedule Inbox</button></details>
+<details open><summary>â­ This Week Priorities</summary><div class="hint">The few things that absolutely matter this weekânot every task. Aim for Top 5.</div><div id="priorityList"></div><button class="smallbtn" data-add-record="priority">Add Weekly Priority</button></details>
+<details><summary>Brain Dump Inbox / History</summary><div class="hint">Unprocessed thoughts stay here; processed ones show where they were sent.</div><div id="weeklyBrainDump"></div></details><details><summary>To-Do Inbox</summary><div class="hint">Something needs to be done, but you have not organized it yet. Process it later into Today, Week, a section, or Done.</div><div id="todoInbox"></div><button class="smallbtn" data-add-record="todo">Add To-Do</button><button class="smallbtn" data-process="todo">Process Inbox</button></details>
+<details><summary>Schedule Inbox</summary><div class="hint">Temporary holding place for things that involve a date/time but are not properly planned yet.</div><div id="scheduleInbox"></div><button class="smallbtn" data-add-record="schedule">Add Schedule Item</button><button class="smallbtn" data-process="schedule">Process Schedule Inbox</button></details>
 <details><summary>This Week</summary><div id="weekDays"></div></details>
 <details open><summary>Sunday Review + Carry Forward</summary>
 <div class="hint"><strong>Unfinished Weekly Walkthrough tasks show here automatically.</strong> Send one taskâor all unfinished tasksâstraight to Carry Forward without retyping it.</div>
 <div id="sundayCarryTasks"></div>
-<button class="smallbtn" id="sendAllWeeklyCarry">â¡ï¸ Send ALL Unfinished to Carry Forward</button>
+<button class="smallbtn" id="sendAllWeeklyCarry">Send ALL Unfinished to Carry Forward</button>
 <div class="formgrid">
 <div class="field"><label>What went well?</label><textarea data-key="week.sunday.wentWell"></textarea></div>
 <div class="field"><label>What did not get done?</label><textarea data-key="week.sunday.notDone"></textarea></div>
@@ -136,11 +136,11 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <section id="kids" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Kids + School</h2><div class="tabs" id="kidTabs"></div><div id="kidContent"></div></div></section>
 
 <section id="family" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Family</h2>
-<details open><summary>Transportation</summary><div class="hint">Household transportation command center. Kid-specific school transportation can also be seen from each childâs School Year profile.</div><div id="transportation"></div><button class="smallbtn" data-add-record="transport">â Add Transportation Plan / Change</button></details>
+<details open><summary>Transportation</summary><div class="hint">Household transportation command center. Kid-specific school transportation can also be seen from each childâs School Year profile.</div><div id="transportation"></div><button class="smallbtn" data-add-record="transport">Add Transportation Plan / Change</button></details>
 <details><summary>Kids Activities â Family Overview</summary><div class="hint">This reads the activities stored under each child. Edit the activity in the childâs profile so you only enter it once.</div><div id="familyActivities"></div></details>
-<details><summary>Family Time + Trips</summary><div id="familyTime"></div><button class="smallbtn" data-add-record="outing">â Plan Family Time</button><button class="smallbtn" data-add-record="trip">ð§³ Plan a Trip</button></details>
+<details><summary>Family Time + Trips</summary><div id="familyTime"></div><button class="smallbtn" data-add-record="outing">Plan Family Time</button><button class="smallbtn" data-add-record="trip">Plan a Trip</button></details>
 <details><summary>Gifts by Person</summary><div class="hint">Kidsâ gift profiles are shared with their Kid Profiles. Other people can have simple gift profiles here.</div><div id="giftPeople"></div></details>
-<details><summary>Important Contacts</summary><div id="familyContacts"></div><button class="smallbtn" data-add-record="contact">â Add Contact</button></details>
+<details><summary>Important Contacts</summary><div id="familyContacts"></div><button class="smallbtn" data-add-record="contact">Add Contact</button></details>
 </div></section>
 
 <section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Work Command Center</h2>
@@ -148,7 +148,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Shift</label><select id="workShiftFilter"><option>All</option><option>AM</option><option>PM</option><option>Team</option></select></div>
 <div class="field"><label>Status</label><select id="workStatusFilter"><option>All</option><option>Scheduled</option><option>Driver Confirmed</option><option>Ready</option><option>Dispatched</option><option>Delayed</option><option>Held</option><option>Completed</option><option>Cancelled</option></select></div>
 </div><div id="workRunBoard"></div></div><div class="card"><h3>Needs Attention</h3><div id="workAttention"></div></div></div>
-<details><summary>Assigned Run Schedule</summary><div id="workRunTemplates"></div><button class="smallbtn" data-add-record="workRunTemplate">â Add Assigned Run</button></details>
+<details><summary>Assigned Run Schedule</summary><div id="workRunTemplates"></div><button class="smallbtn" data-add-record="workRunTemplate">Add Assigned Run</button></details>
 
 <details open><summary>Work History â Current Month + Previous Months</summary>
 <div class="hint"><strong>Look back at runs, driver issues and tractor issues by month.</strong> Current month opens by default.</div>
@@ -163,7 +163,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="hint"><strong>Enter time off as soon as it is planned.</strong> This month and future requests stay visible for coverage planning.</div>
 <div class="quickgrid"><div class="card"><h3>This Month</h3><div id="driverTimeOffCurrent"></div></div><div class="card"><h3>Future Planned Time Off</h3><div id="driverTimeOffFuture"></div></div></div>
 <div class="formgrid"><div class="field"><label>Filter driver</label><select id="timeOffDriverFilter"><option>All Drivers</option></select></div><div class="field"><label>Filter status</label><select id="timeOffStatusFilter"><option>All</option><option>Requested</option><option>Pending</option><option>Approved</option><option>Denied</option><option>Cancelled</option><option>Completed</option></select></div></div>
-<div id="driverTimeOffList"></div><button class="smallbtn" data-add-record="driverTimeOff">â Add Driver Time Off</button>
+<div id="driverTimeOffList"></div><button class="smallbtn" data-add-record="driverTimeOff">Add Driver Time Off</button>
 <details><summary>Time-Off Walkthrough</summary>
 <div class="walkstep"><div class="num">1</div><div>Add request/planned time off.</div></div><div class="walkstep"><div class="num">2</div><div>Choose AM / PM / Team and affected run.</div></div><div class="walkstep"><div class="num">3</div><div>Enter dates and full/partial day.</div></div><div class="walkstep"><div class="num">4</div><div>Mark approval and coverage need.</div></div><div class="walkstep"><div class="num">5</div><div>Assign coverage driver when known.</div></div><div class="walkstep"><div class="num">6</div><div>Mark Completed after the time off passes.</div></div>
 </details></details>
@@ -176,22 +176,22 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="hint"><strong>Start Workday:</strong> declines â Linehaul Central â driver/run status â tractor issues â reports/tasks due â payroll/settlement if applicable â invoices/ordering â follow-ups.<br><strong>End Workday:</strong> waiting items â tomorrow â after-hours time â driver/tractor follow-up.</div>
 </details>
 
-<details open><summary>Runs / Dispatch â Detailed</summary><div id="workRuns"></div><button class="smallbtn" data-add-record="workRun">â Add Run / Dispatch</button></details>
-<details><summary>Maintenance / Repairs</summary><div id="workMaintenance"></div><button class="smallbtn" data-add-record="workMaintenance">â Add Maintenance / Repair</button></details>
-<details><summary>Inspections / Compliance</summary><div id="workCompliance"></div><button class="smallbtn" data-add-record="workCompliance">â Add Inspection / Compliance Item</button></details>
+<details open><summary>Runs / Dispatch â Detailed</summary><div id="workRuns"></div><button class="smallbtn" data-add-record="workRun">Add Run / Dispatch</button></details>
+<details><summary>Maintenance / Repairs</summary><div id="workMaintenance"></div><button class="smallbtn" data-add-record="workMaintenance">Add Maintenance / Repair</button></details>
+<details><summary>Inspections / Compliance</summary><div id="workCompliance"></div><button class="smallbtn" data-add-record="workCompliance">Add Inspection / Compliance Item</button></details>
 
 <details open><summary>Todayâs Work</summary><div class="walkstep"><div class="num">1</div><div>Check declines and Linehaul Central.</div></div><div class="walkstep"><div class="num">2</div><div>Review shipment/camera/run tracking.</div></div><div class="walkstep"><div class="num">3</div><div>Handle todayâs scheduled payroll/fuel/report tasks.</div></div><div class="walkstep"><div class="num">4</div><div>Check drivers, tractors, maintenance, invoices, ordering and follow-ups.</div></div><div class="field"><label>Work Notes Today</label><textarea data-key="work.todayNotes"></textarea></div></details>
-<details><summary>Recurring Work Tasks</summary><div id="workRecurring"></div><button class="smallbtn" data-add-record="workTask">â Add Recurring Task</button></details>
-<details><summary>Drivers / Coverage</summary><div id="workDrivers"></div><button class="smallbtn" data-add-record="driver">â Add Driver / Run Note</button></details>
-<details><summary>Tractors / Unit Details</summary><div id="workTractors"></div><button class="smallbtn" data-add-record="tractor">â Add Tractor / Maintenance Item</button></details>
-<details><summary>Payroll / Settlement / After-Hours</summary><div id="workPay"></div><button class="smallbtn" data-add-record="workPay">â Add Pay / Hours Item</button></details>
+<details><summary>Recurring Work Tasks</summary><div id="workRecurring"></div><button class="smallbtn" data-add-record="workTask">Add Recurring Task</button></details>
+<details><summary>Drivers / Coverage</summary><div id="workDrivers"></div><button class="smallbtn" data-add-record="driver">Add Driver / Run Note</button></details>
+<details><summary>Tractors / Unit Details</summary><div id="workTractors"></div><button class="smallbtn" data-add-record="tractor">Add Tractor / Maintenance Item</button></details>
+<details><summary>Payroll / Settlement / After-Hours</summary><div id="workPay"></div><button class="smallbtn" data-add-record="workPay">Add Pay / Hours Item</button></details>
 <details><summary>Daily / Weekly Work Walkthroughs</summary>
 <div class="walkstep"><div class="num">1</div><div><strong>Start:</strong> declines â Linehaul Central â urgent messages/follow-ups.</div></div>
 <div class="walkstep"><div class="num">2</div><div><strong>Runs:</strong> shipment/camera/run tracking â driver status â coverage â tractors.</div></div>
 <div class="walkstep"><div class="num">3</div><div><strong>Admin:</strong> payroll/settlement/fuel/reports/invoices/ordering due today.</div></div>
 <div class="walkstep"><div class="num">4</div><div><strong>Close:</strong> waiting items â tomorrow follow-ups â after-hours time.</div></div>
 </details>
-<details><summary>Invoices / Ordering / Reports</summary><div id="workAdmin"></div><button class="smallbtn" data-add-record="workAdmin">â Add Invoice / Order / Report</button></details>
+<details><summary>Invoices / Ordering / Reports</summary><div id="workAdmin"></div><button class="smallbtn" data-add-record="workAdmin">Add Invoice / Order / Report</button></details>
 <details open><summary>Weekly Driver Payroll</summary>
 <div class="hint"><strong>This is the payroll home for EVERY driver each week.</strong> Create one payroll entry per driver, even if they had PTO, a call-off, decline, no run, coverage change, or zero payable runs. That keeps the weekly roster complete.</div>
 <div class="formgrid">
@@ -214,7 +214,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details open><summary>â± My Hours + After-Hours Tracking</summary>
 <div class="hint"><strong>Enter your time every day.</strong> Add one entry for each work block if needed (regular work, payroll, after-hours calls, settlement, dispatch issues, etc.). Today and this week stay summarized below.</div>
 <div class="quickgrid"><div class="card"><h3>Today</h3><div id="myHoursToday"></div></div><div class="card"><h3>This Week</h3><div id="myHoursSummary"></div></div><div class="card"><h3>Needs Follow-Up</h3><div id="myHoursAttention"></div></div></div>
-<div id="myHoursList"></div><button class="smallbtn" data-add-record="myWorkHours">â Add My Work Time</button>
+<div id="myHoursList"></div><button class="smallbtn" data-add-record="myWorkHours">Add My Work Time</button>
 </details>
 <details open><summary>Work Reference Center</summary>
 <div class="hint"><strong>Keep the information you need to do the job here.</strong> This is reference information, not a daily task list.</div>
@@ -224,13 +224,13 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Weekly recurring work</label><textarea data-key="work.reference.weekly" placeholder="Availability, fuel, payroll, settlement, URR, reports..."></textarea></div>
 <div class="field"><label>Month-end / periodic work</label><textarea data-key="work.reference.monthly"></textarea></div>
 </div></details>
-<details><summary>Payroll + Settlement Reference</summary><div class="formgrid">
+<details><summary>Payroll and Settlement Reference</summary><div class="formgrid">
 <div class="field"><label>Payroll process / steps</label><textarea data-key="work.reference.payrollSteps"></textarea></div>
 <div class="field"><label>Payroll deadlines / release times</label><textarea data-key="work.reference.payrollDeadlines"></textarea></div>
 <div class="field"><label>Pay rules / exceptions</label><textarea data-key="work.reference.payRules" placeholder="Wait time, extra runs, PTO, declines, corrections, etc."></textarea></div>
 <div class="field"><label>Settlement process / notes</label><textarea data-key="work.reference.settlement"></textarea></div>
 </div></details>
-<details><summary>Runs + Dispatch Reference</summary><div class="formgrid">
+<details><summary>Runs and Dispatch Reference</summary><div class="formgrid">
 <div class="field"><label>AM run reference</label><textarea data-key="work.reference.amRuns"></textarea></div>
 <div class="field"><label>PM run reference</label><textarea data-key="work.reference.pmRuns"></textarea></div>
 <div class="field"><label>Team run reference</label><textarea data-key="work.reference.teamRuns"></textarea></div>
@@ -238,20 +238,20 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>On-call / coverage procedure</label><textarea data-key="work.reference.coverage"></textarea></div>
 <div class="field"><label>Decline / no-run / half-run procedure</label><textarea data-key="work.reference.runExceptions"></textarea></div>
 </div></details>
-<details><summary>Tractors + Maintenance Reference</summary><div class="formgrid">
+<details><summary>Tractors and Maintenance Reference</summary><div class="formgrid">
 <div class="field"><label>Tractor / unit notes</label><textarea data-key="work.reference.tractors"></textarea></div>
 <div class="field"><label>Maintenance process</label><textarea data-key="work.reference.maintenance"></textarea></div>
 <div class="field"><label>IVMR / MMR procedure</label><textarea data-key="work.reference.ivmr"></textarea></div>
 <div class="field"><label>Inspection / QVI / BCSA notes</label><textarea data-key="work.reference.inspections"></textarea></div>
 <div class="field"><label>Vendor / Penske notes</label><textarea data-key="work.reference.vendor"></textarea></div>
 </div></details>
-<details><summary>Safety + Compliance Reference</summary><div class="formgrid">
+<details><summary>Safety and Compliance Reference</summary><div class="formgrid">
 <div class="field"><label>KI / coaching process</label><textarea data-key="work.reference.ki"></textarea></div>
 <div class="field"><label>Camera event process</label><textarea data-key="work.reference.camera"></textarea></div>
 <div class="field"><label>Roadside / safety procedure</label><textarea data-key="work.reference.roadside"></textarea></div>
 <div class="field"><label>Pre-trip / post-trip / ELD reminders</label><textarea data-key="work.reference.eld"></textarea></div>
 </div></details>
-<details><summary>Systems + Contacts + Templates</summary><div class="formgrid">
+<details><summary>Systems, Contacts, and Templates</summary><div class="formgrid">
 <div class="field"><label>Systems / websites used</label><textarea data-key="work.reference.systems" placeholder="Linehaul Central, ELD, cameras, Indeed, spreadsheets, etc."></textarea></div>
 <div class="field"><label>Important contacts</label><textarea data-key="work.reference.contacts"></textarea></div>
 <div class="field"><label>Email / report templates</label><textarea data-key="work.reference.templates"></textarea></div>
@@ -263,15 +263,15 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="meals" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Meals</h2>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping â Groceries.</div><div id="mealWeek"></div></details>
-<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Meal Plan</strong> on any recipe, breakfast, lunch, or snack. Choose the day and meal slot, then save.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">â Add Meal / Recipe</button></details>
-<details><summary>Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">â Add Breakfast</button></details>
-<details><summary>Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">â Add Lunch</button></details>
-<details><summary>Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">â Add Snack</button></details>
+<details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Meal Plan</strong> on any recipe, breakfast, lunch, or snack. Choose the day and meal slot, then save.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">Add Meal / Recipe</button></details>
+<details><summary>Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
+<details><summary>Lunch Library</summary><div id="lunchList"></div><button class="smallbtn" data-add-record="lunch">Add Lunch</button></details>
+<details><summary>Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
 </div></section>
 
 <section id="money" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Money Command Center</h2><div id="moneySummary" class="alert"></div>
-<details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">â Add Bill</button></details>
-<details><summary>Income + Pay</summary><div id="incomeList"></div><button class="smallbtn" data-add-record="income">â Add Paycheck / Income</button></details>
+<details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">Add Bill</button></details>
+<details><summary>Income + Pay</summary><div id="incomeList"></div><button class="smallbtn" data-add-record="income">Add Paycheck / Income</button></details>
 
 <details open><summary>Weekly Spending Tracker</summary>
 <div class="hint"><strong>Use this throughout the week.</strong> Add purchases as they happen, then compare actual spending to your weekly limits before the week gets away from you.</div>
@@ -298,7 +298,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 
 <div id="weeklySpendList"></div>
-<button class="smallbtn" data-add-record="weeklySpend">â Add Weekly Purchase</button>
+<button class="smallbtn" data-add-record="weeklySpend">Add Weekly Purchase</button>
 
 <details><summary>Weekly Category Limits</summary>
 <div class="formgrid">
@@ -327,13 +327,13 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </details>
 
-<details><summary>Spending Budget</summary><div id="budgetList"></div><button class="smallbtn" data-add-record="budget">â Add Budget Category</button></details>
-<details><summary>Cash Envelopes</summary><div id="envelopeList"></div><button class="smallbtn" data-add-record="envelope">â Add Envelope</button></details>
-<details><summary>Savings + Sinking Funds</summary><div id="savingList"></div><button class="smallbtn" data-add-record="saving">â Add Savings Goal</button></details>
-<details><summary>Credit + Debt</summary><div id="debtList"></div><button class="smallbtn" data-add-record="debt">â Add Credit / Debt Account</button></details>
-<details><summary>Subscriptions</summary><div id="subscriptionList"></div><button class="smallbtn" data-add-record="subscription">â Add Subscription</button></details>
-<details><summary>Upcoming Expenses</summary><div id="expenseList"></div><button class="smallbtn" data-add-record="expense">â Add Upcoming Expense</button></details>
-<details><summary>Monthly Review</summary><div id="monthlyReview"></div><button class="smallbtn" data-add-record="monthReview">â Start Monthly Review</button></details>
+<details><summary>Spending Budget</summary><div id="budgetList"></div><button class="smallbtn" data-add-record="budget">Add Budget Category</button></details>
+<details><summary>Cash Envelopes</summary><div id="envelopeList"></div><button class="smallbtn" data-add-record="envelope">Add Envelope</button></details>
+<details><summary>Savings + Sinking Funds</summary><div id="savingList"></div><button class="smallbtn" data-add-record="saving">Add Savings Goal</button></details>
+<details><summary>Credit + Debt</summary><div id="debtList"></div><button class="smallbtn" data-add-record="debt">Add Credit / Debt Account</button></details>
+<details><summary>Subscriptions</summary><div id="subscriptionList"></div><button class="smallbtn" data-add-record="subscription">Add Subscription</button></details>
+<details><summary>Upcoming Expenses</summary><div id="expenseList"></div><button class="smallbtn" data-add-record="expense">Add Upcoming Expense</button></details>
+<details><summary>Monthly Review</summary><div id="monthlyReview"></div><button class="smallbtn" data-add-record="monthReview">Start Monthly Review</button></details>
 </div></section>
 
 <section id="cleaning" class="page">
@@ -344,18 +344,18 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="quickgrid">
 <div class="card"><h3>Quick Reset</h3>
 <div class="hint">Check each item as you finish it. These reset each day.</div>
-<label class="task"><input type="checkbox" data-clean-quick="trash"> Trash / obvious clutter</label>
-<label class="task"><input type="checkbox" data-clean-quick="dishes"> Dishes + kitchen sink</label>
-<label class="task"><input type="checkbox" data-clean-quick="bathroom"> Bathroom sink / toilet check</label>
-<label class="task"><input type="checkbox" data-clean-quick="floors"> Floors where needed</label>
-<label class="task"><input type="checkbox" data-clean-quick="laundry"> Laundry / put-away check</label>
+<label class="task"><input type="checkbox" data-clean-quick="trash">Trash / obvious clutter</label>
+<label class="task"><input type="checkbox" data-clean-quick="dishes">Dishes + kitchen sink</label>
+<label class="task"><input type="checkbox" data-clean-quick="bathroom">Bathroom sink / toilet check</label>
+<label class="task"><input type="checkbox" data-clean-quick="floors">Floors where needed</label>
+<label class="task"><input type="checkbox" data-clean-quick="laundry">Laundry / put-away check</label>
 </div>
 <div class="card"><h3>Nightly Reset</h3>
-<label class="task"><input type="checkbox" data-clean-night="kitchen"> Kitchen reset</label>
-<label class="task"><input type="checkbox" data-clean-night="living"> Living room pickup</label>
-<label class="task"><input type="checkbox" data-clean-night="laundry"> Laundry check</label>
-<label class="task"><input type="checkbox" data-clean-night="school"> School / bags / shoes ready</label>
-<label class="task"><input type="checkbox" data-clean-night="trash"> Trash / counters / floors check</label>
+<label class="task"><input type="checkbox" data-clean-night="kitchen">Kitchen reset</label>
+<label class="task"><input type="checkbox" data-clean-night="living">Living room pickup</label>
+<label class="task"><input type="checkbox" data-clean-night="laundry">Laundry check</label>
+<label class="task"><input type="checkbox" data-clean-night="school">School / bags / shoes ready</label>
+<label class="task"><input type="checkbox" data-clean-night="trash">Trash / counters / floors check</label>
 </div>
 </div>
 
@@ -371,8 +371,8 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="hint"><strong>Check what you have and update its stock level.</strong> Anything Getting Low, Running Low, Out, or needing Replacement can be sent directly to Master Shopping.</div>
 <div id="cleaningSupplySummary"></div>
 <div id="cleaningSupplyList"></div>
-<button class="smallbtn" data-add-record="cleaningSupply">â Add Cleaning Product / Tool</button>
-<button class="smallbtn" id="cleaningAddLowAll">ð Add ALL Low / Out Items to Master Shopping</button>
+<button class="smallbtn" data-add-record="cleaningSupply">Add Cleaning Product / Tool</button>
+<button class="smallbtn" id="cleaningAddLowAll">Add ALL Low / Out Items to Master Shopping</button>
 </details>
 </details>
 
@@ -385,7 +385,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Seasonal / Quarterly Cleaning</summary><div id="cleanSeasonal"></div></details>
 <details><summary>Annual Cleaning</summary><div id="cleanAnnual"></div></details>
 
-<details><summary>Priority / Catch-Up</summary>
+<details><summary>Priority and Catch-Up</summary>
 <div class="hint"><strong>Use this when regular cleaning has fallen behind.</strong> Pick what is going on, how much time/energy you have, and what matters most. The examples below help you decide what belongs in each priority.</div>
 
 <div class="formgrid">
@@ -429,11 +429,11 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </select></div>
 <div class="field"><label>My must-do task</label><input data-key="clean.priority.red"></div>
 </div>
-<label class="task"><input type="checkbox" data-priority-catch="red-trash"> Remove food/trash causing smell or mess</label>
-<label class="task"><input type="checkbox" data-priority-catch="red-dishes"> Make sink/dishes functional</label>
-<label class="task"><input type="checkbox" data-priority-catch="red-bath"> Make at least one bathroom clean and usable</label>
-<label class="task"><input type="checkbox" data-priority-catch="red-laundry"> Handle laundry needed immediately</label>
-<label class="task"><input type="checkbox" data-priority-catch="red-walk"> Clear unsafe/cluttered main walkways</label>
+<label class="task"><input type="checkbox" data-priority-catch="red-trash">Remove food/trash causing smell or mess</label>
+<label class="task"><input type="checkbox" data-priority-catch="red-dishes">Make sink/dishes functional</label>
+<label class="task"><input type="checkbox" data-priority-catch="red-bath">Make at least one bathroom clean and usable</label>
+<label class="task"><input type="checkbox" data-priority-catch="red-laundry">Handle laundry needed immediately</label>
+<label class="task"><input type="checkbox" data-priority-catch="red-walk">Clear unsafe/cluttered main walkways</label>
 </details>
 
 <details><summary>Should Do â Next If Time Allows</summary>
@@ -444,11 +444,11 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </select></div>
 <div class="field"><label>My should-do task</label><input data-key="clean.priority.yellow"></div>
 </div>
-<label class="task"><input type="checkbox" data-priority-catch="yellow-surfaces"> Clear main counters / surfaces</label>
-<label class="task"><input type="checkbox" data-priority-catch="yellow-laundry"> Finish or put away priority laundry</label>
-<label class="task"><input type="checkbox" data-priority-catch="yellow-floor"> Vacuum / sweep main traffic areas</label>
-<label class="task"><input type="checkbox" data-priority-catch="yellow-living"> Reset living room / main area</label>
-<label class="task"><input type="checkbox" data-priority-catch="yellow-restock"> Restock items needed soon</label>
+<label class="task"><input type="checkbox" data-priority-catch="yellow-surfaces">Clear main counters / surfaces</label>
+<label class="task"><input type="checkbox" data-priority-catch="yellow-laundry">Finish or put away priority laundry</label>
+<label class="task"><input type="checkbox" data-priority-catch="yellow-floor">Vacuum / sweep main traffic areas</label>
+<label class="task"><input type="checkbox" data-priority-catch="yellow-living">Reset living room / main area</label>
+<label class="task"><input type="checkbox" data-priority-catch="yellow-restock">Restock items needed soon</label>
 </details>
 
 <details><summary>Can Wait â Do Not Get Distracted By These</summary>
@@ -459,9 +459,9 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </select></div>
 <div class="field"><label>My can-wait task</label><input data-key="clean.priority.green"></div>
 </div>
-<label class="task"><input type="checkbox" data-priority-catch="green-organize"> Skip organizing projects today</label>
-<label class="task"><input type="checkbox" data-priority-catch="green-deep"> Skip detailed/deep cleaning unless everything else is done</label>
-<label class="task"><input type="checkbox" data-priority-catch="green-cosmetic"> Skip cosmetic extras / rearranging</label>
+<label class="task"><input type="checkbox" data-priority-catch="green-organize">Skip organizing projects today</label>
+<label class="task"><input type="checkbox" data-priority-catch="green-deep">Skip detailed/deep cleaning unless everything else is done</label>
+<label class="task"><input type="checkbox" data-priority-catch="green-cosmetic">Skip cosmetic extras / rearranging</label>
 </details>
 
 <details><summary>Catch-Up Plan + What Happens Next</summary>
@@ -472,29 +472,29 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Still needs attention</label><textarea data-key="clean.priority.remaining"></textarea></div>
 <div class="field full"><label>Catch-up notes</label><textarea data-key="clean.priority.notes"></textarea></div>
 </div>
-<label class="task"><input type="checkbox" data-priority-catch="finish-trash"> Trash handled</label>
-<label class="task"><input type="checkbox" data-priority-catch="finish-sink"> Sink / dishes usable</label>
-<label class="task"><input type="checkbox" data-priority-catch="finish-bath"> Bathroom usable</label>
-<label class="task"><input type="checkbox" data-priority-catch="finish-laundry"> Priority laundry handled</label>
-<label class="task"><input type="checkbox" data-priority-catch="finish-walk"> Main walkways clear</label>
-<label class="task"><input type="checkbox" data-priority-catch="finish-next"> Next cleaning step chosen</label>
+<label class="task"><input type="checkbox" data-priority-catch="finish-trash">Trash handled</label>
+<label class="task"><input type="checkbox" data-priority-catch="finish-sink">Sink / dishes usable</label>
+<label class="task"><input type="checkbox" data-priority-catch="finish-bath">Bathroom usable</label>
+<label class="task"><input type="checkbox" data-priority-catch="finish-laundry">Priority laundry handled</label>
+<label class="task"><input type="checkbox" data-priority-catch="finish-walk">Main walkways clear</label>
+<label class="task"><input type="checkbox" data-priority-catch="finish-next">Next cleaning step chosen</label>
 </details>
 </details>
 
 
 <details open><summary>Quick Reset â Checklist</summary>
 <div class="hint"><strong>Fast whole-house pickup.</strong> Each main task now opens into smaller checkboxes. Finish the subtasks and the main task will show complete.</div>
-<div id="quickResetProgress"></div><details class="card"><summary><strong>1. Trash</strong> <span class="small" id="qrCount-trash"></span></summary><label class="task"><input type="checkbox" data-quick-sub="trash|0"> Grab obvious trash from main rooms</label><label class="task"><input type="checkbox" data-quick-sub="trash|1"> Empty full trash cans</label><label class="task"><input type="checkbox" data-quick-sub="trash|2"> Replace trash bags</label><label class="task"><input type="checkbox" data-quick-sub="trash|3"> Take trash to main bin if needed</label></details><details class="card"><summary><strong>2. Dishes + Sink</strong> <span class="small" id="qrCount-dishes"></span></summary><label class="task"><input type="checkbox" data-quick-sub="dishes|0"> Collect cups/plates from rooms</label><label class="task"><input type="checkbox" data-quick-sub="dishes|1"> Load dishwasher or wash dishes</label><label class="task"><input type="checkbox" data-quick-sub="dishes|2"> Put away clean dishes if needed</label><label class="task"><input type="checkbox" data-quick-sub="dishes|3"> Clear and rinse/wipe sink</label></details><details class="card"><summary><strong>3. Laundry</strong> <span class="small" id="qrCount-laundry"></span></summary><label class="task"><input type="checkbox" data-quick-sub="laundry|0"> Collect dirty clothes</label><label class="task"><input type="checkbox" data-quick-sub="laundry|1"> Collect dirty towels</label><label class="task"><input type="checkbox" data-quick-sub="laundry|2"> Put laundry in hampers/sorted area</label><label class="task"><input type="checkbox" data-quick-sub="laundry|3"> Move washer load to dryer if needed</label><label class="task"><input type="checkbox" data-quick-sub="laundry|4"> Fold/put away finished load if it is waiting</label></details><details class="card"><summary><strong>4. Main Surfaces</strong> <span class="small" id="qrCount-surfaces"></span></summary><label class="task"><input type="checkbox" data-quick-sub="surfaces|0"> Clear kitchen counters</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|1"> Clear kitchen/dining table</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|2"> Clear coffee/end tables</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|3"> Clear bathroom counter</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|4"> Return items to their homes</label></details><details class="card"><summary><strong>5. Living Room</strong> <span class="small" id="qrCount-living"></span></summary><label class="task"><input type="checkbox" data-quick-sub="living|0"> Pick up loose items</label><label class="task"><input type="checkbox" data-quick-sub="living|1"> Fold blankets</label><label class="task"><input type="checkbox" data-quick-sub="living|2"> Reset pillows</label><label class="task"><input type="checkbox" data-quick-sub="living|3"> Clear couch/chairs</label><label class="task"><input type="checkbox" data-quick-sub="living|4"> Clear floor</label></details><details class="card"><summary><strong>6. Bathroom</strong> <span class="small" id="qrCount-bathroom"></span></summary><label class="task"><input type="checkbox" data-quick-sub="bathroom|0"> Put toiletries/products away</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|1"> Clear sink/counter</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|2"> Quick wipe sink/counter if needed</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|3"> Check/wipe toilet if needed</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|4"> Replace hand towel if needed</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|5"> Check toilet paper</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|6"> Empty bathroom trash if full</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|7"> Pick up floor/bath mat area</label></details><details class="card"><summary><strong>7. Bedrooms</strong> <span class="small" id="qrCount-bedrooms"></span></summary><label class="task"><input type="checkbox" data-quick-sub="bedrooms|0"> Dirty clothes into hamper</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|1"> Remove trash/dishes</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|2"> Straighten or make beds</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|3"> Put away obvious loose items</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|4"> Clear main floor/walkway</label></details><details class="card"><summary><strong>8. Entry + School Stuff</strong> <span class="small" id="qrCount-entry"></span></summary><label class="task"><input type="checkbox" data-quick-sub="entry|0"> Put shoes away</label><label class="task"><input type="checkbox" data-quick-sub="entry|1"> Hang/put away bags</label><label class="task"><input type="checkbox" data-quick-sub="entry|2"> Sort mail/papers</label><label class="task"><input type="checkbox" data-quick-sub="entry|3"> Reset school items</label><label class="task"><input type="checkbox" data-quick-sub="entry|4"> Reset activity/sports items</label><label class="task"><input type="checkbox" data-quick-sub="entry|5"> Clear entry walkway</label></details><details class="card"><summary><strong>9. Main Floors</strong> <span class="small" id="qrCount-floors"></span></summary><label class="task"><input type="checkbox" data-quick-sub="floors|0"> Pick up items from floor first</label><label class="task"><input type="checkbox" data-quick-sub="floors|1"> Sweep/vacuum kitchen crumbs</label><label class="task"><input type="checkbox" data-quick-sub="floors|2"> Sweep/vacuum main living area</label><label class="task"><input type="checkbox" data-quick-sub="floors|3"> Vacuum pet hair where visible</label><label class="task"><input type="checkbox" data-quick-sub="floors|4"> Quick clean main walkways</label></details><details class="card"><summary><strong>10. Final Walkthrough</strong> <span class="small" id="qrCount-final"></span></summary><label class="task"><input type="checkbox" data-quick-sub="final|0"> Walk through kitchen</label><label class="task"><input type="checkbox" data-quick-sub="final|1"> Walk through living room</label><label class="task"><input type="checkbox" data-quick-sub="final|2"> Check bathroom</label><label class="task"><input type="checkbox" data-quick-sub="final|3"> Check bedrooms/hall</label><label class="task"><input type="checkbox" data-quick-sub="final|4"> Return obvious stray items</label><label class="task"><input type="checkbox" data-quick-sub="final|5"> Straighten anything visibly out of place</label><label class="task"><input type="checkbox" data-quick-sub="final|6"> Stopâdeep cleaning can wait</label></details><button class="smallbtn" id="resetQuickReset">âº Reset Todayâs Checkmarks</button></details>
+<div id="quickResetProgress"></div><details class="card"><summary><strong>1. Trash</strong><span class="small" id="qrCount-trash"></span></summary><label class="task"><input type="checkbox" data-quick-sub="trash|0">Grab obvious trash from main rooms</label><label class="task"><input type="checkbox" data-quick-sub="trash|1">Empty full trash cans</label><label class="task"><input type="checkbox" data-quick-sub="trash|2">Replace trash bags</label><label class="task"><input type="checkbox" data-quick-sub="trash|3">Take trash to main bin if needed</label></details><details class="card"><summary><strong>2. Dishes + Sink</strong><span class="small" id="qrCount-dishes"></span></summary><label class="task"><input type="checkbox" data-quick-sub="dishes|0">Collect cups/plates from rooms</label><label class="task"><input type="checkbox" data-quick-sub="dishes|1">Load dishwasher or wash dishes</label><label class="task"><input type="checkbox" data-quick-sub="dishes|2">Put away clean dishes if needed</label><label class="task"><input type="checkbox" data-quick-sub="dishes|3">Clear and rinse/wipe sink</label></details><details class="card"><summary><strong>3. Laundry</strong><span class="small" id="qrCount-laundry"></span></summary><label class="task"><input type="checkbox" data-quick-sub="laundry|0">Collect dirty clothes</label><label class="task"><input type="checkbox" data-quick-sub="laundry|1">Collect dirty towels</label><label class="task"><input type="checkbox" data-quick-sub="laundry|2">Put laundry in hampers/sorted area</label><label class="task"><input type="checkbox" data-quick-sub="laundry|3">Move washer load to dryer if needed</label><label class="task"><input type="checkbox" data-quick-sub="laundry|4">Fold/put away finished load if it is waiting</label></details><details class="card"><summary><strong>4. Main Surfaces</strong><span class="small" id="qrCount-surfaces"></span></summary><label class="task"><input type="checkbox" data-quick-sub="surfaces|0">Clear kitchen counters</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|1">Clear kitchen/dining table</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|2">Clear coffee/end tables</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|3">Clear bathroom counter</label><label class="task"><input type="checkbox" data-quick-sub="surfaces|4">Return items to their homes</label></details><details class="card"><summary><strong>5. Living Room</strong><span class="small" id="qrCount-living"></span></summary><label class="task"><input type="checkbox" data-quick-sub="living|0">Pick up loose items</label><label class="task"><input type="checkbox" data-quick-sub="living|1">Fold blankets</label><label class="task"><input type="checkbox" data-quick-sub="living|2">Reset pillows</label><label class="task"><input type="checkbox" data-quick-sub="living|3">Clear couch/chairs</label><label class="task"><input type="checkbox" data-quick-sub="living|4">Clear floor</label></details><details class="card"><summary><strong>6. Bathroom</strong><span class="small" id="qrCount-bathroom"></span></summary><label class="task"><input type="checkbox" data-quick-sub="bathroom|0">Put toiletries/products away</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|1">Clear sink/counter</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|2">Quick wipe sink/counter if needed</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|3">Check/wipe toilet if needed</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|4">Replace hand towel if needed</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|5">Check toilet paper</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|6">Empty bathroom trash if full</label><label class="task"><input type="checkbox" data-quick-sub="bathroom|7">Pick up floor/bath mat area</label></details><details class="card"><summary><strong>7. Bedrooms</strong><span class="small" id="qrCount-bedrooms"></span></summary><label class="task"><input type="checkbox" data-quick-sub="bedrooms|0">Dirty clothes into hamper</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|1">Remove trash/dishes</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|2">Straighten or make beds</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|3">Put away obvious loose items</label><label class="task"><input type="checkbox" data-quick-sub="bedrooms|4">Clear main floor/walkway</label></details><details class="card"><summary><strong>8. Entry + School Stuff</strong><span class="small" id="qrCount-entry"></span></summary><label class="task"><input type="checkbox" data-quick-sub="entry|0">Put shoes away</label><label class="task"><input type="checkbox" data-quick-sub="entry|1">Hang/put away bags</label><label class="task"><input type="checkbox" data-quick-sub="entry|2">Sort mail/papers</label><label class="task"><input type="checkbox" data-quick-sub="entry|3">Reset school items</label><label class="task"><input type="checkbox" data-quick-sub="entry|4">Reset activity/sports items</label><label class="task"><input type="checkbox" data-quick-sub="entry|5">Clear entry walkway</label></details><details class="card"><summary><strong>9. Main Floors</strong><span class="small" id="qrCount-floors"></span></summary><label class="task"><input type="checkbox" data-quick-sub="floors|0">Pick up items from floor first</label><label class="task"><input type="checkbox" data-quick-sub="floors|1">Sweep/vacuum kitchen crumbs</label><label class="task"><input type="checkbox" data-quick-sub="floors|2">Sweep/vacuum main living area</label><label class="task"><input type="checkbox" data-quick-sub="floors|3">Vacuum pet hair where visible</label><label class="task"><input type="checkbox" data-quick-sub="floors|4">Quick clean main walkways</label></details><details class="card"><summary><strong>10. Final Walkthrough</strong><span class="small" id="qrCount-final"></span></summary><label class="task"><input type="checkbox" data-quick-sub="final|0">Walk through kitchen</label><label class="task"><input type="checkbox" data-quick-sub="final|1">Walk through living room</label><label class="task"><input type="checkbox" data-quick-sub="final|2">Check bathroom</label><label class="task"><input type="checkbox" data-quick-sub="final|3">Check bedrooms/hall</label><label class="task"><input type="checkbox" data-quick-sub="final|4">Return obvious stray items</label><label class="task"><input type="checkbox" data-quick-sub="final|5">Straighten anything visibly out of place</label><label class="task"><input type="checkbox" data-quick-sub="final|6">Stopâdeep cleaning can wait</label></details><button class="smallbtn" id="resetQuickReset">âº Reset Todayâs Checkmarks</button></details>
 <details><summary>Daily House Reset â Every Day</summary>
 <div class="hint">These are the small things that keep the house from snowballing. Do the red items first if time is tight.</div>
-<label class="task"><input type="checkbox" data-clean-daily="dishes"> ð´ Dishes loaded/washed and sink cleared</label>
-<label class="task"><input type="checkbox" data-clean-daily="counters"> ð´ Kitchen counters cleared and wiped</label>
-<label class="task"><input type="checkbox" data-clean-daily="trash"> ð´ Obvious trash picked up / full trash emptied</label>
-<label class="task"><input type="checkbox" data-clean-daily="laundry"> ð¡ Laundry moved along / one load finished if needed</label>
-<label class="task"><input type="checkbox" data-clean-daily="living"> ð¡ Living room pickup / blankets / pillows reset</label>
-<label class="task"><input type="checkbox" data-clean-daily="bathroom"> ð¡ Bathroom sink/toilet quick check</label>
-<label class="task"><input type="checkbox" data-clean-daily="floors"> ð¢ Spot sweep/vacuum only where needed</label>
-<label class="task"><input type="checkbox" data-clean-daily="school"> ð¡ School bags / shoes / activity gear reset</label>
+<label class="task"><input type="checkbox" data-clean-daily="dishes">Dishes loaded/washed and sink cleared</label>
+<label class="task"><input type="checkbox" data-clean-daily="counters">Kitchen counters cleared and wiped</label>
+<label class="task"><input type="checkbox" data-clean-daily="trash">Obvious trash picked up / full trash emptied</label>
+<label class="task"><input type="checkbox" data-clean-daily="laundry">Laundry moved along / one load finished if needed</label>
+<label class="task"><input type="checkbox" data-clean-daily="living">Living room pickup / blankets / pillows reset</label>
+<label class="task"><input type="checkbox" data-clean-daily="bathroom">Bathroom sink/toilet quick check</label>
+<label class="task"><input type="checkbox" data-clean-daily="floors">Spot sweep/vacuum only where needed</label>
+<label class="task"><input type="checkbox" data-clean-daily="school">School bags / shoes / activity gear reset</label>
 </details>
 
 <details open><summary>Laundry System â Detailed</summary>
@@ -528,57 +528,57 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 
 <details open><summary>1. Collect + Sort</summary>
-<label class="task"><input type="checkbox" data-laundry-step="collect-bedrooms"> Collect laundry from bedrooms</label>
-<label class="task"><input type="checkbox" data-laundry-step="collect-bathrooms"> Collect towels / washcloths from bathrooms</label>
-<label class="task"><input type="checkbox" data-laundry-step="collect-other"> Check laundry area / hampers for anything waiting</label>
-<label class="task"><input type="checkbox" data-laundry-step="sort-pockets"> Check pockets</label>
-<label class="task"><input type="checkbox" data-laundry-step="sort-insideout"> Turn items inside out when needed</label>
-<label class="task"><input type="checkbox" data-laundry-step="sort-zippers"> Zip zippers / fasten hooks if appropriate</label>
-<label class="task"><input type="checkbox" data-laundry-step="sort-separate"> Separate anything delicate, heavily soiled, or special-care</label>
+<label class="task"><input type="checkbox" data-laundry-step="collect-bedrooms">Collect laundry from bedrooms</label>
+<label class="task"><input type="checkbox" data-laundry-step="collect-bathrooms">Collect towels / washcloths from bathrooms</label>
+<label class="task"><input type="checkbox" data-laundry-step="collect-other">Check laundry area / hampers for anything waiting</label>
+<label class="task"><input type="checkbox" data-laundry-step="sort-pockets">Check pockets</label>
+<label class="task"><input type="checkbox" data-laundry-step="sort-insideout">Turn items inside out when needed</label>
+<label class="task"><input type="checkbox" data-laundry-step="sort-zippers">Zip zippers / fasten hooks if appropriate</label>
+<label class="task"><input type="checkbox" data-laundry-step="sort-separate">Separate anything delicate, heavily soiled, or special-care</label>
 </details>
 
 <details><summary>2. Stain + Pre-Wash Check</summary>
-<label class="task"><input type="checkbox" data-laundry-step="stain-check"> Check visible stains</label>
-<label class="task"><input type="checkbox" data-laundry-step="stain-treat"> Pre-treat stains if needed</label>
-<label class="task"><input type="checkbox" data-laundry-step="stain-label"> Check care label on anything questionable</label>
-<label class="task"><input type="checkbox" data-laundry-step="stain-color"> Check new/dark items for possible color transfer</label>
-<label class="task"><input type="checkbox" data-laundry-step="stain-delicate"> Put delicates / small items in mesh bag if needed</label>
+<label class="task"><input type="checkbox" data-laundry-step="stain-check">Check visible stains</label>
+<label class="task"><input type="checkbox" data-laundry-step="stain-treat">Pre-treat stains if needed</label>
+<label class="task"><input type="checkbox" data-laundry-step="stain-label">Check care label on anything questionable</label>
+<label class="task"><input type="checkbox" data-laundry-step="stain-color">Check new/dark items for possible color transfer</label>
+<label class="task"><input type="checkbox" data-laundry-step="stain-delicate">Put delicates / small items in mesh bag if needed</label>
 </details>
 
 <details><summary>3. Start Washer</summary>
-<label class="task"><input type="checkbox" data-laundry-step="wash-load"> Load washer without overfilling</label>
-<label class="task"><input type="checkbox" data-laundry-step="wash-detergent"> Add correct amount of detergent</label>
-<label class="task"><input type="checkbox" data-laundry-step="wash-extra"> Add selected booster / laundry product if needed</label>
-<label class="task"><input type="checkbox" data-laundry-step="wash-settings"> Confirm cycle + temperature</label>
-<label class="task"><input type="checkbox" data-laundry-step="wash-start"> Start washer</label>
-<label class="task"><input type="checkbox" data-laundry-step="wash-timer"> Set reminder / check-back time if needed</label>
+<label class="task"><input type="checkbox" data-laundry-step="wash-load">Load washer without overfilling</label>
+<label class="task"><input type="checkbox" data-laundry-step="wash-detergent">Add correct amount of detergent</label>
+<label class="task"><input type="checkbox" data-laundry-step="wash-extra">Add selected booster / laundry product if needed</label>
+<label class="task"><input type="checkbox" data-laundry-step="wash-settings">Confirm cycle + temperature</label>
+<label class="task"><input type="checkbox" data-laundry-step="wash-start">Start washer</label>
+<label class="task"><input type="checkbox" data-laundry-step="wash-timer">Set reminder / check-back time if needed</label>
 </details>
 
 <details><summary>4. Move + Dry</summary>
-<label class="task"><input type="checkbox" data-laundry-step="dry-move"> Move load promptly when washer finishes</label>
-<label class="task"><input type="checkbox" data-laundry-step="dry-shake"> Shake out items before drying when useful</label>
-<label class="task"><input type="checkbox" data-laundry-step="dry-remove"> Remove hang-dry / delicate items first</label>
-<label class="task"><input type="checkbox" data-laundry-step="dry-lint"> Clean dryer lint trap</label>
-<label class="task"><input type="checkbox" data-laundry-step="dry-setting"> Choose correct dryer setting</label>
-<label class="task"><input type="checkbox" data-laundry-step="dry-start"> Start dryer / hang items to dry</label>
+<label class="task"><input type="checkbox" data-laundry-step="dry-move">Move load promptly when washer finishes</label>
+<label class="task"><input type="checkbox" data-laundry-step="dry-shake">Shake out items before drying when useful</label>
+<label class="task"><input type="checkbox" data-laundry-step="dry-remove">Remove hang-dry / delicate items first</label>
+<label class="task"><input type="checkbox" data-laundry-step="dry-lint">Clean dryer lint trap</label>
+<label class="task"><input type="checkbox" data-laundry-step="dry-setting">Choose correct dryer setting</label>
+<label class="task"><input type="checkbox" data-laundry-step="dry-start">Start dryer / hang items to dry</label>
 </details>
 
 <details><summary>5. Fold + Put Away</summary>
-<label class="task"><input type="checkbox" data-laundry-step="fold-remove"> Remove load when dry</label>
-<label class="task"><input type="checkbox" data-laundry-step="fold-sort"> Sort by person / room</label>
-<label class="task"><input type="checkbox" data-laundry-step="fold-hang"> Hang anything that needs hanging</label>
-<label class="task"><input type="checkbox" data-laundry-step="fold-fold"> Fold remaining items</label>
-<label class="task"><input type="checkbox" data-laundry-step="fold-pair"> Match socks / small items</label>
-<label class="task"><input type="checkbox" data-laundry-step="fold-putaway"> Put everything away completely</label>
-<label class="task"><input type="checkbox" data-laundry-step="fold-basket"> Return empty baskets / hampers to their places</label>
+<label class="task"><input type="checkbox" data-laundry-step="fold-remove">Remove load when dry</label>
+<label class="task"><input type="checkbox" data-laundry-step="fold-sort">Sort by person / room</label>
+<label class="task"><input type="checkbox" data-laundry-step="fold-hang">Hang anything that needs hanging</label>
+<label class="task"><input type="checkbox" data-laundry-step="fold-fold">Fold remaining items</label>
+<label class="task"><input type="checkbox" data-laundry-step="fold-pair">Match socks / small items</label>
+<label class="task"><input type="checkbox" data-laundry-step="fold-putaway">Put everything away completely</label>
+<label class="task"><input type="checkbox" data-laundry-step="fold-basket">Return empty baskets / hampers to their places</label>
 </details>
 
 <details><summary>6. Laundry Area Reset</summary>
-<label class="task"><input type="checkbox" data-laundry-step="reset-bottles"> Put detergent / products away</label>
-<label class="task"><input type="checkbox" data-laundry-step="reset-machines"> Wipe washer / dryer tops if needed</label>
-<label class="task"><input type="checkbox" data-laundry-step="reset-lint"> Make sure lint trap is clean</label>
-<label class="task"><input type="checkbox" data-laundry-step="reset-floor"> Pick up / sweep laundry floor if needed</label>
-<label class="task"><input type="checkbox" data-laundry-step="reset-restock"> Check detergent / stain remover / dryer supplies for low stock</label>
+<label class="task"><input type="checkbox" data-laundry-step="reset-bottles">Put detergent / products away</label>
+<label class="task"><input type="checkbox" data-laundry-step="reset-machines">Wipe washer / dryer tops if needed</label>
+<label class="task"><input type="checkbox" data-laundry-step="reset-lint">Make sure lint trap is clean</label>
+<label class="task"><input type="checkbox" data-laundry-step="reset-floor">Pick up / sweep laundry floor if needed</label>
+<label class="task"><input type="checkbox" data-laundry-step="reset-restock">Check detergent / stain remover / dryer supplies for low stock</label>
 </details>
 
 <details><summary>Weekly Laundry Rhythm</summary>
@@ -594,7 +594,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 </details>
 
-<details open><summary>Bedding + Towels Schedule</summary>
+<details open><summary>Bedding and Towels Schedule</summary>
 <div class="hint"><strong>Keep this inside Laundry so all washable household items stay together.</strong> Set the normal frequency/day, record when it was last washed, and plan the next wash.</div>
 <div id="beddingTowelSchedule"></div>
 </details>
@@ -621,58 +621,58 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div id="deepRoomCleaning"></div>
 </details>
 
-<details><summary>Cleaning by Time Available</summary>
+<details><summary>Cleaning by Time</summary>
 <div class="hint"><strong>Pick the amount of time you have and check tasks off as you go.</strong> Stop when the timer ends. You do not have to keep cleaning just because more could be done.</div>
 
 <details><summary>5-Minute Rescue</summary>
-<label class="task"><input type="checkbox" data-clean-time="5-trash"> Pick up obvious trash</label>
-<label class="task"><input type="checkbox" data-clean-time="5-dishes"> Gather dishes / put them at the sink</label>
-<label class="task"><input type="checkbox" data-clean-time="5-surface"> Clear one main surface</label>
-<label class="task"><input type="checkbox" data-clean-time="5-items"> Put away obvious out-of-place items</label>
-<label class="task"><input type="checkbox" data-clean-time="5-finish"> Stop at 5 minutes â rescue complete</label>
+<label class="task"><input type="checkbox" data-clean-time="5-trash">Pick up obvious trash</label>
+<label class="task"><input type="checkbox" data-clean-time="5-dishes">Gather dishes / put them at the sink</label>
+<label class="task"><input type="checkbox" data-clean-time="5-surface">Clear one main surface</label>
+<label class="task"><input type="checkbox" data-clean-time="5-items">Put away obvious out-of-place items</label>
+<label class="task"><input type="checkbox" data-clean-time="5-finish">Stop at 5 minutes â rescue complete</label>
 </details>
 
 <details><summary>15-Minute Reset</summary>
-<label class="task"><input type="checkbox" data-clean-time="15-trash"> Pick up trash / food mess</label>
-<label class="task"><input type="checkbox" data-clean-time="15-dishes"> Load / wash dishes and clear sink</label>
-<label class="task"><input type="checkbox" data-clean-time="15-counter"> Clear and wipe kitchen counters</label>
-<label class="task"><input type="checkbox" data-clean-time="15-living"> Quick living-room pickup</label>
-<label class="task"><input type="checkbox" data-clean-time="15-bath"> Bathroom sink / toilet quick check</label>
-<label class="task"><input type="checkbox" data-clean-time="15-laundry"> Move one laundry load along if needed</label>
-<label class="task"><input type="checkbox" data-clean-time="15-finish"> Stop at 15 minutes â reset complete</label>
+<label class="task"><input type="checkbox" data-clean-time="15-trash">Pick up trash / food mess</label>
+<label class="task"><input type="checkbox" data-clean-time="15-dishes">Load / wash dishes and clear sink</label>
+<label class="task"><input type="checkbox" data-clean-time="15-counter">Clear and wipe kitchen counters</label>
+<label class="task"><input type="checkbox" data-clean-time="15-living">Quick living-room pickup</label>
+<label class="task"><input type="checkbox" data-clean-time="15-bath">Bathroom sink / toilet quick check</label>
+<label class="task"><input type="checkbox" data-clean-time="15-laundry">Move one laundry load along if needed</label>
+<label class="task"><input type="checkbox" data-clean-time="15-finish">Stop at 15 minutes â reset complete</label>
 </details>
 
 <details><summary>30-Minute Reset</summary>
-<label class="task"><input type="checkbox" data-clean-time="30-trash"> Trash / obvious clutter</label>
-<label class="task"><input type="checkbox" data-clean-time="30-kitchen"> Kitchen sink + counters</label>
-<label class="task"><input type="checkbox" data-clean-time="30-living"> Reset living room / main area</label>
-<label class="task"><input type="checkbox" data-clean-time="30-bath"> Quick-clean bathroom</label>
-<label class="task"><input type="checkbox" data-clean-time="30-laundry"> Start / move / fold priority laundry</label>
-<label class="task"><input type="checkbox" data-clean-time="30-floor"> Sweep / vacuum main traffic areas</label>
-<label class="task"><input type="checkbox" data-clean-time="30-focus"> Spend remaining time on one room that needs it most</label>
-<label class="task"><input type="checkbox" data-clean-time="30-finish"> Stop at 30 minutes â reset complete</label>
+<label class="task"><input type="checkbox" data-clean-time="30-trash">Trash / obvious clutter</label>
+<label class="task"><input type="checkbox" data-clean-time="30-kitchen">Kitchen sink + counters</label>
+<label class="task"><input type="checkbox" data-clean-time="30-living">Reset living room / main area</label>
+<label class="task"><input type="checkbox" data-clean-time="30-bath">Quick-clean bathroom</label>
+<label class="task"><input type="checkbox" data-clean-time="30-laundry">Start / move / fold priority laundry</label>
+<label class="task"><input type="checkbox" data-clean-time="30-floor">Sweep / vacuum main traffic areas</label>
+<label class="task"><input type="checkbox" data-clean-time="30-focus">Spend remaining time on one room that needs it most</label>
+<label class="task"><input type="checkbox" data-clean-time="30-finish">Stop at 30 minutes â reset complete</label>
 </details>
 
 <details><summary>60-Minute Catch-Up</summary>
-<label class="task"><input type="checkbox" data-clean-time="60-trash"> 5 min â trash / clutter sweep</label>
-<label class="task"><input type="checkbox" data-clean-time="60-kitchen"> 15 min â dishes, sink, counters, quick appliance wipe</label>
-<label class="task"><input type="checkbox" data-clean-time="60-bath"> 10 min â toilet, sink, mirror, bathroom pickup</label>
-<label class="task"><input type="checkbox" data-clean-time="60-laundry"> 10 min â move laundry, fold or put away priority load</label>
-<label class="task"><input type="checkbox" data-clean-time="60-living"> 10 min â living room / main-area reset</label>
-<label class="task"><input type="checkbox" data-clean-time="60-floor"> 10 min â sweep / vacuum main floors</label>
-<label class="task"><input type="checkbox" data-clean-time="60-finish"> Stop at 60 minutes â do not turn this into an all-day deep clean</label>
+<label class="task"><input type="checkbox" data-clean-time="60-trash">5 min â trash / clutter sweep</label>
+<label class="task"><input type="checkbox" data-clean-time="60-kitchen">15 min â dishes, sink, counters, quick appliance wipe</label>
+<label class="task"><input type="checkbox" data-clean-time="60-bath">10 min â toilet, sink, mirror, bathroom pickup</label>
+<label class="task"><input type="checkbox" data-clean-time="60-laundry">10 min â move laundry, fold or put away priority load</label>
+<label class="task"><input type="checkbox" data-clean-time="60-living">10 min â living room / main-area reset</label>
+<label class="task"><input type="checkbox" data-clean-time="60-floor">10 min â sweep / vacuum main floors</label>
+<label class="task"><input type="checkbox" data-clean-time="60-finish">Stop at 60 minutes â do not turn this into an all-day deep clean</label>
 </details>
 
 <details><summary>2-Hour Catch-Up</summary>
-<label class="task"><input type="checkbox" data-clean-time="120-priority"> Choose Must Do priorities first</label>
-<label class="task"><input type="checkbox" data-clean-time="120-kitchen"> Full kitchen reset</label>
-<label class="task"><input type="checkbox" data-clean-time="120-bath"> Bathrooms reset</label>
-<label class="task"><input type="checkbox" data-clean-time="120-laundry"> Catch up priority laundry</label>
-<label class="task"><input type="checkbox" data-clean-time="120-main"> Living room / main areas reset</label>
-<label class="task"><input type="checkbox" data-clean-time="120-bed"> Quick bedroom pickups</label>
-<label class="task"><input type="checkbox" data-clean-time="120-floor"> Floors in main areas</label>
-<label class="task"><input type="checkbox" data-clean-time="120-restock"> Restock anything obviously low</label>
-<label class="task"><input type="checkbox" data-clean-time="120-finish"> Stop after 2 hours or when Must + Should priorities are complete</label>
+<label class="task"><input type="checkbox" data-clean-time="120-priority">Choose Must Do priorities first</label>
+<label class="task"><input type="checkbox" data-clean-time="120-kitchen">Full kitchen reset</label>
+<label class="task"><input type="checkbox" data-clean-time="120-bath">Bathrooms reset</label>
+<label class="task"><input type="checkbox" data-clean-time="120-laundry">Catch up priority laundry</label>
+<label class="task"><input type="checkbox" data-clean-time="120-main">Living room / main areas reset</label>
+<label class="task"><input type="checkbox" data-clean-time="120-bed">Quick bedroom pickups</label>
+<label class="task"><input type="checkbox" data-clean-time="120-floor">Floors in main areas</label>
+<label class="task"><input type="checkbox" data-clean-time="120-restock">Restock anything obviously low</label>
+<label class="task"><input type="checkbox" data-clean-time="120-finish">Stop after 2 hours or when Must + Should priorities are complete</label>
 </details>
 
 <div id="cleanTimeProgress"></div>
@@ -712,7 +712,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 
 <div id="catchupProgress"></div>
-<details class="card"><summary><strong> 1. Sanitation + Must-Do</strong> <span class="small" id="catchCount-safety"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="safety|0"> Collect food/trash from all rooms</label><label class="task"><input type="checkbox" data-catchup-sub="safety|1"> Take out full trash</label><label class="task"><input type="checkbox" data-catchup-sub="safety|2"> Collect all dishes/cups</label><label class="task"><input type="checkbox" data-catchup-sub="safety|3"> Load/wash dishes</label><label class="task"><input type="checkbox" data-catchup-sub="safety|4"> Clear and rinse kitchen sink</label><label class="task"><input type="checkbox" data-catchup-sub="safety|5"> Clean any spills/messes that could stain or smell</label><label class="task"><input type="checkbox" data-catchup-sub="safety|6"> Make sure toilets are usable</label><label class="task"><input type="checkbox" data-catchup-sub="safety|7"> Deal with pet messes immediately</label></details><details class="card"><summary><strong> 2. Laundry Rescue</strong> <span class="small" id="catchCount-laundry"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="laundry|0"> Collect dirty clothes/towels</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|1"> Choose ONE priority load</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|2"> Start washer</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|3"> Move load to dryer/hang dry</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|4"> Fold finished priority load</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|5"> Put priority load away</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|6"> Contain remaining laundry in hampers/baskets</label></details><details class="card"><summary><strong> 3. Kitchen Recovery</strong> <span class="small" id="catchCount-kitchen"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="kitchen|0"> Clear counters</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|1"> Put food away</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|2"> Wipe counters</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|3"> Wipe table</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|4"> Quick stovetop wipe if needed</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|5"> Check refrigerator for obvious old food</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|6"> Sweep main kitchen floor</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|7"> Mop only if actually needed</label></details><details class="card"><summary><strong> 4. Bathroom Recovery</strong> <span class="small" id="catchCount-bathroom"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="bathroom|0"> Clear counter</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|1"> Put toiletries away</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|2"> Wipe sink/counter</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|3"> Clean toilet bowl/seat/base as needed</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|4"> Quick tub/shower rinse or wipe if needed</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|5"> Replace hand towel</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|6"> Restock toilet paper</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|7"> Empty trash</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|8"> Sweep floor</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|9"> Mop if needed</label></details><details class="card"><summary><strong> 5. Living Areas</strong> <span class="small" id="catchCount-living"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="living|0"> Collect trash/dishes</label><label class="task"><input type="checkbox" data-catchup-sub="living|1"> Put away obvious stray items</label><label class="task"><input type="checkbox" data-catchup-sub="living|2"> Reset couch/chairs</label><label class="task"><input type="checkbox" data-catchup-sub="living|3"> Fold blankets</label><label class="task"><input type="checkbox" data-catchup-sub="living|4"> Reset pillows</label><label class="task"><input type="checkbox" data-catchup-sub="living|5"> Clear coffee/end tables</label><label class="task"><input type="checkbox" data-catchup-sub="living|6"> Pick up floor</label><label class="task"><input type="checkbox" data-catchup-sub="living|7"> Vacuum/sweep main area</label></details><details class="card"><summary><strong> 6. Bedrooms</strong> <span class="small" id="catchCount-bedrooms"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|0"> Remove trash/dishes</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|1"> Dirty clothes to hamper</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|2"> Straighten/make beds</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|3"> Clear main surfaces</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|4"> Contain loose items</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|5"> Clear floor/walkway</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|6"> Vacuum/sweep only if needed</label></details><details class="card"><summary><strong> 7. Entry + School / Activity Reset</strong> <span class="small" id="catchCount-entry"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="entry|0"> Put shoes away</label><label class="task"><input type="checkbox" data-catchup-sub="entry|1"> Reset backpacks/bags</label><label class="task"><input type="checkbox" data-catchup-sub="entry|2"> Sort mail/papers</label><label class="task"><input type="checkbox" data-catchup-sub="entry|3"> Put school items together</label><label class="task"><input type="checkbox" data-catchup-sub="entry|4"> Put activity/sports items together</label><label class="task"><input type="checkbox" data-catchup-sub="entry|5"> Clear entry walkway</label></details><details class="card"><summary><strong> 8. Floors + Finish</strong> <span class="small" id="catchCount-floors"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="floors|0"> Vacuum/sweep main walkways</label><label class="task"><input type="checkbox" data-catchup-sub="floors|1"> Vacuum visible pet hair/crumbs</label><label class="task"><input type="checkbox" data-catchup-sub="floors|2"> Spot mop sticky areas</label><label class="task"><input type="checkbox" data-catchup-sub="floors|3"> Do a final house walkthrough</label><label class="task"><input type="checkbox" data-catchup-sub="floors|4"> Write down anything that can wait</label><label class="task"><input type="checkbox" data-catchup-sub="floors|5"> Stop when priority work is complete</label></details><details><summary>Delegate / Who Can Do What?</summary>
+<details class="card"><summary><strong>1. Sanitation + Must-Do</strong><span class="small" id="catchCount-safety"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="safety|0">Collect food/trash from all rooms</label><label class="task"><input type="checkbox" data-catchup-sub="safety|1">Take out full trash</label><label class="task"><input type="checkbox" data-catchup-sub="safety|2">Collect all dishes/cups</label><label class="task"><input type="checkbox" data-catchup-sub="safety|3">Load/wash dishes</label><label class="task"><input type="checkbox" data-catchup-sub="safety|4">Clear and rinse kitchen sink</label><label class="task"><input type="checkbox" data-catchup-sub="safety|5">Clean any spills/messes that could stain or smell</label><label class="task"><input type="checkbox" data-catchup-sub="safety|6">Make sure toilets are usable</label><label class="task"><input type="checkbox" data-catchup-sub="safety|7">Deal with pet messes immediately</label></details><details class="card"><summary><strong>2. Laundry Rescue</strong><span class="small" id="catchCount-laundry"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="laundry|0">Collect dirty clothes/towels</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|1">Choose ONE priority load</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|2">Start washer</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|3">Move load to dryer/hang dry</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|4">Fold finished priority load</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|5">Put priority load away</label><label class="task"><input type="checkbox" data-catchup-sub="laundry|6">Contain remaining laundry in hampers/baskets</label></details><details class="card"><summary><strong>3. Kitchen Recovery</strong><span class="small" id="catchCount-kitchen"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="kitchen|0">Clear counters</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|1">Put food away</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|2">Wipe counters</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|3">Wipe table</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|4">Quick stovetop wipe if needed</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|5">Check refrigerator for obvious old food</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|6">Sweep main kitchen floor</label><label class="task"><input type="checkbox" data-catchup-sub="kitchen|7">Mop only if actually needed</label></details><details class="card"><summary><strong>4. Bathroom Recovery</strong><span class="small" id="catchCount-bathroom"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="bathroom|0">Clear counter</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|1">Put toiletries away</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|2">Wipe sink/counter</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|3">Clean toilet bowl/seat/base as needed</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|4">Quick tub/shower rinse or wipe if needed</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|5">Replace hand towel</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|6">Restock toilet paper</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|7">Empty trash</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|8">Sweep floor</label><label class="task"><input type="checkbox" data-catchup-sub="bathroom|9">Mop if needed</label></details><details class="card"><summary><strong>5. Living Areas</strong><span class="small" id="catchCount-living"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="living|0">Collect trash/dishes</label><label class="task"><input type="checkbox" data-catchup-sub="living|1">Put away obvious stray items</label><label class="task"><input type="checkbox" data-catchup-sub="living|2">Reset couch/chairs</label><label class="task"><input type="checkbox" data-catchup-sub="living|3">Fold blankets</label><label class="task"><input type="checkbox" data-catchup-sub="living|4">Reset pillows</label><label class="task"><input type="checkbox" data-catchup-sub="living|5">Clear coffee/end tables</label><label class="task"><input type="checkbox" data-catchup-sub="living|6">Pick up floor</label><label class="task"><input type="checkbox" data-catchup-sub="living|7">Vacuum/sweep main area</label></details><details class="card"><summary><strong>6. Bedrooms</strong><span class="small" id="catchCount-bedrooms"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|0">Remove trash/dishes</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|1">Dirty clothes to hamper</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|2">Straighten/make beds</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|3">Clear main surfaces</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|4">Contain loose items</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|5">Clear floor/walkway</label><label class="task"><input type="checkbox" data-catchup-sub="bedrooms|6">Vacuum/sweep only if needed</label></details><details class="card"><summary><strong>7. Entry + School / Activity Reset</strong><span class="small" id="catchCount-entry"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="entry|0">Put shoes away</label><label class="task"><input type="checkbox" data-catchup-sub="entry|1">Reset backpacks/bags</label><label class="task"><input type="checkbox" data-catchup-sub="entry|2">Sort mail/papers</label><label class="task"><input type="checkbox" data-catchup-sub="entry|3">Put school items together</label><label class="task"><input type="checkbox" data-catchup-sub="entry|4">Put activity/sports items together</label><label class="task"><input type="checkbox" data-catchup-sub="entry|5">Clear entry walkway</label></details><details class="card"><summary><strong>8. Floors + Finish</strong><span class="small" id="catchCount-floors"></span></summary><label class="task"><input type="checkbox" data-catchup-sub="floors|0">Vacuum/sweep main walkways</label><label class="task"><input type="checkbox" data-catchup-sub="floors|1">Vacuum visible pet hair/crumbs</label><label class="task"><input type="checkbox" data-catchup-sub="floors|2">Spot mop sticky areas</label><label class="task"><input type="checkbox" data-catchup-sub="floors|3">Do a final house walkthrough</label><label class="task"><input type="checkbox" data-catchup-sub="floors|4">Write down anything that can wait</label><label class="task"><input type="checkbox" data-catchup-sub="floors|5">Stop when priority work is complete</label></details><details><summary>Delegate / Who Can Do What?</summary>
 <div class="formgrid">
 <div class="field"><label>Me</label><textarea data-key="clean.catchup.assign.me" placeholder="My priority tasks"></textarea></div>
 <div class="field"><label>Kids</label><textarea data-key="clean.catchup.assign.kids" placeholder="Age-appropriate pickup, shoes, toys, trash, etc."></textarea></div>
@@ -721,22 +721,22 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div></details>
 
 <details><summary>What Can Wait?</summary>
-<label class="task"><input type="checkbox" data-catchup-wait="deep"> Deep cleaning can wait</label>
-<label class="task"><input type="checkbox" data-catchup-wait="windows"> Windows/blinds can wait</label>
-<label class="task"><input type="checkbox" data-catchup-wait="baseboards"> Baseboards can wait</label>
-<label class="task"><input type="checkbox" data-catchup-wait="organizing"> Organizing projects can wait</label>
-<label class="task"><input type="checkbox" data-catchup-wait="decor"> Decor/perfect styling can wait</label>
-<label class="task"><input type="checkbox" data-catchup-wait="closets"> Closets/storage spaces can wait</label>
+<label class="task"><input type="checkbox" data-catchup-wait="deep">Deep cleaning can wait</label>
+<label class="task"><input type="checkbox" data-catchup-wait="windows">Windows/blinds can wait</label>
+<label class="task"><input type="checkbox" data-catchup-wait="baseboards">Baseboards can wait</label>
+<label class="task"><input type="checkbox" data-catchup-wait="organizing">Organizing projects can wait</label>
+<label class="task"><input type="checkbox" data-catchup-wait="decor">Decor/perfect styling can wait</label>
+<label class="task"><input type="checkbox" data-catchup-wait="closets">Closets/storage spaces can wait</label>
 <div class="field"><label>Other things I am intentionally NOT doing today</label><textarea data-key="clean.catchup.waitNotes"></textarea></div>
 </details>
 
 <details><summary>Catch-Up Finish + Reset for Tomorrow</summary>
-<label class="task"><input type="checkbox" data-catchup-finish="trash"> Trash is out</label>
-<label class="task"><input type="checkbox" data-catchup-finish="sink"> Sink is usable</label>
-<label class="task"><input type="checkbox" data-catchup-finish="laundry"> Priority laundry is handled</label>
-<label class="task"><input type="checkbox" data-catchup-finish="bathroom"> At least one bathroom is clean/usable</label>
-<label class="task"><input type="checkbox" data-catchup-finish="walkways"> Main walkways are clear</label>
-<label class="task"><input type="checkbox" data-catchup-finish="tomorrow"> Tomorrow's first cleaning task is chosen</label>
+<label class="task"><input type="checkbox" data-catchup-finish="trash">Trash is out</label>
+<label class="task"><input type="checkbox" data-catchup-finish="sink">Sink is usable</label>
+<label class="task"><input type="checkbox" data-catchup-finish="laundry">Priority laundry is handled</label>
+<label class="task"><input type="checkbox" data-catchup-finish="bathroom">At least one bathroom is clean/usable</label>
+<label class="task"><input type="checkbox" data-catchup-finish="walkways">Main walkways are clear</label>
+<label class="task"><input type="checkbox" data-catchup-finish="tomorrow">Tomorrow's first cleaning task is chosen</label>
 <div class="formgrid">
 <div class="field"><label>First task tomorrow</label><select data-key="clean.catchup.tomorrow">
 <option>None â Caught Up</option><option>Laundry</option><option>Kitchen</option><option>Bathroom</option><option>Living Room</option><option>Bedrooms</option><option>Floors</option><option>Monthly Task</option><option>Other</option>
@@ -747,12 +747,12 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <button class="smallbtn" id="resetCatchup">âº Reset Today's Catch-Up Checkboxes</button>
 </details>
 <details><summary>Weekly Cleaning Review + Plan Next Week</summary>
-<label class="task"><input type="checkbox" data-clean-weekreview="missed"> Check anything missed this week</label>
-<label class="task"><input type="checkbox" data-clean-weekreview="monthly"> Pick monthly task(s) due</label>
-<label class="task"><input type="checkbox" data-clean-weekreview="seasonal"> Check seasonal task if due</label>
-<label class="task"><input type="checkbox" data-clean-weekreview="supplies"> Check cleaning supplies / tools</label>
-<label class="task"><input type="checkbox" data-clean-weekreview="laundry"> Review bedding/towels/laundry needs</label>
-<label class="task"><input type="checkbox" data-clean-weekreview="busy"> Adjust next week if busy/traveling</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="missed">Check anything missed this week</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="monthly">Pick monthly task(s) due</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="seasonal">Check seasonal task if due</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="supplies">Check cleaning supplies / tools</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="laundry">Review bedding/towels/laundry needs</label>
+<label class="task"><input type="checkbox" data-clean-weekreview="busy">Adjust next week if busy/traveling</label>
 <div class="formgrid">
 <div class="field"><label>Must do next week</label><textarea data-key="clean.week.nextMust"></textarea></div>
 <div class="field"><label>Can wait</label><textarea data-key="clean.week.canWait"></textarea></div>
@@ -782,24 +782,24 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 
 <details><summary>Sunday Home Review</summary>
-<label class="task"><input type="checkbox" data-home-review="repairs"> Check open repairs / urgency</label>
-<label class="task"><input type="checkbox" data-home-review="maintenance"> Check maintenance due next week</label>
-<label class="task"><input type="checkbox" data-home-review="restock"> Check household restock</label>
-<label class="task"><input type="checkbox" data-home-review="cleaning"> Check Cleaning monthly/seasonal due</label>
-<label class="task"><input type="checkbox" data-home-review="deliveries"> Check deliveries / service appointments</label>
-<label class="task"><input type="checkbox" data-home-review="spending"> Review planned home spending</label>
-<label class="task"><input type="checkbox" data-home-review="carry"> Carry unfinished items forward</label>
+<label class="task"><input type="checkbox" data-home-review="repairs">Check open repairs / urgency</label>
+<label class="task"><input type="checkbox" data-home-review="maintenance">Check maintenance due next week</label>
+<label class="task"><input type="checkbox" data-home-review="restock">Check household restock</label>
+<label class="task"><input type="checkbox" data-home-review="cleaning">Check Cleaning monthly/seasonal due</label>
+<label class="task"><input type="checkbox" data-home-review="deliveries">Check deliveries / service appointments</label>
+<label class="task"><input type="checkbox" data-home-review="spending">Review planned home spending</label>
+<label class="task"><input type="checkbox" data-home-review="carry">Carry unfinished items forward</label>
 <div class="formgrid">
 <div class="field"><label>What got done?</label><textarea data-key="home.week.done"></textarea></div>
 <div class="field"><label>What needs to carry forward?</label><textarea data-key="home.week.carry"></textarea></div>
 <div class="field full"><label>Notes for next week</label><textarea data-key="home.week.notes"></textarea></div>
 </div></details>
 <div class="hint">Cleaned-up structure: Maintenance & Repairs â¢ Household Restock â¢ Rooms & Projects â¢ Storage â¢ Appliances & Equipment.</div>
-<details open><summary>Maintenance & Repairs</summary><div id="repairList"></div><button class="smallbtn" data-add-record="repair">â Add Repair / Maintenance</button></details>
-<details><summary>Household Inventory & Restock</summary><div id="restockList"></div><button class="smallbtn" data-add-record="restock">â Add Household Item</button><button class="smallbtn" id="restockAllBtn">ð Add All Running Low/Out</button></details>
-<details><summary>Rooms & Projects</summary><div id="projectList"></div><button class="smallbtn" data-add-record="project">â Add Room / Project</button></details>
-<details><summary>Storage & Where Things Are</summary><div class="field"><label>ð Find Something</label><input id="storageSearch" placeholder="Christmas lights, winter clothesâ¦"></div><div id="storageList"></div><button class="smallbtn" data-add-record="storage">â Add Storage Item / Container</button></details>
-<details><summary>Appliances & Equipment</summary><div id="applianceList"></div><button class="smallbtn" data-add-record="appliance">â Add Appliance / Equipment</button></details>
+<details open><summary>Maintenance & Repairs</summary><div id="repairList"></div><button class="smallbtn" data-add-record="repair">Add Repair / Maintenance</button></details>
+<details><summary>Household Inventory & Restock</summary><div id="restockList"></div><button class="smallbtn" data-add-record="restock">Add Household Item</button><button class="smallbtn" id="restockAllBtn">Add All Running Low/Out</button></details>
+<details><summary>Rooms & Projects</summary><div id="projectList"></div><button class="smallbtn" data-add-record="project">Add Room / Project</button></details>
+<details><summary>Storage & Where Things Are</summary><div class="field"><label>Find Something</label><input id="storageSearch" placeholder="Christmas lights, winter clothesâ¦"></div><div id="storageList"></div><button class="smallbtn" data-add-record="storage">Add Storage Item / Container</button></details>
+<details><summary>Appliances & Equipment</summary><div id="applianceList"></div><button class="smallbtn" data-add-record="appliance">Add Appliance / Equipment</button></details>
 </div></section>
 
 <section id="selfcare" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Me + Self-Care</h2>
@@ -833,14 +833,14 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div></details>
 
 <details><summary>Weekly Self-Care Review</summary>
-<label class="task"><input type="checkbox" data-self-weekly-review="am"> Review AM routine completion</label>
-<label class="task"><input type="checkbox" data-self-weekly-review="pm"> Review PM routine completion</label>
-<label class="task"><input type="checkbox" data-self-weekly-review="shower"> Review shower/body schedule</label>
-<label class="task"><input type="checkbox" data-self-weekly-review="hair"> Review hair/scalp schedule</label>
-<label class="task"><input type="checkbox" data-self-weekly-review="period"> Review period supplies / pouch</label>
-<label class="task"><input type="checkbox" data-self-weekly-review="low"> Check Running Low / Out</label>
-<label class="task"><input type="checkbox" data-self-weekly-review="tools"> Clean reusable tools</label>
-<label class="task"><input type="checkbox" data-self-weekly-review="next"> Set next week</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="am">Review AM routine completion</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="pm">Review PM routine completion</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="shower">Review shower/body schedule</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="hair">Review hair/scalp schedule</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="period">Review period supplies / pouch</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="low">Check Running Low / Out</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="tools">Clean reusable tools</label>
+<label class="task"><input type="checkbox" data-self-weekly-review="next">Set next week</label>
 <div class="formgrid">
 <div class="field"><label>What worked?</label><textarea data-key="selfcare.week.reviewWorked"></textarea></div>
 <div class="field"><label>What was skipped / why?</label><textarea data-key="selfcare.week.reviewSkipped"></textarea></div>
@@ -930,7 +930,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field full"><label>PM order / skip rules / notes</label><textarea data-key="selfcare.pm.notes"></textarea></div>
 </div>
 </details>
-<details><summary>Skincare Products + Details</summary><div id="skinProducts"></div><button class="smallbtn" data-add-record="skin">â Add Skincare Product</button></details>
+<details><summary>Skincare Products + Details</summary><div id="skinProducts"></div><button class="smallbtn" data-add-record="skin">Add Skincare Product</button></details>
 <details><summary>Shower + Body â Detailed Setup</summary>
 <div class="formgrid">
 <div class="field"><label>Body wash</label><select data-key="selfcare.shower.bodywashChoice">
@@ -953,7 +953,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Exfoliation</label><select data-key="selfcare.shower.exfoliate"><option>None</option><option>1x/week</option><option>2x/week</option><option>Specific Days</option><option>As Needed</option></select></div>
 <div class="field full"><label>Area / tool / product notes</label><textarea data-key="selfcare.shower.notes"></textarea></div>
 </div>
-<div id="bodyProducts"></div><button class="smallbtn" data-add-record="body">â Add Shower / Body Product</button>
+<div id="bodyProducts"></div><button class="smallbtn" data-add-record="body">Add Shower / Body Product</button>
 </details>
 <details><summary>Hair + Scalp â Detailed Setup</summary>
 <div class="formgrid">
@@ -989,7 +989,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Hair mask frequency</label><select data-key="selfcare.hair.maskFreq"><option>1x/week</option><option>2x/week</option><option>Every 2 Weeks</option><option>Monthly</option><option>As Needed</option></select></div>
 <div class="field full"><label>Hair routine notes</label><textarea data-key="selfcare.hair.notes"></textarea></div>
 </div>
-<div id="hairProducts"></div><button class="smallbtn" data-add-record="hair">â Add Hair / Scalp Product</button>
+<div id="hairProducts"></div><button class="smallbtn" data-add-record="hair">Add Hair / Scalp Product</button>
 </details>
 <details><summary>Period Care â Detailed Setup</summary>
 <div class="formgrid">
@@ -1003,9 +1003,9 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Pouch reset frequency</label><select data-key="selfcare.period.reset"><option>After Every Period</option><option>Monthly</option><option>Before Travel</option><option>As Needed</option></select></div>
 </div>
 <div class="hint"><strong>Pouch reset:</strong> Light â Regular â Super â wipes â spare underwear if desired â comfort items â replace anything used â send low items to Shopping.</div>
-<div id="periodCare"></div><button class="smallbtn" data-add-record="periodSupply">â Add Period Supply</button>
+<div id="periodCare"></div><button class="smallbtn" data-add-record="periodSupply">Add Period Supply</button>
 </details>
-<details><summary>Travel Self-Care â Detailed</summary><div id="travelCare"></div><button class="smallbtn" data-add-record="travelCare">â Start Travel Self-Care Plan</button><div class="hint"><strong>Pack:</strong> AM skincare â PM skincare â shower/body â hair/scalp â dental â period supplies â tools/accessories â check quantity â add missing items to Shopping â mark packed.</div></details>
+<details><summary>Travel Self-Care â Detailed</summary><div id="travelCare"></div><button class="smallbtn" data-add-record="travelCare">Start Travel Self-Care Plan</button><div class="hint"><strong>Pack:</strong> AM skincare â PM skincare â shower/body â hair/scalp â dental â period supplies â tools/accessories â check quantity â add missing items to Shopping â mark packed.</div></details>
 <details><summary>Running Low / Restock</summary><div id="selfcareLow"></div></details>
 <details><summary>Walk Me Through Today</summary><div class="walkstep"><div class="num">1</div><div>Check todayâs schedule.</div></div><div class="walkstep"><div class="num">2</div><div>Complete AM skincare in order.</div></div><div class="walkstep"><div class="num">3</div><div>Do shower/body and hair/scalp only if scheduled.</div></div><div class="walkstep"><div class="num">4</div><div>Complete PM skincare.</div></div><div class="walkstep"><div class="num">5</div><div>Update low product status while using items.</div></div><div class="walkstep"><div class="num">6</div><div>Once weekly, send Running Low/Out items to Shopping.</div></div></details>
 </div></section>
@@ -1027,24 +1027,24 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="walkstep"><div class="num">6</div><div><strong>Medication/Supplement:</strong> person â item â purpose â dose/form â schedule â stock/refill â notes.</div></div>
 </details>
 
-<details open><summary>Daily Health Check-In / Mood</summary><div id="moodTracker"></div><button class="smallbtn" data-add-record="mood">â New Health Check-In</button></details>
-<details><summary>Symptoms â Multiple at Once</summary><div id="symptomList"></div><button class="smallbtn" data-add-record="symptom">â Add Symptom Entry</button></details>
-<details><summary>Migraine Tracker â Detailed</summary><div id="migraineList"></div><button class="smallbtn" data-add-record="migraine">â Start Migraine</button></details>
+<details open><summary>Daily Health Check-In / Mood</summary><div id="moodTracker"></div><button class="smallbtn" data-add-record="mood">New Health Check-In</button></details>
+<details><summary>Symptoms â Multiple at Once</summary><div id="symptomList"></div><button class="smallbtn" data-add-record="symptom">Add Symptom Entry</button></details>
+<details><summary>Migraine Tracker â Detailed</summary><div id="migraineList"></div><button class="smallbtn" data-add-record="migraine">Start Migraine</button></details>
 <details><summary>Period Tracker â Detailed</summary><div id="periodList"></div><button class="smallbtn" data-add-record="period">â¶ Period Started / Daily Entry</button></details>
-<details><summary>Appointments â Everyone</summary><div id="appointmentList"></div><button class="smallbtn" data-add-record="appointment">â Add Appointment</button><button class="smallbtn" data-add-record="needsAppointment">â Need to Schedule</button></details>
-<details><summary>Medications + Supplements â Everyone</summary><div id="medList"></div><button class="smallbtn" data-add-record="med">â Add Medication / Supplement</button></details>
-<details><summary>Dental +  Vision â Everyone</summary><div id="dentalVision"></div><button class="smallbtn" data-add-record="dental">â Add Dental / Vision Record</button></details>
-<details><summary>Health Follow-Up / Calls / Questions</summary><div id="healthFollowupList"></div><button class="smallbtn" data-add-record="healthFollowup">â Add Health Follow-Up</button></details>
-<details><summary>Tests / Labs / Imaging</summary><div id="healthTestList"></div><button class="smallbtn" data-add-record="healthTest">â Add Test / Lab / Imaging</button></details>
-<details><summary>Journal / Health Notes</summary><div id="journalList"></div><button class="smallbtn" data-add-record="journal">â New Journal Entry</button></details>
+<details><summary>Appointments â Everyone</summary><div id="appointmentList"></div><button class="smallbtn" data-add-record="appointment">Add Appointment</button><button class="smallbtn" data-add-record="needsAppointment">Need to Schedule</button></details>
+<details><summary>Medications + Supplements â Everyone</summary><div id="medList"></div><button class="smallbtn" data-add-record="med">Add Medication / Supplement</button></details>
+<details><summary>Dental + Vision â Everyone</summary><div id="dentalVision"></div><button class="smallbtn" data-add-record="dental">Add Dental / Vision Record</button></details>
+<details><summary>Health Follow-Up / Calls / Questions</summary><div id="healthFollowupList"></div><button class="smallbtn" data-add-record="healthFollowup">Add Health Follow-Up</button></details>
+<details><summary>Tests / Labs / Imaging</summary><div id="healthTestList"></div><button class="smallbtn" data-add-record="healthTest">Add Test / Lab / Imaging</button></details>
+<details><summary>Journal / Health Notes</summary><div id="journalList"></div><button class="smallbtn" data-add-record="journal">New Journal Entry</button></details>
 
 <details><summary>Weekly Health Review</summary>
-<label class="task"><input type="checkbox" data-health-review="symptoms"> Review active/recent symptoms</label>
-<label class="task"><input type="checkbox" data-health-review="migraines"> Review migraines / patterns</label>
-<label class="task"><input type="checkbox" data-health-review="period"> Update period/cycle if active</label>
-<label class="task"><input type="checkbox" data-health-review="appointments"> Check appointments / prep</label>
-<label class="task"><input type="checkbox" data-health-review="meds"> Check meds/supplements / stock</label>
-<label class="task"><input type="checkbox" data-health-review="dental"> Check dental / vision due</label>
+<label class="task"><input type="checkbox" data-health-review="symptoms">Review active/recent symptoms</label>
+<label class="task"><input type="checkbox" data-health-review="migraines">Review migraines / patterns</label>
+<label class="task"><input type="checkbox" data-health-review="period">Update period/cycle if active</label>
+<label class="task"><input type="checkbox" data-health-review="appointments">Check appointments / prep</label>
+<label class="task"><input type="checkbox" data-health-review="meds">Check meds/supplements / stock</label>
+<label class="task"><input type="checkbox" data-health-review="dental">Check dental / vision due</label>
 <div class="formgrid">
 <div class="field"><label>What changed this week?</label><textarea data-key="health.week.changed"></textarea></div>
 <div class="field"><label>Anything to follow up?</label><textarea data-key="health.week.followup"></textarea></div>
@@ -1055,7 +1055,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="shopping" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Master Shopping List</h2>
 <div class="formgrid"><div class="field"><label>Quick item</label><input id="shopQuick"></div><div class="field"><label>Category</label><select id="shopCategory"><option>Groceries</option><option>Household</option><option>Personal / Self-Care</option><option>Kids / School</option><option>Pets</option><option>Car</option><option>Health</option><option>Gifts</option><option>Trip / Family Time</option><option>Wishlist / Other</option></select></div><div class="field"><label>Quantity</label><input id="shopQty"></div><div class="field"><label>Store</label><input id="shopStore"></div><div class="field"><label>Priority</label><select id="shopPriority"><option>Need Now</option><option>Soon</option><option>Whenever</option></select></div><div class="field"><label>Estimated price</label><input id="shopPrice" type="number" step=".01"></div></div>
-<button id="shopAddBtn" class="action">â Add to Master List</button>
+<button id="shopAddBtn" class="action">Add to Master List</button>
 <div class="formgrid"><div class="field"><label>Store View</label><input id="shopFilterStore" placeholder="Walmart"></div><div class="field"><label>Category Filter</label><select id="shopFilterCat"><option value="">All</option><option>Groceries</option><option>Household</option><option>Personal / Self-Care</option><option>Kids / School</option><option>Pets</option><option>Car</option><option>Health</option><option>Gifts</option><option>Trip / Family Time</option><option>Wishlist / Other</option></select></div></div>
 <div id="shoppingList"></div>
 </div></section>
@@ -1091,7 +1091,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Out-of-area contact</label><input data-key="emergency.outArea"></div>
 </div><div id="emergencyPeople"></div></details>
 
-<details><summary>Emergency + Backup Contacts</summary><div id="emergencyContacts"></div><button class="smallbtn" data-add-record="emergencyContact">â Add Emergency Contact</button></details>
+<details><summary>Emergency + Backup Contacts</summary><div id="emergencyContacts"></div><button class="smallbtn" data-add-record="emergencyContact">Add Emergency Contact</button></details>
 
 <details><summary>Child / School Pickup Emergency</summary><div class="formgrid">
 <div class="field"><label>Child</label><select data-key="emergency.pickup.child"><option></option><option>Nayleigh</option><option>Leslieann</option><option>Lukas</option><option>Brianna</option></select></div>
@@ -1119,7 +1119,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Regular veterinarian</label><input data-key="emergency.pet.vet"></div><div class="field"><label>Emergency veterinarian</label><input data-key="emergency.pet.emergencyVet"></div><div class="field"><label>Carrier / leash</label><input data-key="emergency.pet.carrier"></div><div class="field"><label>Food / supplies</label><input data-key="emergency.pet.supplies"></div><div class="field"><label>Backup caregiver</label><input data-key="emergency.pet.caregiver"></div><div class="field"><label>Transportation</label><input data-key="emergency.pet.transport"></div><div class="field full"><label>Care / feeding / medication notes</label><textarea data-key="emergency.pet.notes"></textarea></div></div></details>
 
 <details><summary>Evacuation / Leave-Home Walkthrough</summary><div class="formgrid"><div class="field"><label>Reason</label><select data-key="emergency.evac.reason"><option></option><option>Fire</option><option>Severe Weather</option><option>Utility / Gas</option><option>Flooding</option><option>Safety Concern</option><option>Other</option></select></div><div class="field"><label>Destination</label><input data-key="emergency.evac.destination"></div><div class="field"><label>Primary route</label><input data-key="emergency.evac.route"></div><div class="field"><label>Backup route</label><input data-key="emergency.evac.backupRoute"></div></div>
-<label class="task"><input type="checkbox" data-emergency-check="people"> Everyone accounted for</label><label class="task"><input type="checkbox" data-emergency-check="pet"> Pet + leash/carrier</label><label class="task"><input type="checkbox" data-emergency-check="phones"> Phones + chargers</label><label class="task"><input type="checkbox" data-emergency-check="meds"> Needed medications / essential care items</label><label class="task"><input type="checkbox" data-emergency-check="wallet"> Wallet / keys / essential documents</label><label class="task"><input type="checkbox" data-emergency-check="water"> Water / immediate food needs</label><label class="task"><input type="checkbox" data-emergency-check="kids"> Kids' immediate comfort / care items</label><label class="task"><input type="checkbox" data-emergency-check="vehicle"> Vehicle / fuel / route checked</label><label class="task"><input type="checkbox" data-emergency-check="contacts"> Important contacts notified</label></details>
+<label class="task"><input type="checkbox" data-emergency-check="people">Everyone accounted for</label><label class="task"><input type="checkbox" data-emergency-check="pet">Pet + leash/carrier</label><label class="task"><input type="checkbox" data-emergency-check="phones">Phones + chargers</label><label class="task"><input type="checkbox" data-emergency-check="meds">Needed medications / essential care items</label><label class="task"><input type="checkbox" data-emergency-check="wallet">Wallet / keys / essential documents</label><label class="task"><input type="checkbox" data-emergency-check="water">Water / immediate food needs</label><label class="task"><input type="checkbox" data-emergency-check="kids">Kids' immediate comfort / care items</label><label class="task"><input type="checkbox" data-emergency-check="vehicle">Vehicle / fuel / route checked</label><label class="task"><input type="checkbox" data-emergency-check="contacts">Important contacts notified</label></details>
 
 <details><summary>Where Important Emergency Things Are</summary><div class="formgrid">
 <div class="field"><label>First aid</label><input data-key="emergency.where.firstaid"></div><div class="field"><label>Fire extinguishers</label><input data-key="emergency.where.fire"></div><div class="field"><label>Flashlights / batteries</label><input data-key="emergency.where.flashlights"></div><div class="field"><label>Emergency bags</label><input data-key="emergency.where.bags"></div><div class="field"><label>Spare keys</label><input data-key="emergency.where.keys"></div><div class="field"><label>Pet carrier / leash</label><input data-key="emergency.where.pet"></div><div class="field"><label>Important papers</label><input data-key="emergency.where.papers"></div><div class="field"><label>Vehicle emergency kit</label><input data-key="emergency.where.vehicle"></div></div></details>
@@ -1246,7 +1246,7 @@ function editRec(type,id){const r=rec(type).find(x=>x.id===id);if(r)showForm(typ
 function actionBtns(type,id){return `<div class="rowbuttons"><button class="smallbtn" onclick="editRec('${type}','${id}')">Edit</button><button class="smallbtn danger" onclick="deleteRec('${type}','${id}')">Remove</button></div>`}
 
 function selectOpts(arr,val=''){return arr.map(x=>`<option ${x===val?'selected':''}>${esc(x)}</option>`).join('')}
-function checks(name,arr,selected=[]){return arr.map(x=>`<label class="task"><input type="checkbox" name="${name}" value="${esc(x)}" ${selected.includes(x)?'checked':''}> ${esc(x)}</label>`).join('')}
+function checks(name,arr,selected=[]){return arr.map(x=>`<label class="task"><input type="checkbox" name="${name}" value="${esc(x)}" ${selected.includes(x)?'checked':''}>${esc(x)}</label>`).join('')}
 function field(label,name,val='',type='text',full=false,placeholder=''){if(type==='textarea')return `<div class="field ${full?'full':''}"><label>${label}</label><textarea name="${name}" placeholder="${esc(placeholder)}">${esc(val)}</textarea></div>`;if(type==='select')return `<div class="field ${full?'full':''}"><label>${label}</label><select name="${name}">${placeholder}</select></div>`;return `<div class="field ${full?'full':''}"><label>${label}</label><input type="${type}" name="${name}" value="${esc(val)}" placeholder="${esc(placeholder)}"></div>`}
 function formData(){const f=document.getElementById('dynamicForm'),o={};f.querySelectorAll('input,textarea,select').forEach(el=>{if(el.type==='checkbox'){if(!o[el.name])o[el.name]=[];if(el.checked)o[el.name].push(el.value)}else o[el.name]=el.value});return o}
 
@@ -1378,7 +1378,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-add-record
 
 function renderSimple(type,container,titleFn,metaFn,extraFn){const box=document.getElementById(container);if(!box)return;box.innerHTML=rec(type).map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc(titleFn(r))}</strong><div class="small">${esc(metaFn(r)||'')}</div></div>${actionBtns(type,r.id)}</div>${extraFn?extraFn(r):''}</div>`).join('')||'<div class="small">Nothing added yet.</div>'}
 function renderWeek(){
- renderSimple('brainDump','weeklyBrainDump',x=>x.text||'Brain Dump',x=>`${x.kind||''} â¢ ${x.when||''} â¢ ${x.status||''}${x.processedTo?' â '+x.processedTo:''}`,x=>x.status==='Unprocessed'?`<button class="smallbtn" data-brain-process="${x.id}">â¡ï¸ Process / Send</button>`:'');
+ renderSimple('brainDump','weeklyBrainDump',x=>x.text||'Brain Dump',x=>`${x.kind||''} â¢ ${x.when||''} â¢ ${x.status||''}${x.processedTo?' â '+x.processedTo:''}`,x=>x.status==='Unprocessed'?`<button class="smallbtn" data-brain-process="${x.id}">Process / Send</button>`:'');
  document.querySelectorAll('#weeklyBrainDump [data-brain-process]').forEach(b=>b.onclick=()=>processBrainDump(b.dataset.brainProcess));
  const sc=document.getElementById('sundayCarryTasks');
  if(sc){
@@ -1387,7 +1387,7 @@ function renderWeek(){
      const text=r.task==='Add My Own'?(r.customTask||'Custom Weekly Task'):(r.task||'Weekly Task');
      const already=state.carry.some(x=>!x.done&&x.sourceWeeklyId===r.id);
      return `<div class="record"><div class="recordhead"><div><strong>${esc(text)}</strong><div class="small">${esc((r.category||'')+' â¢ '+(r.day||'')+' â¢ '+(r.status||''))}</div></div>
-     <button class="smallbtn" data-send-weekly-carry="${r.id}" ${already?'disabled':''}>${already?'â Sent to Carry Forward':'â¡ï¸ Send to Carry Forward'}</button></div></div>`;
+     <button class="smallbtn" data-send-weekly-carry="${r.id}" ${already?'disabled':''}>${already?' Sent to Carry Forward':' Send to Carry Forward'}</button></div></div>`;
    }).join(''):'<div class="small">No unfinished Weekly Walkthrough tasks. â</div>';
    sc.querySelectorAll('[data-send-weekly-carry]').forEach(b=>b.onclick=()=>{
      const r=rec('weeklyWalkTask').find(x=>x.id===b.dataset.sendWeeklyCarry);if(!r)return;
@@ -1429,9 +1429,9 @@ function kidProfileHTML(k){
  <details><summary>School Year</summary><div class="formgrid">
  ${field('School',p+'school',getPath(p+'school'))}${field('Grade',p+'grade',getPath(p+'grade'))}${field('School year',p+'schoolYear',getPath(p+'schoolYear'))}${field('Teacher / homeroom',p+'teacher',getPath(p+'teacher'))}${field('Start / end time',p+'schoolTimes',getPath(p+'schoolTimes'))}${field('Transportation / bus',p+'schoolTransport',getPath(p+'schoolTransport'))}${field('Teachers / staff / contacts',p+'staff',getPath(p+'staff'),'textarea',true)}${field('Schedule / subjects',p+'schedule',getPath(p+'schedule'),'textarea',true)}${field('Apps / portals (no passwords)',p+'apps',getPath(p+'apps'),'textarea',true)}${field('Lunch notes',p+'lunch',getPath(p+'lunch'),'textarea',true)}${field('Supplies / running low',p+'supplies',getPath(p+'supplies'),'textarea',true)}${field('Homework / projects / tests',p+'schoolWork',getPath(p+'schoolWork'),'textarea',true)}${field('Forms / deadlines',p+'forms',getPath(p+'forms'),'textarea',true)}${field('Important school dates',p+'schoolDates',getPath(p+'schoolDates'),'textarea',true)}${field('Friends / parent contacts',p+'friends',getPath(p+'friends'),'textarea',true)}${field('School-year notes',p+'schoolNotes',getPath(p+'schoolNotes'),'textarea',true)}
  </div></details>
- <details><summary>Personal Care & Toiletries</summary><div class="hint">Detailed inventory with Running Low / Out â Master Shopping.</div><div>${toiletries.map(t=>`<div class="record"><div class="recordhead"><div><strong>${esc(t.item||'Toiletry')}</strong><div class="small">${esc((t.category||'')+' â¢ '+(t.status||''))}</div></div>${actionBtns('kidToiletry',t.id)}</div>${['Running Low','Out'].includes(t.status)?`<button class="smallbtn" onclick="addShopping('${esc((t.item||'Item')).replace(/'/g,"&#39;")}','Kids / School','${esc(t.target||'')}','${esc(t.store||'').replace(/'/g,"&#39;")}','Need Now','${esc(t.price||'')}','${k} toiletries')">ð Add to Shopping</button>`:''}</div>`).join('')||'<div class="small">No toiletries added yet.</div>'}</div><button class="smallbtn" onclick="showForm('kidToiletry',{person:'${k}'})">â Add Toiletry / Product</button></details>
- <details><summary>Activities</summary><div>${acts.map(a=>`<div class="record"><div class="recordhead"><div><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.status||'')+' â¢ '+(a.practiceDays||'')+' '+(a.practiceTime||''))}</div></div>${actionBtns('activity',a.id)}</div>${a.needed?`<div class="alert">Equipment / items needed: ${esc(a.needed)} <button class="smallbtn" onclick="addShopping('${esc(a.needed).replace(/'/g,"&#39;")}','Kids / School','','','Soon','','${k} activity')">Add to Shopping</button></div>`:''}</div>`).join('')||'<div class="small">No activities added yet.</div>'}</div><button class="smallbtn" onclick="showForm('activity',{person:'${k}'})">â Add Activity</button></details>
- <details><summary>Gifts</summary><div class="hint">This is the same gift record shown under Family â Gifts by Person.</div><div>${gifts.map(g=>recordCard(g.occasion||'Gift idea',`${g.item||''} â¢ ${g.status||''}`,actionBtns('gift',g.id))).join('')||'<div class="small">No gift ideas yet.</div>'}</div><button class="smallbtn" onclick="showGift('${k}')">â Add Gift Idea</button></details>
+ <details><summary>Personal Care & Toiletries</summary><div class="hint">Detailed inventory with Running Low / Out â Master Shopping.</div><div>${toiletries.map(t=>`<div class="record"><div class="recordhead"><div><strong>${esc(t.item||'Toiletry')}</strong><div class="small">${esc((t.category||'')+' â¢ '+(t.status||''))}</div></div>${actionBtns('kidToiletry',t.id)}</div>${['Running Low','Out'].includes(t.status)?`<button class="smallbtn" onclick="addShopping('${esc((t.item||'Item')).replace(/'/g,"&#39;")}','Kids / School','${esc(t.target||'')}','${esc(t.store||'').replace(/'/g,"&#39;")}','Need Now','${esc(t.price||'')}','${k} toiletries')">Add to Shopping</button>`:''}</div>`).join('')||'<div class="small">No toiletries added yet.</div>'}</div><button class="smallbtn" onclick="showForm('kidToiletry',{person:'${k}'})">Add Toiletry / Product</button></details>
+ <details><summary>Activities</summary><div>${acts.map(a=>`<div class="record"><div class="recordhead"><div><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.status||'')+' â¢ '+(a.practiceDays||'')+' '+(a.practiceTime||''))}</div></div>${actionBtns('activity',a.id)}</div>${a.needed?`<div class="alert">Equipment / items needed: ${esc(a.needed)} <button class="smallbtn" onclick="addShopping('${esc(a.needed).replace(/'/g,"&#39;")}','Kids / School','','','Soon','','${k} activity')">Add to Shopping</button></div>`:''}</div>`).join('')||'<div class="small">No activities added yet.</div>'}</div><button class="smallbtn" onclick="showForm('activity',{person:'${k}'})">Add Activity</button></details>
+ <details><summary>Gifts</summary><div class="hint">This is the same gift record shown under Family â Gifts by Person.</div><div>${gifts.map(g=>recordCard(g.occasion||'Gift idea',`${g.item||''} â¢ ${g.status||''}`,actionBtns('gift',g.id))).join('')||'<div class="small">No gift ideas yet.</div>'}</div><button class="smallbtn" onclick="showGift('${k}')">Add Gift Idea</button></details>
  </div>`;
 }
 formBuilders.kidToiletry=r=>`<div class="formgrid">${field('Child','person',r.person||kids[0],'select',false,selectOpts(kids,r.person||kids[0]))}${field('Category','category',r.category||'Bath / Shower','select',false,selectOpts(['Bath / Shower','Oral Care','Hair Care','Skin / Body Care','Period Care','Travel Toiletries','Other'],r.category||'Bath / Shower'))}${field('Item / product','item',r.item||'')}${field('Brand','brand',r.brand||'')}${field('Preferred type / scent / size','size',r.size||'')}${field('Backup / substitute','sub',r.sub||'')}${field('Quantity to keep','target',r.target||'')}${field('Quantity on hand','onhand',r.onhand||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}${field('Usual store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Travel quantity / notes','travel',r.travel||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
@@ -1604,7 +1604,7 @@ function showGift(person){showForm('gift',{person})}
 function renderKids(){const tabs=document.getElementById('kidTabs'),content=document.getElementById('kidContent');if(!tabs||!content)return;tabs.innerHTML=kids.map((k,i)=>`<button data-kidtab="${k}">${k}</button>`).join('');const show=k=>{content.innerHTML=kidProfileHTML(k);content.querySelectorAll('[name^="kid."]').forEach(()=>{});content.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{if(el.name.startsWith('kid.')){el.value=getPath(el.name);el.oninput=()=>setPath(el.name,el.value);el.onchange=()=>setPath(el.name,el.value)}})};tabs.querySelectorAll('[data-kidtab]').forEach(b=>b.onclick=()=>show(b.dataset.kidtab));show(kids[0])}
 function renderFamily(){renderSimple('transport','transportation',r=>`${r.person||'Family'} â ${r.kind||'Transportation'}`,r=>`${r.date||''} ${r.leave||''} â¢ ${r.morning||r.afternoon||''}`);const acts=document.getElementById('familyActivities');if(acts)acts.innerHTML=kids.map(k=>`<h3>${k}</h3>${rec('activity').filter(a=>a.person===k&&a.status!=='Finished / Archived').map(a=>`<div class="record"><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.practiceDays||'')+' '+(a.practiceTime||'')+' â¢ '+(a.location||''))}</div><div class="small">Fees: ${fmt(a.fee)} â¢ Due: ${esc(a.feeDue||'')} â¢ Needed: ${esc(a.needed||'')}</div></div>`).join('')||'<div class="small">No active activities.</div>'}`).join('');
  const ft=document.getElementById('familyTime');if(ft)ft.innerHTML=`<h3>Planned Outings</h3>${rec('outing').map(r=>recordCard(r.name||'Outing',`${r.date||''} â¢ ${r.status||''} â¢ ${fmt(r.budget)}`,actionBtns('outing',r.id))).join('')||'<div class="small">No outings.</div>'}<h3>Trips</h3>${rec('trip').map(r=>recordCard(r.name||'Trip',`${r.depart||''} â ${r.returnDate||''} â¢ ${r.destination||''}`,actionBtns('trip',r.id))).join('')||'<div class="small">No trips.</div>'}`;
- const gp=document.getElementById('giftPeople');if(gp)gp.innerHTML=[...people,'Other Person'].map(p=>`<h3>${p}</h3>${rec('gift').filter(g=>g.person===p).map(g=>`<div class="record"><strong>${esc(g.item||'Gift idea')}</strong><div class="small">${esc((g.occasion||'')+' â¢ '+(g.status||''))} â¢ ${fmt(g.spent||g.price)}</div>${actionBtns('gift',g.id)}</div>`).join('')||'<div class="small">No gift ideas.</div>'}<button class="smallbtn" onclick="showGift('${p}')">â Add Gift</button>`).join('');
+ const gp=document.getElementById('giftPeople');if(gp)gp.innerHTML=[...people,'Other Person'].map(p=>`<h3>${p}</h3>${rec('gift').filter(g=>g.person===p).map(g=>`<div class="record"><strong>${esc(g.item||'Gift idea')}</strong><div class="small">${esc((g.occasion||'')+' â¢ '+(g.status||''))} â¢ ${fmt(g.spent||g.price)}</div>${actionBtns('gift',g.id)}</div>`).join('')||'<div class="small">No gift ideas.</div>'}<button class="smallbtn" onclick="showGift('${p}')">Add Gift</button>`).join('');
  renderSimple('contact','familyContacts',r=>r.name||'Contact',r=>`${r.relation||''} â¢ ${r.phone||''}`)}
 function renderWork(){
  const historyMonthEl=document.getElementById('workHistoryMonth');if(historyMonthEl&&!historyMonthEl.value)historyMonthEl.value=monthKey();
@@ -1648,13 +1648,13 @@ const board=document.getElementById('workRunBoard');if(board){const sh=document.
  renderSimple('workMaintenance','workMaintenance',r=>`${r.unit||'Unit'} â ${r.kind||'Maintenance'}`,r=>`${r.severity||''} â¢ ${r.status||''} â¢ ${r.date||''}`);
  renderSimple('workCompliance','workCompliance',r=>`${r.kind||'Compliance'} â ${r.unit||''}`,r=>`${r.result||''} â¢ Due ${r.due||''} â¢ ${r.status||''}`);
  renderSimple('workAdmin','workAdmin',r=>r.title||r.kind||'Work item',r=>`${r.kind||''} â¢ ${r.status||''} â¢ ${r.due||''}`);renderSimple('workTask','workRecurring',r=>r.title||'Task',r=>`${r.freq||''} â¢ ${r.area||''}`);renderSimple('driver','workDrivers',r=>r.name||'Driver',r=>`${r.shift||''} â¢ ${r.run||''} â¢ ${r.status||''} â¢ Tractor ${r.tractor||'â'}`);renderSimple('tractor','workTractors',r=>r.unit||'Tractor',r=>`${r.shift||''} â¢ ${r.run||''} â¢ ${r.status||''} â¢ Due ${r.due||r.nextServiceDate||''}`);renderSimple('workPay','workPay',r=>`${r.kind||'Pay item'} â ${r.date||''}`,r=>`${r.hours||''} hrs â¢ Expected ${fmt(r.expected)} â¢ Actual ${fmt(r.actual)}`)}
-function renderMeals(){const box=document.getElementById('mealWeek');if(box){box.innerHTML=days.map(d=>{const p='meal.'+d+'.';return `<details><summary>${d}</summary><div class="formgrid"><div class="field"><label>Breakfast</label><input data-meal="${p}breakfast"></div><div class="field"><label>Lunch</label><input data-meal="${p}lunch"></div><div class="field"><label>Dinner</label><input data-meal="${p}dinner"></div><div class="field"><label>Side / vegetable</label><input data-meal="${p}side"></div><div class="field"><label>Kids alternative</label><input data-meal="${p}kids"></div><div class="field"><label>Snacks</label><input data-meal="${p}snacks"></div><div class="field full"><label>Prep / thaw / crockpot</label><textarea data-meal="${p}prep"></textarea></div><div class="field full"><label>Need to Buy</label><textarea data-meal="${p}buy"></textarea><button class="smallbtn" data-mealshop="${d}">â Add to Master Shopping</button></div><div class="field full"><label>Notes</label><textarea data-meal="${p}notes"></textarea></div></div></details>`}).join('');box.querySelectorAll('[data-meal]').forEach(e=>{e.value=getPath(e.dataset.meal);e.oninput=()=>setPath(e.dataset.meal,e.value)});box.querySelectorAll('[data-mealshop]').forEach(b=>b.onclick=()=>{const d=b.dataset.mealshop,v=getPath('meal.'+d+'.buy');if(v.trim())addShopping(v,'Groceries','','','Soon','','Meal plan â '+d)})}
+function renderMeals(){const box=document.getElementById('mealWeek');if(box){box.innerHTML=days.map(d=>{const p='meal.'+d+'.';return `<details><summary>${d}</summary><div class="formgrid"><div class="field"><label>Breakfast</label><input data-meal="${p}breakfast"></div><div class="field"><label>Lunch</label><input data-meal="${p}lunch"></div><div class="field"><label>Dinner</label><input data-meal="${p}dinner"></div><div class="field"><label>Side / vegetable</label><input data-meal="${p}side"></div><div class="field"><label>Kids alternative</label><input data-meal="${p}kids"></div><div class="field"><label>Snacks</label><input data-meal="${p}snacks"></div><div class="field full"><label>Prep / thaw / crockpot</label><textarea data-meal="${p}prep"></textarea></div><div class="field full"><label>Need to Buy</label><textarea data-meal="${p}buy"></textarea><button class="smallbtn" data-mealshop="${d}">Add to Master Shopping</button></div><div class="field full"><label>Notes</label><textarea data-meal="${p}notes"></textarea></div></div></details>`}).join('');box.querySelectorAll('[data-meal]').forEach(e=>{e.value=getPath(e.dataset.meal);e.oninput=()=>setPath(e.dataset.meal,e.value)});box.querySelectorAll('[data-mealshop]').forEach(b=>b.onclick=()=>{const d=b.dataset.mealshop,v=getPath('meal.'+d+'.buy');if(v.trim())addShopping(v,'Groceries','','','Soon','','Meal plan â '+d)})}
   renderSimple('recipe','recipeList',
  r=>(r.favorite==='â­ Favorite'?'â­ ':'')+(r.name||'Recipe'),
  r=>`${r.category||''} â¢ ${r.method||''}`,
  r=>`<div class="rowbuttons">
  <button class="smallbtn" onclick="addLibraryToMealPlan('${esc((r.name||'Recipe')).replace(/'/g,"&#39;")}','Dinner')">Add to Day</button>
- <button class="smallbtn" onclick="addShopping('${esc((r.ingredients||'').replace(/'/g,"&#39;"))}','Groceries','','','Soon','','Recipe: ${esc(r.name||'')}')">ð Add Ingredients to Shopping</button>
+ <button class="smallbtn" onclick="addShopping('${esc((r.ingredients||'').replace(/'/g,"&#39;"))}','Groceries','','','Soon','','Recipe: ${esc(r.name||'')}')">Add Ingredients to Shopping</button>
  </div>`);
  renderSimple('breakfast','breakfastList',r=>r.name||'Breakfast',r=>`${r.tag||''} â¢ ${r.likes||''}`,r=>`<button class="smallbtn" onclick="addLibraryToMealPlan('${esc((r.name||'Breakfast')).replace(/'/g,"&#39;")}','Breakfast')">Add to Day</button>`);
  renderSimple('lunch','lunchList',r=>r.name||'Lunch',r=>`${r.tag||''} â¢ ${r.likes||''}`,r=>`<button class="smallbtn" onclick="addLibraryToMealPlan('${esc((r.name||'Lunch')).replace(/'/g,"&#39;")}','Lunch')">Add to Day</button>`);
@@ -1711,9 +1711,9 @@ function renderCleaning(){
  <div class="field"><label>Next due / planned</label><input type="date" data-key="clean.bedding.${id}.next"></div>
  </div>
  <div class="small"><strong>Wash-day checklist</strong></div>
- <label class="task"><input type="checkbox" data-bedding-step="${id}-wash"> Washed</label>
- <label class="task"><input type="checkbox" data-bedding-step="${id}-dry"> Dried completely</label>
- <label class="task"><input type="checkbox" data-bedding-step="${id}-put"> Put away / put back on bed</label>
+ <label class="task"><input type="checkbox" data-bedding-step="${id}-wash">Washed</label>
+ <label class="task"><input type="checkbox" data-bedding-step="${id}-dry">Dried completely</label>
+ <label class="task"><input type="checkbox" data-bedding-step="${id}-put">Put away / put back on bed</label>
  </div>`).join('');
  document.querySelectorAll('[data-bedding-step]').forEach(c=>{const k=todayKey()+'|beddingstep|'+c.dataset.beddingStep;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
 
@@ -1949,7 +1949,7 @@ function renderCleaning(){
    info.items.map(([pri,task,how,tool,time])=>{
      const base=`${weekStartKey()}|${today}|${task}`;
      const steps=(how||'').split(/\s*(?:â|,|;|\+| then )\s*/i).map(x=>x.trim()).filter(Boolean);
-     return `<div class="card"><label class="task"><input type="checkbox" data-clean="${esc(base)}"><span><strong>${pri} ${esc(task)}</strong> <span class="small">(${esc(time)})</span></span></label>
+     return `<div class="card"><label class="task"><input type="checkbox" data-clean="${esc(base)}"><span><strong>${pri} ${esc(task)}</strong><span class="small">(${esc(time)})</span></span></label>
      <div class="small"><strong>Sub-checklist</strong></div>
      ${steps.map((step,i)=>`<label class="task" style="margin-left:18px"><input type="checkbox" data-clean-detail="${esc(base)}|${i}"><span>${esc(step)}</span></label>`).join('')}
      <div class="small" style="margin-left:18px"><strong>Products / tools:</strong> ${esc(tool)}</div></div>`;
@@ -1980,11 +1980,11 @@ function renderCleaning(){
    const supplies=rec('cleaningSupply');
    supplyBox.innerHTML=supplies.length?supplies.map(r=>`<div class="record">
      <div class="recordhead"><div><strong>${esc(r.name||'Cleaning item')}</strong><div class="small">${esc((r.kind||'')+' â¢ '+(r.area||'')+' â¢ '+(r.status||'Good'))}</div></div>${actionBtns('cleaningSupply',r.id)}</div>
-     <label class="task"><input type="checkbox" data-clean-have="${r.id}" ${!['Out','Replace'].includes(r.status)?'checked':''}> <strong>I have this product / tool</strong></label>
+     <label class="task"><input type="checkbox" data-clean-have="${r.id}" ${!['Out','Replace'].includes(r.status)?'checked':''}><strong>I have this product / tool</strong></label>
      <div class="field"><label>Stock / tool status</label><select data-clean-stock="${r.id}">${['Plenty','Good','Getting Low','Running Low','Out','Replace','Ordered','Restocked'].map(x=>`<option ${x===(r.status||'Good')?'selected':''}>${x}</option>`).join('')}</select></div>
      <div class="small">On hand: ${esc(r.onhand||'â')} â¢ Target: ${esc(r.target||'â')} â¢ Brand: ${esc(r.brand||'â')} â¢ Stored: ${esc(r.location||'â')} â¢ Store: ${esc(r.store||'â')}</div>
-     <label class="task"><input type="checkbox" data-clean-shop="${r.id}" ${r.addedToShopping?'checked':''}> Add / added to Master Shopping</label>
-     ${['Getting Low','Running Low','Out','Replace'].includes(r.status)?`<button class="smallbtn" data-clean-shop-btn="${r.id}">ð Add This Item to Master Shopping</button>`:''}
+     <label class="task"><input type="checkbox" data-clean-shop="${r.id}" ${r.addedToShopping?'checked':''}>Add / added to Master Shopping</label>
+     ${['Getting Low','Running Low','Out','Replace'].includes(r.status)?`<button class="smallbtn" data-clean-shop-btn="${r.id}">Add This Item to Master Shopping</button>`:''}
    </div>`).join(''):'<div class="small">No cleaning products/tools added yet.</div>';
  }
  const css=document.getElementById('cleaningSupplySummary');
@@ -2007,7 +2007,7 @@ function renderCleaning(){
   'Entry / Hall':['Shoes/bags','Mail/papers','Wipe high-touch spots','Dust ledges','Sweep/vacuum']
  };
  const weeklyBox=document.getElementById('weeklyRoomCleaning');
- if(weeklyBox)weeklyBox.innerHTML=Object.entries(weeklyRooms).map(([room,tasks])=>`<details><summary>${room}</summary>${tasks.map(task=>`<label class="task"><input type="checkbox" data-clean-weekroom="${weekStartKey()}|${esc(room)}|${esc(task)}"> ${esc(task)}</label>`).join('')}</details>`).join('');
+ if(weeklyBox)weeklyBox.innerHTML=Object.entries(weeklyRooms).map(([room,tasks])=>`<details><summary>${room}</summary>${tasks.map(task=>`<label class="task"><input type="checkbox" data-clean-weekroom="${weekStartKey()}|${esc(room)}|${esc(task)}">${esc(task)}</label>`).join('')}</details>`).join('');
  const deepRooms={
   'Kitchen':['Refrigerator shelves/drawers','Freezer inventory','Oven','Range hood/filter','Dishwasher interior/filter','Cabinet interiors one zone','Pantry shelf','Behind/under movable small appliances'],
   'Bathroom':['Shower grout/tracks','Shower curtain/liner','Cabinet/drawer interior','Exhaust vent exterior','Baseboards','Walls/doors','Under-sink declutter'],
@@ -2016,7 +2016,7 @@ function renderCleaning(){
   'Laundry':['Washer cleaning cycle','Dryer area/lint buildup accessible areas','Cabinet/shelf declutter','Baseboards','Behind machines only if safely accessible']
  };
  const deepBox=document.getElementById('deepRoomCleaning');
- if(deepBox)deepBox.innerHTML=Object.entries(deepRooms).map(([room,tasks])=>`<details><summary>${room}</summary>${tasks.map(task=>`<label class="task"><input type="checkbox" data-clean-deep="${monthKey()}|${esc(room)}|${esc(task)}"> ${esc(task)}</label>`).join('')}</details>`).join('');
+ if(deepBox)deepBox.innerHTML=Object.entries(deepRooms).map(([room,tasks])=>`<details><summary>${room}</summary>${tasks.map(task=>`<label class="task"><input type="checkbox" data-clean-deep="${monthKey()}|${esc(room)}|${esc(task)}">${esc(task)}</label>`).join('')}</details>`).join('');
  document.querySelectorAll('[data-clean-daily]').forEach(c=>{const k=todayKey()+'|dailyclean|'+c.dataset.cleanDaily;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}}); document.querySelectorAll('[data-clean-weekreview]').forEach(c=>{const k=weekStartKey()+'|cleanreview|'+c.dataset.cleanWeekreview;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
  document.querySelectorAll('[data-clean-weekroom]').forEach(c=>{c.checked=!!state.daily[c.dataset.cleanWeekroom];c.onchange=()=>{state.daily[c.dataset.cleanWeekroom]=c.checked;save()}});
  document.querySelectorAll('[data-clean-deep]').forEach(c=>{c.checked=!!state.daily[c.dataset.cleanDeep];c.onchange=()=>{state.daily[c.dataset.cleanDeep]=c.checked;save()}});
@@ -2072,7 +2072,7 @@ function renderHome(){
  <div class="field"><label>Status</label><select data-key="home.week.${day}.status"><option>Not Started</option><option>In Progress</option><option>Done</option><option>Move to Tomorrow</option><option>Skip This Week</option><option>Carry to Next Week</option></select></div>
  </div></details>`).join('');
  document.querySelectorAll('[data-home-review]').forEach(c=>{const k=weekStartKey()+'|homereview|'+c.dataset.homeReview;c.checked=!!state.daily[k];c.onchange=()=>{state.daily[k]=c.checked;save()}});
-renderSimple('repair','repairList',r=>`${r.area||'Home'} â ${r.item||r.task||'Repair / Maintenance'}`,r=>`${r.status||''} â¢ ${r.due||''} â¢ ${r.priority||''}`,r=>r.needed?`<button class="smallbtn" onclick="addShopping('${esc(r.needed).replace(/'/g,"&#39;")}','Household','','','Soon','','Home repair')">Add Parts/Supplies to Shopping</button>`:'');renderSimple('restock','restockList',r=>r.item||'Household item',r=>`${r.category||''} â¢ ${r.status||''} â¢ On hand ${r.onhand||''}`,r=>['Running Low','Out'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc((r.item||'Item')).replace(/'/g,"&#39;")}','Household','${esc(r.target||'')}','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Household Restock')">ð Add to Master Shopping</button>`:'');renderSimple('project','projectList',r=>`${r.room||'Room'} â ${r.name||'Project'}`,r=>`${r.status||''} â¢ Budget ${fmt(r.budget)} â¢ ${r.complete||''}`,r=>r.supplies?`<button class="smallbtn" onclick="addShopping('${esc(r.supplies).replace(/'/g,"&#39;")}','Household','','','Soon','','Home project')">Add Supplies to Shopping</button>`:'');renderStorage();renderSimple('appliance','applianceList',r=>r.name||'Appliance',r=>`${r.brand||''} ${r.model||''} â¢ ${r.status||''} â¢ Warranty ${r.warrantyEnd||''}`)}
+renderSimple('repair','repairList',r=>`${r.area||'Home'} â ${r.item||r.task||'Repair / Maintenance'}`,r=>`${r.status||''} â¢ ${r.due||''} â¢ ${r.priority||''}`,r=>r.needed?`<button class="smallbtn" onclick="addShopping('${esc(r.needed).replace(/'/g,"&#39;")}','Household','','','Soon','','Home repair')">Add Parts/Supplies to Shopping</button>`:'');renderSimple('restock','restockList',r=>r.item||'Household item',r=>`${r.category||''} â¢ ${r.status||''} â¢ On hand ${r.onhand||''}`,r=>['Running Low','Out'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc((r.item||'Item')).replace(/'/g,"&#39;")}','Household','${esc(r.target||'')}','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Household Restock')">Add to Master Shopping</button>`:'');renderSimple('project','projectList',r=>`${r.room||'Room'} â ${r.name||'Project'}`,r=>`${r.status||''} â¢ Budget ${fmt(r.budget)} â¢ ${r.complete||''}`,r=>r.supplies?`<button class="smallbtn" onclick="addShopping('${esc(r.supplies).replace(/'/g,"&#39;")}','Household','','','Soon','','Home project')">Add Supplies to Shopping</button>`:'');renderStorage();renderSimple('appliance','applianceList',r=>r.name||'Appliance',r=>`${r.brand||''} ${r.model||''} â¢ ${r.status||''} â¢ Warranty ${r.warrantyEnd||''}`)}
 document.getElementById('restockAllBtn').onclick=()=>rec('restock').filter(r=>['Running Low','Out'].includes(r.status)).forEach(r=>addShopping(r.item,'Household',r.target||'',r.store||'','Need Now',r.price||'','Household restock'));
 function renderStorage(){const box=document.getElementById('storageList');if(!box)return;const q=(document.getElementById('storageSearch')?.value||'').toLowerCase();const arr=rec('storage').filter(r=>!q||JSON.stringify(r).toLowerCase().includes(q));box.innerHTML=arr.map(r=>`<div class="record"><div class="recordhead"><div><strong>${esc(r.name||'Storage')}</strong><div class="small">${esc((r.location||'')+' â '+(r.exact||'')+' â¢ '+(r.container||''))}</div></div>${actionBtns('storage',r.id)}</div><div class="small">${esc(r.contents||'')}</div></div>`).join('')||'<div class="small">Nothing found.</div>'}
 document.getElementById('storageSearch').oninput=renderStorage;
@@ -2096,7 +2096,7 @@ function renderSelfCare(){
    (rows.length?rows.map(([a,b])=>`<label class="task"><input type="checkbox" data-self-today="${todayKey()}|${a}"><span><strong>${a}</strong><br>${esc(b)}</span></label>`).join(''):'<div class="small">Nothing scheduled yet for today.</div>')+
    (schedule.notes?`<div class="hint"><strong>Today notes:</strong> ${esc(schedule.notes)}</div>`:'');
  }
- const week=document.getElementById('selfcareWeek');if(week)week.innerHTML=days.slice(1).concat(days[0]).map(day=>`<details ${day===d?'open':''}><summary>${day} <span class="small" id="selfDayCount-${day}"></span></summary>
+ const week=document.getElementById('selfcareWeek');if(week)week.innerHTML=days.slice(1).concat(days[0]).map(day=>`<details ${day===d?'open':''}><summary>${day}<span class="small" id="selfDayCount-${day}"></span></summary>
 <div class="hint"><strong>Plan + check off ${day}.</strong> Use the dropdowns to choose the routine, then use the checkboxes below as the actual step-by-step checklist.</div>
 <div class="formgrid">
 <div class="field"><label>Day type</label><select data-key="selfcare.schedule.${day}.dayType"><option>Full Routine</option><option>Normal Routine</option><option>Quick / Busy Day</option><option>Low-Energy Day</option><option>Travel Day</option><option>Period Day</option><option>Recovery / Rest Day</option><option>Custom</option></select></div>
@@ -2150,47 +2150,47 @@ function renderSelfCare(){
 </details>
 
 <details><summary>AM Checklist</summary>
-<label class="task"><input type="checkbox" data-self-day="${day}|am|cleanse"> Cleanse / rinse face</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|am|treatment"> Apply planned AM treatment / serum</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|am|eyes"> Eye care if planned</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|am|moisturizer"> Moisturizer</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|am|spf"> SPF / sunscreen</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|am|lips"> Lip care</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|am|cleanse">Cleanse / rinse face</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|am|treatment">Apply planned AM treatment / serum</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|am|eyes">Eye care if planned</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|am|moisturizer">Moisturizer</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|am|spf">SPF / sunscreen</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|am|lips">Lip care</label>
 </details>
 
 <details><summary>Shower + Body Checklist</summary>
-<label class="task"><input type="checkbox" data-self-day="${day}|body|shower"> Take planned shower</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|body|wash"> Wash body</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|body|exfoliate"> Exfoliate if scheduled</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|body|shave"> Shave if scheduled / needed</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|body|moisturize"> Body lotion / moisturize</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|body|deodorant"> Deodorant / body care</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|body|shower">Take planned shower</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|body|wash">Wash body</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|body|exfoliate">Exfoliate if scheduled</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|body|shave">Shave if scheduled / needed</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|body|moisturize">Body lotion / moisturize</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|body|deodorant">Deodorant / body care</label>
 </details>
 
 <details><summary>Hair + Scalp Checklist</summary>
-<label class="task"><input type="checkbox" data-self-day="${day}|hair|brush"> Detangle / brush as needed</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|hair|wash"> Shampoo if wash day</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|hair|condition"> Conditioner if wash day</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|hair|scalp"> Scalp treatment / serum if scheduled</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|hair|mask"> Hair mask / repair if scheduled</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|hair|leavein"> Leave-in / styling product if needed</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|hair|style"> Complete planned style / refresh</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|hair|brush">Detangle / brush as needed</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|hair|wash">Shampoo if wash day</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|hair|condition">Conditioner if wash day</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|hair|scalp">Scalp treatment / serum if scheduled</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|hair|mask">Hair mask / repair if scheduled</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|hair|leavein">Leave-in / styling product if needed</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|hair|style">Complete planned style / refresh</label>
 </details>
 
 <details><summary>PM Checklist</summary>
-<label class="task"><input type="checkbox" data-self-day="${day}|pm|cleanse"> Cleanse face / remove makeup or SPF</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|pm|treatment"> Apply planned PM treatment</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|pm|spot"> Spot treatment if needed</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|pm|eyes"> Eye care if planned</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|pm|moisturizer"> Moisturizer</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|pm|lips"> Lip care</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|pm|cleanse">Cleanse face / remove makeup or SPF</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|pm|treatment">Apply planned PM treatment</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|pm|spot">Spot treatment if needed</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|pm|eyes">Eye care if planned</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|pm|moisturizer">Moisturizer</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|pm|lips">Lip care</label>
 </details>
 
 <details><summary>Extra Care Checklist</summary>
-<label class="task"><input type="checkbox" data-self-day="${day}|extra|planned"> Complete selected Extra Care task</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|extra|period"> Period care / pouch check if needed</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|extra|tools"> Clean self-care tools if scheduled</label>
-<label class="task"><input type="checkbox" data-self-day="${day}|extra|restock"> Check products used today for low stock</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|extra|planned">Complete selected Extra Care task</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|extra|period">Period care / pouch check if needed</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|extra|tools">Clean self-care tools if scheduled</label>
+<label class="task"><input type="checkbox" data-self-day="${day}|extra|restock">Check products used today for low stock</label>
 </details>
 </details>`).join('');
 
@@ -2206,7 +2206,7 @@ function renderSelfCare(){
    });
  }
  updateSelfDayCounts();
- const extra=r=>['Running Low','Out'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc(r.name||r.type||'Item').replace(/'/g,"&#39;")}','Personal / Self-Care','','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Self-Care')">ð Add to Shopping</button>`:'';
+ const extra=r=>['Running Low','Out'].includes(r.status)?`<button class="smallbtn" onclick="addShopping('${esc(r.name||r.type||'Item').replace(/'/g,"&#39;")}','Personal / Self-Care','','${esc(r.store||'').replace(/'/g,"&#39;")}','${r.status==='Out'?'Need Now':'Soon'}','${esc(r.price||'')}','Self-Care')">Add to Shopping</button>`:'';
  renderSimple('skin','skinProducts',r=>r.name||'Skincare product',r=>`${r.type||''} â¢ ${r.when||''} â¢ ${r.days||''} â¢ ${r.status||''}`,extra);
  renderSimple('body','bodyProducts',r=>r.name||'Body product',r=>`${r.type||''} â¢ ${r.days||''} â¢ ${r.status||''}`,extra);
  renderSimple('hair','hairProducts',r=>r.name||'Hair product',r=>`${r.type||''} â¢ ${r.days||''} â¢ ${r.status||''}`,extra);
@@ -2271,14 +2271,14 @@ function processBrainDump(id){
  r.status='Processed / Sent';r.processedTo=dest;r.processedDate=todayKey();save();renderAll();
 }
 function renderToday(){
- renderSimple('brainDump','todayBrainDump',x=>x.text||'Brain Dump',x=>`${x.kind||''} â¢ ${x.when||''} â¢ ${x.priority||''} â¢ ${x.status||''}`,x=>x.status==='Unprocessed'?`<button class="smallbtn" data-brain-process="${x.id}">â¡ï¸ Process / Send</button>`:'');
+ renderSimple('brainDump','todayBrainDump',x=>x.text||'Brain Dump',x=>`${x.kind||''} â¢ ${x.when||''} â¢ ${x.priority||''} â¢ ${x.status||''}`,x=>x.status==='Unprocessed'?`<button class="smallbtn" data-brain-process="${x.id}">Process / Send</button>`:'');
  document.querySelectorAll('#todayBrainDump [data-brain-process]').forEach(b=>b.onclick=()=>processBrainDump(b.dataset.brainProcess));
  const d=days[new Date().getDay()];document.getElementById('todayTitle').textContent='â­ '+d;document.getElementById('cleanFocus').textContent=cleanFocusForDay(d);document.getElementById('cleanFocus').onclick=()=>openPage('cleaning');
  const alerts=[];rec('repair').filter(r=>r.status!=='Complete'&&r.status!=='Archived'&&(r.priority==='Urgent'||r.due===todayKey())).forEach(r=>alerts.push('ð  '+(r.item||r.task||'Home item')));rec('appointment').filter(r=>r.date===todayKey()).forEach(r=>alerts.push('ð '+r.person+' â '+(r.kind||'Appointment')+' '+(r.time||'')));rec('bill').filter(r=>r.status!=='Paid'&&r.payDate===todayKey()).forEach(r=>alerts.push('ð° Pay bill: '+r.name));rec('activity').filter(r=>r.events&&r.events.includes(todayKey())).forEach(r=>alerts.push('ð '+r.person+' â '+r.name));document.getElementById('todayAlerts').innerHTML=alerts.length?alerts.map(a=>`<div class="alert">${esc(a)}</div>`).join(''):'<div class="small">Nothing flagged right now.</div>';
  renderCarry();
  const tom=days[(new Date().getDay()+1)%7],parts=[];['events','must','meal','notes'].forEach(k=>{const v=getPath('week.'+tom+'.'+k);if(v)parts.push(`${k}: ${v}`)});const meal=getPath('meal.'+tom+'.dinner');if(meal&&!parts.some(x=>x.includes(meal)))parts.push('Dinner: '+meal);document.getElementById('tomorrowPreview').textContent=tom+'\\n'+(parts.join('\\n')||'Nothing planned yet.');
 }
-function renderCarry(){const box=document.getElementById('carryList');if(!box)return;box.innerHTML=state.carry.filter(x=>!x.done).map(x=>`<label class="task"><input type="checkbox" data-carry="${x.id}"> ${esc(x.text)}</label>`).join('')||'<div class="small">Nothing waiting. â</div>';box.querySelectorAll('[data-carry]').forEach(c=>c.onchange=()=>{const x=state.carry.find(i=>i.id===c.dataset.carry);if(x)x.done=true;save();renderCarry()})}
+function renderCarry(){const box=document.getElementById('carryList');if(!box)return;box.innerHTML=state.carry.filter(x=>!x.done).map(x=>`<label class="task"><input type="checkbox" data-carry="${x.id}">${esc(x.text)}</label>`).join('')||'<div class="small">Nothing waiting. â</div>';box.querySelectorAll('[data-carry]').forEach(c=>c.onchange=()=>{const x=state.carry.find(i=>i.id===c.dataset.carry);if(x)x.done=true;save();renderCarry()})}
 document.getElementById('carryAddBtn').onclick=()=>{const f=document.getElementById('carryAdd'),v=f.value.trim();if(!v)return;state.carry.push({id:uid(),text:v,done:false});f.value='';save();renderCarry()}
 function dailyCarryForward(){const k=todayKey(),last=state.meta.lastDay;if(last&&last!==k){['today.top1','today.top2','today.top3','today.notes','today.cleanExtra','today.cleanLater'].forEach(p=>{const v=getPath(p);if(v&&String(v).trim())state.carry.push({id:uid(),text:v,done:false,from:last});state.data[p]=''});save()}state.meta.lastDay=k;save()}
 function renderAll(){bindFields();bindDaily();renderToday();renderWeek();renderPriorities();renderInboxes();renderKids();renderFamily();renderWork();renderMeals();renderMoney();renderCleaning();renderHome();renderSelfCare();renderHealth();renderShopping();renderEmergency()}
