@@ -61,7 +61,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - Cloud Sync Setup - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - Cloud Sync + Kids Link Fix - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -1537,9 +1537,9 @@ function kidProfileHTML(k){
  <details><summary>School Year</summary><div class="formgrid">
  ${field('School',p+'school',getPath(p+'school'))}${field('Grade',p+'grade',getPath(p+'grade'))}${field('School year',p+'schoolYear',getPath(p+'schoolYear'))}${field('Teacher / homeroom',p+'teacher',getPath(p+'teacher'))}${field('Start / end time',p+'schoolTimes',getPath(p+'schoolTimes'))}${field('Transportation / bus',p+'schoolTransport',getPath(p+'schoolTransport'))}${field('Teachers / staff / contacts',p+'staff',getPath(p+'staff'),'textarea',true)}${field('Schedule / subjects',p+'schedule',getPath(p+'schedule'),'textarea',true)}${field('Apps / portals (no passwords)',p+'apps',getPath(p+'apps'),'textarea',true)}${field('Lunch notes',p+'lunch',getPath(p+'lunch'),'textarea',true)}${field('Supplies / running low',p+'supplies',getPath(p+'supplies'),'textarea',true)}${field('Homework / projects / tests',p+'schoolWork',getPath(p+'schoolWork'),'textarea',true)}${field('Forms / deadlines',p+'forms',getPath(p+'forms'),'textarea',true)}${field('Important school dates',p+'schoolDates',getPath(p+'schoolDates'),'textarea',true)}${field('Friends / parent contacts',p+'friends',getPath(p+'friends'),'textarea',true)}${field('School-year notes',p+'schoolNotes',getPath(p+'schoolNotes'),'textarea',true)}
  </div></details>
- <details><summary>Personal Care & Toiletries</summary><div class="hint">Detailed inventory with Running Low / Out \u2192 Master Shopping.</div><div>${toiletries.map(t=>`<div class="record"><div class="recordhead"><div><strong>${esc(t.item||'Toiletry')}</strong><div class="small">${esc((t.category||'')+' \u2022 '+(t.status||''))}</div></div>${actionBtns('kidToiletry',t.id)}</div>${['Running Low','Out'].includes(t.status)?`<button class="smallbtn" onclick="addShopping('${esc((t.item||'Item')).replace(/'/g,"&#39;")}','Kids / School','${esc(t.target||'')}','${esc(t.store||'').replace(/'/g,"&#39;")}','Need Now','${esc(t.price||'')}','${k} toiletries')">Add to Shopping</button>`:''}</div>`).join('')||'<div class="small">No toiletries added yet.</div>'}</div><button class="smallbtn" onclick="showForm('kidToiletry',{person:'${k}'})">Add Toiletry / Product</button></details>
- <details><summary>Activities</summary><div>${acts.map(a=>`<div class="record"><div class="recordhead"><div><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.status||'')+' \u2022 '+(a.practiceDays||'')+' '+(a.practiceTime||''))}</div></div>${actionBtns('activity',a.id)}</div>${a.needed?`<div class="alert">Equipment / items needed: ${esc(a.needed)} <button class="smallbtn" onclick="addShopping('${esc(a.needed).replace(/'/g,"&#39;")}','Kids / School','','','Soon','','${k} activity')">Add to Shopping</button></div>`:''}</div>`).join('')||'<div class="small">No activities added yet.</div>'}</div><button class="smallbtn" onclick="showForm('activity',{person:'${k}'})">Add Activity</button></details>
- <details><summary>Gifts</summary><div class="hint">This is the same gift record shown under Family \u2192 Gifts by Person.</div><div>${gifts.map(g=>recordCard(g.occasion||'Gift idea',`${g.item||''} \u2022 ${g.status||''}`,actionBtns('gift',g.id))).join('')||'<div class="small">No gift ideas yet.</div>'}</div><button class="smallbtn" onclick="showGift('${k}')">Add Gift Idea</button></details>
+ <details><summary>Personal Care & Toiletries</summary><div class="hint">Detailed inventory with Running Low / Out \u2192 Master Shopping.</div><div>${toiletries.map(t=>`<div class="record"><div class="recordhead"><div><strong>${esc(t.item||'Toiletry')}</strong><div class="small">${esc((t.category||'')+' \u2022 '+(t.status||''))}</div></div>${actionBtns('kidToiletry',t.id)}</div>${['Running Low','Out'].includes(t.status)?`<button class="smallbtn" data-kid-action="shop-toiletry" data-id="${t.id}" data-person="${esc(k)}">Add to Shopping</button>`:''}</div>`).join('')||'<div class="small">No toiletries added yet.</div>'}</div><button class="smallbtn" data-kid-action="add-toiletry" data-person="${esc(k)}">Add Toiletry / Product</button></details>
+ <details><summary>Activities</summary><div>${acts.map(a=>`<div class="record"><div class="recordhead"><div><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.status||'')+' \u2022 '+(a.practiceDays||'')+' '+(a.practiceTime||''))}</div></div>${actionBtns('activity',a.id)}</div>${a.needed?`<div class="alert">Equipment / items needed: ${esc(a.needed)} <button class="smallbtn" data-kid-action="shop-activity" data-id="${a.id}" data-person="${esc(k)}">Add to Shopping</button></div>`:''}</div>`).join('')||'<div class="small">No activities added yet.</div>'}</div><button class="smallbtn" data-kid-action="add-activity" data-person="${esc(k)}">Add Activity</button></details>
+ <details><summary>Gifts</summary><div class="hint">This is the same gift record shown under Family \u2192 Gifts by Person.</div><div>${gifts.map(g=>recordCard(g.occasion||'Gift idea',`${g.item||''} \u2022 ${g.status||''}`,actionBtns('gift',g.id))).join('')||'<div class="small">No gift ideas yet.</div>'}</div><button class="smallbtn" data-kid-action="add-gift" data-person="${esc(k)}">Add Gift Idea</button></details>
  </div>`;
 }
 formBuilders.kidToiletry=r=>`<div class="formgrid">${field('Child','person',r.person||kids[0],'select',false,selectOpts(kids,r.person||kids[0]))}${field('Category','category',r.category||'Bath / Shower','select',false,selectOpts(['Bath / Shower','Oral Care','Hair Care','Skin / Body Care','Period Care','Travel Toiletries','Other'],r.category||'Bath / Shower'))}${field('Item / product','item',r.item||'')}${field('Brand','brand',r.brand||'')}${field('Preferred type / scent / size','size',r.size||'')}${field('Backup / substitute','sub',r.sub||'')}${field('Quantity to keep','target',r.target||'')}${field('Quantity on hand','onhand',r.onhand||'')}${field('Status','status',r.status||'Good','select',false,selectOpts(['Plenty','Good','Getting Low','Running Low','Out','Ordered','Refilled'],r.status||'Good'))}${field('Usual store','store',r.store||'')}${field('Usual price','price',r.price||'','number')}${field('Travel quantity / notes','travel',r.travel||'','textarea',true)}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
@@ -1766,7 +1766,44 @@ formBuilders.workCompliance=r=>`<div class="formgrid">${field('Type','kind',r.ki
 formBuilders.workAdmin=r=>`<div class="formgrid">${field('Type','kind',r.kind||'Report','select',false,selectOpts(['Invoice','Order','Report','Inspection / QVI','IVMR / MMR','BCSA','Fuel','Other'],r.kind||'Report'))}${field('Title / item','title',r.title||'')}${field('Due date','due',r.due||'','date')}${field('Status','status',r.status||'Open','select',false,selectOpts(['Open','Waiting','Submitted','Completed','Archived'],r.status||'Open'))}${field('Vendor / system / location','where',r.where||'')}${field('Amount / cost','amount',r.amount||'','number')}${field('Reference / confirmation','reference',r.reference||'')}${field('Follow-up date','followup',r.followup||'','date')}${field('Detailed notes / steps','notes',r.notes||'','textarea',true)}</div>`;
 formBuilders.gift=r=>`<div class="formgrid">${field('Person','person',r.person||kids[0],'select',false,selectOpts([...people,'Other Person'],r.person||kids[0]))}${field('Occasion','occasion',r.occasion||'Anytime','select',false,selectOpts(['Birthday','Christmas','Anytime','Experience','Stocking Stuffer','Need','Other'],r.occasion||'Anytime'))}${field('Gift / idea','item',r.item||'')}${field('Priority','priority',r.priority||'Normal','select',false,selectOpts(['High','Normal','Low'],r.priority||'Normal'))}${field('Estimated price','price',r.price||'','number')}${field('Store / website','store',r.store||'')}${field('Size / color / style','details',r.details||'')}${field('Status','status',r.status||'Idea','select',false,selectOpts(['Idea','Planning','Bought','Arrived','Hidden','Wrapped','Given'],r.status||'Idea'))}${field('Budget','budget',r.budget||'','number')}${field('Actual spent','spent',r.spent||'','number')}${field('Where hidden / stored','hidden',r.hidden||'')}${field('Notes','notes',r.notes||'','textarea',true)}</div>`;
 function showGift(person){showForm('gift',{person})}
-function renderKids(){const tabs=document.getElementById('kidTabs'),content=document.getElementById('kidContent');if(!tabs||!content)return;tabs.innerHTML=kids.map((k,i)=>`<button data-kidtab="${k}">${k}</button>`).join('');const show=k=>{content.innerHTML=kidProfileHTML(k);content.querySelectorAll('[name^="kid."]').forEach(()=>{});content.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{if(el.name.startsWith('kid.')){el.value=getPath(el.name);el.oninput=()=>setPath(el.name,el.value);el.onchange=()=>setPath(el.name,el.value)}})};tabs.querySelectorAll('[data-kidtab]').forEach(b=>b.onclick=()=>show(b.dataset.kidtab));show(kids[0])}
+function renderKids(){
+ const tabs=document.getElementById('kidTabs'),content=document.getElementById('kidContent');
+ if(!tabs||!content)return;
+ tabs.innerHTML=kids.map(k=>`<button type="button" data-kidtab="${esc(k)}">${esc(k)}</button>`).join('');
+ const show=k=>{
+   content.innerHTML=kidProfileHTML(k);
+   content.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
+     if(el.name.startsWith('kid.')){
+       el.value=getPath(el.name);
+       el.oninput=()=>setPath(el.name,el.value);
+       el.onchange=()=>setPath(el.name,el.value);
+     }
+   });
+ };
+ tabs.onclick=e=>{
+   const b=e.target.closest('[data-kidtab]');
+   if(!b)return;
+   e.preventDefault();
+   show(b.dataset.kidtab);
+ };
+ content.onclick=e=>{
+   const b=e.target.closest('[data-kid-action]');
+   if(!b)return;
+   e.preventDefault();
+   const person=b.dataset.person||kids[0],action=b.dataset.kidAction,id=b.dataset.id;
+   if(action==='add-toiletry')showForm('kidToiletry',{person});
+   else if(action==='add-activity')showForm('activity',{person});
+   else if(action==='add-gift')showGift(person);
+   else if(action==='shop-toiletry'){
+     const t=rec('kidToiletry').find(x=>String(x.id)===String(id));if(!t)return;
+     addShopping(t.item||'Item','Kids / School',t.target||'',t.store||'','Need Now',t.price||'',person+' toiletries');
+   }else if(action==='shop-activity'){
+     const a=rec('activity').find(x=>String(x.id)===String(id));if(!a)return;
+     addShopping(a.needed||a.name||'Activity item','Kids / School','','','Soon','',person+' activity');
+   }
+ };
+ show(kids[0]);
+}
 function renderFamily(){renderSimple('transport','transportation',r=>`${r.person||'Family'} \u2014 ${r.kind||'Transportation'}`,r=>`${r.date||''} ${r.leave||''} \u2022 ${r.morning||r.afternoon||''}`);const acts=document.getElementById('familyActivities');if(acts)acts.innerHTML=kids.map(k=>`<h3>${k}</h3>${rec('activity').filter(a=>a.person===k&&a.status!=='Finished / Archived').map(a=>`<div class="record"><strong>${esc(a.name||'Activity')}</strong><div class="small">${esc((a.practiceDays||'')+' '+(a.practiceTime||'')+' \u2022 '+(a.location||''))}</div><div class="small">Fees: ${fmt(a.fee)} \u2022 Due: ${esc(a.feeDue||'')} \u2022 Needed: ${esc(a.needed||'')}</div></div>`).join('')||'<div class="small">No active activities.</div>'}`).join('');
  const ft=document.getElementById('familyTime');if(ft)ft.innerHTML=`<h3>Planned Outings</h3>${rec('outing').map(r=>recordCard(r.name||'Outing',`${r.date||''} \u2022 ${r.status||''} \u2022 ${fmt(r.budget)}`,actionBtns('outing',r.id))).join('')||'<div class="small">No outings.</div>'}<h3>Trips</h3>${rec('trip').map(r=>recordCard(r.name||'Trip',`${r.depart||''} \u2192 ${r.returnDate||''} \u2022 ${r.destination||''}`,actionBtns('trip',r.id))).join('')||'<div class="small">No trips.</div>'}`;
  const gp=document.getElementById('giftPeople');if(gp)gp.innerHTML=[...people,'Other Person'].map(p=>`<h3>${p}</h3>${rec('gift').filter(g=>g.person===p).map(g=>`<div class="record"><strong>${esc(g.item||'Gift idea')}</strong><div class="small">${esc((g.occasion||'')+' \u2022 '+(g.status||''))} \u2022 ${fmt(g.spent||g.price)}</div>${actionBtns('gift',g.id)}</div>`).join('')||'<div class="small">No gift ideas.</div>'}<button class="smallbtn" onclick="showGift('${p}')">Add Gift</button>`).join('');
