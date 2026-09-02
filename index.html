@@ -45,28 +45,31 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 .title-icon{width:1.15em;height:1.15em;vertical-align:-0.18em;margin-right:.38em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 .emoji-img{width:1.35em;height:1.35em;vertical-align:-0.28em;margin-right:.38em;display:inline-block;overflow:visible}
+
+.emoji-art{width:1.45em;height:1.45em;display:inline-block;vertical-align:-0.34em;margin-right:.42em;overflow:visible}
+.navbtn .emoji-art{width:1.7em;height:1.7em;vertical-align:-0.48em;margin-right:.45em}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark">&#x1F3E1;</div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.5 - Color emoji-style graphics â¢ Quick View â Walkthrough â Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>Consolidated fixes v6.6 - Verified visible emoji-style graphics â¢ Quick View â Walkthrough â Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate">Today</h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
 <div class="navgrid">
-<button class="navbtn" data-go="today" onclick="window.MLHQGo && window.MLHQGo('today')">â­ Today<span>Daily dashboard + routines</span></button>
-<button class="navbtn" data-go="week" onclick="window.MLHQGo && window.MLHQGo('week')">Week & Planning<span>Priorities, To-Do Inbox, Schedule Inbox</span></button>
-<button class="navbtn" data-go="kids" onclick="window.MLHQGo && window.MLHQGo('kids')">Kids + School<span>Named profiles, school year, toiletries, activities</span></button>
-<button class="navbtn" data-go="family" onclick="window.MLHQGo && window.MLHQGo('family')">Family<span>Transportation, activities, family time, gifts</span></button>
-<button class="navbtn" data-go="work" onclick="window.MLHQGo && window.MLHQGo('work')">Work<span>Daily/weekly workflows + trackers</span></button>
-<button class="navbtn" data-go="meals" onclick="window.MLHQGo && window.MLHQGo('meals')">Meals<span>Weekly plan + recipes + breakfast/lunch/snacks</span></button>
-<button class="navbtn" data-go="money" onclick="window.MLHQGo && window.MLHQGo('money')">Money<span>Bills, pay, budgets, savings, debt</span></button>
-<button class="navbtn" data-go="cleaning" onclick="window.MLHQGo && window.MLHQGo('cleaning')">Cleaning<span>Your existing daily/weekly cleaning system</span></button>
-<button class="navbtn" data-go="homeLife" onclick="window.MLHQGo && window.MLHQGo('homeLife')">Home<span>Maintenance, restock, projects, storage, equipment</span></button>
-<button class="navbtn" data-go="selfcare" onclick="window.MLHQGo && window.MLHQGo('selfcare')">Me + Self-Care<span>Exact days, products, routines, travel</span></button>
-<button class="navbtn" data-go="health" onclick="window.MLHQGo && window.MLHQGo('health')">Health<span>Mood, symptoms, migraine, period, household health</span></button>
-<button class="navbtn" data-go="shopping" onclick="window.MLHQGo && window.MLHQGo('shopping')">Master Shopping<span>Everything to buy in one list</span></button>
-<button class="navbtn" data-go="emergency" onclick="window.MLHQGo && window.MLHQGo('emergency')">Emergency<span>Fast household emergency reference</span></button>
-<button class="navbtn" data-go="help" onclick="window.MLHQGo && window.MLHQGo('help')">How to Use<span>Walkthroughs + where things belong</span></button>
+<button class="navbtn" data-go="today" onclick="window.MLHQGo && window.MLHQGo('today')"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="42" rx="8" fill="#fff" stroke="#555" stroke-width="3"/><rect x="9" y="13" width="46" height="13" rx="8" fill="#ff5d73"/><path d="M19 8v12M45 8v12" stroke="#555" stroke-width="4"/><circle cx="22" cy="37" r="3" fill="#5b8def"/><circle cx="32" cy="37" r="3" fill="#5b8def"/><circle cx="42" cy="37" r="3" fill="#5b8def"/><circle cx="22" cy="47" r="3" fill="#5b8def"/><circle cx="32" cy="47" r="3" fill="#5b8def"/></svg>Today<span>Daily dashboard + routines</span></button>
+<button class="navbtn" data-go="week" onclick="window.MLHQGo && window.MLHQGo('week')"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="46" rx="8" fill="#f8fbff" stroke="#555" stroke-width="3"/><rect x="8" y="10" width="48" height="12" rx="8" fill="#7b61ff"/><path d="M18 7v9M46 7v9" stroke="#555" stroke-width="4"/><path d="M18 31h8M32 31h8M18 40h8M32 40h8M18 49h8M32 49h8" stroke="#7b61ff" stroke-width="4"/></svg>Week & Planning<span>Priorities, To-Do Inbox, Schedule Inbox</span></button>
+<button class="navbtn" data-go="kids" onclick="window.MLHQGo && window.MLHQGo('kids')"><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="23" cy="22" r="10" fill="#ffd7b5"/><circle cx="43" cy="24" r="9" fill="#ffd7b5"/><path d="M12 56c1-14 8-21 18-21s17 7 18 21" fill="#82c7ff" stroke="#555" stroke-width="3"/><path d="M32 56c1-12 6-18 14-18s13 6 14 18" fill="#ff9ec4" stroke="#555" stroke-width="3"/></svg>Kids + School<span>Named profiles, school year, toiletries, activities</span></button>
+<button class="navbtn" data-go="family" onclick="window.MLHQGo && window.MLHQGo('family')"><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="20" cy="19" r="8" fill="#ffd7b5"/><circle cx="44" cy="19" r="8" fill="#ffd7b5"/><circle cx="32" cy="34" r="7" fill="#ffd7b5"/><path d="M8 55c1-12 6-19 12-19s11 7 12 19M32 55c1-12 6-19 12-19s11 7 12 19M22 58c1-10 4-16 10-16s9 6 10 16" fill="#9ad58b" stroke="#555" stroke-width="3"/></svg>Family<span>Transportation, activities, family time, gifts</span></button>
+<button class="navbtn" data-go="work" onclick="window.MLHQGo && window.MLHQGo('work')"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="8" y="21" width="48" height="33" rx="6" fill="#a66a3f" stroke="#4b3425" stroke-width="3"/><path d="M23 21v-8h18v8" fill="none" stroke="#4b3425" stroke-width="4"/><rect x="27" y="33" width="10" height="8" rx="2" fill="#ffd166"/></svg>Work<span>Daily/weekly workflows + trackers</span></button>
+<button class="navbtn" data-go="meals" onclick="window.MLHQGo && window.MLHQGo('meals')"><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg>Meals<span>Weekly plan + recipes + breakfast/lunch/snacks</span></button>
+<button class="navbtn" data-go="money" onclick="window.MLHQGo && window.MLHQGo('money')"><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#70d47b" stroke="#2f7f3b" stroke-width="3"/><text x="32" y="43" text-anchor="middle" font-family="Arial" font-size="31" font-weight="700" fill="#fff">$</text></svg>Money<span>Bills, pay, budgets, savings, debt</span></button>
+<button class="navbtn" data-go="cleaning" onclick="window.MLHQGo && window.MLHQGo('cleaning')"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M20 48l17-36 12 6-17 36z" fill="#ffd166" stroke="#555" stroke-width="3"/><path d="M8 49h25l-6 9H6z" fill="#73c77d" stroke="#555" stroke-width="3"/></svg>Cleaning<span>Your existing daily/weekly cleaning system</span></button>
+<button class="navbtn" data-go="homeLife" onclick="window.MLHQGo && window.MLHQGo('homeLife')"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg>Home<span>Maintenance, restock, projects, storage, equipment</span></button>
+<button class="navbtn" data-go="selfcare" onclick="window.MLHQGo && window.MLHQGo('selfcare')"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="23" y="7" width="18" height="9" rx="2" fill="#777"/><path d="M26 16v7l-6 6v27h24V29l-6-6v-7z" fill="#f6a8ce" stroke="#555" stroke-width="3"/><rect x="24" y="34" width="16" height="11" rx="3" fill="#fff"/></svg>Me + Self-Care<span>Exact days, products, routines, travel</span></button>
+<button class="navbtn" data-go="health" onclick="window.MLHQGo && window.MLHQGo('health')"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M32 55S7 41 7 22c0-11 14-16 25-3 11-13 25-8 25 3 0 19-25 33-25 33z" fill="#ff4e6a" stroke="#c62944" stroke-width="3"/><path d="M21 32h7l4-9 5 18 4-9h7" fill="none" stroke="#fff" stroke-width="3"/></svg>Health<span>Mood, symptoms, migraine, period, household health</span></button>
+<button class="navbtn" data-go="shopping" onclick="window.MLHQGo && window.MLHQGo('shopping')"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M8 14h8l6 27h26l7-20H19" fill="#87c8ff" stroke="#555" stroke-width="3"/><circle cx="27" cy="52" r="4" fill="#555"/><circle cx="46" cy="52" r="4" fill="#555"/></svg>Master Shopping<span>Everything to buy in one list</span></button>
+<button class="navbtn" data-go="emergency" onclick="window.MLHQGo && window.MLHQGo('emergency')"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M32 7l27 48H5z" fill="#ff5d5d" stroke="#a22" stroke-width="3"/><rect x="29" y="22" width="6" height="18" rx="3" fill="#fff"/><circle cx="32" cy="47" r="3" fill="#fff"/></svg>Emergency<span>Fast household emergency reference</span></button>
+<button class="navbtn" data-go="help" onclick="window.MLHQGo && window.MLHQGo('help')"><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#8b7cf6" stroke="#5546c4" stroke-width="3"/><text x="32" y="44" text-anchor="middle" font-family="Arial" font-size="35" font-weight="700" fill="#fff">?</text></svg>How to Use<span>Walkthroughs + where things belong</span></button>
 </div>
 <div class="card">
 <h2>Data</h2>
@@ -78,7 +81,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="today" class="page">
 <div class="topbar"><button class="back">â Home</button></div>
-<div class="todayhero"><h2 id="todayTitle">â­ Today</h2><div class="small">What matters today, without opening everything.</div></div>
+<div class="todayhero"><h2 id="todayTitle"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="42" rx="8" fill="#fff" stroke="#555" stroke-width="3"/><rect x="9" y="13" width="46" height="13" rx="8" fill="#ff5d73"/><path d="M19 8v12M45 8v12" stroke="#555" stroke-width="4"/><circle cx="22" cy="37" r="3" fill="#5b8def"/><circle cx="32" cy="37" r="3" fill="#5b8def"/><circle cx="42" cy="37" r="3" fill="#5b8def"/><circle cx="22" cy="47" r="3" fill="#5b8def"/><circle cx="32" cy="47" r="3" fill="#5b8def"/></svg>Today</h2><div class="small">What matters today, without opening everything.</div></div>
 <div class="quickgrid">
 <div class="card"><h3>â­ Top 3</h3><input data-key="today.top1" placeholder="1. Most important"><input data-key="today.top2" placeholder="2. Next"><input data-key="today.top3" placeholder="3. If I can"></div>
 <div class="card"><h3>Dinner</h3><input data-key="today.dinner" placeholder="Dinner"><textarea data-key="today.dinnerPrep" placeholder="Thaw / prep / pickup note"></textarea></div>
@@ -109,7 +112,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </section>
 
 <section id="week" class="page">
-<div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Week & Planning</h2>
+<div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="46" rx="8" fill="#f8fbff" stroke="#555" stroke-width="3"/><rect x="8" y="10" width="48" height="12" rx="8" fill="#7b61ff"/><path d="M18 7v9M46 7v9" stroke="#555" stroke-width="4"/><path d="M18 31h8M32 31h8M18 40h8M32 40h8M18 49h8M32 49h8" stroke="#7b61ff" stroke-width="4"/></svg>Week & Planning</h2>
 <details open><summary> Weekly Walkthrough Tasks</summary>
 <div class="hint"><strong>Choose from the dropdowns or select âAdd My Ownâ.</strong> You can set up several tasks for the week without retyping common things.</div>
 
@@ -146,9 +149,9 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Start This Week</summary><div class="walkstep"><div class="num">1</div><div>Check calendar and appointments.</div></div><div class="walkstep"><div class="num">2</div><div>Process To-Do + Schedule Inboxes.</div></div><div class="walkstep"><div class="num">3</div><div>Check kids, family, work, bills, meals and home.</div></div><div class="walkstep"><div class="num">4</div><div>Choose Top 5 priorities.</div></div></details>
 </div></section>
 
-<section id="kids" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Kids + School</h2><div class="tabs" id="kidTabs"></div><div id="kidContent"></div></div></section>
+<section id="kids" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="23" cy="22" r="10" fill="#ffd7b5"/><circle cx="43" cy="24" r="9" fill="#ffd7b5"/><path d="M12 56c1-14 8-21 18-21s17 7 18 21" fill="#82c7ff" stroke="#555" stroke-width="3"/><path d="M32 56c1-12 6-18 14-18s13 6 14 18" fill="#ff9ec4" stroke="#555" stroke-width="3"/></svg>Kids + School</h2><div class="tabs" id="kidTabs"></div><div id="kidContent"></div></div></section>
 
-<section id="family" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Family</h2>
+<section id="family" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="20" cy="19" r="8" fill="#ffd7b5"/><circle cx="44" cy="19" r="8" fill="#ffd7b5"/><circle cx="32" cy="34" r="7" fill="#ffd7b5"/><path d="M8 55c1-12 6-19 12-19s11 7 12 19M32 55c1-12 6-19 12-19s11 7 12 19M22 58c1-10 4-16 10-16s9 6 10 16" fill="#9ad58b" stroke="#555" stroke-width="3"/></svg>Family</h2>
 <details open><summary>Transportation</summary><div class="hint">Household transportation command center. Kid-specific school transportation can also be seen from each childâs School Year profile.</div><div id="transportation"></div><button class="smallbtn" data-add-record="transport">Add Transportation Plan / Change</button></details>
 <details><summary>Kids Activities â Family Overview</summary><div class="hint">This reads the activities stored under each child. Edit the activity in the childâs profile so you only enter it once.</div><div id="familyActivities"></div></details>
 <details><summary>Family Time + Trips</summary><div id="familyTime"></div><button class="smallbtn" data-add-record="outing">Plan Family Time</button><button class="smallbtn" data-add-record="trip">Plan a Trip</button></details>
@@ -156,7 +159,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Important Contacts</summary><div id="familyContacts"></div><button class="smallbtn" data-add-record="contact">Add Contact</button></details>
 </div></section>
 
-<section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2> Work Command Center</h2>
+<section id="work" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><rect x="8" y="21" width="48" height="33" rx="6" fill="#a66a3f" stroke="#4b3425" stroke-width="3"/><path d="M23 21v-8h18v8" fill="none" stroke="#4b3425" stroke-width="4"/><rect x="27" y="33" width="10" height="8" rx="2" fill="#ffd166"/></svg>Work Command Center</h2>
 <div class="quickgrid"><div class="card"><h3>Run Board</h3><div class="formgrid">
 <div class="field"><label>Shift</label><select id="workShiftFilter"><option>All</option><option>AM</option><option>PM</option><option>Team</option></select></div>
 <div class="field"><label>Status</label><select id="workStatusFilter"><option>All</option><option>Scheduled</option><option>Driver Confirmed</option><option>Ready</option><option>Dispatched</option><option>Delayed</option><option>Held</option><option>Completed</option><option>Cancelled</option></select></div>
@@ -274,7 +277,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="meals" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>&#xFE0F; Meals</h2>
+<section id="meals" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg>&#xFE0F; Meals</h2>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping â Groceries.</div><div id="mealWeek"></div></details>
 <details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Meal Plan</strong> on any recipe, breakfast, lunch, or snack. Choose the day and meal slot, then save.</div><div id="recipeList"></div><button class="smallbtn" data-add-record="recipe">Add Meal / Recipe</button></details>
 <details><summary> Breakfast Library</summary><div id="breakfastList"></div><button class="smallbtn" data-add-record="breakfast">Add Breakfast</button></details>
@@ -282,7 +285,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary> Snack Library</summary><div id="snackList"></div><button class="smallbtn" data-add-record="snack">Add Snack</button></details>
 </div></section>
 
-<section id="money" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2> Money Command Center</h2><div id="moneySummary" class="alert"></div>
+<section id="money" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#70d47b" stroke="#2f7f3b" stroke-width="3"/><text x="32" y="43" text-anchor="middle" font-family="Arial" font-size="31" font-weight="700" fill="#fff">$</text></svg>Money Command Center</h2><div id="moneySummary" class="alert"></div>
 <details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">Add Bill</button></details>
 <details><summary>Income + Pay</summary><div id="incomeList"></div><button class="smallbtn" data-add-record="income">Add Paycheck / Income</button></details>
 
@@ -351,7 +354,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="cleaning" class="page">
 <div class="topbar"><button class="back">â Home</button></div>
-<div class="card"><h2> Cleaning Command Center</h2>
+<div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><path d="M20 48l17-36 12 6-17 36z" fill="#ffd166" stroke="#555" stroke-width="3"/><path d="M8 49h25l-6 9H6z" fill="#73c77d" stroke="#555" stroke-width="3"/></svg>Cleaning Command Center</h2>
 <div class="hint"><strong>Cleaning = recurring upkeep.</strong> Home = repairs, maintenance, projects, storage, appliances and restock. Use the color priority when you need a fast reset: &#x1F534; must do, &#x1F7E1; should do, &#x1F7E2; can wait.</div>
 
 <div class="quickgrid">
@@ -780,7 +783,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="homeLife" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2> Home</h2>
+<section id="homeLife" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg>Home</h2>
 <details open><summary>Weekly Home Planner</summary>
 <div class="formgrid">
 <div class="field"><label>Week of</label><input type="date" data-key="home.week.start"></div>
@@ -815,7 +818,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Appliances & Equipment</summary><div id="applianceList"></div><button class="smallbtn" data-add-record="appliance">Add Appliance / Equipment</button></details>
 </div></section>
 
-<section id="selfcare" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Me + Self-Care</h2>
+<section id="selfcare" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><rect x="23" y="7" width="18" height="9" rx="2" fill="#777"/><path d="M26 16v7l-6 6v27h24V29l-6-6v-7z" fill="#f6a8ce" stroke="#555" stroke-width="3"/><rect x="24" y="34" width="16" height="11" rx="3" fill="#fff"/></svg>Me + Self-Care</h2>
 <div class="hint"><strong>Open this and know exactly what to do today.</strong> Routines, products, low-stock items and travel care stay connected.</div>
 <details open><summary>Todayâs Self-Care</summary><div id="selfcareToday"></div></details>
 <details open><summary>Weekly Self-Care Planner</summary>
@@ -1023,7 +1026,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <details><summary>Walk Me Through Today</summary><div class="walkstep"><div class="num">1</div><div>Check todayâs schedule.</div></div><div class="walkstep"><div class="num">2</div><div>Complete AM skincare in order.</div></div><div class="walkstep"><div class="num">3</div><div>Do shower/body and hair/scalp only if scheduled.</div></div><div class="walkstep"><div class="num">4</div><div>Complete PM skincare.</div></div><div class="walkstep"><div class="num">5</div><div>Update low product status while using items.</div></div><div class="walkstep"><div class="num">6</div><div>Once weekly, send Running Low/Out items to Shopping.</div></div></details>
 </div></section>
 <section id="health" class="page"><div class="topbar"><button class="back">â Home</button></div>
-<div class="card"><h2>&#xFE0F; Health + Wellness</h2><details open><summary>Health Profile + Preferences â Everyone</summary><div class="hint">Planning details for each person.</div><div id="healthProfiles"></div></details>
+<div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><path d="M32 55S7 41 7 22c0-11 14-16 25-3 11-13 25-8 25 3 0 19-25 33-25 33z" fill="#ff4e6a" stroke="#c62944" stroke-width="3"/><path d="M21 32h7l4-9 5 18 4-9h7" fill="none" stroke="#fff" stroke-width="3"/></svg>&#xFE0F; Health + Wellness</h2><details open><summary>Health Profile + Preferences â Everyone</summary><div class="hint">Planning details for each person.</div><div id="healthProfiles"></div></details>
 <div class="hint"><strong>Start with Who is this for?</strong> Then use dropdowns/multi-selects so you are not forced to type everything into notes.</div>
 
 <div class="quickgrid">
@@ -1066,7 +1069,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="shopping" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2>Master Shopping List</h2>
+<section id="shopping" class="page"><div class="topbar"><button class="back">â Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><path d="M8 14h8l6 27h26l7-20H19" fill="#87c8ff" stroke="#555" stroke-width="3"/><circle cx="27" cy="52" r="4" fill="#555"/><circle cx="46" cy="52" r="4" fill="#555"/></svg>Master Shopping List</h2>
 <div class="formgrid"><div class="field"><label>Quick item</label><input id="shopQuick"></div><div class="field"><label>Category</label><select id="shopCategory"><option>Groceries</option><option>Household</option><option>Personal / Self-Care</option><option>Kids / School</option><option>Pets</option><option>Car</option><option>Health</option><option>Gifts</option><option>Trip / Family Time</option><option>Wishlist / Other</option></select></div><div class="field"><label>Quantity</label><input id="shopQty"></div><div class="field"><label>Store</label><input id="shopStore"></div><div class="field"><label>Priority</label><select id="shopPriority"><option>Need Now</option><option>Soon</option><option>Whenever</option></select></div><div class="field"><label>Estimated price</label><input id="shopPrice" type="number" step=".01"></div></div>
 <button id="shopAddBtn" class="action">Add to Master List</button>
 <div class="formgrid"><div class="field"><label>Store View</label><input id="shopFilterStore" placeholder="Walmart"></div><div class="field"><label>Category Filter</label><select id="shopFilterCat"><option value="">All</option><option>Groceries</option><option>Household</option><option>Personal / Self-Care</option><option>Kids / School</option><option>Pets</option><option>Car</option><option>Health</option><option>Gifts</option><option>Trip / Family Time</option><option>Wishlist / Other</option></select></div></div>
@@ -1075,7 +1078,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="emergency" class="page">
 <div class="topbar"><button class="back">â Home</button></div>
-<div class="card"><h2>In Case of Emergency</h2>
+<div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><path d="M32 7l27 48H5z" fill="#ff5d5d" stroke="#a22" stroke-width="3"/><rect x="29" y="22" width="6" height="18" rx="3" fill="#fff"/><circle cx="32" cy="47" r="3" fill="#fff"/></svg>In Case of Emergency</h2>
 <div class="alert"><strong>Quick rule:</strong> If there is immediate danger, get to safety and contact the appropriate emergency service first. This page organizes the household plan; it does not replace emergency services.</div>
 
 <details open><summary>Start Emergency Walkthrough</summary>
@@ -2301,3 +2304,4 @@ document.getElementById('homeDate').textContent=new Date().toLocaleDateString(un
 load();seedDefaults();dailyCarryForward();renderAll();
 </script>
 </body>
+</html>
