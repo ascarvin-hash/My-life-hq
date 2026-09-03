@@ -76,10 +76,17 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 .section-toggle.off{opacity:.6;text-decoration:line-through}
 .card-hide-btn{float:right;margin-left:8px;padding:4px 8px;border:1px solid var(--line);border-radius:9px;background:var(--soft);font-size:12px;cursor:pointer}
 .user-hidden-section{display:none!important}
+
+.week-source{margin:7px 0;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.week-source-title{font-size:12px;font-weight:800;margin-bottom:5px}
+.week-check{display:flex;gap:8px;align-items:flex-start;margin:5px 0}
+.week-check input{margin-top:3px;flex:0 0 auto}
+.week-detail{font-size:12px;opacity:.82;margin-left:25px}
+.week-empty{font-size:12px;opacity:.65}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v11.0 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v11.1 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +115,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v11.0 - Auto-Filled This Week</div>
+<div class="alert"><strong>Current App Version:</strong> v11.1 - Detailed Weekly Checklists</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -282,7 +289,7 @@ try{
 <strong>Manual:</strong> only Must Do / Extra Notes that do not belong in another section.
 </div>
 </details><details open><summary>This Week - Auto-Filled Dashboard</summary>
-<div class="hint"><strong>Do not retype what already exists.</strong> Dinner comes from Meals; dated items come from Appointments/Schedule, Money, Kids/Activities, Family Transportation and Work; Cleaning shows the daily focus. Use My Additions only for something that has no better home.</div>
+<div class="hint"><strong>Do not retype what already exists.</strong> Each day now shows detailed auto-filled cards with checkboxes. Check an item off here as you handle it. Dinner comes from Meals; dated items come from Appointments/Schedule, Money, Kids/Activities, Family Transportation and Work; Cleaning shows the daily focus. Use My Additions only for something that has no better home.</div>
 <div id="weekDays"></div></details>
 <details open><summary>Sunday Review + Carry Forward</summary>
 <div class="hint"><strong>Use this once on Sunday.</strong> Close the current week, move unfinished items forward, and set up the next week.</div>
@@ -2597,81 +2604,91 @@ function renderWeek(){
 
  const box=document.getElementById('weekDays');if(!box)return;
 
- // This Week is a dashboard: pull information from the sections where it already lives.
  const weekStart=new Date(weekStartKey()+'T00:00:00');
  const dayDate={};
- days.forEach((day,i)=>{
-   const dt=new Date(weekStart);dt.setDate(dt.getDate()+i);
-   dayDate[day]=dt.toISOString().slice(0,10);
- });
+ days.forEach((day,i)=>{const dt=new Date(weekStart);dt.setDate(dt.getDate()+i);dayDate[day]=dt.toISOString().slice(0,10)});
+ const dateInRange=(date,start,end)=>{if(!date)return false;const a=start||date,b=end||start||date;return date>=a&&date<=b};
+ const checked=(key)=>state.daily?.[key]?'checked':'';
+ const wkCheck=(date,key,label,detail='')=>`<label class="week-check"><input type="checkbox" data-week-check="${esc(date+'|week|'+key)}" ${checked(date+'|week|'+key)}><span>${label}</span></label>${detail?`<div class="week-detail">${detail}</div>`:''}`;
 
- const dateInRange=(date,start,end)=>{
-   if(!date)return false;
-   const a=start||date,b=end||start||date;
-   return date>=a&&date<=b;
- };
- const eventLinesFor=(day,date)=>{
-   const lines=[];
+ const sourceBlocksFor=(day,date)=>{
+   const blocks=[];
 
-   // Appointments / Health
-   rec('appointment').filter(r=>r.date===date&&!['Cancelled'].includes(r.status)).forEach(r=>{
-     lines.push(`<div><strong>Appointment:</strong> ${esc(r.person||'')} ${esc(r.kind||r.provider||'Appointment')} ${esc(r.time||'')}</div>`);
-   });
+   // Meals
+   const dinner=getPath('meal.'+day+'.dinner')||'';
+   const prep=getPath('meal.'+day+'.prep')||'';
+   const mealNotes=getPath('meal.'+day+'.notes')||'';
+   blocks.push(`<div class="week-source"><div class="week-source-title">MEALS</div>
+     ${wkCheck(date,'dinner','Dinner: '+esc(dinner||'Nothing planned'),
+       [prep?'<strong>Prep / thaw:</strong> '+esc(prep):'',mealNotes?'<strong>Notes:</strong> '+esc(mealNotes):''].filter(Boolean).join('<br>'))}
+   </div>`);
 
-   // Schedule Inbox / scheduled items
-   rec('schedule').filter(r=>r.date===date).forEach(r=>{
-     lines.push(`<div><strong>${esc(r.kind||'Scheduled')}:</strong> ${esc(r.title||'')} ${esc(r.time||'')}</div>`);
-   });
+   // Cleaning
+   const clean=cleanFocusForDay(day)||'No cleaning focus';
+   blocks.push(`<div class="week-source"><div class="week-source-title">CLEANING</div>
+     ${wkCheck(date,'cleaning','Cleaning focus: '+esc(clean),'Open Cleaning for the detailed room/task checklist.')}
+   </div>`);
 
-   // Bills - planned payment date
-   rec('bill').filter(r=>r.status!=='Paid'&&(r.payDate===date||r.paidDate===date)).forEach(r=>{
-     lines.push(`<div><strong>Money:</strong> ${esc(r.name||'Bill')} ${r.amount?fmt(r.amount):''}</div>`);
-   });
+   // Appointments and schedule
+   const appointments=rec('appointment').filter(r=>r.date===date&&!['Cancelled'].includes(r.status));
+   const schedules=rec('schedule').filter(r=>r.date===date);
+   if(appointments.length||schedules.length){
+     let html='<div class="week-source"><div class="week-source-title">APPOINTMENTS / SCHEDULE</div>';
+     appointments.forEach(r=>html+=wkCheck(date,'appt-'+r.id,
+       `${esc(r.person||'')} — ${esc(r.kind||'Appointment')}`,
+       [r.time?'<strong>Time:</strong> '+esc(r.time):'',r.provider?'<strong>Place:</strong> '+esc(r.provider):'',r.reason?'<strong>Reason:</strong> '+esc(r.reason):'',r.prepType?'<strong>Prep:</strong> '+esc(r.prepType):'',r.status?'<strong>Status:</strong> '+esc(r.status):''].filter(Boolean).join('<br>')));
+     schedules.forEach(r=>html+=wkCheck(date,'schedule-'+r.id,
+       `${esc(r.kind||'Scheduled')}: ${esc(r.title||'')}`,
+       [r.time?'<strong>Time:</strong> '+esc(r.time):'',r.who?'<strong>Who:</strong> '+esc(r.who):'',r.priority?'<strong>Priority:</strong> '+esc(r.priority):'',r.notes?'<strong>Details:</strong> '+esc(r.notes):''].filter(Boolean).join('<br>')));
+     blocks.push(html+'</div>');
+   }
 
-   // Kids activities: an ISO date listed in Events / games
-   rec('activity').filter(r=>r.status!=='Finished / Archived'&&String(r.events||'').includes(date)).forEach(r=>{
-     lines.push(`<div><strong>Kids:</strong> ${esc(r.person||'')} — ${esc(r.name||'Activity')}</div>`);
-   });
+   // Money
+   const bills=rec('bill').filter(r=>r.status!=='Paid'&&r.payDate===date);
+   const income=rec('income').filter(r=>(r.actualDate||r.expectedDate)===date);
+   if(bills.length||income.length){
+     let html='<div class="week-source"><div class="week-source-title">MONEY</div>';
+     bills.forEach(r=>html+=wkCheck(date,'bill-'+r.id,`Pay ${esc(r.name||'Bill')} — ${fmt(r.amount||0)}`,
+       [r.who?'<strong>Who pays:</strong> '+esc(r.who):'',r.method?'<strong>Method:</strong> '+esc(r.method):'',r.autopay?'<strong>Autopay:</strong> '+esc(r.autopay):'',r.status?'<strong>Status:</strong> '+esc(r.status):''].filter(Boolean).join('<br>')));
+     income.forEach(r=>html+=wkCheck(date,'income-'+r.id,`${esc(r.person||'')} payday — ${esc(r.source||'Income')}`,
+       `<strong>Expected:</strong> ${fmt(r.expected||0)}${r.actual?'<br><strong>Actual:</strong> '+fmt(r.actual):''}`));
+     blocks.push(html+'</div>');
+   }
 
-   // Family transportation changes effective that day
-   rec('transport').filter(r=>r.date===date).forEach(r=>{
-     lines.push(`<div><strong>Transportation:</strong> ${esc(r.person||'')} — ${esc(r.kind||'Plan / Change')}</div>`);
-   });
+   // Kids/family
+   const acts=rec('activity').filter(r=>r.status!=='Finished / Archived'&&String(r.events||'').includes(date));
+   const trans=rec('transport').filter(r=>r.date===date);
+   if(acts.length||trans.length){
+     let html='<div class="week-source"><div class="week-source-title">KIDS / FAMILY</div>';
+     acts.forEach(r=>html+=wkCheck(date,'activity-'+r.id,`${esc(r.person||'')} — ${esc(r.name||'Activity')}`,
+       [r.practiceTime?'<strong>Time:</strong> '+esc(r.practiceTime):'',r.location?'<strong>Location:</strong> '+esc(r.location):'',r.bring?'<strong>Bring:</strong> '+esc(r.bring):'',r.transport?'<strong>Transportation:</strong> '+esc(r.transport):''].filter(Boolean).join('<br>')));
+     trans.forEach(r=>html+=wkCheck(date,'transport-'+r.id,`${esc(r.person||'')} — ${esc(r.kind||'Transportation')}`,
+       [r.leave?'<strong>Leave:</strong> '+esc(r.leave):'',r.morning?'<strong>Morning:</strong> '+esc(r.morning):'',r.pickup?'<strong>Pickup:</strong> '+esc(r.pickup):'',r.afternoon?'<strong>Afternoon:</strong> '+esc(r.afternoon):'',r.notes?'<strong>Notes:</strong> '+esc(r.notes):''].filter(Boolean).join('<br>')));
+     blocks.push(html+'</div>');
+   }
 
-   // Work recurring tasks
-   rec('workTask').filter(r=>r.freq==='Daily'||r.freq===day).forEach(r=>{
-     lines.push(`<div><strong>Work:</strong> ${esc(r.title||'Task')}${r.time?' — '+esc(r.time):''}</div>`);
-   });
+   // Work
+   const workTasks=rec('workTask').filter(r=>r.freq==='Daily'||r.freq===day);
+   const timeOff=rec('driverTimeOff').filter(r=>dateInRange(date,r.startDate,r.endDate)&&!['Denied','Cancelled'].includes(r.status));
+   if(workTasks.length||timeOff.length){
+     let html='<div class="week-source"><div class="week-source-title">WORK</div>';
+     workTasks.forEach(r=>html+=wkCheck(date,'work-'+r.id,esc(r.title||'Work Task'),
+       [r.time?'<strong>Time / deadline:</strong> '+esc(r.time):'',r.area?'<strong>Area:</strong> '+esc(r.area):'',r.notes?'<strong>Walkthrough / notes:</strong> '+esc(r.notes):''].filter(Boolean).join('<br>')));
+     timeOff.forEach(r=>html+=wkCheck(date,'timeoff-'+r.id,`${esc(r.driver||'Driver')} — ${esc(r.kind||'Time Off')}`,
+       [r.shift?'<strong>Shift:</strong> '+esc(r.shift):'',r.run?'<strong>Run:</strong> '+esc(r.run):'',r.portion?'<strong>Portion:</strong> '+esc(r.portion):'',r.coverageNeeded?'<strong>Coverage:</strong> '+esc(r.coverageNeeded):'',r.status?'<strong>Status:</strong> '+esc(r.status):''].filter(Boolean).join('<br>')));
+     blocks.push(html+'</div>');
+   }
 
-   // Driver time off
-   rec('driverTimeOff').filter(r=>dateInRange(date,r.startDate,r.endDate)&&!['Denied','Cancelled'].includes(r.status)).forEach(r=>{
-     lines.push(`<div><strong>Driver Time Off:</strong> ${esc(r.driver||'Driver')} — ${esc(r.kind||'Time Off')}</div>`);
-   });
-
-   return lines;
+   return blocks.join('');
  };
 
  box.innerHTML=days.map(day=>{
    const date=dayDate[day],k='week.'+day;
-   const dinner=getPath('meal.'+day+'.dinner')||'Nothing planned';
-   const prep=getPath('meal.'+day+'.prep')||'';
-   const mealNotes=getPath('meal.'+day+'.notes')||'';
-   const clean=cleanFocusForDay(day)||'';
-   const events=eventLinesFor(day,date);
-
    return `<div class="weekday">
-     <div class="recordhead"><div><strong>${day}</strong><div class="small">${date}</div></div></div>
-
-     <div class="alert"><strong>Dinner:</strong> ${esc(dinner)}
-       ${prep?`<div class="small"><strong>Prep / thaw:</strong> ${esc(prep)}</div>`:''}
-       ${mealNotes?`<div class="small"><strong>Meal notes:</strong> ${esc(mealNotes)}</div>`:''}
+     <div class="recordhead"><div><strong>${day}</strong><div class="small">${date}</div></div>
+       <div class="small" id="weekProgress-${day}"></div>
      </div>
-
-     ${clean?`<div class="small"><strong>Cleaning:</strong> ${esc(clean)}</div>`:''}
-
-     <div class="small" style="margin-top:8px"><strong>Auto-filled from My Life HQ</strong></div>
-     <div class="record">${events.length?events.join(''):'<div class="small">No dated appointments, bills, activities, transportation changes, or work items pulled in.</div>'}</div>
-
+     ${sourceBlocksFor(day,date)}
      <details><summary>My Additions for ${day}</summary>
        <div class="formgrid">
          <div class="field"><label>Must do / extra task</label><textarea data-week="${k}.must" placeholder="Only add something here if it does not already belong in another section."></textarea></div>
@@ -2681,11 +2698,27 @@ function renderWeek(){
    </div>`;
  }).join('');
 
- box.querySelectorAll('[data-week]').forEach(e=>{
-   e.value=getPath(e.dataset.week);
-   e.oninput=()=>setPath(e.dataset.week,e.value);
+ box.querySelectorAll('[data-week]').forEach(e=>{e.value=getPath(e.dataset.week);e.oninput=()=>setPath(e.dataset.week,e.value)});
+ box.querySelectorAll('[data-week-check]').forEach(c=>{
+   c.onchange=()=>{
+     state.daily=state.daily||{};
+     state.daily[c.dataset.weekCheck]=c.checked;
+     save();
+     updateWeekProgress();
+   };
+ });
+ updateWeekProgress();
+}
+function updateWeekProgress(){
+ days.forEach(day=>{
+   const box=document.getElementById('weekProgress-'+day);if(!box)return;
+   const parent=box.closest('.weekday');if(!parent)return;
+   const checks=[...parent.querySelectorAll('[data-week-check]')];
+   const done=checks.filter(c=>c.checked).length;
+   box.textContent=checks.length?`${done}/${checks.length} done`:'';
  });
 }
+
 function renderPriorities(){renderSimple('priority','priorityList',r=>r.title,r=>`${r.category||''} \u2022 ${r.who||''} \u2022 ${r.due||''}`)}
 function renderInboxes(){renderSimple('todo','todoInbox',r=>r.title,r=>`${r.who||''} \u2022 ${r.when||''} \u2022 ${r.priority||''}`);renderSimple('schedule','scheduleInbox',r=>r.title,r=>`${r.date||'No date'} ${r.time||''} \u2022 ${r.kind||''}`)}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-process]');if(!b)return;const type=b.dataset.process;const arr=rec(type);if(!arr.length){alert('Inbox is already clear.');return}const r=arr[0];const action=prompt(`Process: ${r.title}\nType TODAY, WEEK, DONE, or LEAVE`,'WEEK');if(!action)return;const a=action.toUpperCase();if(a==='DONE'){deleteRec(type,r.id)}else if(a==='TODAY'){state.data['today.notes']=(state.data['today.notes']?state.data['today.notes']+'\\n':'')+r.title;deleteRec(type,r.id)}else if(a==='WEEK'){state.data['week.'+days[new Date().getDay()]+'.must']=(state.data['week.'+days[new Date().getDay()]+'.must']?state.data['week.'+days[new Date().getDay()]+'.must']+'; ':'')+r.title;deleteRec(type,r.id);save();renderAll()}})
@@ -4232,7 +4265,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=11.0-'+Date.now();
+   location.href='./?v=11.1-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
