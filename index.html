@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.2 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.3 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.2 - Direct Cloud Sync Buttons</div>
+<div class="alert"><strong>Current App Version:</strong> v10.3 - Dated Daily History</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -172,7 +172,19 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 
 <section id="today" class="page">
 <div class="topbar"><button class="back"><- Home</button></div>
-<div class="todayhero"><h2 id="todayTitle"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="42" rx="8" fill="#fff" stroke="#555" stroke-width="3"/><rect x="9" y="13" width="46" height="13" rx="8" fill="#ff5d73"/><path d="M19 8v12M45 8v12" stroke="#555" stroke-width="4"/><circle cx="22" cy="37" r="3" fill="#5b8def"/><circle cx="32" cy="37" r="3" fill="#5b8def"/><circle cx="42" cy="37" r="3" fill="#5b8def"/><circle cx="22" cy="47" r="3" fill="#5b8def"/><circle cx="32" cy="47" r="3" fill="#5b8def"/></svg><span id="todayTitleText">Today</span></h2><div class="small">What matters today, without opening everything.</div></div>
+<div class="todayhero"><h2 id="todayTitle"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="42" rx="8" fill="#fff" stroke="#555" stroke-width="3"/><rect x="9" y="13" width="46" height="13" rx="8" fill="#ff5d73"/><path d="M19 8v12M45 8v12" stroke="#555" stroke-width="4"/><circle cx="22" cy="37" r="3" fill="#5b8def"/><circle cx="32" cy="37" r="3" fill="#5b8def"/><circle cx="42" cy="37" r="3" fill="#5b8def"/><circle cx="22" cy="47" r="3" fill="#5b8def"/><circle cx="32" cy="47" r="3" fill="#5b8def"/></svg><span id="todayTitleText">Today</span></h2><div class="small">What matters today, without opening everything.</div>
+<div class="card">
+<details>
+<summary>Daily History / Previous Days</summary>
+<div class="hint">Today is saved automatically by date. Choose a previous day to see what was on your Today page that day.</div>
+<div class="formgrid">
+<div class="field"><label>View date</label><input type="date" id="dailyHistoryDate"></div>
+<button type="button" class="smallbtn" onclick="showDailyHistory()">View Day</button>
+</div>
+<div id="dailyHistoryView" class="record">Choose a date to view its saved daily record.</div>
+</details>
+</div>
+</div>
 <div class="quickgrid">
 <details class="section-manager"><summary>Manage Sections</summary>
 <div class="small">Hide sections you do not need right now. Nothing is deleted. Tap a hidden section here to show it again.</div>
@@ -1945,6 +1957,7 @@ function loadSyncMeta(){try{syncMeta={...syncMeta,...(JSON.parse(localStorage.ge
 function saveSyncMeta(){localStorage.setItem(SYNC_META_KEY,JSON.stringify(syncMeta))}
 function markLocalModified(){syncMeta.localModifiedAt=new Date().toISOString();saveSyncMeta()}
 function save(){
+ try{saveTodaySnapshot()}catch(e){}
  localStorage.setItem(APP_KEY,JSON.stringify(state));
  if(!suppressCloudSync)markLocalModified();
  scheduleCloudAutoSync();
@@ -1952,9 +1965,62 @@ function save(){
 function rec(type){state.records[type]||=[];return state.records[type]}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function getPath(path){return state.data[path]??''}
-function setPath(path,val){state.data[path]=val;save()}
 function todayKey(){const d=new Date();return d.toISOString().slice(0,10)}
+function ensureDailyStore(){state.dailyData=state.dailyData||{};state.dailyData[todayKey()]=state.dailyData[todayKey()]||{};return state.dailyData[todayKey()]}
+function getPath(path){
+ if(path.startsWith('today.')){
+   const daily=ensureDailyStore();
+   const key=path.slice(6);
+   if(Object.prototype.hasOwnProperty.call(daily,key))return daily[key]??'';
+   // one-time compatibility: bring an existing current Today value into today's dated record
+   if(state.data[path]!==undefined&&state.data[path]!==''){daily[key]=state.data[path];return daily[key]}
+   return '';
+ }
+ return state.data[path]??''
+}
+function setPath(path,val){
+ if(path.startsWith('today.')){
+   ensureDailyStore()[path.slice(6)]=val;
+ }else state.data[path]=val;
+ save()
+}
+
+function saveTodaySnapshot(){
+ const k=todayKey(),d=days[new Date().getDay()];
+ state.dailyData=state.dailyData||{};
+ const row=state.dailyData[k]=state.dailyData[k]||{};
+ row._date=k;
+ row._day=d;
+ row.dinner=getPath('meal.'+d+'.dinner')||row.dinner||'';
+ row.mealPrep=getPath('meal.'+d+'.prep')||row.mealPrep||'';
+ row.mealNotes=getPath('meal.'+d+'.notes')||row.mealNotes||'';
+ row.cleaningFocus=cleanFocusForDay(d)||row.cleaningFocus||'';
+ row._savedAt=new Date().toISOString();
+}
+function dailyHistoryFor(date){
+ const row=(state.dailyData&&state.dailyData[date])||{};
+ const checks=Object.entries(state.daily||{}).filter(([k,v])=>k.startsWith(date+'|')&&v).map(([k])=>k.split('|')[1]);
+ const brain=rec('brainDump').filter(x=>x.captured===date).map(x=>x.text);
+ const spending=rec('spending').filter(x=>x.date===date).map(x=>`${x.merchant||x.item||x.category||'Spending'} ${x.amount?fmt(x.amount):''}`.trim());
+ return {row,checks,brain,spending};
+}
+function showDailyHistory(){
+ const date=document.getElementById('dailyHistoryDate')?.value;
+ const box=document.getElementById('dailyHistoryView');
+ if(!date||!box)return;
+ const h=dailyHistoryFor(date),r=h.row||{};
+ const lines=[];
+ const add=(label,val)=>{if(val!==undefined&&val!==null&&String(val).trim()!=='')lines.push(`<div><strong>${esc(label)}:</strong> ${esc(val)}</div>`)};
+ add('Top 1',r.top1);add('Top 2',r.top2);add('Top 3',r.top3);
+ add('Dinner',r.dinner);add('Meal prep / thaw',r.mealPrep);add('Meal notes',r.mealNotes);
+ add('Cleaning focus',r.cleaningFocus);add('Cleaning notes / extra tasks',r.cleanExtra);add('Cleaning carry forward',r.cleanLater);
+ add('Today notes',r.notes);
+ if(h.checks.length)lines.push(`<div><strong>Completed daily checks:</strong> ${h.checks.map(esc).join(', ')}</div>`);
+ if(h.brain.length)lines.push(`<div><strong>Brain Dump captured:</strong><br>${h.brain.map(x=>'• '+esc(x)).join('<br>')}</div>`);
+ if(h.spending.length)lines.push(`<div><strong>Spending:</strong><br>${h.spending.map(x=>'• '+esc(x)).join('<br>')}</div>`);
+ box.innerHTML=lines.length?lines.join('<hr>'):'No saved daily information for this date.';
+}
+window.showDailyHistory=showDailyHistory;
 function weekStartKey(){const d=new Date();const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()-d.getDay());return x.toISOString().slice(0,10)}
 function monthKey(){const d=new Date();return d.toISOString().slice(0,7)}
 function addShopping(item,category='Wishlist / Other',qty='',store='',priority='Soon',price='',source=''){if(!item.trim())return;state.shopping.push({id:uid(),item:item.trim(),category,qty,store,priority,price,source,done:false});save();renderShopping()}
@@ -3515,6 +3581,10 @@ function renderTodaySectionManager(){
 window.hideSectionNow=hideSectionNow;
 window.showSectionNow=showSectionNow;
 function renderToday(){
+ const historyDate=document.getElementById('dailyHistoryDate');
+ if(historyDate&&!historyDate.value)historyDate.value=todayKey();
+ try{saveTodaySnapshot()}catch(e){}
+
  renderSimple('brainDump','todayBrainDump',
    x=>x.text||'Brain Dump',
    x=>x.status==='Unprocessed'?'Waiting to be processed':`${x.status||''}${x.processedTo?' • Sent to '+x.processedTo:''}`,
@@ -3543,7 +3613,20 @@ function renderToday(){
 }
 function renderCarry(){const box=document.getElementById('carryList');if(!box)return;box.innerHTML=state.carry.filter(x=>!x.done).map(x=>`<label class="task"><input type="checkbox" data-carry="${x.id}">${esc(x.text)}</label>`).join('')||'<div class="small">Nothing waiting. \u2713</div>';box.querySelectorAll('[data-carry]').forEach(c=>c.onchange=()=>{const x=state.carry.find(i=>i.id===c.dataset.carry);if(x)x.done=true;save();renderCarry()})}
 document.getElementById('carryAddBtn').onclick=()=>{const f=document.getElementById('carryAdd'),v=f.value.trim();if(!v)return;state.carry.push({id:uid(),text:v,done:false});f.value='';save();renderCarry()}
-function dailyCarryForward(){const k=todayKey(),last=state.meta.lastDay;if(last&&last!==k){['today.top1','today.top2','today.top3','today.notes','today.cleanExtra','today.cleanLater'].forEach(p=>{const v=getPath(p);if(v&&String(v).trim())state.carry.push({id:uid(),text:v,done:false,from:last});state.data[p]=''});save()}state.meta.lastDay=k;save()}
+function dailyCarryForward(){
+ const k=todayKey(),last=state.meta.lastDay;
+ state.dailyData=state.dailyData||{};
+ if(last&&last!==k){
+   const prev=state.dailyData[last]||{};
+   ['top1','top2','top3','notes','cleanExtra','cleanLater'].forEach(key=>{
+     const v=prev[key];
+     if(v&&String(v).trim())state.carry.push({id:uid(),text:v,done:false,from:last});
+   });
+ }
+ state.dailyData[k]=state.dailyData[k]||{};
+ state.meta.lastDay=k;
+ save();
+}
 
 function syncSavedDriversFromWork(){
   const names=new Map();
@@ -3775,7 +3858,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.2-'+Date.now();
+   location.href='./?v=10.3-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
