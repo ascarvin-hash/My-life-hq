@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.7 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.9 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.7 - Spending List Display Fix</div>
+<div class="alert"><strong>Current App Version:</strong> v10.9 - Cleaning Totes Added</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -914,6 +914,101 @@ try{
 </div>
 </div>
 
+
+<details open><summary>Cleaning Totes + Supplies</summary>
+<div class="hint"><strong>Keep each area ready to grab.</strong> Duplicates are okay if they make cleaning easier. Open a tote to see what belongs there, then track replacements or extras below.</div>
+
+<details><summary>Kitchen Cleaning Tote</summary>
+<div class="small"><strong>Suggested tote contents</strong></div>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.kitchen.powerwash"> Dawn Powerwash</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.kitchen.cleanfreak"> Mr. Clean Clean Freak</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.kitchen.clorox"> Clorox wipes</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.kitchen.microfiber"> Microfiber cloths</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.kitchen.scrubber"> Non-scratch scrubber / sponge</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.kitchen.gloves"> Cleaning gloves</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.kitchen.bags"> Small trash bags</label>
+<div class="formgrid">
+<div class="field"><label>Tote / bin used</label><input data-key="clean.tote.kitchen.container" placeholder="Example: handled caddy / clear tote"></div>
+<div class="field"><label>Stored where</label><input data-key="clean.tote.kitchen.location" placeholder="Example: under kitchen sink"></div>
+<div class="field full"><label>Extras / notes</label><textarea data-key="clean.tote.kitchen.notes" placeholder="Anything else you keep in this tote..."></textarea></div>
+</div>
+</details>
+
+<details><summary>Bathroom Cleaning Tote</summary>
+<div class="small"><strong>Suggested tote contents</strong></div>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.scrubbingbubbles"> Scrubbing Bubbles</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.clorox"> Clorox wipes</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.glass"> Glass / mirror cleaner</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.toilet"> Toilet bowl cleaner</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.toiletbrush"> Toilet brush</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.scrubber"> Tub / shower scrubber</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.microfiber"> Microfiber cloths</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.bath.gloves"> Cleaning gloves</label>
+<div class="formgrid">
+<div class="field"><label>Tote / bin used</label><input data-key="clean.tote.bath.container"></div>
+<div class="field"><label>Stored where</label><input data-key="clean.tote.bath.location"></div>
+<div class="field full"><label>Extras / notes</label><textarea data-key="clean.tote.bath.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Whole-House / Dusting Tote</summary>
+<div class="small"><strong>Suggested tote contents</strong></div>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.house.cleanfreak"> Mr. Clean Clean Freak</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.house.clorox"> Clorox wipes</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.house.microfiber"> Microfiber cloths</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.house.duster"> Extendable / hand duster</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.house.glass"> Glass cleaner</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.house.magic"> Magic eraser / spot-clean tool</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.house.bags"> Small trash bags</label>
+<div class="formgrid">
+<div class="field"><label>Tote / bin used</label><input data-key="clean.tote.house.container"></div>
+<div class="field"><label>Stored where</label><input data-key="clean.tote.house.location"></div>
+<div class="field full"><label>Extras / notes</label><textarea data-key="clean.tote.house.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Floor-Cleaning Tote / Station</summary>
+<div class="small"><strong>Suggested floor supplies</strong></div>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.floor.mrclean"> Mr. Clean All-Purpose Cleaner for mopping</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.floor.mop"> Mop</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.floor.pads"> Mop pads / heads</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.floor.broom"> Broom + dustpan</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.floor.vacuum"> Vacuum / attachments</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.floor.spot"> Floor spot-clean cloth / brush</label>
+<div class="formgrid">
+<div class="field"><label>Station / container</label><input data-key="clean.tote.floor.container"></div>
+<div class="field"><label>Stored where</label><input data-key="clean.tote.floor.location"></div>
+<div class="field full"><label>Extras / notes</label><textarea data-key="clean.tote.floor.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Laundry Cleaning Tote / Shelf</summary>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.laundry.detergent"> Laundry detergent</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.laundry.stain"> Stain remover</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.laundry.mesh"> Mesh / delicates bag</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.laundry.microfiber"> Microfiber cloth for washer / dryer</label>
+<label class="task"><input type="checkbox" data-key-check="clean.tote.laundry.lint"> Lint / dryer cleaning tool</label>
+<div class="formgrid">
+<div class="field"><label>Basket / shelf used</label><input data-key="clean.tote.laundry.container"></div>
+<div class="field"><label>Stored where</label><input data-key="clean.tote.laundry.location"></div>
+<div class="field full"><label>Extras / notes</label><textarea data-key="clean.tote.laundry.notes"></textarea></div>
+</div>
+</details>
+
+<details><summary>Tote Refill / Replacement List</summary>
+<div class="hint">Use this for products, tools, cloths, scrubbers, or tote items that are low, out, damaged, or missing.</div>
+<div id="cleaningToteRefillList"></div>
+<button type="button" class="smallbtn" data-add-record="cleaningToteItem">Add Tote Item / Refill</button>
+</details>
+
+<details><summary>Tote Setup Walkthrough</summary>
+<div class="walkstep"><div class="num">1</div><div>Choose one tote/caddy for each cleaning area you actually use.</div></div>
+<div class="walkstep"><div class="num">2</div><div>Put only that area's normal products and tools in the tote.</div></div>
+<div class="walkstep"><div class="num">3</div><div>Duplicates are okay when they save you from carrying products room-to-room.</div></div>
+<div class="walkstep"><div class="num">4</div><div>Let wet tools dry before putting them back into a closed tote.</div></div>
+<div class="walkstep"><div class="num">5</div><div>During the weekly reset, check Low / Out items and send them to Shopping.</div></div>
+</details>
+</details>
 <details open><summary>Today's Detailed Cleaning</summary>
 <div class="hint">Open the room you want. Every item below can be checked off for today.</div>
 <details><summary>Kitchen</summary>
@@ -2264,7 +2359,7 @@ function refreshAfterDirectSave(type){
     workTask:'work',driver:'work',tractor:'work',workPay:'work',workAdmin:'work',driverPayroll:'work',myWorkHours:'work',
     spendingEntry:'money',bill:'money',income:'money',weeklySpend:'money',budget:'money',envelope:'money',saving:'money',debt:'money',
     subscription:'money',expense:'money',monthReview:'money',
-    cleaningSupply:'cleaning',
+    cleaningSupply:'cleaning',cleaningToteItem:'cleaning',
     repair:'homeLife',restock:'homeLife',project:'homeLife',storage:'homeLife',appliance:'homeLife',
     skin:'selfcare',body:'selfcare',hair:'selfcare',periodSupply:'selfcare',travelCare:'selfcare',
     mood:'health',symptom:'health',migraine:'health',period:'health',appointment:'health',needsAppointment:'health',
@@ -2609,6 +2704,16 @@ ${field('Payroll status','status',r.status||'Not Started','select',false,selectO
 ${field('Correction type','followupType',r.followupType||'','select',false,selectOpts(['','Hours','Rate','Run Pay','Wait Time','PTO','Bonus','Deduction','Other'],r.followupType))}${field('Notes','notes',r.notes||'','textarea',true)}
 </div>`;
 
+formBuilders.cleaningToteItem=r=>`<div class="formgrid">
+${field('Item / product','item',r.item||'')}
+${field('Tote / area','tote',r.tote||'Kitchen','select',false,selectOpts(['Kitchen','Bathroom','Whole House / Dusting','Floors','Laundry','Other'],r.tote||'Kitchen'))}
+${field('Type','kind',r.kind||'Product','select',false,selectOpts(['Product','Tool','Cloth / Pad','Brush / Scrubber','Container / Tote','Other'],r.kind||'Product'))}
+${field('Status','status',r.status||'Good','select',false,selectOpts(['Good','Running Low','Out','Missing','Needs Replaced'],r.status||'Good'))}
+${field('Quantity on hand','qty',r.qty||'')}
+${field('Preferred brand / exact item','brand',r.brand||'')}
+${field('Stored where','location',r.location||'')}
+${field('Notes','notes',r.notes||'','textarea',true)}
+</div>`;
 formBuilders.spendingEntry=r=>`<div class="formgrid">
 ${field('Date','date',r.date||todayKey(),'date')}
 ${field('Category','category',r.category||'Groceries','select',false,selectOpts(['Groceries','Gas','Household','Kids','Self / Personal','Eating Out','Pets','Bills','Work','Misc','Other'],r.category||'Groceries'))}
@@ -3016,7 +3121,7 @@ function renderMoney(){
  const wc=document.getElementById('weeklySpendCategoryFilter')?.value||'All';
  const wp=document.getElementById('weeklySpendPaymentFilter')?.value||'All';
  const wrows=rec('weeklySpend').filter(r=>(wc==='All'||r.category===wc)&&(wp==='All'||r.payment===wp));
- const wbox=document.getElementById('spendingEntryList');
+ const wbox=document.getElementById('weeklySpendList');
  if(wbox)wbox.innerHTML=wrows.length?wrows.map(r=>`<div class="record">
  <div class="recordhead"><div><strong>${esc(r.merchant||r.item||'Purchase')}</strong><div class="small">${esc((r.date||'')+' \u2022 '+(r.category||'')+' \u2022 '+(r.payment||''))}</div></div>${actionBtns('weeklySpend',r.id)}</div>
  <div class="small">${fmt(r.amount||0)} \u2022 ${esc(r.needWant||'')} \u2022 ${esc(r.planned||'')}</div>
@@ -3051,6 +3156,33 @@ function renderMoney(){
  const summary=document.getElementById('moneySummary');if(summary){const income=rec('income').reduce((s,r)=>s+money(r.actual||r.expected),0),bills=rec('bill').filter(r=>r.status!=='Paid').reduce((s,r)=>s+money(r.amount),0),exp=rec('expense').filter(r=>r.status!=='Completed'&&r.status!=='Paid / Purchased').reduce((s,r)=>s+Math.max(0,money(r.expected)-money(r.funded)),0);summary.textContent=`Income tracked: ${fmt(income)} \u2022 Unpaid bills: ${fmt(bills)} \u2022 Unfunded upcoming expenses: ${fmt(exp)}`}
  const spendingEntryList=document.getElementById('spendingEntryList');
  const spendingEntries=(state.records&&Array.isArray(state.records.spendingEntry))?state.records.spendingEntry:[];
+
+ // Daily / Weekly Spending Log totals
+ const spendWeekStart=document.getElementById('spendWeekStart');
+ if(spendWeekStart&&!spendWeekStart.value)spendWeekStart.value=weekStartKey();
+ const startKey=spendWeekStart?.value||weekStartKey();
+ const startDate=new Date(startKey+'T00:00:00');
+ const endDate=new Date(startDate);endDate.setDate(endDate.getDate()+6);
+ const categoryFilter=document.getElementById('spendCategoryFilter')?.value||'All';
+
+ const weekEntries=spendingEntries.filter(r=>{
+   if(!r.date)return false;
+   const rd=new Date(r.date+'T00:00:00');
+   return rd>=startDate&&rd<=endDate&&(categoryFilter==='All'||r.category===categoryFilter);
+ });
+ const thisWeekTotal=weekEntries.reduce((sum,r)=>sum+(parseFloat(r.amount)||0),0);
+ const todayEntries=spendingEntries.filter(r=>r.date===todayKey());
+ const todayTotal=todayEntries.reduce((sum,r)=>sum+(parseFloat(r.amount)||0),0);
+
+ const weeklySpendTotalBox=document.getElementById('weeklySpendTotal');
+ if(weeklySpendTotalBox)weeklySpendTotalBox.innerHTML=`<strong>${fmt(thisWeekTotal)}</strong><div class="small">${weekEntries.length} ${weekEntries.length===1?'entry':'entries'} • ${esc(startKey)} through ${esc(endDate.toISOString().slice(0,10))}</div>`;
+
+ const todaySpendTotalBox=document.getElementById('todaySpendTotal');
+ if(todaySpendTotalBox)todaySpendTotalBox.innerHTML=`<strong>${fmt(todayTotal)}</strong><div class="small">${todayEntries.length} ${todayEntries.length===1?'entry':'entries'} • ${esc(todayKey())}</div>`;
+
+ if(spendWeekStart)spendWeekStart.onchange=renderMoney;
+ const spendCategoryFilter=document.getElementById('spendCategoryFilter');
+ if(spendCategoryFilter)spendCategoryFilter.onchange=renderMoney;
  if(spendingEntryList){
    const ordered=[...spendingEntries].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
    spendingEntryList.innerHTML=ordered.length?ordered.map(r=>`
@@ -3092,6 +3224,17 @@ function cleanFocusForDay(d){return {Sunday:'Weekly Reset + planning',Monday:'Ba
  const cf=document.getElementById('spendCategoryFilter');if(cf)cf.onchange=renderMoney;
 }
 function renderCleaning(){
+ const toteBox=document.getElementById('cleaningToteRefillList');
+ if(toteBox){
+   const rows=rec('cleaningToteItem');
+   toteBox.innerHTML=rows.length?rows.map(r=>`<div class="record">
+     <div class="recordhead"><div><strong>${esc(r.item||'Tote Item')}</strong>
+     <div class="small">${esc(r.tote||'')} • ${esc(r.status||'')} • ${esc(r.brand||'')}</div></div>
+     ${actionBtns('cleaningToteItem',r.id)}</div>
+     ${['Running Low','Out','Missing','Needs Replaced'].includes(r.status)?`<button type="button" class="smallbtn" onclick="addShopping('${(r.item||'').replace(/'/g,"\\'")}','Household','','','Soon','','Cleaning Tote: ${String(r.tote||'').replace(/'/g,"\\'")}')">Add to Shopping</button>`:''}
+   </div>`).join(''):'<div class="small">No tote refill items added yet.</div>';
+ }
+
  const beddingItems=[
   ['primary','Primary Bed / Sheets'],['kid1','Kid Bed 1 / Sheets'],['kid2','Kid Bed 2 / Sheets'],['kid3','Kid Bed 3 / Sheets'],['kid4','Kid Bed 4 / Sheets'],
   ['pillow','Pillowcases'],['bath','Bath Towels'],['hand','Hand Towels / Washcloths'],['mats','Bath Mats'],['blankets','Blankets / Throws'],['pet','Pet Bedding']
@@ -3990,7 +4133,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.7-'+Date.now();
+   location.href='./?v=10.9-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
