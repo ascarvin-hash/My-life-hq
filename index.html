@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.3 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.4 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v9.3 - Inline Meal Library Save + Dinner Label</div>
+<div class="alert"><strong>Current App Version:</strong> v9.4 - Direct Meal Save</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -711,7 +711,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2><div class="small"><strong>Meal Library Actions:</strong> v9.3 inline library save active</div><div id="mealLibrarySaveStatus" class="alert" style="display:none"></div><div class="hint"><strong>Meal forms now save from inside the form.</strong> After typing the item, tap Save to Library inside the form.</div>
+<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2><div class="small"><strong>Meal Library Actions:</strong> v9.4 direct button + hard local save active</div><div id="mealLibrarySaveStatus" class="alert" style="display:none"></div><div class="hint"><strong>Meal forms now save from inside the form.</strong> After typing the item, tap Save to Library inside the form.</div>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping -> Groceries.</div><div id="mealWeek"></div></details>
 <details><summary>Dinner Library + Recipes</summary><div class="hint">Saved dinners and recipes live here. Add a new dinner/recipe below, then use Add to Day on any saved item.</div><div id="recipeList"></div>
 <details><summary>Add Dinner / Recipe</summary>
@@ -724,7 +724,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Sides / pairings</label><input id="inlineRecipeSides"></div>
 <div class="field full"><label>Family notes</label><textarea id="inlineRecipeNotes"></textarea></div>
 </div>
-<button type="button" class="action" data-inline-meal-save="recipe">Save Dinner / Recipe</button>
+<button type="button" class="action" id="saveDinnerLibraryBtn">Save Dinner / Recipe</button>
 </details></details>
 <details><summary> Breakfast Library</summary><div id="breakfastList"></div>
 <details><summary>Add Breakfast</summary>
@@ -734,7 +734,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Who likes it</label><input id="inlineBreakfastLikes"></div>
 <div class="field full"><label>Ingredients / notes</label><textarea id="inlineBreakfastNotes"></textarea></div>
 </div>
-<button type="button" class="action" data-inline-meal-save="breakfast">Save Breakfast</button>
+<button type="button" class="action" id="saveBreakfastLibraryBtn">Save Breakfast</button>
 </details></details>
 <details><summary> Lunch Library</summary><div id="lunchList"></div>
 <details><summary>Add Lunch</summary>
@@ -744,7 +744,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Who likes it</label><input id="inlineLunchLikes"></div>
 <div class="field full"><label>Ingredients / notes</label><textarea id="inlineLunchNotes"></textarea></div>
 </div>
-<button type="button" class="action" data-inline-meal-save="lunch">Save Lunch</button>
+<button type="button" class="action" id="saveLunchLibraryBtn">Save Lunch</button>
 </details></details>
 <details><summary> Snack Library</summary><div id="snackList"></div>
 <details><summary>Add Snack</summary>
@@ -754,7 +754,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="field"><label>Who likes it</label><input id="inlineSnackLikes"></div>
 <div class="field full"><label>Packing / notes</label><textarea id="inlineSnackNotes"></textarea></div>
 </div>
-<button type="button" class="action" data-inline-meal-save="snack">Save Snack</button>
+<button type="button" class="action" id="saveSnackLibraryBtn">Save Snack</button>
 </details></details>
 </div></section>
 
@@ -2219,13 +2219,6 @@ document.getElementById('modalSave').onclick=()=>{
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-add-record]');if(b)showForm(b.dataset.addRecord,{})})
 
-document.addEventListener('click',e=>{
- const b=e.target.closest('[data-inline-meal-save]');
- if(!b)return;
- e.preventDefault();
- e.stopPropagation();
- saveInlineMeal(b.dataset.inlineMealSave);
-});
 
 
 document.addEventListener('click',e=>{
@@ -2662,6 +2655,86 @@ function clearInlineMealFields(type){
   snack:['inlineSnackName','inlineSnackTag','inlineSnackLikes','inlineSnackNotes']
  }[type]||[];
  ids.forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
+}
+
+function hardSaveMealLibrary(type){
+ try{
+   let data={};
+   if(type==='recipe'){
+     const name=(document.getElementById('inlineRecipeName')?.value||'').trim();
+     if(!name){alert('Enter a dinner / recipe name first.');return}
+     data={id:uid(),name,
+       category:document.getElementById('inlineRecipeCategory')?.value||'Dinner',
+       method:document.getElementById('inlineRecipeMethod')?.value||'',
+       ingredients:document.getElementById('inlineRecipeIngredients')?.value||'',
+       directions:document.getElementById('inlineRecipeDirections')?.value||'',
+       sides:document.getElementById('inlineRecipeSides')?.value||'',
+       notes:document.getElementById('inlineRecipeNotes')?.value||''};
+   }else if(type==='breakfast'){
+     const name=(document.getElementById('inlineBreakfastName')?.value||'').trim();
+     if(!name){alert('Enter a breakfast name first.');return}
+     data={id:uid(),name,
+       tag:document.getElementById('inlineBreakfastTag')?.value||'',
+       likes:document.getElementById('inlineBreakfastLikes')?.value||'',
+       notes:document.getElementById('inlineBreakfastNotes')?.value||''};
+   }else if(type==='lunch'){
+     const name=(document.getElementById('inlineLunchName')?.value||'').trim();
+     if(!name){alert('Enter a lunch name first.');return}
+     data={id:uid(),name,
+       tag:document.getElementById('inlineLunchTag')?.value||'',
+       likes:document.getElementById('inlineLunchLikes')?.value||'',
+       notes:document.getElementById('inlineLunchNotes')?.value||''};
+   }else if(type==='snack'){
+     const name=(document.getElementById('inlineSnackName')?.value||'').trim();
+     if(!name){alert('Enter a snack name first.');return}
+     data={id:uid(),name,
+       tag:document.getElementById('inlineSnackTag')?.value||'',
+       likes:document.getElementById('inlineSnackLikes')?.value||'',
+       notes:document.getElementById('inlineSnackNotes')?.value||''};
+   }else return;
+
+   state.records=state.records||{};
+   state.records[type]=state.records[type]||[];
+   state.records[type].push(data);
+
+   // Write immediately without depending on the normal save() path.
+   localStorage.setItem(APP_KEY,JSON.stringify(state));
+   try{markLocalModified()}catch(_){}
+
+   clearInlineMealFields(type);
+
+   // Refresh only the relevant list; the data is already saved if rendering has a problem.
+   try{
+     if(type==='recipe'){
+       renderSimple('recipe','recipeList',
+         r=>(r.favorite==='Favorite'?'':'')+(r.name||'Recipe'),
+         r=>`${r.category||''} • ${r.method||''}`,
+         r=>`<div class="rowbuttons"><button type="button" class="smallbtn" data-library-add-day="recipe" data-id="${r.id}" data-slot="Dinner">Add to Day</button></div>`);
+     }else if(type==='breakfast'){
+       renderSimple('breakfast','breakfastList',r=>r.name||'Breakfast',r=>`${r.tag||''} • ${r.likes||''}`,
+         r=>`<button type="button" class="smallbtn" data-library-add-day="breakfast" data-id="${r.id}" data-slot="Breakfast">Add to Day</button>`);
+     }else if(type==='lunch'){
+       renderSimple('lunch','lunchList',r=>r.name||'Lunch',r=>`${r.tag||''} • ${r.likes||''}`,
+         r=>`<button type="button" class="smallbtn" data-library-add-day="lunch" data-id="${r.id}" data-slot="Lunch">Add to Day</button>`);
+     }else if(type==='snack'){
+       renderSimple('snack','snackList',r=>r.name||'Snack',r=>`${r.tag||''} • ${r.likes||''}`,
+         r=>`<button type="button" class="smallbtn" data-library-add-day="snack" data-id="${r.id}" data-slot="Snacks">Add to Day</button>`);
+     }
+   }catch(renderErr){
+     console.error('Meal list refresh failed after save',renderErr);
+   }
+
+   const status=document.getElementById('mealLibrarySaveStatus');
+   if(status){
+     const label=type==='recipe'?'Dinner / Recipe':type.charAt(0).toUpperCase()+type.slice(1);
+     status.textContent='SAVED: '+label+' - '+data.name;
+     status.style.display='block';
+   }
+   alert('Saved to '+(type==='recipe'?'Dinner / Recipe':type.charAt(0).toUpperCase()+type.slice(1))+' Library: '+data.name);
+ }catch(err){
+   console.error(err);
+   alert('Save failed: '+(err&&err.message?err.message:err));
+ }
 }
 function saveInlineMeal(type){
  let data={};
@@ -3550,7 +3623,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=9.3-'+Date.now();
+   location.href='./?v=9.4-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
@@ -3599,6 +3672,19 @@ loadSyncMeta();load();seedDefaults();dailyCarryForward();renderAll();initCloud()
 const forceUpdateBtn=document.getElementById('forceAppUpdate');if(forceUpdateBtn)forceUpdateBtn.onclick=forceAppUpdate;
 const clearCacheBtn=document.getElementById('clearAppCache');if(clearCacheBtn)clearCacheBtn.onclick=clearAppCacheAndReload;
 const nextWeekBtn=document.getElementById('sendNextWeekItem');if(nextWeekBtn)nextWeekBtn.onclick=sendNextWeekItem;
+
+const dinnerSaveBtn=document.getElementById('saveDinnerLibraryBtn');
+if(dinnerSaveBtn)dinnerSaveBtn.onclick=()=>hardSaveMealLibrary('recipe');
+
+const breakfastSaveBtn=document.getElementById('saveBreakfastLibraryBtn');
+if(breakfastSaveBtn)breakfastSaveBtn.onclick=()=>hardSaveMealLibrary('breakfast');
+
+const lunchSaveBtn=document.getElementById('saveLunchLibraryBtn');
+if(lunchSaveBtn)lunchSaveBtn.onclick=()=>hardSaveMealLibrary('lunch');
+
+const snackSaveBtn=document.getElementById('saveSnackLibraryBtn');
+if(snackSaveBtn)snackSaveBtn.onclick=()=>hardSaveMealLibrary('snack');
+
 </script>
 
 <script>
