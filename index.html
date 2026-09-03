@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.4 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.5 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.4 - Direct Save Buttons</div>
+<div class="alert"><strong>Current App Version:</strong> v10.5 - Save Data Structure Fix</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -1957,12 +1957,25 @@ function loadSyncMeta(){try{syncMeta={...syncMeta,...(JSON.parse(localStorage.ge
 function saveSyncMeta(){localStorage.setItem(SYNC_META_KEY,JSON.stringify(syncMeta))}
 function markLocalModified(){syncMeta.localModifiedAt=new Date().toISOString();saveSyncMeta()}
 function save(){
+ state=state||baseState();
+ state.records=state.records||{};
+ state.shopping=state.shopping||[];
+ state.carry=state.carry||[];
+ state.data=state.data||{};
+ state.daily=state.daily||{};
+ state.dailyData=state.dailyData||{};
+ state.meta=state.meta||{};
  try{saveTodaySnapshot()}catch(e){}
  localStorage.setItem(APP_KEY,JSON.stringify(state));
  if(!suppressCloudSync)markLocalModified();
  scheduleCloudAutoSync();
 }
-function rec(type){state.records[type]||=[];return state.records[type]}
+function rec(type){
+ state=state||{};
+ state.records=state.records||{};
+ state.records[type]=state.records[type]||[];
+ return state.records[type];
+}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 function todayKey(){const d=new Date();return d.toISOString().slice(0,10)}
@@ -3898,7 +3911,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.4-'+Date.now();
+   location.href='./?v=10.5-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
