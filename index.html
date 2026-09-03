@@ -68,10 +68,18 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 .kid-static>summary{font-size:19px;padding:16px;background:var(--soft);color:var(--accent);font-weight:800}
 .kid-static-body{padding:8px 12px 14px}
 .kid-static .panel{border:0;margin:0;padding:0}
+
+.section-manager{margin:10px 0 14px;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.section-manager summary{font-weight:700;cursor:pointer}
+.section-manager-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.section-toggle{padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--soft);font:inherit;cursor:pointer}
+.section-toggle.off{opacity:.6;text-decoration:line-through}
+.card-hide-btn{float:right;margin-left:8px;padding:4px 8px;border:1px solid var(--line);border-radius:9px;background:var(--soft);font-size:12px;cursor:pointer}
+.user-hidden-section{display:none!important}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.8 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.9 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v9.8 - Direct Brain Dump Save</div>
+<div class="alert"><strong>Current App Version:</strong> v9.9 - Hide Today Sections</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -166,15 +174,18 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="topbar"><button class="back"><- Home</button></div>
 <div class="todayhero"><h2 id="todayTitle"><svg class="emoji-art" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="42" rx="8" fill="#fff" stroke="#555" stroke-width="3"/><rect x="9" y="13" width="46" height="13" rx="8" fill="#ff5d73"/><path d="M19 8v12M45 8v12" stroke="#555" stroke-width="4"/><circle cx="22" cy="37" r="3" fill="#5b8def"/><circle cx="32" cy="37" r="3" fill="#5b8def"/><circle cx="42" cy="37" r="3" fill="#5b8def"/><circle cx="22" cy="47" r="3" fill="#5b8def"/><circle cx="32" cy="47" r="3" fill="#5b8def"/></svg><span id="todayTitleText">Today</span></h2><div class="small">What matters today, without opening everything.</div></div>
 <div class="quickgrid">
-<div class="card"><h3><svg class="mini-emoji" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l7 16 17 2-13 11 4 17-15-9-15 9 4-17L8 24l17-2z" fill="#ffd60a" stroke="#c79b00" stroke-width="3"/></svg>Top 3</h3><input data-key="today.top1" placeholder="1. Most important"><input data-key="today.top2" placeholder="2. Next"><input data-key="today.top3" placeholder="3. If I can"></div>
-<div class="card"><h3>Dinner</h3>
+<details class="section-manager"><summary>Manage Sections</summary>
+<div class="small">Hide sections you do not need right now. Nothing is deleted. Tap a hidden section here to show it again.</div>
+<div id="todaySectionManager" class="section-manager-grid"></div>
+</details><div class="card"><h3><svg class="mini-emoji" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l7 16 17 2-13 11 4 17-15-9-15 9 4-17L8 24l17-2z" fill="#ffd60a" stroke="#c79b00" stroke-width="3"/></svg>Top 3</h3><input data-key="today.top1" placeholder="1. Most important"><input data-key="today.top2" placeholder="2. Next"><input data-key="today.top3" placeholder="3. If I can"></div>
+<div class="card" data-hide-section="today-dinner" data-section-label="Dinner"><h3>Dinner<button type="button" class="card-hide-btn" onclick="hideSectionNow('today-dinner')">Hide</button></h3>
 <div id="todayDinnerFromMeals" class="alert"><strong>Nothing planned yet.</strong></div>
 <div id="todayMealPrepFromMeals" class="small"></div>
 <div class="field"><label>Meal Notes</label><div id="todayMealNotesFromMeals" class="record">No meal notes for today.</div></div>
 <button type="button" class="smallbtn" data-go="meals" onclick="window.MLHQGo && window.MLHQGo('meals')">Open Meals</button>
 </div>
 </div>
-<div class="card"><h2>Morning Start</h2>
+<div class="card" data-hide-section="today-morning" data-section-label="Morning Start"><h2>Morning Start<button type="button" class="card-hide-btn" onclick="hideSectionNow('today-morning')">Hide</button></h2>
 <label class="task"><input type="checkbox" data-daily="morning.today">Check Today + Top 3</label>
 <label class="task"><input type="checkbox" data-daily="morning.kids">Check kids/school alerts</label>
 <label class="task"><input type="checkbox" data-daily="morning.dinner">Check dinner + meal notes / thaw-prep</label>
@@ -187,7 +198,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <button class="smallbtn" data-go="cleaning" onclick="window.MLHQGo && window.MLHQGo('cleaning')">Open Cleaning</button>
 </div>
 <div class="card"><h2>Needs Attention</h2><div id="todayAlerts" class="small">Nothing flagged.</div></div>
-<div class="card"><h2>Quick Brain Dump</h2>
+<div class="card" data-hide-section="today-brain" data-section-label="Quick Brain Dump"><h2>Quick Brain Dump<button type="button" class="card-hide-btn" onclick="hideSectionNow('today-brain')">Hide</button></h2>
 <div class="hint"><strong>Capture only.</strong> Type the thought and add it. Sort it out later when you sit down to review.</div>
 <div class="field"><label>What's on your mind?</label><textarea id="quickBrainDumpText" placeholder="Type it here before you forget..."></textarea></div>
 <button type="button" class="action" id="quickBrainDumpBtn" onclick="
@@ -210,7 +221,7 @@ try{
 <div class="hint">When you're ready to go through these, tap <strong>Process / Send</strong>. Then you get the full options for type, priority, when/date, where to send it, notes, and status.</div>
 <div id="todayBrainDump"></div>
 </details>
-</div><div class="card"><h2>Today Notes</h2><div class="hint">Temporary information about today - not tasks or scheduled events. During Evening Close, decide whether to discard, task, schedule, journal, or carry forward.</div><textarea data-key="today.notes" placeholder="Something about today I want visible..."></textarea></div>
+</div><div class="card" data-hide-section="today-notes" data-section-label="Today Notes"><h2>Today Notes<button type="button" class="card-hide-btn" onclick="hideSectionNow('today-notes')">Hide</button></h2><div class="hint">Temporary information about today - not tasks or scheduled events. During Evening Close, decide whether to discard, task, schedule, journal, or carry forward.</div><textarea data-key="today.notes" placeholder="Something about today I want visible..."></textarea></div>
 <div class="card"><h2>Carry Forward</h2><div id="carryList"></div><div class="formgrid"><input id="carryAdd" placeholder="Something important that must not get lost tomorrow"><button id="carryAddBtn" class="smallbtn">Add</button></div></div>
 <div class="card"><h2>Evening Close</h2>
 <label class="task"><input type="checkbox" data-daily="evening.house">Kitchen + house reset</label>
@@ -3465,6 +3476,42 @@ function processBrainDump(id){
  else if(dest==='Health / Self-Care')rec('journal').push({id:uid(),person:'Me',date:todayKey(),kind:r.kind==='Health'?'Health Check-In':'Personal',title:text,free:r.notes||''});
  r.status='Processed / Sent';r.processedTo=dest;r.processedDate=todayKey();save();renderAll();
 }
+
+function hiddenSections(){
+ try{return JSON.parse(localStorage.getItem('mlhq-hidden-sections')||'[]')}catch(e){return[]}
+}
+function saveHiddenSections(arr){
+ localStorage.setItem('mlhq-hidden-sections',JSON.stringify([...new Set(arr)]));
+}
+function hideSectionNow(id){
+ const arr=hiddenSections();
+ if(!arr.includes(id))arr.push(id);
+ saveHiddenSections(arr);
+ applySectionVisibility();
+}
+function showSectionNow(id){
+ saveHiddenSections(hiddenSections().filter(x=>x!==id));
+ applySectionVisibility();
+}
+function applySectionVisibility(){
+ const hidden=hiddenSections();
+ document.querySelectorAll('[data-hide-section]').forEach(el=>{
+   el.classList.toggle('user-hidden-section',hidden.includes(el.dataset.hideSection));
+ });
+ renderTodaySectionManager();
+}
+function renderTodaySectionManager(){
+ const box=document.getElementById('todaySectionManager');
+ if(!box)return;
+ const hidden=hiddenSections();
+ const cards=[...document.querySelectorAll('#today [data-hide-section]')];
+ box.innerHTML=cards.map(card=>{
+   const id=card.dataset.hideSection,label=card.dataset.sectionLabel||id,isHidden=hidden.includes(id);
+   return `<button type="button" class="section-toggle ${isHidden?'off':''}" onclick="${isHidden?'showSectionNow':'hideSectionNow'}('${id}')">${isHidden?'Show':'Hide'} ${esc(label)}</button>`;
+ }).join('');
+}
+window.hideSectionNow=hideSectionNow;
+window.showSectionNow=showSectionNow;
 function renderToday(){
  renderSimple('brainDump','todayBrainDump',
    x=>x.text||'Brain Dump',
@@ -3489,6 +3536,8 @@ function renderToday(){
  const alerts=[];rec('repair').filter(r=>r.status!=='Complete'&&r.status!=='Archived'&&(r.priority==='Urgent'||r.due===todayKey())).forEach(r=>alerts.push('Home: '+(r.item||r.task||'Home item')));rec('appointment').filter(r=>r.date===todayKey()).forEach(r=>alerts.push('Date: '+r.person+' \u2014 '+(r.kind||'Appointment')+' '+(r.time||'')));rec('bill').filter(r=>r.status!=='Paid'&&r.payDate===todayKey()).forEach(r=>alerts.push('Money: Pay bill: '+r.name));rec('activity').filter(r=>r.events&&r.events.includes(todayKey())).forEach(r=>alerts.push('\u{1F3C3} '+r.person+' \u2014 '+r.name));document.getElementById('todayAlerts').innerHTML=alerts.length?alerts.map(a=>`<div class="alert">${esc(a)}</div>`).join(''):'<div class="small">Nothing flagged right now.</div>';
  renderCarry();
  const tom=days[(new Date().getDay()+1)%7],parts=[];['events','must','meal','notes'].forEach(k=>{const v=getPath('week.'+tom+'.'+k);if(v)parts.push(`${k}: ${v}`)});const meal=getPath('meal.'+tom+'.dinner');if(meal&&!parts.some(x=>x.includes(meal)))parts.push('Dinner: '+meal);document.getElementById('tomorrowPreview').textContent=tom+'\\n'+(parts.join('\\n')||'Nothing planned yet.');
+
+ applySectionVisibility();
 }
 function renderCarry(){const box=document.getElementById('carryList');if(!box)return;box.innerHTML=state.carry.filter(x=>!x.done).map(x=>`<label class="task"><input type="checkbox" data-carry="${x.id}">${esc(x.text)}</label>`).join('')||'<div class="small">Nothing waiting. \u2713</div>';box.querySelectorAll('[data-carry]').forEach(c=>c.onchange=()=>{const x=state.carry.find(i=>i.id===c.dataset.carry);if(x)x.done=true;save();renderCarry()})}
 document.getElementById('carryAddBtn').onclick=()=>{const f=document.getElementById('carryAdd'),v=f.value.trim();if(!v)return;state.carry.push({id:uid(),text:v,done:false});f.value='';save();renderCarry()}
@@ -3682,7 +3731,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=9.8-'+Date.now();
+   location.href='./?v=9.9-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
