@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.0 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.1 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.0 - Today's Cleaning Focus Display Fix</div>
+<div class="alert"><strong>Current App Version:</strong> v10.1 - Direct Today Cleaning Link</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -194,10 +194,10 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card" data-hide-section="today-cleaning" data-section-label="Today's Cleaning Focus"><h2>Today's Cleaning Focus<button type="button" class="card-hide-btn" onclick="hideSectionNow('today-cleaning')">Hide</button></h2>
 <div class="hint"><strong>Today's planned cleaning:</strong> This comes from your Cleaning area for the current day. Tap the cleaning focus below to open the full cleaning plan.</div>
-<button id="cleanFocus" class="alert" style="width:100%;text-align:left;border:0;font:inherit;color:inherit;cursor:pointer">Open Cleaning to see today's detailed cleaning plan</button>
+<button type="button" id="cleanFocus" class="alert" style="width:100%;text-align:left;border:0;font:inherit;color:inherit;cursor:pointer" onclick="window.MLHQGo?window.MLHQGo('cleaning'):openPage('cleaning')">Open Cleaning to see today's detailed cleaning plan</button>
 <div class="field"><label>Cleaning Notes / Extra Tasks</label><textarea data-key="today.cleanExtra" placeholder="Cleaning that needs attention today but is not already in the normal checklist. Example: wash couch blanket."></textarea></div>
 <div class="field"><label>Carry Forward / Do Later</label><textarea data-key="today.cleanLater" placeholder="Cleaning you noticed but do not need to do today. Example: organize under sink this weekend."></textarea></div>
-<button class="smallbtn" data-go="cleaning" onclick="window.MLHQGo && window.MLHQGo('cleaning')">Open Cleaning</button>
+<button type="button" class="smallbtn" onclick="window.MLHQGo?window.MLHQGo('cleaning'):openPage('cleaning')">Open Cleaning</button>
 </div>
 <div class="card"><h2>Needs Attention</h2><div id="todayAlerts" class="small">Nothing flagged.</div></div>
 <div class="card" data-hide-section="today-brain" data-section-label="Quick Brain Dump"><h2>Quick Brain Dump<button type="button" class="card-hide-btn" onclick="hideSectionNow('today-brain')">Hide</button></h2>
@@ -3524,7 +3524,7 @@ function renderToday(){
  const d=days[new Date().getDay()];
  document.getElementById('todayTitleText').textContent=''+d;
  document.getElementById('cleanFocus').textContent=cleanFocusForDay(d)||"Open Cleaning to see today's detailed cleaning plan";
- document.getElementById('cleanFocus').onclick=()=>openPage('cleaning');
+ 
 
  const todayDinner=getPath('meal.'+d+'.dinner')||'';
  const todayPrep=getPath('meal.'+d+'.prep')||'';
@@ -3733,7 +3733,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.0-'+Date.now();
+   location.href='./?v=10.1-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
