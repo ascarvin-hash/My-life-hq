@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.7 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.8 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v9.7 - Simple Today Brain Dump</div>
+<div class="alert"><strong>Current App Version:</strong> v9.8 - Direct Brain Dump Save</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -190,8 +190,22 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="card"><h2>Quick Brain Dump</h2>
 <div class="hint"><strong>Capture only.</strong> Type the thought and add it. Sort it out later when you sit down to review.</div>
 <div class="field"><label>What's on your mind?</label><textarea id="quickBrainDumpText" placeholder="Type it here before you forget..."></textarea></div>
-<button type="button" class="action" onclick="quickCaptureBrainDump()">Add to Brain Dump</button>
-<div id="quickBrainDumpStatus" class="small"></div>
+<button type="button" class="action" id="quickBrainDumpBtn" onclick="
+try{
+ const box=document.getElementById('quickBrainDumpText');
+ const text=(box&amp;&amp;box.value?box.value:'').trim();
+ if(!text){alert('Type something in the Brain Dump box first.');return false;}
+ state.records=state.records||{};
+ state.records.brainDump=state.records.brainDump||[];
+ state.records.brainDump.push({id:uid(),text:text,kind:'Task',priority:'Normal',when:'No Date Yet',date:'',destination:'Leave in Brain Dump',shoppingCategory:'Wishlist / Other',notes:'',status:'Unprocessed',captured:todayKey()});
+ localStorage.setItem(APP_KEY,JSON.stringify(state));
+ box.value='';
+ alert('Added to Brain Dump: '+text);
+ try{renderToday();}catch(e){}
+ return false;
+}catch(e){alert('Brain Dump save failed: '+e.message);return false;}
+">Add to Brain Dump</button>
+<div id="quickBrainDumpStatus" class="small"></div><div class="small"><strong>Brain Dump Save:</strong> v9.8 direct button active</div>
 <details><summary>Review / Process Brain Dump</summary>
 <div class="hint">When you're ready to go through these, tap <strong>Process / Send</strong>. Then you get the full options for type, priority, when/date, where to send it, notes, and status.</div>
 <div id="todayBrainDump"></div>
@@ -3668,7 +3682,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=9.7-'+Date.now();
+   location.href='./?v=9.8-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
