@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.5 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.6 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.5 - Save Data Structure Fix</div>
+<div class="alert"><strong>Current App Version:</strong> v10.6 - Save Before Refresh Fix</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -822,7 +822,7 @@ try{
 <div class="card"><h3>This Week Total</h3><div id="weeklySpendTotal"></div></div>
 <div class="card"><h3>Today Total</h3><div id="todaySpendTotal"></div></div>
 </div>
-<div id="weeklySpendList"></div>
+<div id="weeklySpendList"></div><div id="directSaveStatus" class="small"></div>
 <button class="smallbtn" data-add-record="spendingEntry">Add Spending Entry</button>
 </details>
 <details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">Add Bill</button></details>
@@ -2255,11 +2255,43 @@ function saveMealLibraryForm(type){
  }
 }
 
+function refreshAfterDirectSave(type){
+ try{
+   const pageMap={
+    priority:'week',todo:'week',schedule:'week',weeklyWalkTask:'week',
+    transport:'family',outing:'family',trip:'family',contact:'family',
+    savedDriver:'work',workRunTemplate:'work',driverTimeOff:'work',workRun:'work',workMaintenance:'work',workCompliance:'work',
+    workTask:'work',driver:'work',tractor:'work',workPay:'work',workAdmin:'work',driverPayroll:'work',myWorkHours:'work',
+    spendingEntry:'money',bill:'money',income:'money',weeklySpend:'money',budget:'money',envelope:'money',saving:'money',debt:'money',
+    subscription:'money',expense:'money',monthReview:'money',
+    cleaningSupply:'cleaning',
+    repair:'homeLife',restock:'homeLife',project:'homeLife',storage:'homeLife',appliance:'homeLife',
+    skin:'selfcare',body:'selfcare',hair:'selfcare',periodSupply:'selfcare',travelCare:'selfcare',
+    mood:'health',symptom:'health',migraine:'health',period:'health',appointment:'health',needsAppointment:'health',
+    med:'health',dental:'health',healthFollowup:'health',healthTest:'health',journal:'health',
+    emergencyContact:'emergency'
+   };
+   const page=pageMap[type];
+   if(page==='money')renderMoney();
+   else if(page==='week'){renderWeek();renderPriorities();renderInboxes()}
+   else if(page==='family')renderFamily();
+   else if(page==='work')renderWork();
+   else if(page==='cleaning')renderCleaning();
+   else if(page==='homeLife')renderHome();
+   else if(page==='selfcare')renderSelfCare();
+   else if(page==='health')renderHealth();
+   else if(page==='emergency')renderEmergency();
+ }catch(e){
+   console.error('Saved, but section refresh failed',type,e);
+ }
+}
 function hardSaveCurrentItem(){
  try{
    if(!modalType){alert('No item is open to save.');return false}
+   const savingType=modalType;
    let data=formData();
-   if(modalType==='mealPlanPick'){
+
+   if(savingType==='mealPlanPick'){
      const slotMap={'Breakfast':'breakfast','Lunch':'lunch','Dinner':'dinner','Side / Vegetable':'side','Kids Alternative':'kids','Snacks':'snacks'};
      const slot=slotMap[data.slot];
      if(!data.day||!slot){alert('Choose a day and meal slot.');return false}
@@ -2268,23 +2300,45 @@ function hardSaveCurrentItem(){
      if(!value){alert('The library item is blank.');return false}
      if(data.mode==='Append to Existing'||(data.mode==='Replace Empty / Append if Used'&&current.trim()))value=current.trim()?current.trim()+' / '+value:value;
      setPath(key,value);
-     if(data.note&&data.note.trim()){const nk='meal.'+data.day+'.notes',n=getPath(nk)||'';setPath(nk,n.trim()?n.trim()+'\\n'+data.note:data.note)}
+     if(data.note&&data.note.trim()){
+       const nk='meal.'+data.day+'.notes',n=getPath(nk)||'';
+       setPath(nk,n.trim()?n.trim()+'\n'+data.note:data.note);
+     }
    }else{
      data=normalizeDriverFields(data);
+     state=state||baseState();
+     state.records=state.records||{};
+     state.records[savingType]=state.records[savingType]||[];
+
      if(modalId){
-       const i=rec(modalType).findIndex(x=>String(x.id)===String(modalId));
-       if(i>=0)rec(modalType)[i]={...rec(modalType)[i],...data};
-       else rec(modalType).push({id:modalId,...data});
-     }else rec(modalType).push({id:uid(),...data});
-     save();
+       const i=state.records[savingType].findIndex(x=>String(x.id)===String(modalId));
+       if(i>=0)state.records[savingType][i]={...state.records[savingType][i],...data};
+       else state.records[savingType].push({id:modalId,...data});
+     }else{
+       state.records[savingType].push({id:uid(),...data});
+     }
+
+     // Persist directly. A render problem cannot undo or disguise this write.
+     try{saveTodaySnapshot()}catch(_){}
+     localStorage.setItem(APP_KEY,JSON.stringify(state));
+     if(!suppressCloudSync)markLocalModified();
+     try{scheduleCloudAutoSync()}catch(_){}
    }
+
    const modal=document.getElementById('modal');if(modal)modal.style.display='none';
    const shared=document.getElementById('modalSave');if(shared)shared.style.display='';
-   renderAll();
+
+   // Verify that a local record collection exists after the write.
+   if(savingType!=='mealPlanPick'){
+     const count=(state.records&&state.records[savingType])?state.records[savingType].length:0;
+     if(!count){alert('The item could not be verified after saving.');return false}
+   }
+
+   refreshAfterDirectSave(savingType);
    return false;
  }catch(e){
    console.error('Direct item save failed',e);
-   alert('Save failed: '+e.message);
+   alert('Save failed before data was written: '+(e.message||e));
    return false;
  }
 }
@@ -2996,7 +3050,7 @@ function cleanFocusForDay(d){return {Sunday:'Weekly Reset + planning',Monday:'Ba
  const weekStart=sws?.value||weekStartKey();
  const wd=new Date(weekStart+'T00:00:00');const we=new Date(wd);we.setDate(we.getDate()+6);
  const cat=document.getElementById('spendCategoryFilter')?.value||'All';
- const allSpend=rec('spendingEntry');
+ const allSpend=(state.records&&Array.isArray(state.records.spendingEntry))?state.records.spendingEntry:[];
  const rows=allSpend.filter(r=>{
    if(!r.date)return false;
    const d=new Date(r.date+'T00:00:00');
@@ -3911,7 +3965,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.5-'+Date.now();
+   location.href='./?v=10.6-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
