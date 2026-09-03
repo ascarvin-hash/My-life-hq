@@ -83,10 +83,30 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 .week-check input{margin-top:3px;flex:0 0 auto}
 .week-detail{font-size:12px;opacity:.82;margin-left:25px}
 .week-empty{font-size:12px;opacity:.65}
+
+/* v11.2 weekly layout cleanup */
+#weekDays .weekday{overflow:hidden;box-sizing:border-box}
+#weekDays .recordhead{min-width:0;gap:8px}
+#weekDays .recordhead>div{min-width:0}
+#weekDays .week-source{box-sizing:border-box;max-width:100%;overflow:hidden;padding:10px 12px;margin:8px 0}
+#weekDays .week-check{box-sizing:border-box;max-width:100%;min-width:0;padding:2px 0;align-items:flex-start}
+#weekDays .week-check span{display:block;min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:normal;line-height:1.4}
+#weekDays .week-detail{box-sizing:border-box;max-width:100%;margin:3px 0 7px 26px;padding-right:4px;overflow-wrap:anywhere;word-break:normal;line-height:1.45}
+#weekDays .week-source-title{overflow-wrap:anywhere}
+#weekDays details{box-sizing:border-box;max-width:100%;overflow:hidden}
+#weekDays textarea,#weekDays input,#weekDays select{box-sizing:border-box;max-width:100%;min-width:0;width:100%}
+#weekDays .formgrid{min-width:0}
+#weekDays .field{min-width:0}
+@media(max-width:700px){
+ #weekDays .weekday{padding:10px}
+ #weekDays .week-source{padding:9px 10px}
+ #weekDays .week-detail{margin-left:24px;padding-right:2px}
+ #weekDays .recordhead{align-items:flex-start;flex-wrap:wrap}
+}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v11.1 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v11.2 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -115,7 +135,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v11.1 - Detailed Weekly Checklists</div>
+<div class="alert"><strong>Current App Version:</strong> v11.2 - Weekly Layout Cleanup</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -2686,7 +2706,7 @@ function renderWeek(){
    const date=dayDate[day],k='week.'+day;
    return `<div class="weekday">
      <div class="recordhead"><div><strong>${day}</strong><div class="small">${date}</div></div>
-       <div class="small" id="weekProgress-${day}"></div>
+       <div class="small" id="weekProgress-${day}" style="white-space:nowrap;padding-right:2px"></div>
      </div>
      ${sourceBlocksFor(day,date)}
      <details><summary>My Additions for ${day}</summary>
@@ -4265,7 +4285,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=11.1-'+Date.now();
+   location.href='./?v=11.2-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
