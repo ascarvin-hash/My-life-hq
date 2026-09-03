@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.9 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v11.0 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.9 - Cleaning Totes Added</div>
+<div class="alert"><strong>Current App Version:</strong> v11.0 - Auto-Filled This Week</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -271,7 +271,19 @@ try{
 <details open><summary> This Week Priorities</summary><div class="hint">The few things that absolutely matter this week - not every task. Aim for Top 5.</div><div id="priorityList"></div><button class="smallbtn" data-add-record="priority">Add Weekly Priority</button></details>
 <details><summary>Brain Dump Inbox / History</summary><div class="hint">Unprocessed thoughts stay here; processed ones show where they were sent.</div><div id="weeklyBrainDump"></div></details><details><summary>To-Do Inbox</summary><div class="hint">Something needs to be done, but you have not organized it yet. Process it later into Today, Week, a section, or Done.</div><div id="todoInbox"></div><button class="smallbtn" data-add-record="todo">Add To-Do</button><button class="smallbtn" data-process="todo">Process Inbox</button></details>
 <details><summary>Schedule Inbox</summary><div class="hint">Temporary holding place for things that involve a date/time but are not properly planned yet.</div><div id="scheduleInbox"></div><button class="smallbtn" data-add-record="schedule">Add Schedule Item</button><button class="smallbtn" data-process="schedule">Process Schedule Inbox</button></details>
-<details><summary>This Week</summary><div id="weekDays"></div></details>
+<details><summary>What Auto-Fills This Week?</summary>
+<div class="small">
+<strong>Meals:</strong> dinner, prep/thaw and meal notes.<br>
+<strong>Health / Schedule:</strong> appointments and dated schedule items.<br>
+<strong>Money:</strong> bills with a planned payment date.<br>
+<strong>Kids / Family:</strong> dated activities and transportation changes.<br>
+<strong>Work:</strong> Daily tasks, tasks assigned to that weekday, and driver time off.<br>
+<strong>Cleaning:</strong> that day's cleaning focus.<br>
+<strong>Manual:</strong> only Must Do / Extra Notes that do not belong in another section.
+</div>
+</details><details open><summary>This Week - Auto-Filled Dashboard</summary>
+<div class="hint"><strong>Do not retype what already exists.</strong> Dinner comes from Meals; dated items come from Appointments/Schedule, Money, Kids/Activities, Family Transportation and Work; Cleaning shows the daily focus. Use My Additions only for something that has no better home.</div>
+<div id="weekDays"></div></details>
 <details open><summary>Sunday Review + Carry Forward</summary>
 <div class="hint"><strong>Use this once on Sunday.</strong> Close the current week, move unfinished items forward, and set up the next week.</div>
 <details open><summary>1. Finish the Current Week</summary>
@@ -2584,8 +2596,95 @@ function renderWeek(){
    r=>`${r.category||''} \u2022 ${r.day||''} \u2022 ${r.priority||''} \u2022 ${r.status||''}`);
 
  const box=document.getElementById('weekDays');if(!box)return;
- box.innerHTML=days.map(d=>{const k='week.'+d;return `<div class="weekday"><strong>${d}</strong><div class="formgrid"><input data-week="${k}.events" placeholder="Events / appointments"><input data-week="${k}.must" placeholder="Must do"><input data-week="${k}.meal" placeholder="Dinner"><input data-week="${k}.notes" placeholder="Notes"></div></div>`}).join('');
- box.querySelectorAll('[data-week]').forEach(e=>{e.value=getPath(e.dataset.week);e.oninput=()=>setPath(e.dataset.week,e.value)});
+
+ // This Week is a dashboard: pull information from the sections where it already lives.
+ const weekStart=new Date(weekStartKey()+'T00:00:00');
+ const dayDate={};
+ days.forEach((day,i)=>{
+   const dt=new Date(weekStart);dt.setDate(dt.getDate()+i);
+   dayDate[day]=dt.toISOString().slice(0,10);
+ });
+
+ const dateInRange=(date,start,end)=>{
+   if(!date)return false;
+   const a=start||date,b=end||start||date;
+   return date>=a&&date<=b;
+ };
+ const eventLinesFor=(day,date)=>{
+   const lines=[];
+
+   // Appointments / Health
+   rec('appointment').filter(r=>r.date===date&&!['Cancelled'].includes(r.status)).forEach(r=>{
+     lines.push(`<div><strong>Appointment:</strong> ${esc(r.person||'')} ${esc(r.kind||r.provider||'Appointment')} ${esc(r.time||'')}</div>`);
+   });
+
+   // Schedule Inbox / scheduled items
+   rec('schedule').filter(r=>r.date===date).forEach(r=>{
+     lines.push(`<div><strong>${esc(r.kind||'Scheduled')}:</strong> ${esc(r.title||'')} ${esc(r.time||'')}</div>`);
+   });
+
+   // Bills - planned payment date
+   rec('bill').filter(r=>r.status!=='Paid'&&(r.payDate===date||r.paidDate===date)).forEach(r=>{
+     lines.push(`<div><strong>Money:</strong> ${esc(r.name||'Bill')} ${r.amount?fmt(r.amount):''}</div>`);
+   });
+
+   // Kids activities: an ISO date listed in Events / games
+   rec('activity').filter(r=>r.status!=='Finished / Archived'&&String(r.events||'').includes(date)).forEach(r=>{
+     lines.push(`<div><strong>Kids:</strong> ${esc(r.person||'')} — ${esc(r.name||'Activity')}</div>`);
+   });
+
+   // Family transportation changes effective that day
+   rec('transport').filter(r=>r.date===date).forEach(r=>{
+     lines.push(`<div><strong>Transportation:</strong> ${esc(r.person||'')} — ${esc(r.kind||'Plan / Change')}</div>`);
+   });
+
+   // Work recurring tasks
+   rec('workTask').filter(r=>r.freq==='Daily'||r.freq===day).forEach(r=>{
+     lines.push(`<div><strong>Work:</strong> ${esc(r.title||'Task')}${r.time?' — '+esc(r.time):''}</div>`);
+   });
+
+   // Driver time off
+   rec('driverTimeOff').filter(r=>dateInRange(date,r.startDate,r.endDate)&&!['Denied','Cancelled'].includes(r.status)).forEach(r=>{
+     lines.push(`<div><strong>Driver Time Off:</strong> ${esc(r.driver||'Driver')} — ${esc(r.kind||'Time Off')}</div>`);
+   });
+
+   return lines;
+ };
+
+ box.innerHTML=days.map(day=>{
+   const date=dayDate[day],k='week.'+day;
+   const dinner=getPath('meal.'+day+'.dinner')||'Nothing planned';
+   const prep=getPath('meal.'+day+'.prep')||'';
+   const mealNotes=getPath('meal.'+day+'.notes')||'';
+   const clean=cleanFocusForDay(day)||'';
+   const events=eventLinesFor(day,date);
+
+   return `<div class="weekday">
+     <div class="recordhead"><div><strong>${day}</strong><div class="small">${date}</div></div></div>
+
+     <div class="alert"><strong>Dinner:</strong> ${esc(dinner)}
+       ${prep?`<div class="small"><strong>Prep / thaw:</strong> ${esc(prep)}</div>`:''}
+       ${mealNotes?`<div class="small"><strong>Meal notes:</strong> ${esc(mealNotes)}</div>`:''}
+     </div>
+
+     ${clean?`<div class="small"><strong>Cleaning:</strong> ${esc(clean)}</div>`:''}
+
+     <div class="small" style="margin-top:8px"><strong>Auto-filled from My Life HQ</strong></div>
+     <div class="record">${events.length?events.join(''):'<div class="small">No dated appointments, bills, activities, transportation changes, or work items pulled in.</div>'}</div>
+
+     <details><summary>My Additions for ${day}</summary>
+       <div class="formgrid">
+         <div class="field"><label>Must do / extra task</label><textarea data-week="${k}.must" placeholder="Only add something here if it does not already belong in another section."></textarea></div>
+         <div class="field"><label>Extra notes</label><textarea data-week="${k}.notes" placeholder="Anything unique to this day..."></textarea></div>
+       </div>
+     </details>
+   </div>`;
+ }).join('');
+
+ box.querySelectorAll('[data-week]').forEach(e=>{
+   e.value=getPath(e.dataset.week);
+   e.oninput=()=>setPath(e.dataset.week,e.value);
+ });
 }
 function renderPriorities(){renderSimple('priority','priorityList',r=>r.title,r=>`${r.category||''} \u2022 ${r.who||''} \u2022 ${r.due||''}`)}
 function renderInboxes(){renderSimple('todo','todoInbox',r=>r.title,r=>`${r.who||''} \u2022 ${r.when||''} \u2022 ${r.priority||''}`);renderSimple('schedule','scheduleInbox',r=>r.title,r=>`${r.date||'No date'} ${r.time||''} \u2022 ${r.kind||''}`)}
@@ -4133,7 +4232,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.9-'+Date.now();
+   location.href='./?v=11.0-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
