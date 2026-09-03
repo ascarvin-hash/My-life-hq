@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.6 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.7 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.6 - Save Before Refresh Fix</div>
+<div class="alert"><strong>Current App Version:</strong> v10.7 - Spending List Display Fix</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -822,7 +822,7 @@ try{
 <div class="card"><h3>This Week Total</h3><div id="weeklySpendTotal"></div></div>
 <div class="card"><h3>Today Total</h3><div id="todaySpendTotal"></div></div>
 </div>
-<div id="weeklySpendList"></div><div id="directSaveStatus" class="small"></div>
+<div id="spendingEntryList"></div><div id="directSaveStatus" class="small"></div>
 <button class="smallbtn" data-add-record="spendingEntry">Add Spending Entry</button>
 </details>
 <details open><summary>Bills by Week / Pay Period</summary><div id="billList"></div><button class="smallbtn" data-add-record="bill">Add Bill</button></details>
@@ -2335,6 +2335,11 @@ function hardSaveCurrentItem(){
    }
 
    refreshAfterDirectSave(savingType);
+   const ds=document.getElementById('directSaveStatus');
+   if(ds&&savingType==='spendingEntry'){
+     ds.textContent='Saved to Daily / Weekly Spending Log.';
+     setTimeout(()=>{ds.textContent=''},3500);
+   }
    return false;
  }catch(e){
    console.error('Direct item save failed',e);
@@ -3011,7 +3016,7 @@ function renderMoney(){
  const wc=document.getElementById('weeklySpendCategoryFilter')?.value||'All';
  const wp=document.getElementById('weeklySpendPaymentFilter')?.value||'All';
  const wrows=rec('weeklySpend').filter(r=>(wc==='All'||r.category===wc)&&(wp==='All'||r.payment===wp));
- const wbox=document.getElementById('weeklySpendList');
+ const wbox=document.getElementById('spendingEntryList');
  if(wbox)wbox.innerHTML=wrows.length?wrows.map(r=>`<div class="record">
  <div class="recordhead"><div><strong>${esc(r.merchant||r.item||'Purchase')}</strong><div class="small">${esc((r.date||'')+' \u2022 '+(r.category||'')+' \u2022 '+(r.payment||''))}</div></div>${actionBtns('weeklySpend',r.id)}</div>
  <div class="small">${fmt(r.amount||0)} \u2022 ${esc(r.needWant||'')} \u2022 ${esc(r.planned||'')}</div>
@@ -3043,7 +3048,27 @@ function renderMoney(){
  renderSimple('subscription','subscriptionList',r=>r.name||'Subscription',r=>`${fmt(r.cost)} ${r.freq||''} \u2022 Next ${r.next||''} \u2022 ${r.decision||''}`);
  renderSimple('expense','expenseList',r=>r.name||'Upcoming Expense',r=>`${r.due||''} \u2022 ${fmt(r.expected)} \u2022 ${r.status||''} \u2022 ${r.funding||''}`);
  renderSimple('monthReview','monthlyReview',r=>r.month||'Monthly Review',r=>`Income ${fmt(r.actualIncome)} \u2022 Bills ${fmt(r.billsPaid)} \u2022 Spending ${fmt(r.spending)}`);
- const summary=document.getElementById('moneySummary');if(summary){const income=rec('income').reduce((s,r)=>s+money(r.actual||r.expected),0),bills=rec('bill').filter(r=>r.status!=='Paid').reduce((s,r)=>s+money(r.amount),0),exp=rec('expense').filter(r=>r.status!=='Completed'&&r.status!=='Paid / Purchased').reduce((s,r)=>s+Math.max(0,money(r.expected)-money(r.funded)),0);summary.textContent=`Income tracked: ${fmt(income)} \u2022 Unpaid bills: ${fmt(bills)} \u2022 Unfunded upcoming expenses: ${fmt(exp)}`}}
+ const summary=document.getElementById('moneySummary');if(summary){const income=rec('income').reduce((s,r)=>s+money(r.actual||r.expected),0),bills=rec('bill').filter(r=>r.status!=='Paid').reduce((s,r)=>s+money(r.amount),0),exp=rec('expense').filter(r=>r.status!=='Completed'&&r.status!=='Paid / Purchased').reduce((s,r)=>s+Math.max(0,money(r.expected)-money(r.funded)),0);summary.textContent=`Income tracked: ${fmt(income)} \u2022 Unpaid bills: ${fmt(bills)} \u2022 Unfunded upcoming expenses: ${fmt(exp)}`}
+ const spendingEntryList=document.getElementById('spendingEntryList');
+ const spendingEntries=(state.records&&Array.isArray(state.records.spendingEntry))?state.records.spendingEntry:[];
+ if(spendingEntryList){
+   const ordered=[...spendingEntries].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+   spendingEntryList.innerHTML=ordered.length?ordered.map(r=>`
+     <div class="record">
+       <div class="recordhead">
+         <div>
+           <strong>${esc(r.merchant||r.item||r.category||'Spending Entry')}</strong>
+           <div class="small">${esc(r.date||'')} • ${esc(r.category||'')} • ${fmt(r.amount||0)} • ${esc(r.paymentMethod||'')}</div>
+         </div>
+         ${actionBtns('spendingEntry',r.id)}
+       </div>
+       ${r.item?`<div class="small"><strong>Item:</strong> ${esc(r.item)}</div>`:''}
+       ${r.needWant?`<div class="small"><strong>Need / Want:</strong> ${esc(r.needWant)}</div>`:''}
+       ${r.budget?`<div class="small"><strong>Budget / Envelope:</strong> ${esc(r.budget)}</div>`:''}
+       ${r.notes?`<div class="small"><strong>Notes:</strong> ${esc(r.notes)}</div>`:''}
+     </div>`).join(''):'<div class="small">No spending entries added yet.</div>';
+ }
+}
 function cleanFocusForDay(d){return {Sunday:'Weekly Reset + planning',Monday:'Bathrooms + laundry reset',Tuesday:'Light reset + Money Day',Wednesday:'Kitchen',Thursday:'Living areas',Friday:'Floors + catch-up',Saturday:'Errands + one project'}[d]
  const sws=document.getElementById('spendWeekStart');
  if(sws&&!sws.value)sws.value=weekStartKey();
@@ -3965,7 +3990,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.6-'+Date.now();
+   location.href='./?v=10.7-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
