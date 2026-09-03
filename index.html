@@ -79,7 +79,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.1 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v10.2 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -108,7 +108,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v10.1 - Direct Today Cleaning Link</div>
+<div class="alert"><strong>Current App Version:</strong> v10.2 - Direct Cloud Sync Buttons</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -118,20 +118,20 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div class="hint"><strong>Your local backup still matters.</strong> Cloud sync is protected by your My Life HQ sign-in. On first setup, choose which copy should become the cloud master instead of letting one device overwrite the other automatically.</div>
 
 <details open><summary>Cloud Sign In</summary>
-<div id="cloudAuthStatus" class="alert">Checking sign-in status...</div>
+<div id="cloudAuthStatus" class="alert">Checking sign-in status...</div><div class="small"><strong>Cloud Buttons:</strong> v10.2 direct actions active</div>
 <div id="cloudSignedOut">
 <div class="formgrid">
 <div class="field"><label>Email</label><input type="email" id="cloudEmail" autocomplete="email" placeholder="Your email"></div>
 <div class="field"><label>Password</label><input type="password" id="cloudPassword" autocomplete="current-password" placeholder="Your password"></div>
 </div>
 <div class="rowbuttons">
-<button id="cloudSignUp" class="smallbtn">Create My Life HQ Account</button>
-<button id="cloudSignIn" class="action">Sign In</button>
+<button type="button" id="cloudSignUp" class="smallbtn" onclick="cloudDirectSignUp()">Create My Life HQ Account</button>
+<button type="button" id="cloudSignIn" class="action" onclick="cloudDirectSignIn()">Sign In</button>
 </div>
 <div class="small">If you create a new account, Supabase may ask you to confirm your email first. Use the same email account on the Pixel and iPad.</div>
 </div>
 <div id="cloudSignedIn" style="display:none">
-<div class="rowbuttons"><button id="cloudSignOut" class="smallbtn">Sign Out</button><button id="cloudRefresh" class="smallbtn">Check Cloud</button></div>
+<div class="rowbuttons"><button type="button" id="cloudSignOut" class="smallbtn" onclick="cloudDirectSignOut()">Sign Out</button><button type="button" id="cloudRefresh" class="smallbtn" onclick="cloudDirectRefresh()">Check Cloud</button></div>
 </div>
 </details>
 
@@ -140,8 +140,8 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div id="cloudFirstChoice" style="display:none">
 <div class="hint"><strong>First-time safety choice.</strong> Do not guess. If this device has your most complete information, upload it. If the cloud already contains your master copy from another device, download it here.</div>
 <div class="rowbuttons">
-<button id="cloudUploadMaster" class="action">Use THIS Device as Cloud Master</button>
-<button id="cloudDownloadMaster" class="smallbtn">Use CLOUD Data on This Device</button>
+<button type="button" id="cloudUploadMaster" class="action" onclick="cloudDirectUploadMaster()">Use THIS Device as Cloud Master</button>
+<button type="button" id="cloudDownloadMaster" class="smallbtn" onclick="cloudDirectDownloadMaster()">Use CLOUD Data on This Device</button>
 </div>
 </div>
 <div id="cloudConflict" style="display:none">
@@ -154,9 +154,9 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 <div id="cloudNormalControls" style="display:none">
 <label class="task"><input type="checkbox" id="cloudAutoSync"> Automatically sync changes after first setup</label>
 <div class="rowbuttons">
-<button id="cloudSyncNow" class="action">Sync Now</button>
-<button id="cloudUploadNow" class="smallbtn">Upload This Device</button>
-<button id="cloudDownloadNow" class="smallbtn">Download Cloud Copy</button>
+<button type="button" id="cloudSyncNow" class="action" onclick="cloudDirectSyncNow()">Sync Now</button>
+<button type="button" id="cloudUploadNow" class="smallbtn" onclick="cloudDirectUploadNow()">Upload This Device</button>
+<button type="button" id="cloudDownloadNow" class="smallbtn" onclick="cloudDirectDownloadNow()">Download Cloud Copy</button>
 </div>
 </div>
 <div id="cloudLastTimes" class="small"></div>
@@ -3658,6 +3658,48 @@ function scheduleCloudAutoSync(){
  clearTimeout(cloudSaveTimer);
  cloudSaveTimer=setTimeout(()=>cloudSmartSync(),1400);
 }
+
+async function ensureCloudReady(){
+ if(cloudClient)return true;
+ if(!window.supabase){cloudAuthText('Cloud library did not load. Reload the app and try again.');return false}
+ cloudClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+ return true;
+}
+async function cloudDirectSignUp(){
+ try{
+  if(!await ensureCloudReady())return;
+  const email=(document.getElementById('cloudEmail')?.value||'').trim();
+  const password=document.getElementById('cloudPassword')?.value||'';
+  if(!email||password.length<6){cloudAuthText('Enter your email and a password of at least 6 characters.');return}
+  cloudAuthText('Creating account...');
+  const {data,error}=await cloudClient.auth.signUp({email,password,options:{emailRedirectTo:'https://ascarvin-hash.github.io/My-life-hq/'}});
+  if(error)throw error;
+  cloudAuthText(data.session?'Account created and signed in.':'Account created. Check your email to confirm it, then come back and tap Sign In.');
+ }catch(e){cloudAuthText('Sign-up failed: '+(e.message||e))}
+}
+async function cloudDirectSignIn(){
+ try{
+  if(!await ensureCloudReady())return;
+  const email=(document.getElementById('cloudEmail')?.value||'').trim();
+  const password=document.getElementById('cloudPassword')?.value||'';
+  if(!email||!password){cloudAuthText('Enter your email and password first.');return}
+  cloudAuthText('Signing in...');
+  const {data,error}=await cloudClient.auth.signInWithPassword({email,password});
+  if(error)throw error;
+  cloudUser=data.user||data.session?.user||null;
+  if(cloudUser){try{await cloudFetchRow()}catch(e){}}
+  updateCloudUi();
+  cloudAuthText('Signed in as '+(cloudUser?.email||email));
+ }catch(e){cloudAuthText('Sign-in failed: '+(e.message||e))}
+}
+async function cloudDirectSignOut(){try{if(!await ensureCloudReady())return;await cloudClient.auth.signOut();cloudUser=null;cloudRow=null;updateCloudUi()}catch(e){cloudAuthText('Sign-out failed: '+(e.message||e))}}
+async function cloudDirectRefresh(){try{if(!await ensureCloudReady())return;await cloudFetchRow();updateCloudUi();cloudStatus('Cloud checked.')}catch(e){cloudStatus('Cloud check failed: '+(e.message||e))}}
+async function cloudDirectUploadMaster(){if(confirm('Use THIS device as the cloud master copy? This will replace any existing cloud HQ data with this device.')){const ok=await cloudUpload(true);if(ok){syncMeta.autoSync=true;saveSyncMeta();updateCloudUi()}}}
+async function cloudDirectDownloadMaster(){if(confirm('Replace THIS device data with the cloud copy? Make sure your backup is safe first.')){const ok=await cloudDownload(true);if(ok){syncMeta.autoSync=true;saveSyncMeta();updateCloudUi()}}}
+async function cloudDirectSyncNow(){await cloudSmartSync()}
+async function cloudDirectUploadNow(){if(confirm('Upload this device and replace the cloud copy?'))await cloudUpload(true)}
+async function cloudDirectDownloadNow(){if(confirm('Download the cloud copy and replace this device data?'))await cloudDownload(true)}
+window.cloudDirectSignUp=cloudDirectSignUp;window.cloudDirectSignIn=cloudDirectSignIn;window.cloudDirectSignOut=cloudDirectSignOut;window.cloudDirectRefresh=cloudDirectRefresh;window.cloudDirectUploadMaster=cloudDirectUploadMaster;window.cloudDirectDownloadMaster=cloudDirectDownloadMaster;window.cloudDirectSyncNow=cloudDirectSyncNow;window.cloudDirectUploadNow=cloudDirectUploadNow;window.cloudDirectDownloadNow=cloudDirectDownloadNow;
 async function initCloud(){
  loadSyncMeta();
  if(!window.supabase){cloudAuthText('Cloud library did not load. Local My Life HQ is still safe.');return}
@@ -3733,7 +3775,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=10.1-'+Date.now();
+   location.href='./?v=10.2-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
