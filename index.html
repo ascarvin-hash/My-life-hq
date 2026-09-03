@@ -71,7 +71,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.1 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
+<header><div class="brand"><div class="brandmark"><svg class="emoji-art" viewBox="0 0 64 64"><path d="M7 31L32 9l25 22" fill="#ff6b6b" stroke="#555" stroke-width="3"/><path d="M14 28v28h36V28L32 13z" fill="#ffd9b3" stroke="#555" stroke-width="3"/><rect x="27" y="39" width="10" height="17" fill="#9b6b43"/></svg></div><div><strong>My Life HQ</strong><small>My Life HQ - v9.2 Cleaning + Sunday Review + Meal Add-to-Day + Spending - Quick View -> Walkthrough -> Details</small></div></div></header>
 <main>
 <section id="home" class="home active">
 <div class="todayhero"><h2 id="homeDate"><span id="homeDateText">Today</span></h2><div class="small">Start with Today. Open other sections only when you need them.</div></div>
@@ -100,7 +100,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </div>
 <div class="card">
 <h2>Data, Backup and Sync</h2>
-<div class="alert"><strong>Current App Version:</strong> v9.1 - Meal Library Dedicated Save Fix</div>
+<div class="alert"><strong>Current App Version:</strong> v9.2 - In-Form Meal Library Save</div>
 <div class="rowbuttons">
 <button id="forceAppUpdate" class="smallbtn">Check for App Update</button>
 <button id="clearAppCache" class="smallbtn">Clear App Cache and Reload</button>
@@ -711,7 +711,7 @@ input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;co
 </details>
 </div></section>
 
-<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2><div class="small"><strong>Meal Library Actions:</strong> v9.1 dedicated Save active</div><div id="mealLibrarySaveStatus" class="alert" style="display:none"></div>
+<section id="meals" class="page"><div class="topbar"><button class="back"><- Home</button></div><div class="card"><h2><svg class="emoji-art" viewBox="0 0 64 64"><circle cx="36" cy="35" r="18" fill="#fff" stroke="#555" stroke-width="3"/><circle cx="36" cy="35" r="10" fill="#ffd166"/><path d="M12 10v45M7 10v15c0 5 10 5 10 0V10M51 10c-7 8-7 18-3 25h6v20" stroke="#555" stroke-width="3" fill="none"/></svg> Meals</h2><div class="small"><strong>Meal Library Actions:</strong> v9.2 in-form Save to Library active</div><div id="mealLibrarySaveStatus" class="alert" style="display:none"></div><div class="hint"><strong>Meal forms now save from inside the form.</strong> After typing the item, tap Save to Library inside the form.</div>
 <details open><summary>Weekly Meal Plan</summary><div class="hint">Need to Buy has one-tap Add to Master Shopping -> Groceries.</div><div id="mealWeek"></div></details>
 <details><summary>Meal Bank + Recipes</summary><div class="hint">Tap <strong>Add to Day</strong> on any saved dinner/recipe, breakfast, lunch, or snack. Choose Monday-Sunday and it goes straight to that day.</div><div id="recipeList"></div><button type="button" class="smallbtn" data-meal-library-add="recipe">Add Meal / Recipe</button></details>
 <details><summary> Breakfast Library</summary><div id="breakfastList"></div><button type="button" class="smallbtn" data-meal-library-add="breakfast">Add Breakfast</button></details>
@@ -2064,18 +2064,71 @@ ${field('Planning note','note',r.note||'')}
 function addLibraryToMealPlan(item,slot='Dinner'){
  showForm('mealPlanPick',{item,slot});
 }
+
+function saveMealLibraryForm(type){
+ const f=document.getElementById('dynamicForm');
+ if(!f){alert('Meal form could not be found.');return}
+ const data={};
+ f.querySelectorAll('input,textarea,select').forEach(el=>{if(el.name)data[el.name]=el.value});
+ const name=(data.name||'').trim();
+ if(!name){
+   alert('Enter a name before saving.');
+   const n=f.querySelector('[name="name"]');if(n)n.focus();
+   return;
+ }
+ data.name=name;
+ if(modalId){
+   const i=rec(type).findIndex(x=>String(x.id)===String(modalId));
+   if(i>=0)rec(type)[i]={...rec(type)[i],...data};
+   else rec(type).push({id:uid(),...data});
+ }else{
+   rec(type).push({id:uid(),...data});
+ }
+ save();
+ const modal=document.getElementById('modal');if(modal)modal.style.display='none';
+ renderMeals();
+ const status=document.getElementById('mealLibrarySaveStatus');
+ if(status){
+   const labels={recipe:'Meal / Recipe',breakfast:'Breakfast',lunch:'Lunch',snack:'Snack'};
+   status.textContent=(labels[type]||'Item')+' saved to library: '+name;
+   status.style.display='block';
+   setTimeout(()=>{status.style.display='none'},4000);
+ }
+}
 function showForm(type,obj={}){
  if(!formBuilders[type]){alert('This form is not available: '+type);return}
  modalType=type;modalId=obj.id||null;
- const title=document.getElementById('modalTitle'),body=document.getElementById('modalBody'),modal=document.getElementById('modal');
+ const title=document.getElementById('modalTitle'),body=document.getElementById('modalBody'),modal=document.getElementById('modal'),sharedSave=document.getElementById('modalSave');
  if(!title||!body||!modal){alert('The form window could not open. Please reload My Life HQ.');return}
  title.textContent=(modalId?'Edit ':'Add ')+type.replace(/([A-Z])/g,' $1');
- body.innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}</form>`;
+ const isMealLibrary=['recipe','breakfast','lunch','snack'].includes(type);
+
+ if(isMealLibrary){
+   body.innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}
+   <div class="rowbuttons" style="margin-top:14px">
+     <button type="submit" class="action" id="mealFormSave">Save to Library</button>
+   </div>
+   <div class="small">Use the Save to Library button above. The general Save button is hidden for meal-library forms.</div>
+   </form>`;
+   if(sharedSave)sharedSave.style.display='none';
+   const form=document.getElementById('dynamicForm');
+   form.addEventListener('submit',e=>{
+     e.preventDefault();
+     e.stopPropagation();
+     saveMealLibraryForm(type);
+   });
+ }else{
+   body.innerHTML=`<form id="dynamicForm">${formBuilders[type](obj)}</form>`;
+   if(sharedSave)sharedSave.style.display='';
+ }
  modal.style.display='block';
  modal.setAttribute('aria-hidden','false');
  setTimeout(()=>{const first=body.querySelector('input,select,textarea');if(first)first.focus()},50);
 }
-document.getElementById('modalClose').onclick=()=>document.getElementById('modal').style.display='none';
+document.getElementById('modalClose').onclick=()=>{
+ document.getElementById('modal').style.display='none';
+ const shared=document.getElementById('modalSave');if(shared)shared.style.display='';
+};
 document.getElementById('modalSave').onclick=()=>{
  let data=formData();
 
@@ -3407,7 +3460,7 @@ async function clearAppCacheAndReload(){
      await Promise.all(regs.map(r=>r.unregister()));
    }
    if(st)st.textContent='Old app cache cleared. Reloading...';
-   location.href='./?v=9.1-'+Date.now();
+   location.href='./?v=9.2-'+Date.now();
  }catch(e){
    if(st)st.textContent='Could not clear the cache automatically.';
  }
